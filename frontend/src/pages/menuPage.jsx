@@ -1,6 +1,11 @@
+import Header from '../components/header';
+
 function MenuPage() {
-  return(
-    <h1>Hello Word</h1>
+  return (
+    <>
+      <Header />
+      <h1>Hello Word</h1>
+    </>
   );
 }
 
