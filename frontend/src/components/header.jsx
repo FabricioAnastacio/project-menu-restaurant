@@ -29,7 +29,7 @@ class Header extends React.Component {
           <h1>Cardápio</h1>
         </aside>
         <section>
-          <label>
+          <label label className={ `Label-select-${drinks}` }>
             <input
               type="checkbox"
               checked={ drinks }
@@ -38,7 +38,7 @@ class Header extends React.Component {
             />
             Drinks
           </label>
-          <label>
+          <label className={ `Label-select-${foods}` }>
             <input
               type="checkbox"
               checked={ foods }

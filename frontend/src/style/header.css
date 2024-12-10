@@ -20,7 +20,7 @@ label {
   background-color: white;
 }
 
-label:hover {
+.Label-select-true {
   border-width: 2px 2px 2px 2px;
   border-color: black black white;
 }
