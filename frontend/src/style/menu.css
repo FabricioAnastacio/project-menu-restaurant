@@ -1,4 +1,4 @@
-.Section-Details {
+.Section-Details-false {
   position: fixed;
   top: 0;
   bottom: 75vmin;
@@ -13,10 +13,31 @@
   opacity: 0;
 }
 
+.Section-Details-true {
+  position: fixed;
+  top: 0;
+  bottom: 75vmin;
+  left: 0;
+  right: 40vmin;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  opacity: 1;
+  z-index: 1;
+}
+
 ul {
   padding: 0;
   margin: 10px 0;
   opacity: 1;
+}
+
+.Ul-false {
+  z-index: 0;
+  opacity: 0;
 }
 
 li {

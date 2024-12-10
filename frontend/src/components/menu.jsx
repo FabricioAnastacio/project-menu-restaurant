@@ -12,32 +12,42 @@ class Menu extends React.Component {
       nameItem: '',
       description: '',
       value: '',
+      imgOpem: false,
     };
   }
 
   getItem = (item) => {
     console.log(item);
     this.setState({
-      imgItem: item.img,
-      nameItem: item.name,
-      description: item.description,
-      value: item.value,
+      imgOpem: true,
+      imgItem: picanha,
+      nameItem: 'Picanha Bolvina',
+      description: 'testetstettstets',
+      value: 'R$0.00',
+    });
+  };
+
+  closeImg = () => {
+    this.setState({
+      imgOpem: false,
     });
   };
 
   render() {
-    const { imgItem, nameItem, description, value } = this.state;
+    const { imgItem, nameItem, description, value, imgOpem } = this.state;
     const { item } = this.props;
 
     return (
       <main>
-        <section className="Section-Details">
-          <img src={ imgItem } alt="picanha" className="IMG-Full" />
+        <section className={ `Section-Details-${imgOpem}` }>
+          <button onClick={ this.closeImg }>
+            <img src={ imgItem } alt="picanha" className="IMG-Full" />
+          </button>
           <h4>{ nameItem }</h4>
           <p>{ description }</p>
           <h4>{ value }</h4>
         </section>
-        <ul>
+        <ul className={ `Ul-${!imgOpem}` }>
           <li>
             <button onClick={ () => this.getItem(item) }>
               <img src={ picanha } alt="picanha" />
@@ -46,7 +56,7 @@ class Menu extends React.Component {
             <h4>R$0.00</h4>
           </li>
           <li>
-            <button>
+            <button onClick={ () => this.getItem(item) }>
               <img src={ picanha } alt="picanha" />
               <h4>Picanha Bolvina</h4>
             </button>
