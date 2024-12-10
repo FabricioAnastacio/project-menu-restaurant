@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@trybe/eslint-config-frontend": "^1.11.4",
+    "@types/prop-types": "^15.7.14",
     "stylelint": "^16.2.0",
     "stylelint-order": "^6.0.4",
     "web-vitals": "^4.2.4"

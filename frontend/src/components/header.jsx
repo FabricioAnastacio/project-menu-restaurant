@@ -1,27 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../style/header.css';
 
 class Header extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      drinks: false,
-      foods: true,
-    };
-  }
-
-  handleChenge = ({ target }) => {
-    const options = this.state;
-    const { name, checked } = target;
-    if (options[name] === true) return;
-    this.setState({
-      [name]: checked,
-      ...(name === 'drinks' ? { foods: !checked } : { drinks: !checked }),
-    });
-  };
-
   render() {
-    const { drinks, foods } = this.state;
+    const { drinks, foods, handleChenge } = this.props;
 
     return (
       <header>
@@ -34,7 +17,7 @@ class Header extends React.Component {
               type="checkbox"
               checked={ drinks }
               name="drinks"
-              onChange={ this.handleChenge }
+              onChange={ handleChenge }
             />
             Drinks
           </label>
@@ -43,7 +26,7 @@ class Header extends React.Component {
               type="checkbox"
               checked={ foods }
               name="foods"
-              onChange={ this.handleChenge }
+              onChange={ handleChenge }
             />
             Petiscos
           </label>
@@ -53,5 +36,11 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  drinks: PropTypes.bool.isRequired,
+  foods: PropTypes.bool.isRequired,
+  handleChenge: PropTypes.func.isRequired,
+};
 
 export default Header;

@@ -1,0 +1,45 @@
+.Section-Details {
+  position: fixed;
+  top: 0;
+  bottom: 75vmin;
+  left: 0;
+  right: 40vmin;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  opacity: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 10px 0;
+  opacity: 1;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px 0 10px;
+}
+
+img {
+  width: 60px;
+  margin: 0 10px 0 0;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+}
+
+.IMG-Full {
+  width: 250px;
+  border-radius: 20px;
+}
