@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -10,7 +11,9 @@ class Header extends React.Component {
   }
 
   handleChenge = ({ target }) => {
+    const options = this.state;
     const { name, checked } = target;
+    if (options[name] === true) return;
     this.setState({
       [name]: checked,
       ...(name === 'drinks' ? { foods: !checked } : { drinks: !checked }),
@@ -25,24 +28,27 @@ class Header extends React.Component {
         <aside>
           <h1>Cardápio</h1>
         </aside>
-        <label>
-          <input
-            type="checkbox"
-            checked={ drinks }
-            name="drinks"
-            onChange={ this.handleChenge }
-          />
-          Drinks
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={ foods }
-            name="foods"
-            onChange={ this.handleChenge }
-          />
-          Petiscos
-        </label>
+        <section>
+          <label>
+            <input
+              type="checkbox"
+              checked={ drinks }
+              name="drinks"
+              onChange={ this.handleChenge }
+            />
+            Drinks
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={ foods }
+              name="foods"
+              onChange={ this.handleChenge }
+            />
+            Petiscos
+          </label>
+        </section>
+        <hr className="line" />
       </header>
     );
   }

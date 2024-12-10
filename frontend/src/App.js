@@ -5,7 +5,7 @@ import MenuPage from './pages/menuPage';
 function App() {
   return (
     <Routes>
-      <Route exact path="/" Component={ MenuPage }/>
+      <Route exact path="/" Component={ MenuPage } />
     </Routes>
   );
 }

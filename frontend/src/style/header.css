@@ -1,0 +1,39 @@
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  margin-top: 20px;
+  height: 28.5px;
+}
+
+label {
+  position: relative;
+  z-index: 1;
+  border-style: solid;
+  border-width: 1px 1px 0px 1px;
+  border-radius: 1rem 1rem 0 0;
+  margin: 10px;
+  padding: 10px 40px;
+  background-color: white;
+}
+
+label:hover {
+  border-width: 2px 2px 2px 2px;
+  border-color: black black white;
+}
+
+input {
+  display: none;
+}
+
+.line {
+  z-index: 0;
+  margin: 0;
+  height: 2px;
+  background-color: black;
+  border: 0;
+  width: 100%;
+}
