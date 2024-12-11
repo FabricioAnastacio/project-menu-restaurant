@@ -40,12 +40,12 @@ class Menu extends React.Component {
     return (
       <main>
         <section className={ `Section-Details-${imgOpem}` }>
+          <h4>{ nameItem }</h4>
           <button onClick={ this.closeImg }>
             <img src={ imgItem } alt="picanha" className="IMG-Full" />
           </button>
-          <h4>{ nameItem }</h4>
-          <p>{ description }</p>
           <h4>{ value }</h4>
+          <p>{ description }</p>
         </section>
         <ul className={ `Ul-${!imgOpem}` }>
           <li>

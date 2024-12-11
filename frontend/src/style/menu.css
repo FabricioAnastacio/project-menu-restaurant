@@ -1,24 +1,18 @@
 .Section-Details-false {
   position: fixed;
-  top: 0;
-  bottom: 75vmin;
-  left: 0;
-  right: 40vmin;
-  margin: auto;
-  width: 100px;
-  height: 100px;
-  display: grid;
-  place-items: center;
-  text-align: center;
   opacity: 0;
+  z-index: 0;
+  img {
+    width: 1px;
+  }
 }
 
 .Section-Details-true {
   position: fixed;
   top: 0;
-  bottom: 75vmin;
+  bottom: 65vmin;
   left: 0;
-  right: 40vmin;
+  right: 48vmin;
   margin: auto;
   width: 100px;
   height: 100px;
@@ -30,14 +24,17 @@
 }
 
 ul {
+  position: relative;
   padding: 0;
   margin: 10px 0;
   opacity: 1;
+  z-index: 1;
 }
 
 .Ul-false {
   z-index: 0;
-  opacity: 0;
+  opacity: .5;
+  filter: blur(2px);
 }
 
 li {
