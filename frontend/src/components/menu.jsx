@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import picanha from '../imgs/picanha.jpeg';
 import '../style/menu.css';
 
 class Menu extends React.Component {
@@ -20,10 +19,10 @@ class Menu extends React.Component {
     console.log(item);
     this.setState({
       imgOpem: true,
-      imgItem: picanha,
-      nameItem: 'Picanha Bolvina',
-      description: 'testetstettstets',
-      value: 'R$0.00',
+      imgItem: item.img,
+      nameItem: item.name,
+      description: item.description,
+      value: item.value,
     });
   };
 
@@ -35,7 +34,7 @@ class Menu extends React.Component {
 
   render() {
     const { imgItem, nameItem, description, value, imgOpem } = this.state;
-    const { item } = this.props;
+    const { listMenu } = this.props;
 
     return (
       <main>
@@ -48,20 +47,17 @@ class Menu extends React.Component {
           <p>{ description }</p>
         </section>
         <ul className={ `Ul-${!imgOpem}` }>
-          <li>
-            <button onClick={ () => this.getItem(item) }>
-              <img src={ picanha } alt="picanha" />
-              <h4>Picanha Bolvina</h4>
-            </button>
-            <h4>R$0.00</h4>
-          </li>
-          <li>
-            <button onClick={ () => this.getItem(item) }>
-              <img src={ picanha } alt="picanha" />
-              <h4>Picanha Bolvina</h4>
-            </button>
-            <h4>R$0.00</h4>
-          </li>
+          {
+            listMenu.map((item, key) => (
+              <li key={ key }>
+                <button onClick={ () => this.getItem(item) }>
+                  <img src={ item.img } alt="picanha" />
+                  <h4>{ item.name }</h4>
+                </button>
+                <h4>{ item.value }</h4>
+              </li>
+            ))
+          }
         </ul>
       </main>
     );
@@ -69,7 +65,9 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  item: PropTypes.string.isRequired,
+  listMenu: PropTypes.arrayOf(
+    PropTypes.object.isRequired,
+  ).isRequired,
 };
 
 export default Menu;

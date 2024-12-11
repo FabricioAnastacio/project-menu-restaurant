@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
 import Menu from '../components/menu';
+import listMenu from '../services/listMenu';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ class MenuPage extends React.Component {
     this.state = {
       drinks: false,
       foods: true,
-      item: 'foods',
+      list: 'foods',
     };
   }
 
@@ -17,14 +18,14 @@ class MenuPage extends React.Component {
     const { name, checked } = target;
     if (options[name] === true) return;
     this.setState({
-      item: name,
+      list: name,
       [name]: checked,
       ...(name === 'drinks' ? { foods: !checked } : { drinks: !checked }),
     });
   };
 
   render() {
-    const { drinks, foods, item } = this.state;
+    const { drinks, foods, list } = this.state;
 
     return (
       <>
@@ -33,7 +34,7 @@ class MenuPage extends React.Component {
           drinks={ drinks }
           foods={ foods }
         />
-        <Menu item={ item } />
+        <Menu listMenu={ listMenu[list] } />
       </>
     );
   }
