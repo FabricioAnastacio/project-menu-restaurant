@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/menu.css';
+import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
   constructor() {
@@ -40,11 +41,17 @@ class Menu extends React.Component {
       <main>
         <section className={ `Section-Details-${imgOpem}` }>
           <h4>{ nameItem }</h4>
-          <button onClick={ this.closeImg }>
+          <button
+            className="Btm-fullImg"
+            onClick={ this.closeImg }
+          >
             <img src={ imgItem } alt="picanha" className="IMG-Full" />
           </button>
           <h4>{ value }</h4>
           <p>{ description }</p>
+          <button>
+            <Link to="/avaliation">Avaliar</Link>
+          </button>
         </section>
         <ul className={ `Ul-${!imgOpem}` }>
           {

@@ -14,7 +14,7 @@ const listMenu = {
     {
       img: imgCaipirinha,
       name: 'Caipirinha',
-      description: '80ml Casacha, limão e açucar',
+      description: '80ml cachaça, limão e açucar',
       value: 'R$12,00',
     },
   ],
