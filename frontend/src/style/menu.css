@@ -10,17 +10,22 @@
 .Section-Details-true {
   position: fixed;
   top: 0;
-  bottom: 65vmin;
+  bottom: 0;
   left: 0;
   right: 48vmin;
   margin: auto;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
   text-align: center;
   opacity: 1;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.767);
+}
+
+.Section-Details-true div {
+  color: white;
 }
 
 ul {
@@ -34,7 +39,7 @@ ul {
 .Ul-false {
   z-index: 0;
   opacity: .5;
-  filter: blur(2px);
+  filter: blur(2);
 }
 
 li {

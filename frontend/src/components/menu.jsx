@@ -31,18 +31,20 @@ class Menu extends React.Component {
     return (
       <main>
         <section className={ `Section-Details-${imgOpem}` }>
-          <h4>{ nameItem }</h4>
-          <button
-            className="Btm-fullImg"
-            onClick={ setBlur }
-          >
-            <img src={ imgItem } alt="picanha" className="IMG-Full" />
-          </button>
-          <h4>{ value }</h4>
-          <p>{ description }</p>
-          <button>
-            <Link to="/avaliation">Avaliar</Link>
-          </button>
+          <div>
+            <h4>{ nameItem }</h4>
+            <button
+              className="Btm-fullImg"
+              onClick={ setBlur }
+            >
+              <img src={ imgItem } alt="picanha" className="IMG-Full" />
+            </button>
+            <h4>{ value }</h4>
+            <p>{ description }</p>
+            <button>
+              <Link to="/avaliation">Avaliar</Link>
+            </button>
+          </div>
         </section>
         <ul className={ `Ul-${!imgOpem}` }>
           {
