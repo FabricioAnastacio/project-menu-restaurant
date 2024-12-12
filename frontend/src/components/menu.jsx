@@ -12,14 +12,11 @@ class Menu extends React.Component {
       nameItem: '',
       description: '',
       value: '',
-      imgOpem: false,
     };
   }
 
   getItem = (item) => {
-    console.log(item);
     this.setState({
-      imgOpem: true,
       imgItem: item.img,
       nameItem: item.name,
       description: item.description,
@@ -27,15 +24,9 @@ class Menu extends React.Component {
     });
   };
 
-  closeImg = () => {
-    this.setState({
-      imgOpem: false,
-    });
-  };
-
   render() {
-    const { imgItem, nameItem, description, value, imgOpem } = this.state;
-    const { listMenu } = this.props;
+    const { imgItem, nameItem, description, value } = this.state;
+    const { listMenu, setBlur, imgOpem } = this.props;
 
     return (
       <main>
@@ -43,7 +34,7 @@ class Menu extends React.Component {
           <h4>{ nameItem }</h4>
           <button
             className="Btm-fullImg"
-            onClick={ this.closeImg }
+            onClick={ setBlur }
           >
             <img src={ imgItem } alt="picanha" className="IMG-Full" />
           </button>
@@ -57,7 +48,7 @@ class Menu extends React.Component {
           {
             listMenu.map((item, key) => (
               <li key={ key }>
-                <button onClick={ () => this.getItem(item) }>
+                <button onClick={ () => { this.getItem(item); setBlur(); } }>
                   <img src={ item.img } alt="picanha" />
                   <h4>{ item.name }</h4>
                 </button>
@@ -75,6 +66,8 @@ Menu.propTypes = {
   listMenu: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  setBlur: PropTypes.func.isRequired,
+  imgOpem: PropTypes.bool.isRequired,
 };
 
 export default Menu;
