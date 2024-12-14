@@ -19,12 +19,22 @@ class Header extends React.Component {
             <h1>No Tião</h1>
           </aside>
           <section className="Section-search">
-            <button className="Btms-network">
+            <a
+              className="Btms-network"
+              href="https://web.whatsapp.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={ iconsWhatsapp } alt="whatsapp" />
-            </button>
-            <button className="Btms-network">
+            </a>
+            <a
+              className="Btms-network"
+              href="https://www.instagram.com/notiao/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src={ iconsInstagram } alt="instagram" />
-            </button>
+            </a>
             <button className="Btms-search">
               <img src={ searchIcon } alt="pesquisar" />
             </button>
