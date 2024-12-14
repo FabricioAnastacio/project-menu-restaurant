@@ -15,12 +15,14 @@ class Header extends React.Component {
         <div className="Header-Title">
           <aside className="Title-profile">
             <img className="Img-profile" src={ imgNoTiaoProfile } alt="NoTiao" />
-            <h1>No Tião</h1>
+            <h1>
+              NO TIÃO
+            </h1>
           </aside>
           <section className="Section-network">
             <a
               className="Btms-network"
-              href="https://web.whatsapp.com/"
+              href="https://wa.me/3185832876"
               target="_blank"
               rel="noreferrer"
             >
