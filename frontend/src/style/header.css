@@ -24,11 +24,7 @@ header {
   h1 {
     margin: 0 10px;
     font-size: 20px;
-    text-shadow:
-    .5px .5px 1px black,
-     -.1px -.1px 1px black,
-     .1px -.1px 1px black,
-     .1px .5px 1px black;
+    text-shadow: .5px .5px 1.5px black;
     font-family: "Merriweather", serif;
     font-weight: 900;
   }
@@ -97,17 +93,16 @@ header {
 
 .Select-item {
   z-index: 0;
-  margin-bottom: 10px;
-  height: 10vmin;
-  width: 100%;
+  margin: 70px 0 10px;
+  height: 40px;
+  width: 90%;
   display: flex;
   align-items: center;
-  padding-top: 25%;
   justify-content: space-around;
   div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
   }
 }
 
@@ -115,7 +110,7 @@ label {
   border: 1px solid #f486325d;
   color: #F48732;
   border-radius: 5px;
-  margin: 10px;
+  margin: 9px;
   padding: 2px 30px;
   background-color: white;
   transition: .5s;

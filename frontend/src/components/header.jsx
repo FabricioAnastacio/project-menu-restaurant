@@ -39,26 +39,24 @@ class Header extends React.Component {
           </section>
         </div>
         <section className="Select-item">
-          <div>
-            <label className={ `Label-select-${drinks}` }>
-              <input
-                type="checkbox"
-                checked={ drinks }
-                name="drinks"
-                onChange={ handleChenge }
-              />
-              Drinks
-            </label>
-            <label className={ `Label-select-${foods}` }>
-              <input
-                type="checkbox"
-                checked={ foods }
-                name="foods"
-                onChange={ handleChenge }
-              />
-              Petiscos
-            </label>
-          </div>
+          <label className={ `Label-select-${drinks}` }>
+            <input
+              type="checkbox"
+              checked={ drinks }
+              name="drinks"
+              onChange={ handleChenge }
+            />
+            Drinks
+          </label>
+          <label className={ `Label-select-${foods}` }>
+            <input
+              type="checkbox"
+              checked={ foods }
+              name="foods"
+              onChange={ handleChenge }
+            />
+            Petiscos
+          </label>
           <button className="Btms-search">
             <img src={ searchIcon } alt="pesquisar" />
           </button>
