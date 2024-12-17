@@ -1,7 +1,9 @@
 header {
   display: flex;
+  position: relative;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .Header-geral-true {
