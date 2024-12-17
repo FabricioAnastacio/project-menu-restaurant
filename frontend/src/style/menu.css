@@ -48,11 +48,22 @@ li {
   align-items: center;
   justify-content: space-between;
   margin: 0 10px 0 10px;
+  p {
+    font-size: 12px
+  }
+  h4 {
+    font-size: 12px;
+  }
 }
 
-img {
-  width: 60px;
+ul div {
+  position: relative;
+  height: 40px;
+  width: 50px;
+  background-position: center;
+  background-size: cover;
   margin: 0 10px 0 0;
+  border-radius: 10px;
 }
 
 li button, .Btm-fullImg {

@@ -37,7 +37,7 @@ class Menu extends React.Component {
               className="Btm-fullImg"
               onClick={ setBlur }
             >
-              <img src={ imgItem } alt="picanha" className="IMG-Full" />
+              <img src={ imgItem } alt={ nameItem } className="IMG-Full" />
             </button>
             <h4>{ value }</h4>
             <p>{ description }</p>
@@ -51,10 +51,10 @@ class Menu extends React.Component {
             listMenu.map((item, key) => (
               <li key={ key }>
                 <button onClick={ () => { this.getItem(item); setBlur(); } }>
-                  <img src={ item.img } alt="picanha" />
+                  <div style={ { backgroundImage: `url(${item.img})` } } />
                   <h4>{ item.name }</h4>
                 </button>
-                <h4>{ item.value }</h4>
+                <p>{ item.value }</p>
               </li>
             ))
           }
