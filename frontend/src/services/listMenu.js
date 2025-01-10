@@ -97,7 +97,7 @@ const listMenu = {
     {
       img: drinks.negroni,
       name: 'Negroni',
-      description: '40ml Gin, 40ml Campari, 40ml ?',
+      description: '40ml Gin, 40ml Campari, 40ml Vermuth',
       value: 'R$21,90',
     },
   ],
