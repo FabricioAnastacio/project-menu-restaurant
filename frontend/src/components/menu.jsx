@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import iconeClose from '../imgs/icons8-fechar-janela-96.png';
 import '../style/menu.css';
 
 class Menu extends React.Component {
@@ -31,6 +32,12 @@ class Menu extends React.Component {
       <main>
         <section className={ `Section-Details-${imgOpem}` }>
           <div>
+            <button
+              className="Btm-Close"
+              onClick={ setBlur }
+            >
+              <img src={ iconeClose } alt="Fechar" className="Icone-Close" />
+            </button>
             <h4>{ nameItem }</h4>
             <button
               className="Btm-fullImg"

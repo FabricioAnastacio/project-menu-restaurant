@@ -19,7 +19,7 @@
     place-items: center;
     padding: 10px;
     color: white;
-    button {
+    .Btm-fullImg {
       display: grid;
       place-items: center;
     }
@@ -29,16 +29,32 @@
 .Section-Details-false {
   opacity: 0;
   z-index: 0;
-  div {
-    img {
-      width: 200%;
-    }
+  .IMG-Full {
+    width: 200%;
   }
 }
 
 .Section-Details-true {
   opacity: 1;
   z-index: 1;
+  p {
+    font-size: 14px;
+  }
+  .IMG-Full {
+    width: 95%;
+    border-radius: 20px;
+  }
+}
+
+.Icone-Close {
+  width: 40px;
+  margin-left: 70vmin;
+}
+
+.Btm-Close {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
 }
 
 ul {
@@ -84,9 +100,4 @@ li button, .Btm-fullImg {
   align-items: center;
   border: 0;
   background-color: transparent;
-}
-
-.IMG-Full {
-  width: 95%;
-  border-radius: 20px;
 }

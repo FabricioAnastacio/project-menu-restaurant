@@ -50,6 +50,20 @@ class Footer extends React.Component {
             <img src={ instagram } alt="Instagram Link" />
           </a>
         </section>
+        <section className="Section-Publi">
+          <p>
+            ícones by
+            {' '}
+            <a
+              className="Link-social"
+              href="https://github.com/FabricioAnastacio"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Icons8
+            </a>
+          </p>
+        </section>
       </footer>
     );
   }
