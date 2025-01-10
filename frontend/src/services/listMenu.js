@@ -66,7 +66,7 @@ const listMenu = {
     },
     {
       img: drinks.caipVodkaMorango,
-      name: 'CaipVodka-Morango',
+      name: 'CaipVodka Morango',
       description: '80ml Orloff/Absolut, *fruta e açucar',
       value: 'R$16,90/R$18.90',
     },

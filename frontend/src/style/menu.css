@@ -69,12 +69,12 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 10px 0 10px;
+  margin: 10px;
   p {
-    font-size: 12px;
+    font-size: 11px;
   }
   h4 {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
