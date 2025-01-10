@@ -3,6 +3,7 @@ import Header from '../components/header';
 import Menu from '../components/menu';
 import listMenu from '../services/listMenu';
 import '../style/menuPage.css';
+import Footer from '../components/footer';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -49,6 +50,7 @@ class MenuPage extends React.Component {
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
         />
+        <Footer imgOpem={ imgOpen } />
       </>
     );
   }
