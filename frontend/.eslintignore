@@ -1,0 +1,4 @@
+reportWebVitals.js
+coverage/*
+src/tests/*
+node_modules/

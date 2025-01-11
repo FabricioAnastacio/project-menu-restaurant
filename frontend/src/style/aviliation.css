@@ -1,0 +1,27 @@
+.Avaliation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Stars {
+  position: relative;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.Btm-star {
+  font-size: 30px;
+  border: 0;
+  background-color: transparent;
+}
+
+.Btm-star-Gold {
+  color: gold;
+  margin: 10px;
+  transform: scale(2.9);
+  border: 0;
+  background-color: transparent;
+}
