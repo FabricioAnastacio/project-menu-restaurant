@@ -134,6 +134,24 @@ const listMenu = {
       description: 'Angu, couve e linguiça, na manteiga',
       value: 'R$24,90',
     },
+    {
+      img: foods.queijo,
+      name: 'Queijo Coalho',
+      description: 'Acompanha melado de cana',
+      value: 'R$26,90',
+    },
+    {
+      img: foods.tilapia,
+      name: 'Tilapia com fritas',
+      description: 'Tilapia empanada e batata frita',
+      value: 'R$48,90',
+    },
+    {
+      img: foods.tirinha,
+      name: 'Tirinhas de frango',
+      description: 'Iscas de frango',
+      value: 'R$32,90',
+    },
   ],
   drinks: [
     {

@@ -35,6 +35,9 @@ import fileSuino from './foods/fileSuino.jpg';
 import picole from './foods/picole.jpg';
 import rustica from './foods/rustica.jpg';
 import trio from './foods/trio.png';
+import queijo from './foods/queijo.jpg';
+import tilapia from './foods/tilapia.jpg';
+import tirinha from './foods/tirinhas.jpg';
 
 export const drinks = {
   caipirinha,
@@ -76,4 +79,7 @@ export const foods = {
   picole,
   rustica,
   trio,
+  queijo,
+  tilapia,
+  tirinha,
 };
