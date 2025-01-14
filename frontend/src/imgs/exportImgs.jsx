@@ -22,6 +22,22 @@ import carneSol from './foods/carneSol.jpg';
 import coxinhaCostela from './foods/coxinhaCastela.jpg';
 import coxinhaPernil from './foods/coxinhaPernil.jpg';
 import fileMignonGorgonzola from './foods/fileMignonGorgonzola.jpg';
+import fraldinha from './foods/fraldinha.jpg';
+import joelho from './foods/joelho.jpg';
+import lingua from './foods/lingua.jpg';
+import moelinha from './foods/moelinha.jpg';
+import pastelAngu from './foods/pastelAngu.jpg';
+import pastelCarne from './foods/pastelCarne.jpg';
+import pastelLinguica from './foods/pastelLinguica.jpg';
+import pastelQueijo from './foods/patelQueijo.jpg';
+import pescoco from './foods/pescoco.jpg';
+import fileSuino from './foods/fileSuino.jpg';
+import picole from './foods/picole.jpg';
+import rustica from './foods/rustica.jpg';
+import trio from './foods/trio.png';
+import queijo from './foods/queijo.jpg';
+import tilapia from './foods/tilapia.jpg';
+import tirinha from './foods/tirinhas.jpg';
 
 export const drinks = {
   caipirinha,
@@ -50,4 +66,20 @@ export const foods = {
   coxinhaCostela,
   coxinhaPernil,
   fileMignonGorgonzola,
+  fraldinha,
+  joelho,
+  lingua,
+  moelinha,
+  pastelAngu,
+  pastelCarne,
+  pastelLinguica,
+  pastelQueijo,
+  pescoco,
+  fileSuino,
+  picole,
+  rustica,
+  trio,
+  queijo,
+  tilapia,
+  tirinha,
 };
