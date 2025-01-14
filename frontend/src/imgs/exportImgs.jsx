@@ -22,6 +22,9 @@ import carneSol from './foods/carneSol.jpg';
 import coxinhaCostela from './foods/coxinhaCastela.jpg';
 import coxinhaPernil from './foods/coxinhaPernil.jpg';
 import fileMignonGorgonzola from './foods/fileMignonGorgonzola.jpg';
+import fraldinha from './foods/fraldinha.jpg';
+import joelho from './foods/joelho.jpg';
+import lingua from './foods/lingua.jpg';
 
 export const drinks = {
   caipirinha,
@@ -50,4 +53,7 @@ export const foods = {
   coxinhaCostela,
   coxinhaPernil,
   fileMignonGorgonzola,
+  fraldinha,
+  joelho,
+  lingua,
 };

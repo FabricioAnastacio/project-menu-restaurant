@@ -63,6 +63,24 @@ const listMenu = {
       description: '400 gramas de File mignon suino com 200 gramas de mandioca frita',
       value: 'R$58,90',
     },
+    {
+      img: foods.fraldinha,
+      name: 'Fraldinha com mandioca',
+      description: 'Fraldinha desfiada com pure de mandioca',
+      value: 'R$45,90',
+    },
+    {
+      img: foods.joelho,
+      name: 'Joelho de porco',
+      description: 'Acompanha farofa de maracuja e batata cozida',
+      value: 'R$45,90',
+    },
+    {
+      img: foods.lingua,
+      name: 'Lingua ao vinho',
+      description: 'Acompanha purê de mandioca',
+      value: 'R$39,90',
+    },
   ],
   drinks: [
     {
