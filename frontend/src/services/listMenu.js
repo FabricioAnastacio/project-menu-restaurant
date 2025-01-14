@@ -1,4 +1,5 @@
 import { drinks, foods } from '../imgs/exportImgs';
+import logoNoTiao from '../imgs/noTiao.jpg';
 
 const listMenu = {
   foods: [
@@ -55,6 +56,12 @@ const listMenu = {
       name: 'File mignon bolvino',
       description: '400 gramas de File mignon bolvino ao molho de Gorgonzola',
       value: 'R$74,00',
+    },
+    {
+      img: logoNoTiao,
+      name: 'File mignon suino',
+      description: '400 gramas de File mignon suino com 200 gramas de mandioca frita',
+      value: 'R$58,90',
     },
   ],
   drinks: [
