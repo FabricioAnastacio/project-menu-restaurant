@@ -1,5 +1,4 @@
 import { drinks, foods } from '../imgs/exportImgs';
-import logoNoTiao from '../imgs/noTiao.jpg';
 
 const listMenu = {
   foods: [
@@ -58,7 +57,7 @@ const listMenu = {
       value: 'R$74,00',
     },
     {
-      img: logoNoTiao,
+      img: foods.fileSuino,
       name: 'File mignon suino',
       description: '400 gramas de File mignon suino com 200 gramas de mandioca frita',
       value: 'R$58,90',
@@ -116,6 +115,24 @@ const listMenu = {
       name: 'Pescoço de peru',
       description: 'Acompanha farofa mineira e torresmo',
       value: 'R$34,00',
+    },
+    {
+      img: foods.picole,
+      name: 'Picole mineiro',
+      description: 'Acompanha farofa mineira e vinagrete',
+      value: 'R$28,90',
+    },
+    {
+      img: foods.rustica,
+      name: 'Rustica com pernil',
+      description: 'Batata rustica com pernil desfiado ao molho',
+      value: 'R$42,90',
+    },
+    {
+      img: foods.trio,
+      name: 'Trio mineiro',
+      description: 'Angu, couve e linguiça, na manteiga',
+      value: 'R$24,90',
     },
   ],
   drinks: [

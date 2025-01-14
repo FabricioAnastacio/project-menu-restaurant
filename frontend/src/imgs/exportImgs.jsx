@@ -31,6 +31,10 @@ import pastelCarne from './foods/pastelCarne.jpg';
 import pastelLinguica from './foods/pastelLinguica.jpg';
 import pastelQueijo from './foods/patelQueijo.jpg';
 import pescoco from './foods/pescoco.jpg';
+import fileSuino from './foods/fileSuino.jpg';
+import picole from './foods/picole.jpg';
+import rustica from './foods/rustica.jpg';
+import trio from './foods/trio.png';
 
 export const drinks = {
   caipirinha,
@@ -68,4 +72,8 @@ export const foods = {
   pastelLinguica,
   pastelQueijo,
   pescoco,
+  fileSuino,
+  picole,
+  rustica,
+  trio,
 };
