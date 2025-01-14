@@ -81,6 +81,42 @@ const listMenu = {
       description: 'Acompanha purê de mandioca',
       value: 'R$39,90',
     },
+    {
+      img: foods.moelinha,
+      name: 'Moelinha',
+      description: 'Molho de moela de frango. Acompanha pão fatiado',
+      value: 'R$26,90',
+    },
+    {
+      img: foods.pastelAngu,
+      name: 'Pastel de Angu',
+      description: '10 unidades de pastel. Acompanha geleia de pimenta',
+      value: 'R$32,90',
+    },
+    {
+      img: foods.pastelCarne,
+      name: 'Pastel de Carne',
+      description: '6 unidades de pastel. Acompanha vinagrete',
+      value: 'R$24,90',
+    },
+    {
+      img: foods.pastelLinguica,
+      name: 'Pastel de linguiça com queijo',
+      description: '6 unidades de pastel. Acompanha vinagrete',
+      value: 'R$24,90',
+    },
+    {
+      img: foods.pastelQueijo,
+      name: 'Pastel de queijo',
+      description: '6 unidades de pastel',
+      value: 'R$24,90',
+    },
+    {
+      img: foods.pescoco,
+      name: 'Pescoço de peru',
+      description: 'Acompanha farofa mineira e torresmo',
+      value: 'R$34,00',
+    },
   ],
   drinks: [
     {

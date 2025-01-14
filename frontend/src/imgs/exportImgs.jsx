@@ -25,6 +25,12 @@ import fileMignonGorgonzola from './foods/fileMignonGorgonzola.jpg';
 import fraldinha from './foods/fraldinha.jpg';
 import joelho from './foods/joelho.jpg';
 import lingua from './foods/lingua.jpg';
+import moelinha from './foods/moelinha.jpg';
+import pastelAngu from './foods/pastelAngu.jpg';
+import pastelCarne from './foods/pastelCarne.jpg';
+import pastelLinguica from './foods/pastelLinguica.jpg';
+import pastelQueijo from './foods/patelQueijo.jpg';
+import pescoco from './foods/pescoco.jpg';
 
 export const drinks = {
   caipirinha,
@@ -56,4 +62,10 @@ export const foods = {
   fraldinha,
   joelho,
   lingua,
+  moelinha,
+  pastelAngu,
+  pastelCarne,
+  pastelLinguica,
+  pastelQueijo,
+  pescoco,
 };
