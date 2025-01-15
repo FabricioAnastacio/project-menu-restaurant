@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/header.css';
-import imgNoTiaoProfile from '../imgs/noTiao.jpg';
 import searchIcon from '../imgs/icons8-search-more-48.png';
 import iconsWhatsapp from '../imgs/icons8-whatsapp-48.png';
 import iconsInstagram from '../imgs/icons8-instagram-48.png';
@@ -14,9 +13,8 @@ class Header extends React.Component {
       <header className={ `Header-geral-${imgOpen}` }>
         <div className="Header-Title">
           <aside className="Title-profile">
-            <img className="Img-profile" src={ imgNoTiaoProfile } alt="NoTiao" />
             <h1>
-              NO TIÃO
+              CARDAPIO
             </h1>
           </aside>
           <section className="Section-network">

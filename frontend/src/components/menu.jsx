@@ -55,9 +55,9 @@ class Menu extends React.Component {
               <li key={ key }>
                 <button onClick={ () => { this.getItem(item); setBlur(); } }>
                   <div style={ { backgroundImage: `url(${item.img})` } } />
-                  <h4>{ item.name }</h4>
+                  <p>{ item.name }</p>
                 </button>
-                <p>{ item.value }</p>
+                <h4>{ item.value }</h4>
               </li>
             ))
           }
