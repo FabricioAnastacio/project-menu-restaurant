@@ -162,8 +162,8 @@ const listMenu = {
     },
     {
       img: drinks.caipVodkaMorango,
-      name: 'CaipVodka ORLOFF/ABSOLUT',
-      description: 'Orloff/Absolut, (Morango, marcuja ou limão) e açucar',
+      name: 'CaipVodka ...',
+      description: 'ORLOFF ou ABSOLUT, (Morango, marcuja ou limão) e açucar',
       value: 'R$16,90/R$18.90',
     },
     {
