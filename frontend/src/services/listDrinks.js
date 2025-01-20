@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import { drinks } from '../imgs/exportImgs';
 
 const listDrinks = {
@@ -154,7 +153,7 @@ const listDrinks = {
     {
       img: drinks.sucoTial,
       name: 'Suco Tial',
-      description: '',
+      description: '*Conssultar o garçom sobre os sabores disponiveis*',
       value: 'R$5,50',
     },
   ],
