@@ -1,17 +1,22 @@
-import caipirinha from './drinks/caipirinha.jpg';
-import caipVodkaMorango from './drinks/caipVodkaM.jpg';
-import campari from './drinks/campari.jpg';
-import coronita from './drinks/coronita.jpg';
-import mojito from './drinks/mojito.jpg';
-import negroni from './drinks/negroni.jpg';
-import ginTonica from './drinks/ginTonica.jpg';
-import lagoaAzul from './drinks/lagoaAzul.jpg';
-import marguerita from './drinks/marguerita.jpg';
-import vinho from './drinks/vinho.jpg';
-import vodka from './drinks/vodka.jpg';
-import redlabel from './drinks/redlabel.jpg';
-import blacklabel from './drinks/blacklabel.jpg';
-import jackdaniels from './drinks/jackdaniels.jpg';
+import caipirinha from './bebidas/caipirinha.jpg';
+import caipVodkaMorango from './bebidas/caipVodkaM.jpg';
+import campari from './bebidas/campari.jpg';
+import coronita from './bebidas/coronita.jpg';
+import mojito from './bebidas/mojito.jpg';
+import negroni from './bebidas/negroni.jpg';
+import ginTonica from './bebidas/ginTonica.jpg';
+import lagoaAzul from './bebidas/lagoaAzul.jpg';
+import marguerita from './bebidas/marguerita.jpg';
+import vinho from './bebidas/vinho.jpg';
+import vodka from './bebidas/vodka.jpg';
+import redlabel from './bebidas/redlabel.jpg';
+import blacklabel from './bebidas/blacklabel.jpg';
+import jackdaniels from './bebidas/jackdaniels.jpg';
+
+import coca from './bebidas/alcoholfree/coca.jpg';
+import guarana from './bebidas/alcoholfree/guarana.jpg';
+import sucoTial from './bebidas/alcoholfree/sucoTial.jpg';
+import agua from './bebidas/alcoholfree/agua.jpg';
 
 import picanha from './foods/picanha.jpeg';
 import bttaFrita from './foods/batataFrita.jpg';
@@ -54,6 +59,10 @@ export const drinks = {
   redlabel,
   blacklabel,
   jackdaniels,
+  coca,
+  guarana,
+  sucoTial,
+  agua,
 };
 
 export const foods = {

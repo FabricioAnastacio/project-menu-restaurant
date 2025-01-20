@@ -128,16 +128,34 @@ const listDrinks = {
   ],
   alcoholFree: [
     {
-      img: drinks.caipirinha,
-      name: 'Caipirinha',
-      description: 'cachaça, (Morango, marcuja ou limão) e açucar',
-      value: 'R$14,00',
+      img: drinks.agua,
+      name: 'Agua sem gás',
+      description: '',
+      value: 'R$3,50',
     },
     {
-      img: drinks.caipVodkaMorango,
-      name: 'CaipVodka ...',
-      description: 'ORLOFF ou ABSOLUT, (Morango, marcuja ou limão) e açucar',
-      value: 'R$16,90/R$18.90',
+      img: drinks.agua,
+      name: 'Agua com gás',
+      description: '',
+      value: 'R$4,00',
+    },
+    {
+      img: drinks.coca,
+      name: 'Coca Lata',
+      description: '',
+      value: 'R$5,50',
+    },
+    {
+      img: drinks.guarana,
+      name: 'Gurana Lata',
+      description: '',
+      value: 'R$5,50',
+    },
+    {
+      img: drinks.sucoTial,
+      name: 'Suco Tial',
+      description: '',
+      value: 'R$5,50',
     },
   ],
 };
