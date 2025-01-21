@@ -18,6 +18,16 @@ import guarana from './bebidas/alcoholfree/guarana.jpg';
 import sucoTial from './bebidas/alcoholfree/sucoTial.jpg';
 import agua from './bebidas/alcoholfree/agua.jpg';
 
+import chopp from './bebidas/beers/chopp.jpg';
+import corona from './bebidas/beers/corona.jpg';
+import spaten from './bebidas/beers/spaten.jpg';
+import stella from './bebidas/beers/stella.jpg';
+import patagoniaIpa from './bebidas/beers/patagoniaIpa.jpg';
+import patagoniaAmber from './bebidas/beers/patagoniaAmber.jpg';
+import original600 from './bebidas/beers/original600.jpg';
+import spaten600 from './bebidas/beers/spaten600.jpg';
+import stella600 from './bebidas/beers/stella600.jpg';
+
 import picanha from './foods/picanha.jpeg';
 import bttaFrita from './foods/batataFrita.jpg';
 import bolinhoCarne from './foods/bolinhoCarne.jpg';
@@ -63,6 +73,15 @@ export const drinks = {
   guarana,
   sucoTial,
   agua,
+  spaten,
+  chopp,
+  spaten600,
+  patagoniaAmber,
+  patagoniaIpa,
+  corona,
+  stella600,
+  original600,
+  stella,
 };
 
 export const foods = {

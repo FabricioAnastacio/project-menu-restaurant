@@ -87,44 +87,68 @@ const listDrinks = {
       value: 'R$20,00',
     },
   ],
-  beer: [
-    {
-      img: drinks.caipirinha,
-      name: 'Caipirinha',
-      description: 'cachaça, (Morango, marcuja ou limão) e açucar',
-      value: 'R$14,00',
-    },
-    {
-      img: drinks.caipVodkaMorango,
-      name: 'CaipVodka ...',
-      description: 'ORLOFF ou ABSOLUT, (Morango, marcuja ou limão) e açucar',
-      value: 'R$16,90/R$18.90',
-    },
-    {
-      img: drinks.campari,
-      name: 'Campari',
-      description: 'Campari',
-      value: 'R$13,00',
-    },
-    {
-      img: drinks.ginTonica,
-      name: 'Gin Tropical',
-      description: 'Gin; Morango e Maracuja; açucar',
-      value: 'R$26,90',
-    },
-    {
-      img: drinks.coronita,
-      name: 'Coronita/Cozumel',
-      description: 'Tequila *opicional, limão e cerveja Corona',
-      value: 'R$18,90',
-    },
-    {
-      img: drinks.mojito,
-      name: 'Mojito',
-      description: 'Rum, limão, Hortelã e açucar',
-      value: 'R$21,00',
-    },
-  ],
+  beer: {
+    chopp: [
+      {
+        img: drinks.chopp,
+        name: 'Choop Brahma 350ml',
+        description: '350ml',
+        value: 'R$8,00',
+      },
+    ],
+    sixHundred: [
+      {
+        img: drinks.original600,
+        name: 'Original 600ml',
+        description: '600ml',
+        value: 'R$13,00',
+      },
+      {
+        img: drinks.spaten600,
+        name: 'Spaten 600ml',
+        description: '600ml',
+        value: 'R$13,00',
+      },
+      {
+        img: drinks.stella600,
+        name: 'Stella Artois 600ml',
+        description: '600ml',
+        value: 'R$14,00',
+      },
+    ],
+    longNeck: [
+      {
+        img: drinks.corona,
+        name: 'Corona',
+        description: '330ml',
+        value: 'R$10,00',
+      },
+      {
+        img: drinks.patagoniaIpa,
+        name: 'Patagônia IPA',
+        description: '355ml',
+        value: 'R$10,00',
+      },
+      {
+        img: drinks.patagoniaAmber,
+        name: 'Patagônia AMBER',
+        description: '355ml',
+        value: 'R$10,00',
+      },
+      {
+        img: drinks.spaten,
+        name: 'Spaten',
+        description: '355ml',
+        value: 'R$9,00',
+      },
+      {
+        img: drinks.stella,
+        name: 'Stella Artois',
+        description: '355ml',
+        value: 'R$10,00',
+      },
+    ],
+  },
   alcoholFree: [
     {
       img: drinks.agua,
