@@ -88,6 +88,7 @@ class MenuPage extends React.Component {
           listMenu={ list }
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
+          isbeer={ beer }
         />
         <Footer imgOpem={ imgOpen } />
       </>

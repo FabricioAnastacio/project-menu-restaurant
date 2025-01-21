@@ -101,6 +101,7 @@ label {
   padding: 2px 30px;
   background-color: white;
   transition: .5s;
+  font-size: 14px;
 }
 
 .Label-select-true {
