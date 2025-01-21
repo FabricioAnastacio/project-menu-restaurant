@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import iconeClose from '../imgs/icons8-fechar-janela-96.png';
 import '../style/menu.css';
+import { createListMenuBeer } from '../services/createListMenu';
 
 class Menu extends React.Component {
   constructor() {
@@ -26,7 +27,7 @@ class Menu extends React.Component {
 
   render() {
     const { imgItem, nameItem, description, value } = this.state;
-    const { listMenu, setBlur, imgOpem } = this.props;
+    const { listMenu, setBlur, imgOpem, isbeer } = this.props;
 
     return (
       <main>
@@ -51,15 +52,17 @@ class Menu extends React.Component {
         </section>
         <ul className={ `Ul-${!imgOpem}` }>
           {
-            listMenu.map((item, key) => (
-              <li key={ key }>
-                <button onClick={ () => { this.getItem(item); setBlur(); } }>
-                  <div style={ { backgroundImage: `url(${item.img})` } } />
-                  <p>{ item.name }</p>
-                </button>
-                <h4>{ item.value }</h4>
-              </li>
-            ))
+            isbeer ? createListMenuBeer(listMenu, this.getItem, setBlur) : (
+              listMenu.map((item, key) => (
+                <li key={ key }>
+                  <button onClick={ () => { this.getItem(item); setBlur(); } }>
+                    <div style={ { backgroundImage: `url(${item.img})` } } />
+                    <p>{ item.name }</p>
+                  </button>
+                  <h4>{ item.value }</h4>
+                </li>
+              ))
+            )
           }
         </ul>
       </main>
@@ -73,6 +76,7 @@ Menu.propTypes = {
   ).isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
+  isbeer: PropTypes.bool.isRequired,
 };
 
 export default Menu;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../components/header';
 import Menu from '../components/menu';
-import listMenu from '../services/listMenu';
+import listFoods from '../services/listFoods';
+import listDrinks from '../services/listDrinks';
 import '../style/menuPage.css';
 import Footer from '../components/footer';
 
@@ -9,21 +10,47 @@ class MenuPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      drinks: false,
-      foods: true,
-      list: 'foods',
+      drink: false,
+      food: true,
+      beer: false,
+      hotDrink: true,
+      alcoholFree: false,
+      list: listFoods,
       imgOpen: false,
+    };
+
+    this.pairMap = {
+      drink: 'food',
+      food: 'drink',
+      beer: ['hotDrink', 'alcoholFree'],
+      hotDrink: ['beer', 'alcoholFree'],
+      alcoholFree: ['hotDrink', 'beer'],
     };
   }
 
   handleChenge = ({ target }) => {
-    const options = this.state;
     const { name, checked } = target;
-    if (options[name] === true) return;
+    const relatedKey = this.pairMap[name];
+    if (!checked === true) return;
     this.setState({
-      list: name,
       [name]: checked,
-      ...(name === 'drinks' ? { foods: !checked } : { drinks: !checked }),
+      [relatedKey]: !checked,
+      list: name === 'drink' ? listDrinks.hotDrink : listFoods,
+      beer: false,
+      hotDrink: true,
+      alcoholFree: false,
+    });
+  };
+
+  handleChengeThowSelection = ({ target }) => {
+    const { name, checked } = target;
+    const relatedKey = this.pairMap[name];
+    if (!checked === true) return;
+    this.setState({
+      [name]: checked,
+      [relatedKey[0]]: !checked,
+      [relatedKey[1]]: !checked,
+      list: listDrinks[name],
     });
   };
 
@@ -35,20 +62,33 @@ class MenuPage extends React.Component {
   };
 
   render() {
-    const { drinks, foods, list, imgOpen } = this.state;
+    const {
+      hotDrink,
+      drink,
+      food,
+      beer,
+      alcoholFree,
+      list,
+      imgOpen,
+    } = this.state;
 
     return (
       <>
         <Header
           handleChenge={ this.handleChenge }
-          drinks={ drinks }
-          foods={ foods }
+          handleChengeThow={ this.handleChengeThowSelection }
+          drinks={ drink }
+          foods={ food }
+          beer={ beer }
+          hotDrink={ hotDrink }
+          alcoholFree={ alcoholFree }
           imgOpen={ imgOpen }
         />
         <Menu
-          listMenu={ listMenu[list] }
+          listMenu={ list }
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
+          isbeer={ beer }
         />
         <Footer imgOpem={ imgOpen } />
       </>
