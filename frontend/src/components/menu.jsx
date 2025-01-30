@@ -50,7 +50,7 @@ class Menu extends React.Component {
             <p>{ description }</p>
           </div>
         </section>
-        <ul className={ `Ul-${!imgOpem}` }>
+        <ul className={ `Ul-${imgOpem}` }>
           {
             isbeer ? createListMenuBeer(listMenu, this.getItem, setBlur) : (
               listMenu.map((item, key) => (

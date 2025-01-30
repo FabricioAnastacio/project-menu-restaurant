@@ -3,7 +3,6 @@ import Header from '../components/header';
 import Menu from '../components/menu';
 import listFoods from '../services/listFoods';
 import listDrinks from '../services/listDrinks';
-import '../style/menuPage.css';
 import Footer from '../components/footer';
 
 class MenuPage extends React.Component {

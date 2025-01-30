@@ -61,10 +61,10 @@ ul {
   z-index: 1;
 }
 
-.Ul-false {
+.Ul-true {
   z-index: 0;
   opacity: .5;
-  filter: blur(2);
+  filter: blur(2px);
 }
 
 li {
