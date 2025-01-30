@@ -32,11 +32,6 @@ header {
   }
 }
 
-.Sombra {
-  position: absolute;
-  font-size: 10px;
-}
-
 .Title-profile {
   position: relative;
   top: 50px;
@@ -141,4 +136,64 @@ label {
 
 input {
   display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .Header-Title {
+    height: 35vmin;
+    background-size: 600px;
+  }
+
+  .Title-profile {
+    margin-left: 20%;
+    top: 70px;
+    h1 {
+      font-size: 40px;
+    }
+  }
+
+  .Section-network {
+    margin-right: 20%;
+    width: 100px;
+  }
+
+  .Btms-network {
+    margin: 5px;
+    img {
+      width: 35px;
+    }
+  }
+
+  .Btms-network:hover {
+    transform: scale(1.1);
+  }
+
+  .Select-item {
+    margin: 100px 0 10px;
+    width: 50%;
+    align-items: center;
+    justify-content: start;
+    label {
+      padding: 5px 40px;
+    }
+  }
+
+  .Select-item-thow-true {
+    width: 45%;
+    align-items: center;
+    justify-content: start;
+    label {
+      margin: 0 10px;
+      padding: 5px 20px;
+    }
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  label:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }

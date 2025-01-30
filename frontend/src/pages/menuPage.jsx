@@ -4,6 +4,7 @@ import Menu from '../components/menu';
 import listFoods from '../services/listFoods';
 import listDrinks from '../services/listDrinks';
 import Footer from '../components/footer';
+import '../style/menuPage.css';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -72,7 +73,7 @@ class MenuPage extends React.Component {
     } = this.state;
 
     return (
-      <>
+      <div className="PageMenu">
         <Header
           handleChenge={ this.handleChenge }
           handleChengeThow={ this.handleChengeThowSelection }
@@ -90,7 +91,7 @@ class MenuPage extends React.Component {
           isbeer={ beer }
         />
         <Footer imgOpem={ imgOpen } />
-      </>
+      </div>
     );
   }
 }

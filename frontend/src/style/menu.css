@@ -111,3 +111,52 @@ li button {
 h3 {
   text-align: center;
 }
+
+@media screen and (min-width: 900px) {
+  ul {
+    margin: 0 25%;
+    div {
+      height: 120px;
+      width: 130px;
+    }
+    div:hover {
+      background-size: 150%;
+    }
+  }
+
+  li {
+    padding: 20px 10px;
+    p {
+      font-size: 20px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .Section-Details-true {
+    p {
+      font-size: 20px;
+    }
+    h4 {
+      font-size: 23px;
+    }
+    .Icone-Close {
+      width: 50px;
+    }
+    .Icone-Close:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+    .IMG-Full {
+      width: 50vmin;
+    }
+  }
+}

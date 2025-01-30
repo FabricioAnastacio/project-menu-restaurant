@@ -49,3 +49,20 @@ p {
     width: 25px;
   }
 }
+
+@media screen and (min-width: 900px) {
+  p {
+    font-size: 18px;
+  }
+
+  .Section-Links {
+    width: 10%;
+    margin: 10px 0;
+  }
+
+  .Link-social {
+    img {
+      width: 35px;
+    }
+  }
+}
