@@ -1,4 +1,4 @@
-import { foods } from '../imgs/exportImgs';
+import { foods } from '../pictures/exportImgs';
 
 const listFoods = [
   {

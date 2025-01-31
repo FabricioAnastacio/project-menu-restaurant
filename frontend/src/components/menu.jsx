@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import iconeClose from '../imgs/icons8-fechar-janela-96.png';
+import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
 import { createListMenuBeer } from '../services/createListMenu';
 
@@ -52,7 +52,7 @@ class Menu extends React.Component {
         </section>
         <ul className={ `Ul-${imgOpem}` }>
           {
-            isbeer ? createListMenuBeer(listMenu, this.getItem, setBlur) : (
+            isbeer ? createListMenuBeer(listMenu[0], this.getItem, setBlur) : (
               listMenu.map((item, key) => (
                 <li key={ key }>
                   <button onClick={ () => { this.getItem(item); setBlur(); } }>

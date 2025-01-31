@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/header.css';
-import searchIcon from '../imgs/icons8-search-more-48.png';
-import iconsWhatsapp from '../imgs/icons8-whatsapp-48.png';
-import iconsInstagram from '../imgs/icons8-instagram-48.png';
+import searchIcon from '../pictures/icons8-search-more-48.png';
+import iconsWhatsapp from '../pictures/icons8-whatsapp-48.png';
+import iconsInstagram from '../pictures/icons8-instagram-48.png';
 
 class Header extends React.Component {
   render() {

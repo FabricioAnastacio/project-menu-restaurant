@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../components/header';
 import Menu from '../components/menu';
-import listFoods from '../services/listFoods';
-import listDrinks from '../services/listDrinks';
+import listFoods from '../data/listFoods';
+import listDrinks from '../data/listDrinks';
 import Footer from '../components/footer';
 import '../style/menuPage.css';
 
