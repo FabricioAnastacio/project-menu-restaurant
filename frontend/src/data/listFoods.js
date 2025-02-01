@@ -3,7 +3,7 @@ import { foods } from '../pictures/exportImgs';
 const listFoods = [
   {
     img: foods.picanha,
-    name: 'Picanha Bolvina',
+    name: 'Picanha Bovina',
     description: '400g; Acompanha Farofa e Vinagrete',
     value: 'R$78,80',
   },
@@ -51,7 +51,7 @@ const listFoods = [
   },
   {
     img: foods.fileMignonGorgonzola,
-    name: 'File mignon bolvino',
+    name: 'File mignon bovino',
     description: '400 gramas de File mignon bolvino ao molho de Gorgonzola',
     value: 'R$74,00',
   },
