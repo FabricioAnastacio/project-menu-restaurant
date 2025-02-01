@@ -1,57 +1,52 @@
 header {
-  display: flex;
-  position: relative;
   align-items: center;
+  display: flex;
   flex-direction: column;
+  position: relative;
   z-index: 1;
 }
 
 .Header-geral-true {
-  z-index: 0;
-  opacity: .5;
   filter: blur(2px);
+  opacity: .5;
+  z-index: 0;
 }
 
 .Header-Title {
-  width: 100%;
-  height: 48vmin;
-  background-image: url('../imgs/noTiao.jpg');
-  background-size: 300px;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-bottom: 2px solid #F48732;
-  display: flex;
-  justify-content: space-between;
   align-items: end;
   background-color: black;
+  background-image: url('../pictures/noTiao.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 300px;
+  border-bottom: 2px solid #F48732;
+  display: flex;
+  height: 48vmin;
+  justify-content: space-between;
+  width: 100%;
   h1 {
-    margin: 0 10px;
     font-size: 20px;
-    text-shadow: .5px .5px 1.5px black;
     font-weight: 900;
-  }
-}
-
-.Sombra {
-  position: absolute;
-  font-size: 10px;
+    margin: 0 10px;
+    text-shadow: .5px .5px 1.5px black;
+  };
 }
 
 .Title-profile {
+  margin: 5px;
   position: relative;
   top: 50px;
   z-index: 1;
-  margin: 5px;
 }
 
 .Section-network {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 60px;
-  top: 10px;
+  position: relative;
   padding: 2px 0;
+  top: 10px;
+  width: 60px;
 }
 
 .Btms-network {
@@ -60,8 +55,8 @@ header {
   padding: 0;
   img {
     margin: 0 2px;
-    width: 25px;
     margin-bottom: 10px;
+    width: 25px;
   }
 }
 
@@ -75,56 +70,52 @@ header {
   }
 }
 
-.Btms-network:active {
-  transform: scale(.9);
-}
-
-.Btms-search:active {
+.Btms-network:active, .Btms-search:active {
   transform: scale(.9);
 }
 
 .Select-item {
-  z-index: 0;
-  margin: 70px 0 5px;
-  height: 40px;
-  width: 90%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 40px;
   justify-content: space-around;
+  margin: 70px 0 5px;
+  width: 90%;
+  z-index: 0;
 }
 
 label {
+  background-color: white;
   border: 1px solid #f486325d;
   color: #F48732;
   border-radius: 5px;
+  font-size: 14px;
   margin: 9px;
   padding: 2px 30px;
-  background-color: white;
   transition: .5s;
-  font-size: 14px;
 }
 
 .Label-select-true {
-  transform: scale(1.1);
   background-color: #F48732;
-  color: white;
   border-color: white;
+  color: white;
+  transform: scale(1.1);
 }
 
 .Select-item-thow-true {
-  width: 80%;
-  display: flex;
-  margin-right: 4%;
-  margin-bottom: 10px;
   align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+  margin-right: 4%;
   justify-content: space-evenly;
+  width: 80%;
 }
 
 .Select-item-thow-false {
   transition: 0s;
-  z-index: 0;
   opacity: 0;
   position: absolute;
+  z-index: 0;
 }
 
 .Label-select-thow-true, .Label-select-thow-false {
@@ -133,12 +124,72 @@ label {
 }
 
 .Label-select-thow-true {
-  transform: scale(1.1);
   background-color: #F48732;
-  color: white;
   border-color: white;
+  color: white;
+  transform: scale(1.1);
 }
 
 input {
   display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .Header-Title {
+    background-size: 600px;
+    height: 35vmin;
+  }
+
+  .Title-profile {
+    margin-left: 20%;
+    top: 70px;
+    h1 {
+      font-size: 40px;
+    }
+  }
+
+  .Section-network {
+    margin-right: 20%;
+    width: 100px;
+  }
+
+  .Btms-network {
+    margin: 5px;
+    img {
+      width: 35px;
+    }
+  }
+
+  .Btms-network:hover {
+    transform: scale(1.1);
+  }
+
+  .Select-item {
+    align-items: center;
+    justify-content: start;
+    margin: 100px 0 10px;
+    width: 50%;
+    label {
+      padding: 5px 40px;
+    }
+  }
+
+  .Select-item-thow-true {
+    align-items: center;
+    justify-content: start;
+    width: 45%;
+    label {
+      margin: 0 10px;
+      padding: 5px 20px;
+    }
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  label:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }

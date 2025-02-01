@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import github from '../imgs/svgs/icons8-github.svg';
-import linkedin from '../imgs/svgs/icons8-linkedin.svg';
-import instagram from '../imgs/svgs/icons8-instagram.svg';
+import github from '../pictures/svgs/icons8-github.svg';
+import linkedin from '../pictures/svgs/icons8-linkedin.svg';
+import instagram from '../pictures/svgs/icons8-instagram.svg';
 import '../style/footer.css';
 
 class Footer extends React.Component {

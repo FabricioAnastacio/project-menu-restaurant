@@ -1,14 +1,14 @@
 .Footer-page-false, .Footer-page-true {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
   background-color: transparent;
-  color: black;
-  padding: 4vmin;
-  margin-top: 15vmin;
   box-shadow: inset 0 2em 3em -2.5em #F48732,
   inset 0 -2.5em 3em -2.5em #F48732;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15vmin;
+  padding: 4vmin;
 }
 
 .Footer-page-false {
@@ -17,24 +17,25 @@
 }
 
 .Footer-page-true {
+  filter: blur(1px);
   position: relative;
   z-index: 0;
 }
 
 hr {
-  width: 50%;
-  height: 1px;
   background-color: black;
+  height: 1px;
+  width: 50%;
 }
 
 p {
-  margin: 5px;
   font-size: 12px;
+  margin: 5px;
 }
 
 .Link-name {
-  text-decoration: none;
   color: #F48732;
+  text-decoration: none;
 }
 
 .Section-Links {
@@ -46,5 +47,22 @@ p {
 .Link-social {
   img {
     width: 25px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  p {
+    font-size: 18px;
+  }
+
+  .Section-Links {
+    margin: 10px 0;
+    width: 10%;
+  }
+
+  .Link-social {
+    img {
+      width: 35px;
+    }
   }
 }
