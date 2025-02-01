@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
-import MenuPage from './pages/menuPage';
-import Avaliations from './pages/avaliationsPage';
+import MenuPage from './pages/MenuPage';
+import Avaliations from './pages/AvaliationsPage';
 
 class App extends React.Component {
   render() {

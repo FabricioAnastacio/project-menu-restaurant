@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from '../components/header';
-import Menu from '../components/menu';
+import Header from '../components/Header';
+import Menu from '../components/Menu';
 import listFoods from '../data/listFoods';
 import listDrinks from '../data/listDrinks';
-import Footer from '../components/footer';
-import '../style/menuPage.css';
+import Footer from '../components/Footer';
 
 class MenuPage extends React.Component {
   constructor() {
