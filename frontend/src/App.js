@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import MenuPage from './pages/MenuPage';
@@ -9,6 +11,7 @@ class App extends React.Component {
       <Routes>
         <Route exact path="/" Component={ MenuPage } />
         <Route exact path="/avaliation" Component={ Avaliations } />
+        <SpeedInsights />
       </Routes>
     );
   }
