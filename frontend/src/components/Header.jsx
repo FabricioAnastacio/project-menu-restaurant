@@ -36,7 +36,7 @@ class Header extends React.Component {
           <section className="Section-network">
             <a
               className="Btms-network"
-              href="https://wa.me/3185832876"
+              href="https://wa.me/31995258603"
               target="_blank"
               rel="noreferrer"
             >
@@ -44,7 +44,7 @@ class Header extends React.Component {
             </a>
             <a
               className="Btms-network"
-              href="https://www.instagram.com/notiao/"
+              href="https://www.instagram.com/fabricio.rodrigues_2.0_/"
               target="_blank"
               rel="noreferrer"
             >
