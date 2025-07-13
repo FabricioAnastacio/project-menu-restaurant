@@ -4,7 +4,7 @@ import '../style/header.css';
 import searchIcon from '../pictures/icons8-search-more-48.png';
 import iconsWhatsapp from '../pictures/icons8-whatsapp-48.png';
 import iconsInstagram from '../pictures/icons8-instagram-48.png';
-import noTiaoImg from '../pictures/noTiao.jpg';
+import logoImg from '../pictures/logo.jpg';
 
 class Header extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class Header extends React.Component {
     return (
       <header className={ `Header-geral-${imgOpen}` }>
         <div className="Header-Fixed">
-          <img src={ noTiaoImg } alt="noTião" />
+          <img src={ logoImg } alt="logoImg" />
           <h1>
             CARDAPIO
           </h1>
