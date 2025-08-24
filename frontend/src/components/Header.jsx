@@ -15,7 +15,7 @@ class Header extends React.Component {
         <div className="Header-Title">
           <aside className="Title-profile">
             <h1>
-              BIG Lanches do TANJIRO
+              CARDAPIO
             </h1>
           </aside>
           <section className="Section-network">

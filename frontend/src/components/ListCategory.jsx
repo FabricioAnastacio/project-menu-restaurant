@@ -10,10 +10,10 @@ class ListCategory extends React.Component {
       drinks,
       foods,
       alcoholFree,
-      beer,
       handleChenge,
       handleChengeThow,
     } = this.props;
+    const isDrinks = drinks ? '' : 'none';
 
     return (
       <div className="Categorys">
@@ -34,13 +34,16 @@ class ListCategory extends React.Component {
               name="food"
               onChange={ handleChenge }
             />
-            Petiscos
+            Burgers
           </label>
           <button className="Btms-search">
             <img src={ searchIcon } alt="pesquisar" />
           </button>
         </section>
-        <section className={ `Select-item-thow-${drinks}` }>
+        <section
+          style={ { display: isDrinks } }
+          className="Select-item-thow"
+        >
           <label className={ `Label-select-thow-${hotDrink}` }>
             <input
               type="checkbox"
@@ -48,16 +51,7 @@ class ListCategory extends React.Component {
               name="hotDrink"
               onChange={ handleChengeThow }
             />
-            Drinks
-          </label>
-          <label className={ `Label-select-thow-${beer}` }>
-            <input
-              type="checkbox"
-              checked={ beer }
-              name="beer"
-              onChange={ handleChengeThow }
-            />
-            Cervejas
+            Refri
           </label>
           <label className={ `Label-select-thow-${alcoholFree}` }>
             <input
@@ -66,7 +60,7 @@ class ListCategory extends React.Component {
               name="alcoholFree"
               onChange={ handleChengeThow }
             />
-            Sem alcool
+            Água
           </label>
         </section>
       </div>
@@ -80,7 +74,6 @@ ListCategory.propTypes = {
   handleChenge: PropTypes.func.isRequired,
   handleChengeThow: PropTypes.func.isRequired,
   alcoholFree: PropTypes.bool.isRequired,
-  beer: PropTypes.bool.isRequired,
   hotDrink: PropTypes.bool.isRequired,
 };
 
