@@ -1,0 +1,63 @@
+.Categorys {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.Select-item {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  padding: 10px 0;
+  justify-content: space-around;
+  margin: 70px 0 5px;
+  width: 90%;
+  z-index: 0;
+}
+
+label {
+  background-color: white;
+  border: 1px solid #f486325d;
+  color: #F48732;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 9px;
+  padding: 2px 30px;
+  transition: .5s;
+}
+
+.Label-select-true {
+  background-color: #F48732;
+  border-color: white;
+  color: white;
+  transform: scale(1.1);
+}
+
+.Select-item-thow-true {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+  margin-right: 4%;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.Select-item-thow-false {
+  transition: 0s;
+  opacity: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.Label-select-thow-true, .Label-select-thow-false {
+  padding: 1px 10px;
+  margin: 0;
+}
+
+.Label-select-thow-true {
+  background-color: #F48732;
+  border-color: white;
+  color: white;
+  transform: scale(1.1);
+}

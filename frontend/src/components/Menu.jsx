@@ -28,10 +28,11 @@ class Menu extends React.Component {
   render() {
     const { imgItem, nameItem, description, value } = this.state;
     const { listMenu, setBlur, imgOpem, isbeer } = this.props;
+    const isOpen = imgOpem ? '' : 'none';
 
     return (
       <main>
-        <section className={ `Section-Details-${imgOpem}` }>
+        <section style={ { display: isOpen } } className={ `Section-Details-${imgOpem}` }>
           <div>
             <button
               className="Btm-Close"
