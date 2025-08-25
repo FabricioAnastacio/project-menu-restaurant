@@ -56,11 +56,19 @@ class Menu extends React.Component {
             isbeer ? createListMenuBeer(listMenu[0], this.getItem, setBlur) : (
               listMenu.map((item, key) => (
                 <li key={ key }>
-                  <button onClick={ () => { this.getItem(item); setBlur(); } }>
-                    <div style={ { backgroundImage: `url(${item.img})` } } />
-                    <p>{ item.name }</p>
-                  </button>
-                  <h4>{ item.value }</h4>
+                  <section className="Description_Item">
+                    <h3>{ item.name }</h3>
+                    <p>{ item.description }</p>
+                    <div className="Value_Sale">
+                      <h4>{ item.value }</h4>
+                      <button>Adicionar</button>
+                    </div>
+                  </section>
+                  <div
+                    onClick={ () => { this.getItem(item); setBlur(); } }
+                    style={ { backgroundImage: `url(${item.img})` } }
+                    aria-hidden="true"
+                  />
                 </li>
               ))
             )

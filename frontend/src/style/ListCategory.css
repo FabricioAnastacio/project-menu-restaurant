@@ -17,8 +17,8 @@
 
 label {
   background-color: white;
-  border: 1px solid #f486325d;
-  color: #F48732;
+  border: 1px solid #f432325d;
+  color: #f43232;
   border-radius: 5px;
   font-size: 14px;
   margin: 5px;
@@ -28,7 +28,7 @@ label {
 }
 
 .Label-select-true {
-  background-color: #F48732;
+  background-color: #f43232;
   border-color: white;
   color: white;
   transform: scale(1.1);
@@ -45,7 +45,7 @@ label {
 }
 
 .Label-select-thow-true {
-  background-color: #F48732;
+  background-color: #f43232;
   border-color: white;
   color: white;
   transform: scale(1.1);
