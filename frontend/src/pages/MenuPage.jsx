@@ -10,6 +10,7 @@ class MenuPage extends React.Component {
   constructor() {
     super();
     this.state = {
+      search: '',
       drink: false,
       food: true,
       beer: false,
@@ -28,9 +29,23 @@ class MenuPage extends React.Component {
     };
   }
 
+  searchItem = (value) => {
+    const { food } = this.state;
+    const menuActual = food ? listFoods : listDrinks;
+    if (value.length === 0) return menuActual;
+    return menuActual.filter((a) => a.name.toUpperCase().includes(value.toUpperCase()));
+  };
+
   handleChenge = ({ target }) => {
-    const { name, checked } = target;
+    const { name, checked, type, value } = target;
     const relatedKey = this.pairMap[name];
+    if (type === 'text') {
+      this.setState({
+        [name]: value,
+        list: this.searchItem(value),
+      });
+      return;
+    }
     if (!checked === true) return;
     this.setState({
       [name]: checked,
@@ -63,6 +78,7 @@ class MenuPage extends React.Component {
 
   render() {
     const {
+      search,
       hotDrink,
       drink,
       food,
@@ -85,6 +101,7 @@ class MenuPage extends React.Component {
           imgOpen={ imgOpen }
         />
         <ListCategory
+          search={ search }
           handleChenge={ this.handleChenge }
           handleChengeThow={ this.handleChengeThowSelection }
           drinks={ drink }

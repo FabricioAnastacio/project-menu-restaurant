@@ -12,8 +12,10 @@ class ListCategory extends React.Component {
       alcoholFree,
       handleChenge,
       handleChengeThow,
+      search,
     } = this.props;
     const isDrinks = drinks ? '' : 'none';
+    const isFood = foods ? '' : 'none';
 
     return (
       <div className="Categorys">
@@ -60,9 +62,15 @@ class ListCategory extends React.Component {
             Água
           </label>
         </section>
-        <section className="Search_item">
+        <section style={ { display: isFood } } className="Search_item">
           <img src={ searchIcon } alt="Lupa" />
-          <input type="text" placeholder="Buscar..." />
+          <input
+            type="text"
+            placeholder="Buscar..."
+            name="search"
+            value={ search }
+            onChange={ handleChenge }
+          />
         </section>
       </div>
     );
@@ -76,6 +84,7 @@ ListCategory.propTypes = {
   handleChengeThow: PropTypes.func.isRequired,
   alcoholFree: PropTypes.bool.isRequired,
   hotDrink: PropTypes.bool.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 export default ListCategory;
