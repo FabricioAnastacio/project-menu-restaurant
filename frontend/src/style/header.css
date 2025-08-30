@@ -19,7 +19,6 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 160px;
-  border-bottom: 2px solid #ff0000;
   display: flex;
   height: 38vmin;
   justify-content: space-between;

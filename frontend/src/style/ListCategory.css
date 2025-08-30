@@ -4,19 +4,20 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 1em 1em -1px black;
 }
 
 .Select-item {
   display: flex;
-  height: 40px;
-  padding-top: 10px;
+  height: 50px;
+  padding-top: 20px;
   justify-content: space-around;
   width: 90%;
 }
 
 label {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.87);
   border: 1px solid #f432325d;
   color: #f43232;
   border-radius: 5px;
