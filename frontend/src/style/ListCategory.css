@@ -10,10 +10,12 @@
 
 .Select-item {
   display: flex;
-  height: 50px;
-  padding-top: 20px;
-  justify-content: space-around;
-  width: 90%;
+  margin-top: 10px;
+  justify-content: space-evenly;
+  width: 100%;
+  input {
+    display: none;
+  }
 }
 
 label {
@@ -41,8 +43,9 @@ label {
   margin-bottom: 5px;
   justify-content: space-evenly;
   width: 70%;
-  margin-right: 60px;
-  padding-bottom: 10px;
+  input {
+    display: none;
+  }
 }
 
 .Label-select-thow-true {
@@ -50,6 +53,24 @@ label {
   border-color: white;
   color: white;
   transform: scale(1.1);
+}
+
+.Search_item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  input {
+    margin-left: 10px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+    color: white;
+    padding: 5px;
+  }
+  img {
+    width: 25px;
+  }
 }
 
 @media screen and (min-width: 900px) {

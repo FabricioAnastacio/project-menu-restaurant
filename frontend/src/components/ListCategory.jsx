@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import searchIcon from '../pictures/icons8-search-more-48.png';
+import searchIcon from '../pictures/icons8-search-more-white-96.png';
 import '../style/ListCategory.css';
 
 class ListCategory extends React.Component {
@@ -36,9 +36,6 @@ class ListCategory extends React.Component {
             />
             Burgers
           </label>
-          <button className="Btms-search">
-            <img src={ searchIcon } alt="pesquisar" />
-          </button>
         </section>
         <section
           style={ { display: isDrinks } }
@@ -62,6 +59,10 @@ class ListCategory extends React.Component {
             />
             Água
           </label>
+        </section>
+        <section className="Search_item">
+          <img src={ searchIcon } alt="Lupa" />
+          <input type="text" placeholder="Buscar..." />
         </section>
       </div>
     );
