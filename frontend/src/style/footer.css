@@ -1,9 +1,8 @@
 .Footer-page-false, .Footer-page-true {
   align-items: center;
-  background-color: transparent;
-  box-shadow: inset 0 2em 3em -2.5em #F48732,
-  inset 0 -2.5em 3em -2.5em #F48732;
-  color: black;
+  background-color: black;
+  box-shadow: 0 1em 2em 2em black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +22,7 @@
 }
 
 hr {
-  background-color: black;
+  background-color: white;
   height: 1px;
   width: 50%;
 }
@@ -34,7 +33,7 @@ p {
 }
 
 .Link-name {
-  color: #F48732;
+  color: red;
   text-decoration: none;
 }
 
