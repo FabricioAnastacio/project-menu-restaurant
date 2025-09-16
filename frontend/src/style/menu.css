@@ -113,7 +113,6 @@ ul div {
 .Value_Sale {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 90%;
   height: 40px;
   margin-top: 20px;
@@ -123,10 +122,14 @@ ul div {
     border-radius: 5px;
     padding: 4px 15px;
     color: rgb(255, 255, 255);
+    margin-left: 40px;
   }
   button:active {
     transform: scale(.9);
     color: black;
+  }
+  button:hover {
+    transform: scale(1.1);
   }
 }
 

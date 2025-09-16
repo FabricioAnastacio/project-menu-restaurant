@@ -12,7 +12,7 @@ const listDrinks = {
       img: drinks.caipVodkaMorango,
       name: 'CaipVodka ...',
       description: 'ORLOFF ou ABSOLUT, (Morango, marcuja ou limão) e açucar',
-      value: 'R$16,90/R$18.90',
+      value: 'R$18.90',
     },
     {
       img: drinks.campari,

@@ -74,13 +74,26 @@ label {
 }
 
 @media screen and (min-width: 900px) {
+  .Categorys {
+    place-items: start;
+    padding-left: 25%;
+  }
   .Select-item {
     align-items: center;
     justify-content: start;
     margin: 100px 0 10px;
     width: 50%;
     label {
+      margin-left: 30px;
       padding: 5px 40px;
+    }
+  }
+
+  .Select-item-thow {
+    width: 50%;
+    justify-content: start;
+    label {
+      margin-left: 30px;
     }
   }
 
@@ -94,6 +107,10 @@ label {
     }
   }
 
+  .Search_item {
+    margin-left: 30px;
+  }
+  
   label {
     font-size: 18px;
   }
