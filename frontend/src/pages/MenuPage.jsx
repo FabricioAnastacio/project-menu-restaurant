@@ -5,6 +5,7 @@ import listFoods from '../data/listFoods';
 import listDrinks from '../data/listDrinks';
 import Footer from '../components/Footer';
 import ListCategory from '../components/ListCategory';
+import '../style/menuPage.css';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -90,26 +91,28 @@ class MenuPage extends React.Component {
 
     return (
       <div className="PageMenu">
-        <Header
-          handleChenge={ this.handleChenge }
-          handleChengeThow={ this.handleChengeThowSelection }
-          drinks={ drink }
-          foods={ food }
-          beer={ beer }
-          hotDrink={ hotDrink }
-          alcoholFree={ alcoholFree }
-          imgOpen={ imgOpen }
-        />
-        <ListCategory
-          search={ search }
-          handleChenge={ this.handleChenge }
-          handleChengeThow={ this.handleChengeThowSelection }
-          drinks={ drink }
-          foods={ food }
-          beer={ beer }
-          hotDrink={ hotDrink }
-          alcoholFree={ alcoholFree }
-        />
+        <section id="header">
+          <Header
+            handleChenge={ this.handleChenge }
+            handleChengeThow={ this.handleChengeThowSelection }
+            drinks={ drink }
+            foods={ food }
+            beer={ beer }
+            hotDrink={ hotDrink }
+            alcoholFree={ alcoholFree }
+            imgOpen={ imgOpen }
+          />
+          <ListCategory
+            search={ search }
+            handleChenge={ this.handleChenge }
+            handleChengeThow={ this.handleChengeThowSelection }
+            drinks={ drink }
+            foods={ food }
+            beer={ beer }
+            hotDrink={ hotDrink }
+            alcoholFree={ alcoholFree }
+          />
+        </section>
         <Menu
           listMenu={ list }
           setBlur={ this.setBlur }
