@@ -6,7 +6,7 @@ import '../style/ListCategory.css';
 class ListCategory extends React.Component {
   render() {
     const {
-      hotDrink,
+      softDrink,
       drinks,
       foods,
       alcoholFree,
@@ -43,11 +43,11 @@ class ListCategory extends React.Component {
           style={ { display: isDrinks } }
           className="Select-item-thow"
         >
-          <label className={ `Label-select-thow-${hotDrink}` }>
+          <label className={ `Label-select-thow-${softDrink}` }>
             <input
               type="checkbox"
-              checked={ hotDrink }
-              name="hotDrink"
+              checked={ softDrink }
+              name="softDrink"
               onChange={ handleChengeThow }
             />
             Refri
@@ -83,7 +83,7 @@ ListCategory.propTypes = {
   handleChenge: PropTypes.func.isRequired,
   handleChengeThow: PropTypes.func.isRequired,
   alcoholFree: PropTypes.bool.isRequired,
-  hotDrink: PropTypes.bool.isRequired,
+  softDrink: PropTypes.bool.isRequired,
   search: PropTypes.string.isRequired,
 };
 

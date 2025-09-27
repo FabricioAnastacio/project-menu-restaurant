@@ -15,7 +15,7 @@ class MenuPage extends React.Component {
       drink: false,
       food: true,
       beer: false,
-      hotDrink: true,
+      softDrink: true,
       alcoholFree: false,
       list: listFoods,
       imgOpen: false,
@@ -24,9 +24,9 @@ class MenuPage extends React.Component {
     this.pairMap = {
       drink: 'food',
       food: 'drink',
-      beer: ['hotDrink', 'alcoholFree'],
-      hotDrink: ['beer', 'alcoholFree'],
-      alcoholFree: ['hotDrink', 'beer'],
+      beer: ['softDrink', 'alcoholFree'],
+      softDrink: ['beer', 'alcoholFree'],
+      alcoholFree: ['softDrink', 'beer'],
     };
   }
 
@@ -51,9 +51,9 @@ class MenuPage extends React.Component {
     this.setState({
       [name]: checked,
       [relatedKey]: !checked,
-      list: name === 'drink' ? listDrinks.hotDrink : listFoods,
+      list: name === 'drink' ? listDrinks.softDrink : listFoods,
       beer: false,
-      hotDrink: true,
+      softDrink: true,
       alcoholFree: false,
     });
   };
@@ -80,7 +80,7 @@ class MenuPage extends React.Component {
   render() {
     const {
       search,
-      hotDrink,
+      softDrink,
       drink,
       food,
       beer,
@@ -98,7 +98,7 @@ class MenuPage extends React.Component {
             drinks={ drink }
             foods={ food }
             beer={ beer }
-            hotDrink={ hotDrink }
+            softDrink={ softDrink }
             alcoholFree={ alcoholFree }
             imgOpen={ imgOpen }
           />
@@ -109,7 +109,7 @@ class MenuPage extends React.Component {
             drinks={ drink }
             foods={ food }
             beer={ beer }
-            hotDrink={ hotDrink }
+            softDrink={ softDrink }
             alcoholFree={ alcoholFree }
           />
         </section>
