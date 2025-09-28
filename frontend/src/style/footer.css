@@ -10,15 +10,8 @@ footer {
   padding: 4vmin;
 }
 
-.Footer-page-false {
-  position: relative;
-  z-index: 1;
-}
-
 .Footer-page-true {
   filter: blur(1px);
-  position: relative;
-  z-index: 0;
 }
 
 hr {

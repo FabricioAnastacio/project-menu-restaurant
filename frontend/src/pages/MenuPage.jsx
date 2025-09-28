@@ -91,28 +91,26 @@ class MenuPage extends React.Component {
 
     return (
       <div className="PageMenu">
-        <section id="header">
-          <Header
-            handleChenge={ this.handleChenge }
-            handleChengeThow={ this.handleChengeThowSelection }
-            drinks={ drink }
-            foods={ food }
-            beer={ beer }
-            softDrink={ softDrink }
-            alcoholFree={ alcoholFree }
-            imgOpen={ imgOpen }
-          />
-          <ListCategory
-            search={ search }
-            handleChenge={ this.handleChenge }
-            handleChengeThow={ this.handleChengeThowSelection }
-            drinks={ drink }
-            foods={ food }
-            beer={ beer }
-            softDrink={ softDrink }
-            alcoholFree={ alcoholFree }
-          />
-        </section>
+        <Header
+          handleChenge={ this.handleChenge }
+          handleChengeThow={ this.handleChengeThowSelection }
+          drinks={ drink }
+          foods={ food }
+          beer={ beer }
+          softDrink={ softDrink }
+          alcoholFree={ alcoholFree }
+          imgOpen={ imgOpen }
+        />
+        <ListCategory
+          search={ search }
+          handleChenge={ this.handleChenge }
+          handleChengeThow={ this.handleChengeThowSelection }
+          drinks={ drink }
+          foods={ food }
+          beer={ beer }
+          softDrink={ softDrink }
+          alcoholFree={ alcoholFree }
+        />
         <Menu
           listMenu={ list }
           setBlur={ this.setBlur }

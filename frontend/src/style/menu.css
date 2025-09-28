@@ -128,9 +128,6 @@ ul div {
     transform: scale(.9);
     color: black;
   }
-  button:hover {
-    transform: scale(1.1);
-  }
 }
 
 h3 {
@@ -159,6 +156,7 @@ h3 {
     }
     button:hover {
       cursor: pointer;
+      transform: scale(1.1);
     }
   }
 

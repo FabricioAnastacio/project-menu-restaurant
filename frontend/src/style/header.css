@@ -3,7 +3,6 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 1;
   background-color: white;
 }
 
@@ -34,7 +33,6 @@ header {
   height: 38vmin;
   justify-content: space-between;
   width: 100%;
-  z-index: 0;
   h1 {
     font-size: 20px;
     font-weight: 900;
