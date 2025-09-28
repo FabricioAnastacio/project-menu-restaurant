@@ -8,6 +8,7 @@ const listDrinks = {
       name: 'Caipirinha',
       description: 'cachaça, (Morango, marcuja ou limão) e açucar',
       value: 'R$14,00',
+      amount: 0,
     },
     {
       id: 2,
@@ -15,6 +16,7 @@ const listDrinks = {
       name: 'CaipVodka ...',
       description: 'ORLOFF ou ABSOLUT, (Morango, marcuja ou limão) e açucar',
       value: 'R$18.90',
+      amount: 0,
     },
     {
       id: 3,
@@ -22,6 +24,7 @@ const listDrinks = {
       name: 'Campari',
       description: 'Campari',
       value: 'R$13,00',
+      amount: 0,
     },
     {
       id: 4,
@@ -29,6 +32,7 @@ const listDrinks = {
       name: 'Gin Tropical',
       description: 'Gin; Morango e Maracuja; açucar',
       value: 'R$26,90',
+      amount: 0,
     },
     {
       id: 5,
@@ -36,6 +40,7 @@ const listDrinks = {
       name: 'Coronita/Cozumel',
       description: 'Tequila *opicional, limão e cerveja Corona',
       value: 'R$18,90',
+      amount: 0,
     },
     {
       id: 6,
@@ -43,6 +48,7 @@ const listDrinks = {
       name: 'Mojito',
       description: 'Rum, limão, Hortelã e açucar',
       value: 'R$21,00',
+      amount: 0,
     },
     {
       id: 7,
@@ -50,6 +56,7 @@ const listDrinks = {
       name: 'Negroni',
       description: 'Gin, Campari, Vermuth',
       value: 'R$21,90',
+      amount: 0,
     },
     {
       id: 8,
@@ -57,6 +64,7 @@ const listDrinks = {
       name: 'Lagoa Azul',
       description: 'Limão, Vodka, Licor Stock Blue, Agua c/ Gas',
       value: 'R$23,90',
+      amount: 0,
     },
     {
       id: 9,
@@ -64,6 +72,7 @@ const listDrinks = {
       name: 'Marguerita',
       description: 'Limão, Tequila, Licor Stock',
       value: 'R$22,90',
+      amount: 0,
     },
     {
       id: 10,
@@ -71,6 +80,7 @@ const listDrinks = {
       name: 'Vinho',
       description: 'Vinho',
       value: 'Consultar',
+      amount: 0,
     },
     {
       id: 11,
@@ -78,6 +88,7 @@ const listDrinks = {
       name: 'Vodka',
       description: 'Orloff ou Absolut',
       value: 'R$9,00',
+      amount: 0,
     },
     {
       id: 12,
@@ -85,6 +96,7 @@ const listDrinks = {
       name: 'Wisky Red',
       description: 'Red Label, gelo, laranja',
       value: 'R$13,00',
+      amount: 0,
     },
     {
       id: 13,
@@ -92,6 +104,7 @@ const listDrinks = {
       name: 'Wisky Black',
       description: 'Black Label, gelo, laranja',
       value: 'R$20,00',
+      amount: 0,
     },
     {
       id: 14,
@@ -99,6 +112,7 @@ const listDrinks = {
       name: 'Wisky Jack',
       description: 'Jack Daniels, gelo, laranja',
       value: 'R$20,00',
+      amount: 0,
     },
   ],
   beer: [
@@ -109,6 +123,7 @@ const listDrinks = {
           name: 'Choop Brahma 350ml',
           description: '350ml',
           value: 'R$8,00',
+          amount: 0,
         },
       ],
       sixHundred: [
@@ -117,18 +132,21 @@ const listDrinks = {
           name: 'Original 600ml',
           description: '600ml',
           value: 'R$13,00',
+          amount: 0,
         },
         {
           img: drinks.spaten600,
           name: 'Spaten 600ml',
           description: '600ml',
           value: 'R$13,00',
+          amount: 0,
         },
         {
           img: drinks.stella600,
           name: 'Stella Artois 600ml',
           description: '600ml',
           value: 'R$14,00',
+          amount: 0,
         },
       ],
       longNeck: [
@@ -137,30 +155,35 @@ const listDrinks = {
           name: 'Corona',
           description: '330ml',
           value: 'R$10,00',
+          amount: 0,
         },
         {
           img: drinks.patagoniaIpa,
           name: 'Patagônia IPA',
           description: '355ml',
           value: 'R$10,00',
+          amount: 0,
         },
         {
           img: drinks.patagoniaAmber,
           name: 'Patagônia AMBER',
           description: '355ml',
           value: 'R$10,00',
+          amount: 0,
         },
         {
           img: drinks.spaten,
           name: 'Spaten',
           description: '355ml',
           value: 'R$9,00',
+          amount: 0,
         },
         {
           img: drinks.stella,
           name: 'Stella Artois',
           description: '355ml',
           value: 'R$10,00',
+          amount: 0,
         },
       ],
     },
@@ -172,6 +195,7 @@ const listDrinks = {
       name: 'Agua sem gás',
       description: '',
       value: 'R$3,50',
+      amount: 0,
     },
     {
       id: 2,
@@ -179,6 +203,7 @@ const listDrinks = {
       name: 'Agua com gás',
       description: '',
       value: 'R$4,00',
+      amount: 0,
     },
     {
       id: 3,
@@ -186,6 +211,7 @@ const listDrinks = {
       name: 'Coca Lata',
       description: '',
       value: 'R$5,50',
+      amount: 0,
     },
     {
       id: 4,
@@ -193,6 +219,7 @@ const listDrinks = {
       name: 'Gurana Lata',
       description: '',
       value: 'R$5,50',
+      amount: 0,
     },
     {
       id: 5,
@@ -200,6 +227,7 @@ const listDrinks = {
       name: 'Suco Tial',
       description: '*Conssultar o garçom sobre os sabores disponiveis*',
       value: 'R$5,50',
+      amount: 0,
     },
   ],
 };

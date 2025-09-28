@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
 import { createListMenuBeer } from '../services/createListMenu';
-import AppContext from '../context/AppContext';
+import ItemComponent from './ItemComponent';
 
 class Menu extends React.Component {
   constructor() {
@@ -17,11 +17,6 @@ class Menu extends React.Component {
     };
   }
 
-  addNewItem = (item) => {
-    const list = this.context;
-    list.push(item);
-  };
-
   getItem = (item) => {
     this.setState({
       imgItem: item.img,
@@ -33,7 +28,7 @@ class Menu extends React.Component {
 
   render() {
     const { imgItem, nameItem, description, value } = this.state;
-    const { listMenu, setBlur, imgOpem, isbeer } = this.props;
+    const { listMenu, setBlur, imgOpem, isbeer, isFood } = this.props;
     const isOpen = imgOpem ? '' : 'none';
 
     return (
@@ -61,21 +56,13 @@ class Menu extends React.Component {
           {
             isbeer ? createListMenuBeer(listMenu[0], this.getItem, setBlur) : (
               listMenu.map((item, key) => (
-                <li key={ key }>
-                  <section className="Description_Item">
-                    <h3>{ item.name }</h3>
-                    <p>{ item.description }</p>
-                    <div className="Value_Sale">
-                      <h4>{ item.value }</h4>
-                      <button onClick={ () => this.addNewItem(item) }>Adicionar</button>
-                    </div>
-                  </section>
-                  <div
-                    onClick={ () => { this.getItem(item); setBlur(); } }
-                    style={ { backgroundImage: `url(${item.img})` } }
-                    aria-hidden="true"
-                  />
-                </li>
+                <ItemComponent
+                  key={ key }
+                  item={ item }
+                  isFood={ isFood }
+                  getItem={ this.getItem }
+                  setBlur={ setBlur }
+                />
               ))
             )
           }
@@ -85,12 +72,11 @@ class Menu extends React.Component {
   }
 }
 
-Menu.contextType = AppContext;
-
 Menu.propTypes = {
   listMenu: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  isFood: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
   isbeer: PropTypes.bool.isRequired,

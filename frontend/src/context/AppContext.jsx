@@ -1,7 +1,5 @@
 import React from 'react';
 
-const listCart = [];
-
-const AppContext = React.createContext(listCart);
+const AppContext = React.createContext();
 
 export default AppContext;

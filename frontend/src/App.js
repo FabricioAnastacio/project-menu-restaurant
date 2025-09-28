@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import MenuPage from './pages/MenuPage';
 import Avaliations from './pages/AvaliationsPage';
+import listFoods from './data/listFoods';
+import listDrinks from './data/listDrinks';
 import Cart from './pages/CartPage';
 import AppContext from './context/AppContext';
 
@@ -10,14 +12,17 @@ class App extends React.Component {
     super();
 
     this.state = {
-      listCart: [],
+      value: {
+        listMenuFood: listFoods,
+        listSoftDrink: listDrinks.softDrink,
+      },
     };
   }
 
   render() {
-    const { listCart } = this.state;
+    const { value } = this.state;
     return (
-      <AppContext.Provider value={ listCart }>
+      <AppContext.Provider value={ value }>
         <Routes>
           <Route exact path="/" Component={ MenuPage } />
           <Route exact path="/cart" Component={ Cart } />

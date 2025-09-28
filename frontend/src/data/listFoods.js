@@ -7,6 +7,7 @@ const listFoods = [
     name: 'Picanha Bovina',
     description: '400g; Acompanha Farofa e Vinagrete',
     value: 'R$78,80',
+    amount: 0,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const listFoods = [
     name: 'Batata Frita',
     description: '',
     value: 'R$20.00',
+    amount: 0,
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const listFoods = [
     name: 'Bolinho de Carne',
     description: 'Acompanha molho especial',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ const listFoods = [
     name: 'Bolinho de Costela',
     description: 'Acompanha vinagrete',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ const listFoods = [
     name: 'Carne de panela',
     description: '',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ const listFoods = [
     name: 'Carne de sol com mandioca',
     description: 'Preparada na menteiga de garrafa',
     value: 'R$56,80',
+    amount: 0,
   },
   {
     id: 7,
@@ -49,6 +55,7 @@ const listFoods = [
     name: 'Coxinha de costela',
     description: '',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 8,
@@ -56,6 +63,7 @@ const listFoods = [
     name: 'Coxinha de Pernil',
     description: '',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 9,
@@ -63,6 +71,7 @@ const listFoods = [
     name: 'File mignon bovino',
     description: '400 gramas de File mignon bolvino ao molho de Gorgonzola',
     value: 'R$74,00',
+    amount: 0,
   },
   {
     id: 10,
@@ -70,6 +79,7 @@ const listFoods = [
     name: 'File mignon suino',
     description: '400 gramas de File mignon suino com 200 gramas de mandioca frita',
     value: 'R$58,90',
+    amount: 0,
   },
   {
     id: 11,
@@ -77,6 +87,7 @@ const listFoods = [
     name: 'Fraldinha com mandioca',
     description: 'Fraldinha desfiada com pure de mandioca',
     value: 'R$45,90',
+    amount: 0,
   },
   {
     id: 12,
@@ -84,6 +95,7 @@ const listFoods = [
     name: 'Joelho de porco',
     description: 'Acompanha farofa de maracuja e batata cozida',
     value: 'R$45,90',
+    amount: 0,
   },
   {
     id: 13,
@@ -91,6 +103,7 @@ const listFoods = [
     name: 'Lingua ao vinho',
     description: 'Acompanha purê de mandioca',
     value: 'R$39,90',
+    amount: 0,
   },
   {
     id: 14,
@@ -98,6 +111,7 @@ const listFoods = [
     name: 'Moelinha',
     description: 'Molho de moela de frango. Acompanha pão fatiado',
     value: 'R$26,90',
+    amount: 0,
   },
   {
     id: 15,
@@ -105,6 +119,7 @@ const listFoods = [
     name: 'Pastel de Angu',
     description: '10 unidades de pastel. Acompanha geleia de pimenta',
     value: 'R$32,90',
+    amount: 0,
   },
   {
     id: 16,
@@ -112,6 +127,7 @@ const listFoods = [
     name: 'Pastel de Carne',
     description: '6 unidades de pastel. Acompanha vinagrete',
     value: 'R$24,90',
+    amount: 0,
   },
   {
     id: 17,
@@ -119,6 +135,7 @@ const listFoods = [
     name: 'Pastel de linguiça com queijo',
     description: '6 unidades de pastel. Acompanha vinagrete',
     value: 'R$24,90',
+    amount: 0,
   },
   {
     id: 18,
@@ -126,6 +143,7 @@ const listFoods = [
     name: 'Pastel de queijo',
     description: '6 unidades de pastel',
     value: 'R$24,90',
+    amount: 0,
   },
   {
     id: 19,
@@ -133,6 +151,7 @@ const listFoods = [
     name: 'Pescoço de peru',
     description: 'Acompanha farofa mineira e torresmo',
     value: 'R$34,00',
+    amount: 0,
   },
   {
     id: 20,
@@ -140,6 +159,7 @@ const listFoods = [
     name: 'Picole mineiro',
     description: 'Acompanha farofa mineira e vinagrete',
     value: 'R$28,90',
+    amount: 0,
   },
   {
     id: 21,
@@ -147,6 +167,7 @@ const listFoods = [
     name: 'Rustica com pernil',
     description: 'Batata rustica com pernil desfiado ao molho',
     value: 'R$42,90',
+    amount: 0,
   },
   {
     id: 22,
@@ -154,6 +175,7 @@ const listFoods = [
     name: 'Trio mineiro',
     description: 'Angu, couve e linguiça, na manteiga',
     value: 'R$24,90',
+    amount: 0,
   },
   {
     id: 23,
@@ -161,6 +183,7 @@ const listFoods = [
     name: 'Queijo Coalho',
     description: 'Acompanha melado de cana',
     value: 'R$26,90',
+    amount: 0,
   },
   {
     id: 24,
@@ -168,6 +191,7 @@ const listFoods = [
     name: 'Tilapia com fritas',
     description: 'Tilapia empanada e batata frita',
     value: 'R$48,90',
+    amount: 0,
   },
   {
     id: 25,
@@ -175,6 +199,7 @@ const listFoods = [
     name: 'Tirinhas de frango',
     description: 'Iscas de frango',
     value: 'R$32,90',
+    amount: 0,
   },
 ];
 

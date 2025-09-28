@@ -7,10 +7,12 @@ import Footer from '../components/Footer';
 import ListCategory from '../components/ListCategory';
 import '../style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
+import AppContext from '../context/AppContext';
 
 class MenuPage extends React.Component {
   constructor() {
     super();
+
     this.state = {
       search: '',
       drink: false,
@@ -40,6 +42,7 @@ class MenuPage extends React.Component {
 
   handleChenge = ({ target }) => {
     const { name, checked, type, value } = target;
+    const { listMenuFood, listSoftDrink } = this.context;
     const relatedKey = this.pairMap[name];
     if (type === 'text') {
       this.setState({
@@ -48,11 +51,12 @@ class MenuPage extends React.Component {
       });
       return;
     }
+
     if (!checked === true) return;
     this.setState({
       [name]: checked,
       [relatedKey]: !checked,
-      list: name === 'drink' ? listDrinks.softDrink : listFoods,
+      list: name === 'drink' ? listSoftDrink : listMenuFood,
       beer: false,
       softDrink: true,
       alcoholFree: false,
@@ -86,8 +90,8 @@ class MenuPage extends React.Component {
       food,
       beer,
       alcoholFree,
-      list,
       imgOpen,
+      list,
     } = this.state;
 
     return (
@@ -113,10 +117,11 @@ class MenuPage extends React.Component {
           alcoholFree={ alcoholFree }
         />
         <Menu
-          listMenu={ list }
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
           isbeer={ beer }
+          isFood={ food }
+          listMenu={ list }
         />
         <FooterRotes />
         <Footer imgOpem={ imgOpen } />
@@ -124,5 +129,8 @@ class MenuPage extends React.Component {
     );
   }
 }
+
+MenuPage.contextType = AppContext;
+Menu.contextType = AppContext;
 
 export default MenuPage;
