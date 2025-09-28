@@ -6,6 +6,7 @@ import listDrinks from '../data/listDrinks';
 import Footer from '../components/Footer';
 import ListCategory from '../components/ListCategory';
 import '../style/menuPage.css';
+import FooterRotes from '../components/FooterRotes';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -117,6 +118,7 @@ class MenuPage extends React.Component {
           imgOpem={ imgOpen }
           isbeer={ beer }
         />
+        <FooterRotes />
         <Footer imgOpem={ imgOpen } />
       </div>
     );

@@ -1,0 +1,23 @@
+.footer-pages {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  ul {
+    margin: 0;
+    li {
+      padding: 0;
+    }
+  }
+}
+
+.cart {
+  padding: 10px;
+  margin: 0;
+  img {
+    width: 40px;
+  }
+}
