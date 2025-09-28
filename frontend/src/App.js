@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import MenuPage from './pages/MenuPage';
 import Avaliations from './pages/AvaliationsPage';
-import Cart from './pages/Cart';
+import Cart from './pages/CartPage';
 import AppContext from './context/AppContext';
 
 class App extends React.Component {

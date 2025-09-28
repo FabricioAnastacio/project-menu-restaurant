@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../style/header.css';
 import iconsWhatsapp from '../pictures/icons8-whatsapp-48.png';
 import iconsInstagram from '../pictures/icons8-instagram-48.png';
+import iconsCart from '../pictures/icons8-fast-cart-96.png';
 
 class Header extends React.Component {
   render() {
@@ -13,8 +14,8 @@ class Header extends React.Component {
 
     return (
       <header className={ `Header-geral-${imgOpen}` }>
-        <Link to="/cart">
-          /cart
+        <Link to="/cart" className="cart">
+          <img src={ iconsCart } alt="Carrinho" />
         </Link>
         <div className="Header-Title">
           <aside className="Title-profile">
