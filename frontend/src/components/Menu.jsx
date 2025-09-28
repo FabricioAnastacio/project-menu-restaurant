@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
 import { createListMenuBeer } from '../services/createListMenu';
+import AppContext from '../context/AppContext';
 
 class Menu extends React.Component {
   constructor() {
@@ -15,6 +16,11 @@ class Menu extends React.Component {
       value: '',
     };
   }
+
+  addNewItem = (item) => {
+    const list = this.context;
+    list.push(item);
+  };
 
   getItem = (item) => {
     this.setState({
@@ -61,7 +67,7 @@ class Menu extends React.Component {
                     <p>{ item.description }</p>
                     <div className="Value_Sale">
                       <h4>{ item.value }</h4>
-                      <button>Adicionar</button>
+                      <button onClick={ () => this.addNewItem(item) }>Adicionar</button>
                     </div>
                   </section>
                   <div
@@ -78,6 +84,8 @@ class Menu extends React.Component {
     );
   }
 }
+
+Menu.contextType = AppContext;
 
 Menu.propTypes = {
   listMenu: PropTypes.arrayOf(
