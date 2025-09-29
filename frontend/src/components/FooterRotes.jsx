@@ -7,20 +7,31 @@ import AppContext from '../context/AppContext';
 import '../style/footerRotes.css';
 
 class FooterRotes extends React.Component {
+  buttonCart = (counterItens) => {
+    return (
+      <div className="button-cart">
+        {
+          counterItens > 0 && <p className="counter-car">{ counterItens }</p>
+        }
+        <img src={ iconsCart } alt="Carrinho" />
+      </div>
+    );
+  };
+
   render() {
     const { counterItens } = this.props;
-    console.log(counterItens);
+
     return (
       <section className="footer-pages">
         <ul>
-          <li>
+          <li className="icon-menu">
             <Link to="/" className="iconRote">
               <img src={ iconsFastFood } alt="Hamburguer" />
             </Link>
           </li>
           <li>
             <Link to="/cart" className="iconRote">
-              <img src={ iconsCart } alt="Carrinho" />
+              { this.buttonCart(counterItens) }
             </Link>
           </li>
         </ul>

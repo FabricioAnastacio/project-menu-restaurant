@@ -104,7 +104,7 @@ class ItemComponent extends React.Component {
           <h3>{ item.name }</h3>
           <p>{ item.description }</p>
           <div className="Value_Sale">
-            <h4>{ item.value }</h4>
+            <h4>{ `R$${item.value}` }</h4>
             <div className="buttons-sale">
               <button className="buy" onClick={ () => this.addNewItem(item, isFood) }>
                 +
@@ -121,6 +121,7 @@ class ItemComponent extends React.Component {
           </div>
         </section>
         <div
+          className="imgs-menu"
           onClick={ () => { getItem(item); setBlur(); } }
           style={ { backgroundImage: `url(${item.img})` } }
           aria-hidden="true"

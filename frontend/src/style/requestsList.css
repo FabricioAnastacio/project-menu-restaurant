@@ -27,5 +27,12 @@
 
 .imgCart {
   height: 70px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  margin: 0 10px 0 0;
+  position: relative;
+  width: 100px;
+  transition: .7s;
 }
 

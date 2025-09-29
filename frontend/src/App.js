@@ -15,6 +15,7 @@ class App extends React.Component {
       value: {
         listMenuFood: listFoods,
         listSoftDrink: listDrinks.softDrink,
+        counterRequest: 0,
       },
     };
   }

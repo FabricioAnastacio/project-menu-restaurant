@@ -34,6 +34,13 @@ class MenuPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { counterRequest } = this.context;
+    this.setState({
+      counterItens: counterRequest,
+    });
+  }
+
   searchItem = (value) => {
     const { food } = this.state;
     const menuActual = food ? listFoods : listDrinks;
@@ -84,6 +91,7 @@ class MenuPage extends React.Component {
   };
 
   counterRequestAmount = (value) => {
+    this.context.counterRequest = value;
     this.setState({
       counterItens: value,
     });

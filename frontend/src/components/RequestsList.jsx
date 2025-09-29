@@ -5,23 +5,49 @@ import '../style/requestsList.css';
 import '../style/footer.css';
 
 class RequestsList extends React.Component {
-  getListRequest = () => {
+  constructor() {
+    super();
+
+    this.state = {
+      valueTotal: 0,
+      requestItens: [],
+    };
+  }
+
+  componentDidMount() {
     const { listMenuFood, listSoftDrink } = this.context;
     const requestItens = [];
 
     requestItens.push(...listMenuFood.filter((item) => item.amount > 0));
     requestItens.push(...listSoftDrink.filter((item) => item.amount > 0));
 
-    return requestItens;
-  };
+    let valueTotal = 0;
+    requestItens.forEach((item) => {
+      const counter = item.amount * item.value;
+      valueTotal += counter;
+    });
+
+    this.setState({
+      valueTotal,
+      requestItens,
+    });
+  }
 
   render() {
+    const { valueTotal, requestItens } = this.state;
+
     return (
       <section className="page-requests">
         <div>
+          <section>
+            <div>
+              <h3>Valor total:</h3>
+              <h3>{ `R$ ${valueTotal}` }</h3>
+            </div>
+          </section>
           <ul className="list-requests">
             {
-              this.getListRequest().map((item, key) => (
+              requestItens.map((item, key) => (
                 <li key={ key } className="request">
                   <div className="item-title">
                     <div
@@ -31,7 +57,7 @@ class RequestsList extends React.Component {
                     />
                     <div className="item-name">
                       <h1>{ item.name }</h1>
-                      <p>{ item.value }</p>
+                      <p>{ `R$${item.value}` }</p>
                     </div>
                   </div>
                   <button>+</button>

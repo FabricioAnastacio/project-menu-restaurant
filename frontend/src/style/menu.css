@@ -86,7 +86,7 @@ li {
   }
 }
 
-ul div {
+.imgs-menu {
   background-position: center;
   background-size: cover;
   border-radius: 10px;
@@ -164,12 +164,12 @@ h3 {
 }
 
 @media screen and (min-width: 900px) {
+  .imgs-menu {
+    height: 120px;
+    width: 130px;
+  }
   ul {
     margin: 0 25%;
-    div {
-      height: 120px;
-      width: 130px;
-    }
     div:hover {
       background-size: 150%;
     }
