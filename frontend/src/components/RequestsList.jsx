@@ -5,15 +5,23 @@ import '../style/requestsList.css';
 import '../style/footer.css';
 
 class RequestsList extends React.Component {
-  render() {
-    const listCart = this.context;
+  getListRequest = () => {
+    const { listMenuFood, listSoftDrink } = this.context;
+    const requestItens = [];
 
+    requestItens.push(...listMenuFood.filter((item) => item.amount > 0));
+    requestItens.push(...listSoftDrink.filter((item) => item.amount > 0));
+
+    return requestItens;
+  };
+
+  render() {
     return (
       <section className="page-requests">
         <div>
           <ul className="list-requests">
             {
-              listCart.map((item, key) => (
+              this.getListRequest().map((item, key) => (
                 <li key={ key } className="request">
                   <div className="item-title">
                     <div
@@ -34,7 +42,7 @@ class RequestsList extends React.Component {
             }
           </ul>
         </div>
-        <Footer />
+        <Footer imgOpem={ false } />
       </section>
     );
   }

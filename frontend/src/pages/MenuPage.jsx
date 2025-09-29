@@ -22,6 +22,7 @@ class MenuPage extends React.Component {
       alcoholFree: false,
       list: listFoods,
       imgOpen: false,
+      counterItens: 0,
     };
 
     this.pairMap = {
@@ -82,6 +83,12 @@ class MenuPage extends React.Component {
     });
   };
 
+  counterRequestAmount = (value) => {
+    this.setState({
+      counterItens: value,
+    });
+  };
+
   render() {
     const {
       search,
@@ -92,6 +99,7 @@ class MenuPage extends React.Component {
       alcoholFree,
       imgOpen,
       list,
+      counterItens,
     } = this.state;
 
     return (
@@ -122,8 +130,10 @@ class MenuPage extends React.Component {
           isbeer={ beer }
           isFood={ food }
           listMenu={ list }
+          counterItens={ counterItens }
+          counterRequestAmount={ this.counterRequestAmount }
         />
-        <FooterRotes />
+        <FooterRotes counterItens={ counterItens } />
         <Footer imgOpem={ imgOpen } />
       </div>
     );

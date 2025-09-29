@@ -107,7 +107,9 @@ ul div {
 }
 
 .Description_Item {
-  text-align: start;
+  h3 {
+    text-align: start;
+  }
 }
 
 .Value_Sale {

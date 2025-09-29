@@ -28,7 +28,15 @@ class Menu extends React.Component {
 
   render() {
     const { imgItem, nameItem, description, value } = this.state;
-    const { listMenu, setBlur, imgOpem, isbeer, isFood } = this.props;
+    const {
+      listMenu,
+      setBlur,
+      imgOpem,
+      isbeer,
+      isFood,
+      counterItens,
+      counterRequestAmount,
+    } = this.props;
     const isOpen = imgOpem ? '' : 'none';
 
     return (
@@ -62,6 +70,8 @@ class Menu extends React.Component {
                   isFood={ isFood }
                   getItem={ this.getItem }
                   setBlur={ setBlur }
+                  counterItens={ counterItens }
+                  counterRequestAmount={ counterRequestAmount }
                 />
               ))
             )
@@ -76,6 +86,8 @@ Menu.propTypes = {
   listMenu: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  counterItens: PropTypes.number.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
   isFood: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,

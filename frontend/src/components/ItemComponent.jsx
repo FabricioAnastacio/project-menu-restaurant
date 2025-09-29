@@ -12,56 +12,86 @@ class ItemComponent extends React.Component {
     };
   }
 
+  addFood = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listMenuFood } = this.context;
+
+    this.context.listMenuFood = listMenuFood.map((ite) => {
+      if (ite.id === item.id) {
+        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
+        ite.amount += 1;
+        this.setState({
+          counterFood: ite.amount,
+        });
+      }
+      return ite;
+    });
+  };
+
+  addSoftDrink = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listSoftDrink } = this.context;
+
+    this.context.listSoftDrink = listSoftDrink.map((ite) => {
+      if (ite.id === item.id) {
+        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
+        ite.amount += 1;
+        this.setState({
+          counterDrink: ite.amount,
+        });
+      }
+      return ite;
+    });
+  };
+
+  removeFood = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listMenuFood } = this.context;
+
+    this.context.listMenuFood = listMenuFood.map((ite) => {
+      if (ite.id === item.id && ite.amount > 0) {
+        ite.amount -= 1;
+        this.setState({
+          counterFood: ite.amount,
+        });
+        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
+      }
+      return ite;
+    });
+  };
+
+  removeSoftDrink = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listSoftDrink } = this.context;
+
+    this.context.listSoftDrink = listSoftDrink.map((ite) => {
+      if (ite.id === item.id && ite.amount > 0) {
+        ite.amount -= 1;
+        this.setState({
+          counterDrink: ite.amount,
+        });
+        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
+      }
+      return ite;
+    });
+  };
+
   addNewItem = (item, isFood) => {
-    if (isFood) {
-      const { listMenuFood } = this.context;
-      this.context.listMenuFood = listMenuFood.map((ite) => {
-        if (ite.id === item.id) {
-          ite.amount += 1;
-          this.setState({
-            counterFood: ite.amount,
-          });
-        }
-        return ite;
-      });
-    } else {
-      const { listSoftDrink } = this.context;
-      this.context.listSoftDrink = listSoftDrink.map((ite) => {
-        if (ite.id === item.id) {
-          ite.amount += 1;
-          this.setState({
-            counterDrink: ite.amount,
-          });
-        }
-        return ite;
-      });
-    }
+    if (isFood) this.addFood(item);
+    else this.addSoftDrink(item);
   };
 
   removeItem = (item, isFood) => {
-    if (isFood) {
-      const { listMenuFood } = this.context;
-      this.context.listMenuFood = listMenuFood.map((ite) => {
-        if (ite.id === item.id && ite.amount > 0) {
-          ite.amount -= 1;
-          this.setState({
-            counterFood: ite.amount,
-          });
-        }
-        return ite;
-      });
-    } else {
-      const { listSoftDrink } = this.context;
-      this.context.listSoftDrink = listSoftDrink.map((ite) => {
-        if (ite.id === item.id && ite.amount > 0) {
-          ite.amount -= 1;
-          this.setState({
-            counterDrink: ite.amount,
-          });
-        }
-        return ite;
-      });
-    }
+    if (isFood) this.removeFood(item);
+    else this.removeSoftDrink(item);
+  };
+
+  getCounter = (counterDrink, counterFood, isFood, id) => {
+    const { listSoftDrink, listMenuFood } = this.context;
+
+    if (counterDrink > 0 && counterFood > 0) return isFood ? counterFood : counterDrink;
+
+    return isFood ? listMenuFood[id - 1].amount : listSoftDrink[id - 1].amount;
   };
 
   render() {
@@ -81,7 +111,7 @@ class ItemComponent extends React.Component {
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : '' }>
                 {
-                  isFood ? counterFood : counterDrink
+                  this.getCounter(counterDrink, counterFood, isFood, item.id)
                 }
               </p>
               <button className="sell" onClick={ () => this.removeItem(item, isFood) }>
@@ -111,6 +141,8 @@ ItemComponent.propTypes = {
     amount: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
   }).isRequired,
+  counterItens: PropTypes.number.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
   isFood: PropTypes.bool.isRequired,
   getItem: PropTypes.func.isRequired,
   setBlur: PropTypes.func.isRequired,
