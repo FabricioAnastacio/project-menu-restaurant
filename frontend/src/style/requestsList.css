@@ -5,6 +5,30 @@
   height: 100%;
 }
 
+.header-request {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cost {
+  padding: 40px 30px;
+  h4 {
+    margin: 0;
+  }
+}
+
+.img-header {
+  margin: 0px 30px;
+  background-image: url('../pictures/logo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70px;
+  height: 70px;
+}
+
 .request {
   display: flex;
   align-items: center;

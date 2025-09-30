@@ -104,7 +104,7 @@ class ItemComponent extends React.Component {
           <h3>{ item.name }</h3>
           <p>{ item.description }</p>
           <div className="Value_Sale">
-            <h4>{ `R$${item.value}` }</h4>
+            <h4>{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
               <button className="buy" onClick={ () => this.addNewItem(item, isFood) }>
                 +
@@ -138,7 +138,7 @@ ItemComponent.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     amount: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
   }).isRequired,

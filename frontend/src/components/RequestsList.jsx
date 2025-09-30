@@ -28,7 +28,7 @@ class RequestsList extends React.Component {
     });
 
     this.setState({
-      valueTotal,
+      valueTotal: valueTotal.toFixed(2),
       requestItens,
     });
   }
@@ -39,11 +39,11 @@ class RequestsList extends React.Component {
     return (
       <section className="page-requests">
         <div>
-          <section>
-            <div>
-              <h3>Valor total:</h3>
-              <h3>{ `R$ ${valueTotal}` }</h3>
+          <section className="header-request" id="Header">
+            <div className="cost">
+              <h4 className="value-total">{ `Total: R$ ${valueTotal}` }</h4>
             </div>
+            <div className="img-header" />
           </section>
           <ul className="list-requests">
             {
@@ -57,7 +57,7 @@ class RequestsList extends React.Component {
                     />
                     <div className="item-name">
                       <h1>{ item.name }</h1>
-                      <p>{ `R$${item.value}` }</p>
+                      <p>{ `R$${item.value.toFixed(2)}` }</p>
                     </div>
                   </div>
                   <button>+</button>
