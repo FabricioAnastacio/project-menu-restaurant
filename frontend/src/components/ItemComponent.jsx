@@ -9,6 +9,7 @@ class ItemComponent extends React.Component {
     this.state = {
       counterFood: 0,
       counterDrink: 0,
+      counterAlcoholFree: 0,
     };
   }
 
@@ -28,16 +29,32 @@ class ItemComponent extends React.Component {
     });
   };
 
-  addSoftDrink = (item) => {
+  addDrink = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listSoftDrink } = this.context;
+    const { listDrink } = this.context;
 
-    this.context.listSoftDrink = listSoftDrink.map((ite) => {
+    this.context.listDrink = listDrink.map((ite) => {
       if (ite.id === item.id) {
         if (ite.amount === 0) counterRequestAmount(counterItens + 1);
         ite.amount += 1;
         this.setState({
           counterDrink: ite.amount,
+        });
+      }
+      return ite;
+    });
+  };
+
+  addSoftDrink = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listAlcoholFree } = this.context;
+
+    this.context.listAlcoholFree = listAlcoholFree.map((ite) => {
+      if (ite.id === item.id) {
+        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
+        ite.amount += 1;
+        this.setState({
+          counterAlcoholFree: ite.amount,
         });
       }
       return ite;
@@ -60,11 +77,11 @@ class ItemComponent extends React.Component {
     });
   };
 
-  removeSoftDrink = (item) => {
+  removeDrink = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listSoftDrink } = this.context;
+    const { listDrink } = this.context;
 
-    this.context.listSoftDrink = listSoftDrink.map((ite) => {
+    this.context.listDrink = listDrink.map((ite) => {
       if (ite.id === item.id && ite.amount > 0) {
         ite.amount -= 1;
         this.setState({
@@ -76,27 +93,53 @@ class ItemComponent extends React.Component {
     });
   };
 
-  addNewItem = (item, isFood) => {
+  removeSoftDrink = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listAlcoholFree } = this.context;
+
+    this.context.listAlcoholFree = listAlcoholFree.map((ite) => {
+      if (ite.id === item.id && ite.amount > 0) {
+        ite.amount -= 1;
+        this.setState({
+          counterAlcoholFree: ite.amount,
+        });
+        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
+      }
+      return ite;
+    });
+  };
+
+  addNewItem = (item, isFood, isAlcoholFree) => {
     if (isFood) this.addFood(item);
-    else this.addSoftDrink(item);
+    else if (isAlcoholFree) this.addSoftDrink(item);
+    else this.addDrink(item);
   };
 
-  removeItem = (item, isFood) => {
+  removeItem = (item, isFood, isAlcoholFree) => {
     if (isFood) this.removeFood(item);
-    else this.removeSoftDrink(item);
+    else if (isAlcoholFree) this.removeSoftDrink(item);
+    else this.removeDrink(item);
   };
 
-  getCounter = (counterDrink, counterFood, isFood, id) => {
-    const { listSoftDrink, listMenuFood } = this.context;
+  getCounter = (isAlcoholFree, isFood, id) => {
+    const { counterAlcoholFree, counterDrink, counterFood } = this.state;
+    const { listDrink, listMenuFood, listAlcoholFree } = this.context;
 
-    if (counterDrink > 0 && counterFood > 0) return isFood ? counterFood : counterDrink;
+    const isValuer = counterDrink > 0 && counterFood > 0 && counterAlcoholFree > 0;
 
-    return isFood ? listMenuFood[id - 1].amount : listSoftDrink[id - 1].amount;
+    if (isValuer) {
+      if (isFood) return counterFood;
+
+      return isAlcoholFree ? counterAlcoholFree : counterDrink;
+    }
+
+    if (isFood) return listMenuFood[id - 1].amount;
+
+    return isAlcoholFree ? listAlcoholFree[id - 1].amount : listDrink[id - 1].amount;
   };
 
   render() {
-    const { counterDrink, counterFood } = this.state;
-    const { item, isFood, getItem, setBlur } = this.props;
+    const { item, isFood, isAlcoholFree, getItem, setBlur } = this.props;
 
     return (
       <li>
@@ -106,15 +149,21 @@ class ItemComponent extends React.Component {
           <div className="Value_Sale">
             <h4>{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
-              <button className="buy" onClick={ () => this.addNewItem(item, isFood) }>
+              <button
+                className="buy"
+                onClick={ () => this.addNewItem(item, isFood, isAlcoholFree) }
+              >
                 +
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : '' }>
                 {
-                  this.getCounter(counterDrink, counterFood, isFood, item.id)
+                  this.getCounter(isAlcoholFree, isFood, item.id)
                 }
               </p>
-              <button className="sell" onClick={ () => this.removeItem(item, isFood) }>
+              <button
+                className="sell"
+                onClick={ () => this.removeItem(item, isFood, isAlcoholFree) }
+              >
                 -
               </button>
             </div>
@@ -145,6 +194,7 @@ ItemComponent.propTypes = {
   counterItens: PropTypes.number.isRequired,
   counterRequestAmount: PropTypes.func.isRequired,
   isFood: PropTypes.bool.isRequired,
+  isAlcoholFree: PropTypes.bool.isRequired,
   getItem: PropTypes.func.isRequired,
   setBlur: PropTypes.func.isRequired,
 };

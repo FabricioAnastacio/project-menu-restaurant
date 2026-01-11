@@ -6,25 +6,25 @@ import '../style/ListCategory.css';
 class ListCategory extends React.Component {
   render() {
     const {
-      softDrink,
-      drinks,
+      drink,
+      allDrinks,
       foods,
       alcoholFree,
       handleChenge,
       handleChengeThow,
       search,
     } = this.props;
-    const isDrinks = drinks ? '' : 'none';
+    const isDrinks = allDrinks ? '' : 'none';
     const isFood = foods ? '' : 'none';
 
     return (
       <div className="Categorys">
         <section className="Select-item">
-          <label className={ `Label-select-${drinks}` }>
+          <label className={ `Label-select-${allDrinks}` }>
             <input
               type="checkbox"
-              checked={ drinks }
-              name="drink"
+              checked={ allDrinks }
+              name="allDrinks"
               onChange={ handleChenge }
             />
             Bebidas
@@ -43,11 +43,11 @@ class ListCategory extends React.Component {
           style={ { display: isDrinks } }
           className="Select-item-thow"
         >
-          <label className={ `Label-select-thow-${softDrink}` }>
+          <label className={ `Label-select-thow-${drink}` }>
             <input
               type="checkbox"
-              checked={ softDrink }
-              name="softDrink"
+              checked={ drink }
+              name="drink"
               onChange={ handleChengeThow }
             />
             Refri
@@ -59,7 +59,7 @@ class ListCategory extends React.Component {
               name="alcoholFree"
               onChange={ handleChengeThow }
             />
-            Água
+            Sucos
           </label>
         </section>
         <section style={ { display: isFood } } className="Search_item">
@@ -78,12 +78,12 @@ class ListCategory extends React.Component {
 }
 
 ListCategory.propTypes = {
-  drinks: PropTypes.bool.isRequired,
+  allDrinks: PropTypes.bool.isRequired,
   foods: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
   handleChengeThow: PropTypes.func.isRequired,
   alcoholFree: PropTypes.bool.isRequired,
-  softDrink: PropTypes.bool.isRequired,
+  drink: PropTypes.bool.isRequired,
   search: PropTypes.string.isRequired,
 };
 

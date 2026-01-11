@@ -1,7 +1,7 @@
 import { drinks } from '../pictures/exportImgs';
 
 const listDrinks = {
-  softDrink: [
+  drink: [
     {
       id: 1,
       img: drinks.caipirinha,

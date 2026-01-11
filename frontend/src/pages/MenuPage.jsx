@@ -15,10 +15,10 @@ class MenuPage extends React.Component {
 
     this.state = {
       search: '',
-      drink: false,
+      allDrinks: false,
       food: true,
       beer: false,
-      softDrink: true,
+      drink: true,
       alcoholFree: false,
       list: listFoods,
       imgOpen: false,
@@ -26,11 +26,11 @@ class MenuPage extends React.Component {
     };
 
     this.pairMap = {
-      drink: 'food',
-      food: 'drink',
-      beer: ['softDrink', 'alcoholFree'],
-      softDrink: ['beer', 'alcoholFree'],
-      alcoholFree: ['softDrink', 'beer'],
+      allDrinks: 'food',
+      food: 'allDrinks',
+      beer: ['drink', 'alcoholFree'],
+      drink: ['beer', 'alcoholFree'],
+      alcoholFree: ['drink', 'beer'],
     };
   }
 
@@ -50,7 +50,7 @@ class MenuPage extends React.Component {
 
   handleChenge = ({ target }) => {
     const { name, checked, type, value } = target;
-    const { listMenuFood, listSoftDrink } = this.context;
+    const { listMenuFood, listDrink } = this.context;
     const relatedKey = this.pairMap[name];
     if (type === 'text') {
       this.setState({
@@ -64,9 +64,9 @@ class MenuPage extends React.Component {
     this.setState({
       [name]: checked,
       [relatedKey]: !checked,
-      list: name === 'drink' ? listSoftDrink : listMenuFood,
+      list: name === 'allDrinks' ? listDrink : listMenuFood,
       beer: false,
-      softDrink: true,
+      drink: true,
       alcoholFree: false,
     });
   };
@@ -74,6 +74,7 @@ class MenuPage extends React.Component {
   handleChengeThowSelection = ({ target }) => {
     const { name, checked } = target;
     const relatedKey = this.pairMap[name];
+    console.log(name);
     if (!checked === true) return;
     this.setState({
       [name]: checked,
@@ -100,8 +101,8 @@ class MenuPage extends React.Component {
   render() {
     const {
       search,
-      softDrink,
       drink,
+      allDrinks,
       food,
       beer,
       alcoholFree,
@@ -113,23 +114,16 @@ class MenuPage extends React.Component {
     return (
       <div className="PageMenu">
         <Header
-          handleChenge={ this.handleChenge }
-          handleChengeThow={ this.handleChengeThowSelection }
-          drinks={ drink }
-          foods={ food }
-          beer={ beer }
-          softDrink={ softDrink }
-          alcoholFree={ alcoholFree }
           imgOpen={ imgOpen }
         />
         <ListCategory
           search={ search }
           handleChenge={ this.handleChenge }
           handleChengeThow={ this.handleChengeThowSelection }
-          drinks={ drink }
+          allDrinks={ allDrinks }
           foods={ food }
           beer={ beer }
-          softDrink={ softDrink }
+          drink={ drink }
           alcoholFree={ alcoholFree }
         />
         <Menu
@@ -137,6 +131,7 @@ class MenuPage extends React.Component {
           imgOpem={ imgOpen }
           isbeer={ beer }
           isFood={ food }
+          isAlcoholFree={ alcoholFree }
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
