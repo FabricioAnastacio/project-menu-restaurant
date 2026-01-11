@@ -12,18 +12,21 @@ class RequestsList extends React.Component {
       valueTotal: 0,
       requestFoods: [],
       requestDrinks: [],
+      requestSoftDrinks: [],
     };
   }
 
   componentDidMount() {
-    const { listMenuFood, listSoftDrink } = this.context;
+    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
     const requestFoods = [];
     const requestDrinks = [];
+    const requestSoftDrinks = [];
 
     requestFoods.push(...listMenuFood.filter((item) => item.amount > 0));
-    requestDrinks.push(...listSoftDrink.filter((item) => item.amount > 0));
+    requestDrinks.push(...listDrink.filter((item) => item.amount > 0));
+    requestSoftDrinks.push(...listAlcoholFree.filter((item) => item.amount > 0));
 
-    const requestAllItens = [...requestFoods, ...requestDrinks];
+    const requestAllItens = [...requestFoods, ...requestDrinks, ...requestSoftDrinks];
 
     let valueTotal = 0;
     requestAllItens.forEach((item) => {
@@ -35,11 +38,12 @@ class RequestsList extends React.Component {
       valueTotal,
       requestFoods,
       requestDrinks,
+      requestSoftDrinks,
     });
   }
 
   addNewItem = (item, type) => {
-    const { requestFoods, requestDrinks, valueTotal } = this.state;
+    const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
     this.setState({
       valueTotal: valueTotal + item.value,
     });
@@ -51,9 +55,16 @@ class RequestsList extends React.Component {
           return a;
         }),
       });
-    } else {
+    } else if (type === 'drink') {
       this.setState({
         requestDrinks: requestDrinks.map((a) => {
+          if (a.id === item.id) a.amount += 1;
+          return a;
+        }),
+      });
+    } else {
+      this.setState({
+        requestSoftDrinks: requestSoftDrinks.map((a) => {
           if (a.id === item.id) a.amount += 1;
           return a;
         }),
@@ -62,7 +73,7 @@ class RequestsList extends React.Component {
   };
 
   removeItem = (item, type) => {
-    const { requestFoods, requestDrinks, valueTotal } = this.state;
+    const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
     this.setState({
       valueTotal: valueTotal - item.value,
     });
@@ -74,11 +85,18 @@ class RequestsList extends React.Component {
           return a.amount > 0 && a;
         }),
       });
-    } else {
+    } else if (type === 'drink') {
       this.setState({
         requestDrinks: requestDrinks.filter((a) => {
           if (a.id === item.id) a.amount -= 1;
           return a.amount > 0 ?? a;
+        }),
+      });
+    } else {
+      this.setState({
+        requestSoftDrinks: requestSoftDrinks.filter((a) => {
+          if (a.id === item.id) a.amount -= 1;
+          return a.amount > 0 && a;
         }),
       });
     }
@@ -86,6 +104,7 @@ class RequestsList extends React.Component {
 
   renderItemHtml = (item, key, type) => (
     <li key={ key } className="request">
+      {console.log(item)}
       <div className="item-title">
         <div
           className="imgCart"
@@ -104,7 +123,7 @@ class RequestsList extends React.Component {
   );
 
   render() {
-    const { valueTotal, requestFoods, requestDrinks } = this.state;
+    const { valueTotal, requestFoods, requestDrinks, requestSoftDrinks } = this.state;
 
     return (
       <section className="page-requests">
@@ -121,6 +140,11 @@ class RequestsList extends React.Component {
             }
             {
               requestDrinks.map((item, key) => this.renderItemHtml(item, key, 'drink'))
+            }
+            {
+              requestSoftDrinks.map(
+                ((item, key) => this.renderItemHtml(item, key, 'softDrink')),
+              )
             }
           </ul>
         </div>
