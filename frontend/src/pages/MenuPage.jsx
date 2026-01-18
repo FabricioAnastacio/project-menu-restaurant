@@ -74,7 +74,6 @@ class MenuPage extends React.Component {
   handleChengeThowSelection = ({ target }) => {
     const { name, checked } = target;
     const relatedKey = this.pairMap[name];
-    console.log(name);
     if (!checked === true) return;
     this.setState({
       [name]: checked,

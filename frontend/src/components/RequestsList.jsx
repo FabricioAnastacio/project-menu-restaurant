@@ -72,8 +72,16 @@ class RequestsList extends React.Component {
     }
   };
 
+  updateCounterRequest = () => {
+    const { requestSoftDrinks, requestFoods, requestDrinks } = this.state;
+
+    const updateCounter = [...requestSoftDrinks, ...requestFoods, ...requestDrinks];
+    this.context.counterRequest = updateCounter.length;
+  };
+
   removeItem = (item, type) => {
     const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
+
     this.setState({
       valueTotal: valueTotal - item.value,
     });
@@ -104,7 +112,6 @@ class RequestsList extends React.Component {
 
   renderItemHtml = (item, key, type) => (
     <li key={ key } className="request">
-      {console.log(item)}
       <div className="item-title">
         <div
           className="imgCart"
@@ -124,6 +131,7 @@ class RequestsList extends React.Component {
 
   render() {
     const { valueTotal, requestFoods, requestDrinks, requestSoftDrinks } = this.state;
+    this.updateCounterRequest();
 
     return (
       <section className="page-requests">
