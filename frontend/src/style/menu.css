@@ -125,6 +125,7 @@ li {
   align-items: center;
   justify-content: space-between;
   margin-left: 20px;
+  width: 100px;
   button {
     background-color: rgba(255, 0, 0, 0.507);
     border-radius: 5px;
@@ -135,17 +136,15 @@ li {
     color: black;
   }
   p {
-    transition: .7s;
     font-size: 20px;
-    padding: 4px;
+    padding: 0 5px;
     border-radius: 1em;
   }
 }
 
 .item-buy {
-  filter: drop-shadow(0px 0px 3px rgb(1, 255, 1));
-  box-shadow: 0px 0px 10px rgb(0, 255, 0),
-  inset 0px 0px 5px rgb(0, 255, 0);
+  filter: drop-shadow(0px 0px 5px rgb(1, 255, 1));
+  border-bottom: 2px solid green;
 }
 
 .buy {

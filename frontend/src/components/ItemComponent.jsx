@@ -155,7 +155,7 @@ class ItemComponent extends React.Component {
               >
                 +
               </button>
-              <p className={ item.amount > 0 ? 'item-buy' : '' }>
+              <p className={ item.amount > 0 ? 'item-buy' : 'item' }>
                 {
                   this.getCounter(isAlcoholFree, isFood, item.id)
                 }
