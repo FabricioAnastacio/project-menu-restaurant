@@ -25,12 +25,12 @@ class FooterRotes extends React.Component {
       <section className="footer-pages">
         <ul>
           <li className="icon-menu">
-            <Link to="/" className="iconRote">
+            <Link to="/" className="iconRote snack">
               <img src={ iconsFastFood } alt="Hamburguer" />
             </Link>
           </li>
           <li>
-            <Link to={ { pathname: '/cart', hash: '#Header' } } className="iconRote">
+            <Link to={ { pathname: '/cart', hash: '#Header' } } className="iconRote cart">
               { this.buttonCart(counterItens) }
             </Link>
           </li>

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import Footer from './Footer';
 import '../style/requestsList.css';
 import '../style/footer.css';
 
@@ -110,6 +110,30 @@ class RequestsList extends React.Component {
     }
   };
 
+  removeAllItens = () => {
+    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
+
+    this.context.counterRequest = 0;
+    this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
+      iten.amount = 0;
+      return iten;
+    });
+    this.context.listMenuFood = listMenuFood.map((iten) => {
+      iten.amount = 0;
+      return iten;
+    });
+    this.context.listDrink = listDrink.map((iten) => {
+      iten.amount = 0;
+      return iten;
+    });
+    this.setState({
+      valueTotal: 0,
+      requestFoods: [],
+      requestDrinks: [],
+      requestSoftDrinks: [],
+    });
+  };
+
   renderItemHtml = (item, key, type) => (
     <li key={ key } className="request">
       <div className="item-title">
@@ -156,7 +180,18 @@ class RequestsList extends React.Component {
             }
           </ul>
         </div>
-        <Footer imgOpem={ false } />
+        <section className="RequestFooter-cart">
+          <div className="btms">
+            <button
+              onClick={ () => this.removeAllItens() }
+              className="clear-all"
+            >
+              Limpar lista
+            </button>
+            <Link to="/" className="Button-ConfirmCart">Confirmar</Link>
+          </div>
+          {/* <Footer imgOpem={ false } /> */}
+        </section>
       </section>
     );
   }
