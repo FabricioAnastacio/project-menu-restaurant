@@ -3,13 +3,14 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import '../style/confirmOrder.css';
 import FormDataClient from '../components/FormDataClient';
+import ListOrder from '../components/ListOrder';
 
 class ConfirmOrder extends React.Component {
   render() {
     return (
       <main className="Order-Page">
         <Header title="PEDIDO" />
-        <h1>Confirmar pedido</h1>
+        <ListOrder />
         <FormDataClient />
         <Footer />
       </main>
