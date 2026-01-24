@@ -188,7 +188,7 @@ class RequestsList extends React.Component {
             >
               Limpar lista
             </button>
-            <Link to="/" className="Button-ConfirmCart">Confirmar</Link>
+            <Link to="/order" className="Button-ConfirmCart">Confirmar</Link>
           </div>
           {/* <Footer imgOpem={ false } /> */}
         </section>

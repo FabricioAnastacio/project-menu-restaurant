@@ -113,6 +113,7 @@ class MenuPage extends React.Component {
     return (
       <div className="PageMenu">
         <Header
+          title="CARDAPIO"
           imgOpen={ imgOpen }
         />
         <ListCategory

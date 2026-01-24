@@ -8,6 +8,7 @@ class Header extends React.Component {
   render() {
     const {
       imgOpen,
+      title,
     } = this.props;
 
     return (
@@ -15,7 +16,7 @@ class Header extends React.Component {
         <div className="Header-Title">
           <aside className="Title-profile">
             <h1>
-              CARDAPIO
+              { title }
             </h1>
           </aside>
           <section className="Section-network">
@@ -44,6 +45,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   imgOpen: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;
