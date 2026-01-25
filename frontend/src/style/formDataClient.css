@@ -36,8 +36,6 @@
   border-color: rgba(255, 0, 0, 0.753);
 }
 
-
-
 .Data-Label {
   position: absolute;
   cursor: text;
@@ -63,6 +61,10 @@
   top: -17px;
 }
 
+.Form-Payment {
+  width: 100%;
+}
+
 .Payment {
   display: flex;
   align-items: center;
@@ -77,16 +79,30 @@
 }
 
 .Btm-order {
-  padding-top: 10px;
-  display: grid;
-  place-items: end;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-top: 20px;
   width: 90%;
 }
+
+.Link {
+  color: black;
+}
+
+.Return {
+  background-color: white;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 40px;
+}
+
 
 .Send-Order {
   background-color: green;
   border: solid 1px green;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 10px;
   color: white;
 }

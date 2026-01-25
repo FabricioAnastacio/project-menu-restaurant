@@ -1,8 +1,125 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../style/formDataClient.css';
 
 class FormDataClient extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      pix: false,
+      card: false,
+      cash: false,
+      // isBloq: true,
+    };
+  }
+
+  handleChengePaymant = ({ target }) => {
+    const { name, checked } = target;
+
+    this.setState({
+      [name]: checked,
+      // isBloq: !checked,
+    });
+  };
+
+  sendOrder = () => {
+    const { pix, card, cash } = this.state;
+    // const {
+    //   clientName,
+    //   clientContact,
+    //   clientNeighborhood,
+    //   clientRoad,
+    //   clientNumber,
+    //   clientReference,
+    //   clientPayment,
+    // } = this.props;
+
+    // if (
+    //   clientName.length > 2
+    //   && clientContact.length > 8
+    //   && clientNeighborhood.length >
+    // )
+
+    if (pix) clientPayment.push('Pix');
+    if (card) clientPayment.push('Cartão');
+    if (cash) clientPayment.push('Dinheiro');
+  };
+
+  renderPayment = () => {
+    const { pix, card, cash } = this.state;
+    const { clientChange, handleChenge } = this.props;
+
+    return (
+      <div className="Form-Payment">
+        <h4>Forma de Pagamento:</h4>
+        <div className="Payment">
+          <label htmlFor="cash" className="Label-pay">
+            Dinheiro
+            <input
+              onInvalid={
+                (e) => e.target.setCustomValidity('Selecione uma forma de pagamento!')
+              }
+              type="checkbox"
+              className="Checkbox"
+              checked={ cash }
+              name="cash"
+              id="cash"
+              onChange={ this.handleChengePaymant }
+            />
+          </label>
+          <label htmlFor="pix" className="Label-pay">
+            Pix
+            <input
+              type="checkbox"
+              className="Checkbox"
+              checked={ pix }
+              name="pix"
+              onChange={ this.handleChengePaymant }
+            />
+          </label>
+          <label htmlFor="card" className="Label-pay">
+            Cartão
+            <input
+              type="checkbox"
+              className="Checkbox"
+              checked={ card }
+              name="card"
+              onChange={ this.handleChengePaymant }
+            />
+          </label>
+        </div>
+        <div className="Div-form" style={ { display: cash ? 'flex' : 'none' } }>
+          <input
+            required
+            className="Data-Client"
+            name="clientChange"
+            id="clientChange"
+            value={ clientChange === 0 ? '' : clientChange }
+            type="number"
+            onChange={ handleChenge }
+            autoComplete="off"
+          />
+          <label htmlFor="change" className="Data-Label">
+            Troco para
+          </label>
+        </div>
+      </div>
+    );
+  };
+
   render() {
+    const {
+      handleChenge,
+      clientName,
+      clientContact,
+      clientNeighborhood,
+      clientRoad,
+      clientNumber,
+      clientReference,
+    } = this.props;
+
     return (
       <div className="Form-Info">
         <h4>Endereço:</h4>
@@ -11,14 +128,14 @@ class FormDataClient extends React.Component {
             <input
               required
               className="Data-Client"
-              name="praise"
-              id="praise"
-              // value={ praise }
+              name="clientName"
+              id="clientName"
+              value={ clientName }
               type="text"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
             />
-            <label htmlFor="praise" className="Data-Label">
+            <label htmlFor="clientName" className="Data-Label">
               Nome
             </label>
           </div>
@@ -26,29 +143,29 @@ class FormDataClient extends React.Component {
             <input
               required
               className="Data-Client"
-              name="vision"
-              id="vision"
-              // value={ vision }
+              name="clientContact"
+              id="clientContact"
+              value={ clientContact }
               type="number"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
             />
-            <label htmlFor="vision" className="Data-Label">
+            <label htmlFor="clientContact" className="Data-Label">
               Contato
             </label>
           </div>
           <div className="Div-form">
             <input
               className="Data-Client"
-              name="frontdesk"
-              id="frontdesk"
-              // value={ frontdesk }
+              name="clientNeighborhood"
+              id="clientNeighborhood"
+              value={ clientNeighborhood }
               type="text"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
               required
             />
-            <label htmlFor="frontdesk" className="Data-Label">
+            <label htmlFor="clientNeighborhood" className="Data-Label">
               Bairro
             </label>
           </div>
@@ -56,14 +173,14 @@ class FormDataClient extends React.Component {
             <input
               required
               className="Data-Client"
-              name="prayer"
-              id="prayer"
-              // value={ prayer }
+              name="clientRoad"
+              id="clientRoad"
+              value={ clientRoad }
               type="text"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
             />
-            <label htmlFor="prayer" className="Data-Label">
+            <label htmlFor="clientRoad" className="Data-Label">
               Rua
             </label>
           </div>
@@ -71,14 +188,14 @@ class FormDataClient extends React.Component {
             <input
               required
               className="Data-Client"
-              name="dynamics"
-              id="dynamics"
-              // value={ dynamics }
+              name="clientNumber"
+              id="clientNumber"
+              value={ clientNumber === 0 ? '' : clientNumber }
               type="number"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
             />
-            <label htmlFor="dynamics" className="Data-Label">
+            <label htmlFor="clientNumber" className="Data-Label">
               Numero
             </label>
           </div>
@@ -86,56 +203,48 @@ class FormDataClient extends React.Component {
             <input
               required
               className="Data-Client"
-              name="dynamics"
-              id="dynamics"
-              // value={ dynamics }
+              name="clientReference"
+              id="clientReference"
+              value={ clientReference }
               type="text"
-              // onChange={ handleChenge }
+              onChange={ handleChenge }
               autoComplete="off"
             />
-            <label htmlFor="dynamics" className="Data-Label">
+            <label htmlFor="clientReference" className="Data-Label">
               Ponto de referencia
             </label>
           </div>
-        </form>
-        <h4>Forma de Pagamento:</h4>
-        <form className="Form-Payment">
-          <div className="Payment">
-            <label htmlFor="cash" className="Label-pay">
-              Dinheiro
-              <input type="checkbox" value="" />
-            </label>
-            <label htmlFor="pix" className="Label-pay">
-              Pix
-              <input type="checkbox" value="" />
-            </label>
-            <label htmlFor="card" className="Label-pay">
-              Cartão
-              <input type="checkbox" value="" />
-            </label>
-          </div>
-          <div className="Div-form" style={ { display: 'none' } }>
-            <input
-              required
-              className="Data-Client"
-              name="prayer"
-              id="prayer"
-              // value={ prayer }
-              type="number"
-              // onChange={ handleChenge }
-              autoComplete="off"
-            />
-            <label htmlFor="change" className="Data-Label">
-              Troco para
-            </label>
+          {
+            this.renderPayment()
+          }
+          <div className="Btm-order">
+            <button className="Return">
+              <Link to="/cart" className="Link">Voltar</Link>
+            </button>
+            <button
+              type="submit"
+              className="Send-Order"
+              onClick={ this.sendOrder }
+            >
+              Enviar Pedido
+            </button>
           </div>
         </form>
-        <div className="Btm-order">
-          <button className="Send-Order">Enviar Pedido</button>
-        </div>
       </div>
     );
   }
 }
+
+FormDataClient.propTypes = {
+  handleChenge: PropTypes.func.isRequired,
+  clientName: PropTypes.string.isRequired,
+  clientContact: PropTypes.string.isRequired,
+  clientNeighborhood: PropTypes.string.isRequired,
+  clientRoad: PropTypes.string.isRequired,
+  clientNumber: PropTypes.number.isRequired,
+  clientReference: PropTypes.string.isRequired,
+  // clientPayment: PropTypes.arrayOf(string).isRequired,
+  clientChange: PropTypes.number.isRequired,
+};
 
 export default FormDataClient;
