@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -11,44 +12,35 @@ class FormDataClient extends React.Component {
       pix: false,
       card: false,
       cash: false,
-      // isBloq: true,
+      isBloq: true,
     };
   }
 
   handleChengePaymant = ({ target }) => {
+    const { pix, card, cash } = this.state;
     const { name, checked } = target;
 
     this.setState({
       [name]: checked,
-      // isBloq: !checked,
+      isBloq: (pix || card || cash || checked),
     });
   };
 
-  sendOrder = () => {
+  sendOrder = (e) => {
     const { pix, card, cash } = this.state;
-    // const {
-    //   clientName,
-    //   clientContact,
-    //   clientNeighborhood,
-    //   clientRoad,
-    //   clientNumber,
-    //   clientReference,
-    //   clientPayment,
-    // } = this.props;
-
-    // if (
-    //   clientName.length > 2
-    //   && clientContact.length > 8
-    //   && clientNeighborhood.length >
-    // )
+    const { clientPayment } = this.props;
 
     if (pix) clientPayment.push('Pix');
-    if (card) clientPayment.push('Cartão');
-    if (cash) clientPayment.push('Dinheiro');
+    else if (card) clientPayment.push('Cartão');
+    else if (cash) clientPayment.push('Dinheiro');
+    else {
+      return this.setState({ isBloq: false });
+    }
+    e.preventDefault();
   };
 
   renderPayment = () => {
-    const { pix, card, cash } = this.state;
+    const { pix, card, cash, isBloq } = this.state;
     const { clientChange, handleChenge } = this.props;
 
     return (
@@ -90,6 +82,12 @@ class FormDataClient extends React.Component {
             />
           </label>
         </div>
+        <p
+          className="Alert-Error"
+          style={ { display: isBloq ? 'none' : 'block', color: 'red' } }
+        >
+          *Selecione uma forma de pagamento
+        </p>
         <div className="Div-form" style={ { display: cash ? 'flex' : 'none' } }>
           <input
             required
@@ -243,7 +241,9 @@ FormDataClient.propTypes = {
   clientRoad: PropTypes.string.isRequired,
   clientNumber: PropTypes.number.isRequired,
   clientReference: PropTypes.string.isRequired,
-  // clientPayment: PropTypes.arrayOf(string).isRequired,
+  clientPayment: PropTypes.arrayOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
   clientChange: PropTypes.number.isRequired,
 };
 
