@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import '../style/confirmOrder.css';
 import FormDataClient from '../components/FormDataClient';
 import ListOrder from '../components/ListOrder';
+import AppContext from '../context/AppContext';
+import { sendMensage } from '../services/sendMensage';
 
 class ConfirmOrder extends React.Component {
   constructor() {
@@ -16,7 +18,7 @@ class ConfirmOrder extends React.Component {
       clientRoad: '',
       clientNumber: 0,
       clientReference: '',
-      clientPayment: [''],
+      clientPayment: [],
       clientChange: 0,
     };
   }
@@ -26,6 +28,35 @@ class ConfirmOrder extends React.Component {
 
     this.setState({
       [name]: value,
+    });
+  };
+
+  sendOrCheff = () => {
+    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
+
+    const order = {
+      foods: listMenuFood.filter((item) => item.amount > 0),
+      drinks: [
+        ...listDrink.filter((item) => item.amount > 0),
+        ...listAlcoholFree.filter((item) => item.amount > 0),
+      ],
+      value: 0,
+    };
+
+    sendMensage(this.state, order);
+
+    this.context.counterRequest = 0;
+    this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
+      iten.amount = 0;
+      return iten;
+    });
+    this.context.listMenuFood = listMenuFood.map((iten) => {
+      iten.amount = 0;
+      return iten;
+    });
+    this.context.listDrink = listDrink.map((iten) => {
+      iten.amount = 0;
+      return iten;
     });
   };
 
@@ -54,11 +85,14 @@ class ConfirmOrder extends React.Component {
           clientReference={ clientReference }
           clientPayment={ clientPayment }
           clientChange={ clientChange }
+          sendOrCheff={ this.sendOrCheff }
         />
         <Footer imgOpem={ false } />
       </main>
     );
   }
 }
+
+ConfirmOrder.contextType = AppContext;
 
 export default ConfirmOrder;

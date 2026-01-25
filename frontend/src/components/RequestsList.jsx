@@ -126,6 +126,7 @@ class RequestsList extends React.Component {
       iten.amount = 0;
       return iten;
     });
+
     this.setState({
       valueTotal: 0,
       requestFoods: [],

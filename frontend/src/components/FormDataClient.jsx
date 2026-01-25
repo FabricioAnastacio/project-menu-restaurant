@@ -28,14 +28,17 @@ class FormDataClient extends React.Component {
 
   sendOrder = (e) => {
     const { pix, card, cash } = this.state;
-    const { clientPayment } = this.props;
+    const { clientPayment, sendOrCheff } = this.props;
+
+    clientPayment.length = 0;
 
     if (pix) clientPayment.push('Pix');
-    else if (card) clientPayment.push('Cartão');
-    else if (cash) clientPayment.push('Dinheiro');
-    else {
+    if (card) clientPayment.push('Cartão');
+    if (cash) clientPayment.push('Dinheiro');
+    if (!(pix || card || cash)) {
       return this.setState({ isBloq: false });
     }
+    sendOrCheff();
     e.preventDefault();
   };
 
@@ -86,7 +89,7 @@ class FormDataClient extends React.Component {
           className="Alert-Error"
           style={ { display: isBloq ? 'none' : 'block', color: 'red' } }
         >
-          *Selecione uma forma de pagamento
+          *Selecione uma ou mais formas de pagamento
         </p>
         <div className="Div-form" style={ { display: cash ? 'flex' : 'none' } }>
           <input
@@ -235,6 +238,7 @@ class FormDataClient extends React.Component {
 
 FormDataClient.propTypes = {
   handleChenge: PropTypes.func.isRequired,
+  sendOrCheff: PropTypes.func.isRequired,
   clientName: PropTypes.string.isRequired,
   clientContact: PropTypes.string.isRequired,
   clientNeighborhood: PropTypes.string.isRequired,
