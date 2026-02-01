@@ -56,6 +56,14 @@
   }
 }
 
+.alertErro-List {
+  color: red;
+  margin-top: 40%;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: overline;
+}
+
 .RequestFooter-cart {
   display: grid;
   place-items: center;
@@ -78,11 +86,15 @@
 }
 
 .Button-ConfirmCart {
-  text-decoration: none;
-  color: white;
+  border: 1px solid green;
   background-color: green;
-  padding: 5px 10px;
+  padding: 6px 15px;
   border-radius: 5px;
+}
+
+.linkOrder {
+  color: white;
+  text-decoration: none;
 }
 
 .imgCart {

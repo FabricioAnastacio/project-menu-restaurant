@@ -32,7 +32,7 @@ class ConfirmOrder extends React.Component {
   };
 
   sendOrCheff = () => {
-    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
+    const { listMenuFood, listBeer, listAlcoholFree, valueTotal } = this.context;
 
     const order = {
       foods: listMenuFood.filter((item) => item.amount > 0),
@@ -40,7 +40,7 @@ class ConfirmOrder extends React.Component {
         ...listBeer.filter((item) => item.amount > 0),
         ...listAlcoholFree.filter((item) => item.amount > 0),
       ],
-      value: 0,
+      value: valueTotal,
     };
 
     sendMensage(this.state, order);

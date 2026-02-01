@@ -18,6 +18,7 @@ class App extends React.Component {
         listBeer: listDrinks.drink,
         listAlcoholFree: listDrinks.alcoholFree,
         counterRequest: 0,
+        valueTotal: 0,
       },
     };
   }

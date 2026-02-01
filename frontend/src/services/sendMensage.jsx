@@ -38,5 +38,5 @@ ${drinks.map((item) => `- ${item.amount}_____${item.name}\n`).join('')}
 *Total:* ${value}
 `;
 
-  window.open(`https://wa.me/+5531995258603/?text=${encodeURIComponent(mensage)}`);
+  window.open(`https://wa.me/+5531997466373/?text=${encodeURIComponent(mensage)}`);
 };

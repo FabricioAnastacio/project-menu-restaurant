@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -73,10 +74,11 @@ class RequestsList extends React.Component {
   };
 
   updateCounterRequest = () => {
-    const { requestSoftDrinks, requestFoods, requestDrinks } = this.state;
+    const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
 
     const updateCounter = [...requestSoftDrinks, ...requestFoods, ...requestDrinks];
     this.context.counterRequest = updateCounter.length;
+    this.context.valueTotal = valueTotal.toFixed(2);
   };
 
   removeItem = (item, type) => {
@@ -155,7 +157,12 @@ class RequestsList extends React.Component {
   );
 
   render() {
-    const { valueTotal, requestFoods, requestDrinks, requestSoftDrinks } = this.state;
+    const {
+      valueTotal,
+      requestFoods,
+      requestDrinks,
+      requestSoftDrinks,
+    } = this.state;
     this.updateCounterRequest();
 
     return (
@@ -167,6 +174,9 @@ class RequestsList extends React.Component {
             </div>
             <div className="img-header" />
           </section>
+          {
+            valueTotal === 0 && (<p className="alertErro-List">Voçe não tem pedidos na lista</p>)
+          }
           <ul className="list-requests">
             {
               requestFoods.map((item, key) => this.renderItemHtml(item, key, 'food'))
@@ -189,9 +199,10 @@ class RequestsList extends React.Component {
             >
               Limpar lista
             </button>
-            <Link to="/order" className="Button-ConfirmCart">Confirmar</Link>
+            <button className="Button-ConfirmCart" onClick={ this.verifyList }>
+              <Link to={ valueTotal === 0 ? '' : '/order' } className="linkOrder" aria-disabled>Confirmar</Link>
+            </button>
           </div>
-          {/* <Footer imgOpem={ false } /> */}
         </section>
       </section>
     );

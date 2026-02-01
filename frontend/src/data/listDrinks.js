@@ -6,7 +6,7 @@ const listDrinks = {
       id: 1,
       img: drinks.heineken,
       name: 'Heineken Latão',
-      description: 'cachaça, (Morango, marcuja ou limão) e açucar',
+      description: '',
       value: 14.00,
       amount: 0,
     },

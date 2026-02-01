@@ -13,22 +13,16 @@ class ListOrder extends React.Component {
   }
 
   componentDidMount() {
-    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
+    const { listMenuFood, listBeer, listAlcoholFree, valueTotal } = this.context;
     const { listOrder } = this.state;
 
     listOrder.push(...listMenuFood.filter((item) => item.amount > 0));
     listOrder.push(...listBeer.filter((item) => item.amount > 0));
     listOrder.push(...listAlcoholFree.filter((item) => item.amount > 0));
 
-    let valueAll = 0;
-
-    listOrder.forEach((item) => {
-      valueAll += item.value * item.amount;
-    });
-
     this.setState({
       listOrder,
-      valueAll,
+      valueAll: valueTotal,
     });
   }
 
@@ -49,7 +43,7 @@ class ListOrder extends React.Component {
             ))
           }
         </ul>
-        <h3 className="valueAll">{ `Total: R$ ${valueAll.toFixed(2)}` }</h3>
+        <h3 className="valueAll">{ `Total: R$ ${valueAll}` }</h3>
       </section>
     );
   }
