@@ -13,20 +13,21 @@ import redlabel from './bebidas/Drinks/redlabel.jpg';
 import blacklabel from './bebidas/Drinks/blacklabel.jpg';
 import jackdaniels from './bebidas/Drinks/jackdaniels.jpg';
 
-import coca from './bebidas/alcoholfree/coca.jpg';
-import guarana from './bebidas/alcoholfree/guarana.jpg';
-import sucoTial from './bebidas/alcoholfree/sucoTial.jpg';
+import cocaLata from './bebidas/alcoholfree/cocaLata.jpg';
+import cocaLataZero from './bebidas/alcoholfree/cocaLataZero.jpg';
+import coca600 from './bebidas/alcoholfree/coca600.jpg';
+import coca600Zero from './bebidas/alcoholfree/coca600zero.jpg';
+import coca2l from './bebidas/alcoholfree/coca2l.jpg';
+import coca1l from './bebidas/alcoholfree/coca1l.jpg';
+import guaranaLata from './bebidas/alcoholfree/guaranaLata.jpg';
+import guarana600 from './bebidas/alcoholfree/guarana600.jpg';
+import guarana2l from './bebidas/alcoholfree/guarana2l.jpg';
+import aguaGas from './bebidas/alcoholfree/aguaGas.jpg';
 import agua from './bebidas/alcoholfree/agua.jpg';
+import h2o from './bebidas/alcoholfree/h2o.jpg';
 
-import chopp from './bebidas/beers/chopp.jpg';
-import corona from './bebidas/beers/corona.jpg';
-import spaten from './bebidas/beers/spaten.jpg';
-import stella from './bebidas/beers/stella.jpg';
-import patagoniaIpa from './bebidas/beers/patagoniaIpa.jpg';
-import patagoniaAmber from './bebidas/beers/patagoniaAmber.jpg';
-import original600 from './bebidas/beers/original600.jpg';
-import spaten600 from './bebidas/beers/spaten600.jpg';
-import stella600 from './bebidas/beers/stella600.jpg';
+import brahama from './bebidas/beers/brahama.jpg';
+import heineken from './bebidas/beers/heineken.png';
 
 import picanha from './foods/picanha.jpeg';
 import bttaFrita from './foods/batataFrita.jpg';
@@ -69,19 +70,20 @@ export const drinks = {
   redlabel,
   blacklabel,
   jackdaniels,
-  coca,
-  guarana,
-  sucoTial,
   agua,
-  spaten,
-  chopp,
-  spaten600,
-  patagoniaAmber,
-  patagoniaIpa,
-  corona,
-  stella600,
-  original600,
-  stella,
+  h2o,
+  cocaLata,
+  cocaLataZero,
+  coca600,
+  coca600Zero,
+  coca2l,
+  coca1l,
+  guaranaLata,
+  guarana600,
+  guarana2l,
+  aguaGas,
+  brahama,
+  heineken,
 };
 
 export const foods = {

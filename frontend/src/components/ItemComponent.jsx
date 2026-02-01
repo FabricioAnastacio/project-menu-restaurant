@@ -144,7 +144,7 @@ class ItemComponent extends React.Component {
     return (
       <li>
         <section className="Description_Item">
-          <h3>{ item.name }</h3>
+          <h3>{ `${item.id} - ${item.name}` }</h3>
           <p>{ item.description }</p>
           <div className="Value_Sale">
             <h4>{ `R$${item.value.toFixed(2)}` }</h4>
