@@ -32,12 +32,12 @@ class ConfirmOrder extends React.Component {
   };
 
   sendOrCheff = () => {
-    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
+    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
 
     const order = {
       foods: listMenuFood.filter((item) => item.amount > 0),
       drinks: [
-        ...listDrink.filter((item) => item.amount > 0),
+        ...listBeer.filter((item) => item.amount > 0),
         ...listAlcoholFree.filter((item) => item.amount > 0),
       ],
       value: 0,
@@ -54,7 +54,7 @@ class ConfirmOrder extends React.Component {
       iten.amount = 0;
       return iten;
     });
-    this.context.listDrink = listDrink.map((iten) => {
+    this.context.listBeer = listBeer.map((iten) => {
       iten.amount = 0;
       return iten;
     });

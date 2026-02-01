@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
@@ -31,9 +32,9 @@ class ItemComponent extends React.Component {
 
   addDrink = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listDrink } = this.context;
+    const { listBeer } = this.context;
 
-    this.context.listDrink = listDrink.map((ite) => {
+    this.context.listBeer = listBeer.map((ite) => {
       if (ite.id === item.id) {
         if (ite.amount === 0) counterRequestAmount(counterItens + 1);
         ite.amount += 1;
@@ -79,9 +80,9 @@ class ItemComponent extends React.Component {
 
   removeDrink = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listDrink } = this.context;
+    const { listBeer } = this.context;
 
-    this.context.listDrink = listDrink.map((ite) => {
+    this.context.listBeer = listBeer.map((ite) => {
       if (ite.id === item.id && ite.amount > 0) {
         ite.amount -= 1;
         this.setState({
@@ -123,7 +124,7 @@ class ItemComponent extends React.Component {
 
   getCounter = (isAlcoholFree, isFood, id) => {
     const { counterAlcoholFree, counterDrink, counterFood } = this.state;
-    const { listDrink, listMenuFood, listAlcoholFree } = this.context;
+    const { listBeer, listMenuFood, listAlcoholFree } = this.context;
 
     const isValuer = counterDrink > 0 && counterFood > 0 && counterAlcoholFree > 0;
 
@@ -135,7 +136,7 @@ class ItemComponent extends React.Component {
 
     if (isFood) return listMenuFood[id - 1].amount;
 
-    return isAlcoholFree ? listAlcoholFree[id - 1].amount : listDrink[id - 1].amount;
+    return isAlcoholFree ? listAlcoholFree[id - 1].amount : listBeer[id - 1].amount;
   };
 
   render() {

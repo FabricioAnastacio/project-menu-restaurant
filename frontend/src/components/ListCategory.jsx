@@ -43,15 +43,6 @@ class ListCategory extends React.Component {
           style={ { display: isDrinks } }
           className="Select-item-thow"
         >
-          <label className={ `Label-select-thow-${drink}` }>
-            <input
-              type="checkbox"
-              checked={ drink }
-              name="drink"
-              onChange={ handleChengeThow }
-            />
-            Refri
-          </label>
           <label className={ `Label-select-thow-${alcoholFree}` }>
             <input
               type="checkbox"
@@ -59,7 +50,16 @@ class ListCategory extends React.Component {
               name="alcoholFree"
               onChange={ handleChengeThow }
             />
-            Sucos
+            Refri
+          </label>
+          <label className={ `Label-select-thow-${drink}` }>
+            <input
+              type="checkbox"
+              checked={ drink }
+              name="drink"
+              onChange={ handleChengeThow }
+            />
+            Cervejas
           </label>
         </section>
         <section style={ { display: isFood } } className="Search_item">

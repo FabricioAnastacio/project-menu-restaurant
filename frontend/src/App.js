@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
       value: {
         listMenuFood: listFoods,
-        listDrink: listDrinks.drink,
+        listBeer: listDrinks.drink,
         listAlcoholFree: listDrinks.alcoholFree,
         counterRequest: 0,
       },

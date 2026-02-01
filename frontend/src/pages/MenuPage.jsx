@@ -50,7 +50,7 @@ class MenuPage extends React.Component {
 
   handleChenge = ({ target }) => {
     const { name, checked, type, value } = target;
-    const { listMenuFood, listDrink } = this.context;
+    const { listMenuFood, listAlcoholFree } = this.context;
     const relatedKey = this.pairMap[name];
     if (type === 'text') {
       this.setState({
@@ -60,14 +60,14 @@ class MenuPage extends React.Component {
       return;
     }
 
-    if (!checked === true) return;
+    if (!checked) return;
     this.setState({
       [name]: checked,
       [relatedKey]: !checked,
-      list: name === 'allDrinks' ? listDrink : listMenuFood,
+      list: name === 'allDrinks' ? listAlcoholFree : listMenuFood,
       beer: false,
-      drink: true,
-      alcoholFree: false,
+      drink: false,
+      alcoholFree: true,
     });
   };
 

@@ -17,13 +17,13 @@ class RequestsList extends React.Component {
   }
 
   componentDidMount() {
-    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
+    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
     const requestFoods = [];
     const requestDrinks = [];
     const requestSoftDrinks = [];
 
     requestFoods.push(...listMenuFood.filter((item) => item.amount > 0));
-    requestDrinks.push(...listDrink.filter((item) => item.amount > 0));
+    requestDrinks.push(...listBeer.filter((item) => item.amount > 0));
     requestSoftDrinks.push(...listAlcoholFree.filter((item) => item.amount > 0));
 
     const requestAllItens = [...requestFoods, ...requestDrinks, ...requestSoftDrinks];
@@ -111,7 +111,7 @@ class RequestsList extends React.Component {
   };
 
   removeAllItens = () => {
-    const { listMenuFood, listDrink, listAlcoholFree } = this.context;
+    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
 
     this.context.counterRequest = 0;
     this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
@@ -122,7 +122,7 @@ class RequestsList extends React.Component {
       iten.amount = 0;
       return iten;
     });
-    this.context.listDrink = listDrink.map((iten) => {
+    this.context.listBeer = listBeer.map((iten) => {
       iten.amount = 0;
       return iten;
     });
