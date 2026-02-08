@@ -1,9 +1,9 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import '../style/requestsList.css';
 import '../style/footer.css';
+import RenderItem from './RenderItem';
 
 class RequestsList extends React.Component {
   constructor() {
@@ -137,25 +137,6 @@ class RequestsList extends React.Component {
     });
   };
 
-  renderItemHtml = (item, key, type) => (
-    <li key={ key } className="request">
-      <div className="item-title">
-        <div
-          className="imgCart"
-          style={ { backgroundImage: `url(${item.img})` } }
-          aria-hidden="true"
-        />
-        <div className="item-name">
-          <h1>{ item.name }</h1>
-          <p>{ `R$${item.value.toFixed(2)}` }</p>
-        </div>
-      </div>
-      <button onClick={ () => this.addNewItem(item, type) }>+</button>
-      <p>{ item.amount }</p>
-      <button onClick={ () => this.removeItem(item, type) }>-</button>
-    </li>
-  );
-
   render() {
     const {
       valueTotal,
@@ -175,18 +156,42 @@ class RequestsList extends React.Component {
             <div className="img-header" />
           </section>
           {
-            valueTotal === 0 && (<p className="alertErro-List">Voçe não tem pedidos na lista</p>)
+            valueTotal === 0 && (
+              <p className="alertErro-List">Voçe não tem pedidos na lista</p>
+            )
           }
           <ul className="list-requests">
             {
-              requestFoods.map((item, key) => this.renderItemHtml(item, key, 'food'))
+              requestFoods.map(
+                (item, key) => (<RenderItem
+                  key={ key }
+                  item={ item }
+                  type="food"
+                  removeItem={ this.removeItem }
+                  addNewItem={ this.addNewItem }
+                />),
+              )
             }
             {
-              requestDrinks.map((item, key) => this.renderItemHtml(item, key, 'drink'))
+              requestDrinks.map(
+                (item, key) => (<RenderItem
+                  key={ key }
+                  item={ item }
+                  type="drink"
+                  removeItem={ this.removeItem }
+                  addNewItem={ this.addNewItem }
+                />),
+              )
             }
             {
               requestSoftDrinks.map(
-                ((item, key) => this.renderItemHtml(item, key, 'softDrink')),
+                (item, key) => (<RenderItem
+                  key={ key }
+                  item={ item }
+                  type="softDrink"
+                  removeItem={ this.removeItem }
+                  addNewItem={ this.addNewItem }
+                />),
               )
             }
           </ul>
@@ -200,7 +205,13 @@ class RequestsList extends React.Component {
               Limpar lista
             </button>
             <button className="Button-ConfirmCart" onClick={ this.verifyList }>
-              <Link to={ valueTotal === 0 ? '' : '/order' } className="linkOrder" aria-disabled>Confirmar</Link>
+              <Link
+                to={ valueTotal === 0 ? '' : '/order' }
+                className="linkOrder"
+                aria-disabled
+              >
+                Confirmar
+              </Link>
             </button>
           </div>
         </section>

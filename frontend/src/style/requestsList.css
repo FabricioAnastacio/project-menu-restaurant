@@ -38,8 +38,15 @@
 
 .request {
   display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.item-request {
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .item-title {
@@ -54,6 +61,30 @@
   h1 {
     font-size: 15px;
   }
+}
+
+.Btm-Observation-false, .Btm-Observation-true {
+  background-color: transparent;
+  border: none;
+  color: rgb(247, 218, 89);
+  padding: 0;
+  margin-left: 30%;
+  text-decoration: underline;
+}
+
+.Btm-Observation-true {
+  color: rgb(255, 87, 87);
+}
+
+.item-obs {
+  margin-top: 20px;
+  background-color: transparent;
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 5px;
+  color: white;
+  width: 99%;
+  height: 80px;
+  padding: 5px 10px;
 }
 
 .alertErro-List {
