@@ -11,6 +11,19 @@ class RenderItem extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { item } = this.props;
+
+    if (item.obs !== '') this.setState({ obs: true, itemObs: item.obs });
+  }
+
+  componentWillUnmount() {
+    const { item } = this.props;
+    const { itemObs } = this.state;
+
+    item.obs = itemObs;
+  }
+
   handleChengeObs = ({ target }) => {
     const { name, value } = target;
 
@@ -59,7 +72,7 @@ class RenderItem extends React.Component {
           name="itemObs"
           id="obs"
           value={ itemObs }
-          onChange={ this.handleChengeObs }
+          onChange={ (e) => this.handleChengeObs(e, item) }
           placeholder="Ex. Sem batata palha"
           style={ { display: obs ? 'flex' : 'none' } }
         />
@@ -69,11 +82,20 @@ class RenderItem extends React.Component {
 }
 
 RenderItem.propTypes = {
-  item: PropTypes.objectOf({}).isRequired,
+  item: PropTypes.objectOf({
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    amount: PropTypes.number.isRequired,
+    obs: PropTypes.string.isRequired,
+  }).isRequired,
   key: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
+  // requestItemCustom: PropTypes.arrayOf([]).isRequired,
 };
 
 export default RenderItem;

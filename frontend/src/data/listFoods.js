@@ -4,6 +4,7 @@ import { foods } from '../pictures/exportImgs';
 const listFoods = [
   {
     id: 1,
+    obs: '',
     img: foods.picanha,
     name: 'Kuririn',
     description: 'Pão, bife, salada, milho e batata',
@@ -12,6 +13,7 @@ const listFoods = [
   },
   {
     id: 2,
+    obs: '',
     img: foods.bttaFrita,
     name: 'Hawk Bacon',
     description:
@@ -21,6 +23,7 @@ const listFoods = [
   },
   {
     id: 3,
+    obs: '',
     img: foods.bolinhoCarne,
     name: 'Fênix Burger',
     description: 'Pão, bife 90g, frango desfiado, requeijão cremoso, calabresa,cebola roxa caramelizada, mussarela, salada, milho e batata.',
@@ -29,6 +32,7 @@ const listFoods = [
   },
   {
     id: 4,
+    obs: '',
     img: foods.bolinhoCostela,
     name: 'Beleza da Natureza (Vegetariano)',
     description: 'Pão, ovo, cebola roxa caramelizada, mussarela, salada, milho e batata.',
@@ -37,6 +41,7 @@ const listFoods = [
   },
   {
     id: 5,
+    obs: '',
     img: foods.carnePanela,
     name: 'Big Tanjiro',
     description: 'Pão, 2 bifes 90g, frango desfiado, requeijão cremoso, 2 ovos, bacon, presunto, mussarela, cebola roxa caramelizada, salada, milho e batata.',
@@ -45,6 +50,7 @@ const listFoods = [
   },
   {
     id: 6,
+    obs: '',
     img: foods.carneSol,
     name: 'Baby Stitch',
     description: 'Pão brioche, blend bovino 120g, bacon fatiado, cheddar e molho especial. (Acompanha Fritas Pokê 150g)',
@@ -53,6 +59,7 @@ const listFoods = [
   },
   {
     id: 7,
+    obs: '',
     img: foods.coxinhaCostela,
     name: 'Titan Blindado',
     description: 'Pão brioche, blend bovino 120g, bacon fatiado, mussarela, cebola roxa e molho especial. (Acompanha katana Batata 150g)',
@@ -61,6 +68,7 @@ const listFoods = [
   },
   {
     id: 8,
+    obs: '',
     img: foods.coxinhaPernil,
     name: 'Titan Colossal',
     description: 'Pão brioche, 2 blends bovinos 120g, queijo empanado crocante, bacon fatiado, cheddar, cebola roxa e molho especial. (Acompanha Fritas Pokê 150g)',
