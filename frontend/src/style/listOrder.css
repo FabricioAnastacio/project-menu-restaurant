@@ -28,3 +28,11 @@
   border-bottom: 1px dotted white;
   margin-bottom: 0;
 }
+
+.Tag-Item {
+  color: black;
+  background-color: yellow;
+  padding: 0 5px;
+  border-radius: 5px;
+  font-size: 9px;
+}

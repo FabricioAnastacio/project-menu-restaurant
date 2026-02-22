@@ -30,13 +30,17 @@ export const sendMensage = (dataClient, order) => {
 *Pedido:*
 
 *Lanches:*
-${foods.map((item) => `- ${item.amount}_____${item.name}\n`).join('')}
+${foods.map((item) => `- ${item.amount}_____${item.name}
+${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
+`).join('')}
 
 *Bebidas:*
-${drinks.map((item) => `- ${item.amount}_____${item.name}\n`).join('')}
+${drinks.map((item) => `- ${item.amount}_____${item.name}
+${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
+`).join('')}
 
 *Total:* ${value}
 `;
 
-  window.open(`https://wa.me/+5531997466373/?text=${encodeURIComponent(mensage)}`);
+  window.open(`https://wa.me/+5531999739177/?text=${encodeURIComponent(mensage)}`);
 };
