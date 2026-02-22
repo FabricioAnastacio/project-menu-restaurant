@@ -10,7 +10,7 @@ export const sendMensage = (dataClient, order) => {
     clientChange,
   } = dataClient;
 
-  const { foods, drinks, value } = order;
+  const { foods, drinks, additional, value } = order;
 
   const mensage = `*#Novo Pedido*
 
@@ -38,6 +38,9 @@ ${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
 ${drinks.map((item) => `- ${item.amount}_____${item.name}
 ${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
 `).join('')}
+
+*Adicionais:*
+${additional.map((item) => `- ${item.amount}_____${item.name}\n`).join('')}
 
 *Total:* ${value}
 `;

@@ -13,12 +13,15 @@ class ListOrder extends React.Component {
   }
 
   componentDidMount() {
-    const { listMenuFood, listBeer, listAlcoholFree, valueTotal } = this.context;
+    const {
+      listMenuFood,
+      listBeer, listAlcoholFree, listAdditional, valueTotal } = this.context;
     const { listOrder } = this.state;
 
     listOrder.push(...listMenuFood.filter((item) => item.amount > 0));
     listOrder.push(...listBeer.filter((item) => item.amount > 0));
     listOrder.push(...listAlcoholFree.filter((item) => item.amount > 0));
+    listOrder.push(...listAdditional.sauce.filter((item) => item.amount > 0));
 
     this.setState({
       listOrder,

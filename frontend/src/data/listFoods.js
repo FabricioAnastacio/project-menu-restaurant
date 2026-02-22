@@ -84,6 +84,7 @@ const listFoods = {
         name: 'Mainese da Casa Tradicional 30g',
         description: '30g',
         value: 3.00,
+        obs: '',
         amount: 0,
       },
     ],
