@@ -44,7 +44,11 @@ class RenderItem extends React.Component {
     const { item, key, type, addNewItem, removeItem } = this.props;
 
     return (
-      <li key={ key } className="request">
+      <li
+        key={ key }
+        className={ `request ${type}` }
+        style={ { opacity: `${item.amount === 0 ? '.6' : '1'}` } }
+      >
         <div className="item-request">
           <div className="item-title">
             <div
@@ -55,27 +59,35 @@ class RenderItem extends React.Component {
             <div className="item-name">
               <h1>{ item.name }</h1>
               <p>{ `R$${item.value.toFixed(2)}` }</p>
-              <button
-                className={ `Btm-Observation-${obs}` }
-                onClick={ this.onClickAddObs }
-              >
-                { !obs ? 'Add observação' : 'Rm observação' }
-              </button>
+              {
+                type !== 'sauce' && (
+                  <button
+                    className={ `Btm-Observation-${obs}` }
+                    onClick={ this.onClickAddObs }
+                  >
+                    { !obs ? 'Add observação' : 'Rm observação' }
+                  </button>
+                )
+              }
             </div>
           </div>
           <button onClick={ () => addNewItem(item, type) }>+</button>
           <p>{ item.amount }</p>
           <button onClick={ () => removeItem(item, type) }>-</button>
         </div>
-        <textarea
-          className="item-obs"
-          name="itemObs"
-          id="obs"
-          value={ itemObs }
-          onChange={ (e) => this.handleChengeObs(e, item) }
-          placeholder="Ex. Sem batata palha"
-          style={ { display: obs ? 'flex' : 'none' } }
-        />
+        {
+          type !== 'sauce' && (
+            <textarea
+              className="item-obs"
+              name="itemObs"
+              id="obs"
+              value={ itemObs }
+              onChange={ (e) => this.handleChengeObs(e, item) }
+              placeholder="Ex. Sem batata palha"
+              style={ { display: obs ? 'flex' : 'none' } }
+            />
+          )
+        }
       </li>
     );
   }

@@ -42,6 +42,29 @@
   flex-direction: column;
 }
 
+.sauce {
+  background-color: rgba(0, 0, 0, 0.432);
+  box-shadow: 1px 1px 20px black;
+  border-radius: 5px;
+  border-color: rgba(255, 255, 255, 0.404);
+  margin-bottom: 25px;
+  .imgCart {
+    height: 50px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    margin: 0 10px 0 0;
+    position: relative;
+    width: 80px;
+    transition: .7s;
+  }
+  .item-name {
+    h1 {
+      font-size: 12px;
+    }
+  }
+}
+
 .item-request {
   display: flex;
   align-items: center;

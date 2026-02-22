@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable max-lines */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -14,11 +16,12 @@ class RequestsList extends React.Component {
       requestFoods: [],
       requestDrinks: [],
       requestSoftDrinks: [],
+      requestSauce: [],
     };
   }
 
   componentDidMount() {
-    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
+    const { listAdditional, listMenuFood, listBeer, listAlcoholFree } = this.context;
     const requestFoods = [];
     const requestDrinks = [];
     const requestSoftDrinks = [];
@@ -27,7 +30,8 @@ class RequestsList extends React.Component {
     requestDrinks.push(...listBeer.filter((item) => item.amount > 0));
     requestSoftDrinks.push(...listAlcoholFree.filter((item) => item.amount > 0));
 
-    const requestAllItens = [...requestFoods, ...requestDrinks, ...requestSoftDrinks];
+    const requestAllItens = [
+      ...requestFoods, ...requestDrinks, ...requestSoftDrinks, ...listAdditional.sauce];
 
     let valueTotal = 0;
     requestAllItens.forEach((item) => {
@@ -40,11 +44,14 @@ class RequestsList extends React.Component {
       requestFoods,
       requestDrinks,
       requestSoftDrinks,
+      requestSauce: listAdditional.sauce,
     });
   }
 
   addNewItem = (item, type) => {
-    const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
+    const {
+      requestSoftDrinks,
+      requestFoods, requestDrinks, requestSauce, valueTotal } = this.state;
     this.setState({
       valueTotal: valueTotal + item.value,
     });
@@ -63,9 +70,16 @@ class RequestsList extends React.Component {
           return a;
         }),
       });
-    } else {
+    } else if (type === 'softDrink') {
       this.setState({
         requestSoftDrinks: requestSoftDrinks.map((a) => {
+          if (a.id === item.id) a.amount += 1;
+          return a;
+        }),
+      });
+    } else {
+      this.setState({
+        requestSauce: requestSauce.map((a) => {
           if (a.id === item.id) a.amount += 1;
           return a;
         }),
@@ -82,10 +96,13 @@ class RequestsList extends React.Component {
   };
 
   removeItem = (item, type) => {
-    const { requestSoftDrinks, requestFoods, requestDrinks, valueTotal } = this.state;
+    const {
+      requestSoftDrinks,
+      requestFoods,
+      requestDrinks, requestSauce, valueTotal } = this.state;
 
     this.setState({
-      valueTotal: valueTotal - item.value,
+      valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
     });
 
     if (type === 'food') {
@@ -102,11 +119,18 @@ class RequestsList extends React.Component {
           return a.amount > 0 ?? a;
         }),
       });
-    } else {
+    } else if (type === 'softDrink') {
       this.setState({
         requestSoftDrinks: requestSoftDrinks.filter((a) => {
           if (a.id === item.id) a.amount -= 1;
           return a.amount > 0 && a;
+        }),
+      });
+    } else {
+      this.setState({
+        requestSauce: requestSauce.filter((a) => {
+          if (a.id === item.id && a.amount > 0) a.amount -= 1;
+          return a;
         }),
       });
     }
@@ -146,6 +170,7 @@ class RequestsList extends React.Component {
       requestFoods,
       requestDrinks,
       requestSoftDrinks,
+      requestSauce,
     } = this.state;
     this.updateCounterRequest();
 
@@ -158,12 +183,18 @@ class RequestsList extends React.Component {
             </div>
             <div className="img-header" />
           </section>
-          {
-            valueTotal === 0 && (
-              <p className="alertErro-List">Voçe não tem pedidos na lista</p>
-            )
-          }
           <ul className="list-requests">
+            {
+              requestSauce.map((item, key) => (
+                <RenderItem
+                  key={ key }
+                  item={ item }
+                  type="sauce"
+                  removeItem={ this.removeItem }
+                  addNewItem={ this.addNewItem }
+                />
+              ))
+            }
             {
               requestFoods.map(
                 (item, key) => (<RenderItem
@@ -195,6 +226,11 @@ class RequestsList extends React.Component {
                   removeItem={ this.removeItem }
                   addNewItem={ this.addNewItem }
                 />),
+              )
+            }
+            {
+              valueTotal === 0 && (
+                <p className="alertErro-List">Voçe não tem pedidos na lista</p>
               )
             }
           </ul>

@@ -20,7 +20,7 @@ class MenuPage extends React.Component {
       beer: false,
       drink: true,
       alcoholFree: false,
-      list: listFoods,
+      list: listFoods.food,
       imgOpen: false,
       counterItens: 0,
     };
