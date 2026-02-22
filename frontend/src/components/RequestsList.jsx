@@ -118,14 +118,17 @@ class RequestsList extends React.Component {
     this.context.counterRequest = 0;
     this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
       iten.amount = 0;
+      iten.obs = '';
       return iten;
     });
     this.context.listMenuFood = listMenuFood.map((iten) => {
       iten.amount = 0;
+      iten.obs = '';
       return iten;
     });
     this.context.listBeer = listBeer.map((iten) => {
       iten.amount = 0;
+      iten.obs = '';
       return iten;
     });
 
