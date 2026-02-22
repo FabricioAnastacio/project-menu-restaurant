@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
-import { createListMenuBeer } from '../services/createListMenu';
 import ItemComponent from './ItemComponent';
 
 class Menu extends React.Component {
@@ -34,7 +33,7 @@ class Menu extends React.Component {
       imgOpem,
       isbeer,
       isFood,
-      isAlcoholFree,
+      isCandy,
       counterItens,
       counterRequestAmount,
     } = this.props;
@@ -63,13 +62,14 @@ class Menu extends React.Component {
         </section>
         <ul className={ `Ul-${imgOpem}` }>
           {
-            isbeer ? createListMenuBeer(listMenu[0], this.getItem, setBlur) : (
+            (
               listMenu.map((item, key) => (
                 <ItemComponent
                   key={ key }
                   item={ item }
                   isFood={ isFood }
-                  isAlcoholFree={ isAlcoholFree }
+                  isbeer={ isbeer }
+                  isCandy={ isCandy }
                   getItem={ this.getItem }
                   setBlur={ setBlur }
                   counterItens={ counterItens }
@@ -91,7 +91,7 @@ Menu.propTypes = {
   counterItens: PropTypes.number.isRequired,
   counterRequestAmount: PropTypes.func.isRequired,
   isFood: PropTypes.bool.isRequired,
-  isAlcoholFree: PropTypes.bool.isRequired,
+  isCandy: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
   isbeer: PropTypes.bool.isRequired,

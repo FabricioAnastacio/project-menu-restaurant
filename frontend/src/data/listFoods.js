@@ -97,6 +97,35 @@ const listFoods = {
       amount: 0,
     },
   ],
+  candy: [
+    {
+      id: 1,
+      img: foods.bttaFrita,
+      name: 'Bala Halls Extra',
+      description: '',
+      value: 3.00,
+      obs: '',
+      amount: 0,
+    },
+    {
+      id: 2,
+      img: foods.bttaFrita,
+      name: 'Trident Menta',
+      description: '',
+      value: 4.00,
+      obs: '',
+      amount: 0,
+    },
+    {
+      id: 3,
+      img: foods.bttaFrita,
+      name: 'Trident Melancia',
+      description: '',
+      value: 4.00,
+      obs: '',
+      amount: 0,
+    },
+  ],
   additional: {
     sauce: [
       {
@@ -104,32 +133,6 @@ const listFoods = {
         name: 'Mainese da Casa Tradicional 30g',
         description: '30g',
         value: 3.00,
-        obs: '',
-        amount: 0,
-      },
-    ],
-    candy: [
-      {
-        img: foods.bttaFrita,
-        name: 'Bala Halls Extra',
-        description: '',
-        value: 3.00,
-        obs: '',
-        amount: 0,
-      },
-      {
-        img: foods.bttaFrita,
-        name: 'Trident Menta',
-        description: '',
-        value: 4.00,
-        obs: '',
-        amount: 0,
-      },
-      {
-        img: foods.bttaFrita,
-        name: 'Trident Melancia',
-        description: '',
-        value: 4.00,
         obs: '',
         amount: 0,
       },

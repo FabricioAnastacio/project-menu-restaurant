@@ -18,19 +18,19 @@ class MenuPage extends React.Component {
       allDrinks: false,
       food: true,
       beer: false,
-      drink: true,
-      alcoholFree: false,
+      candy: false,
+      alcoholFree: true,
       list: listFoods.food,
       imgOpen: false,
       counterItens: 0,
     };
 
     this.pairMap = {
-      allDrinks: 'food',
-      food: 'allDrinks',
-      beer: ['drink', 'alcoholFree'],
-      drink: ['beer', 'alcoholFree'],
-      alcoholFree: ['drink', 'beer'],
+      allDrinks: ['candy', 'food'],
+      food: ['allDrinks', 'candy'],
+      candy: ['allDrinks', 'food'],
+      beer: ['alcoholFree'],
+      alcoholFree: ['beer'],
     };
   }
 
@@ -50,8 +50,9 @@ class MenuPage extends React.Component {
 
   handleChenge = ({ target }) => {
     const { name, checked, type, value } = target;
-    const { listMenuFood, listAlcoholFree } = this.context;
+    const { listMenu } = this.context;
     const relatedKey = this.pairMap[name];
+
     if (type === 'text') {
       this.setState({
         [name]: value,
@@ -63,10 +64,10 @@ class MenuPage extends React.Component {
     if (!checked) return;
     this.setState({
       [name]: checked,
-      [relatedKey]: !checked,
-      list: name === 'allDrinks' ? listAlcoholFree : listMenuFood,
+      [relatedKey[0]]: !checked,
+      [relatedKey[1]]: !checked,
+      list: name === 'allDrinks' ? listMenu[name].alcoholFree : listMenu[name],
       beer: false,
-      drink: false,
       alcoholFree: true,
     });
   };
@@ -74,11 +75,11 @@ class MenuPage extends React.Component {
   handleChengeThowSelection = ({ target }) => {
     const { name, checked } = target;
     const relatedKey = this.pairMap[name];
+
     if (!checked === true) return;
     this.setState({
       [name]: checked,
       [relatedKey[0]]: !checked,
-      [relatedKey[1]]: !checked,
       list: listDrinks[name],
     });
   };
@@ -100,9 +101,9 @@ class MenuPage extends React.Component {
   render() {
     const {
       search,
-      drink,
       allDrinks,
       food,
+      candy,
       beer,
       alcoholFree,
       imgOpen,
@@ -123,7 +124,7 @@ class MenuPage extends React.Component {
           allDrinks={ allDrinks }
           foods={ food }
           beer={ beer }
-          drink={ drink }
+          candy={ candy }
           alcoholFree={ alcoholFree }
         />
         <Menu
@@ -131,6 +132,7 @@ class MenuPage extends React.Component {
           imgOpem={ imgOpen }
           isbeer={ beer }
           isFood={ food }
+          isCandy={ candy }
           isAlcoholFree={ alcoholFree }
           listMenu={ list }
           counterItens={ counterItens }

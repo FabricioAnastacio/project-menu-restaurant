@@ -21,17 +21,20 @@ class RequestsList extends React.Component {
   }
 
   componentDidMount() {
-    const { listAdditional, listMenuFood, listBeer, listAlcoholFree } = this.context;
+    const {
+      listMenu: { food, candy,
+        allDrinks: { alcoholFree, beer }, additional } } = this.context;
     const requestFoods = [];
     const requestDrinks = [];
     const requestSoftDrinks = [];
 
-    requestFoods.push(...listMenuFood.filter((item) => item.amount > 0));
-    requestDrinks.push(...listBeer.filter((item) => item.amount > 0));
-    requestSoftDrinks.push(...listAlcoholFree.filter((item) => item.amount > 0));
+    requestFoods.push(...food.filter((item) => item.amount > 0));
+    requestDrinks.push(...beer.filter((item) => item.amount > 0));
+    requestSoftDrinks.push(...candy.filter((item) => item.amount > 0));
+    requestSoftDrinks.push(...alcoholFree.filter((item) => item.amount > 0));
 
     const requestAllItens = [
-      ...requestFoods, ...requestDrinks, ...requestSoftDrinks, ...listAdditional.sauce];
+      ...requestFoods, ...requestDrinks, ...requestSoftDrinks, ...additional.sauce];
 
     let valueTotal = 0;
     requestAllItens.forEach((item) => {
@@ -44,7 +47,7 @@ class RequestsList extends React.Component {
       requestFoods,
       requestDrinks,
       requestSoftDrinks,
-      requestSauce: listAdditional.sauce,
+      requestSauce: additional.sauce,
     });
   }
 
@@ -140,20 +143,20 @@ class RequestsList extends React.Component {
   };
 
   removeAllItens = () => {
-    const { listMenuFood, listBeer, listAlcoholFree } = this.context;
+    const { listMenu: { food, allDrinks }, listMenu } = this.context;
 
     this.context.counterRequest = 0;
-    this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
+    allDrinks.alcoholFree = allDrinks.alcoholFree.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
-    this.context.listMenuFood = listMenuFood.map((iten) => {
+    listMenu.food = food.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
-    this.context.listBeer = listBeer.map((iten) => {
+    allDrinks.beer = allDrinks.beer.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;

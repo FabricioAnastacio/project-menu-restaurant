@@ -33,33 +33,44 @@ class ConfirmOrder extends React.Component {
 
   sendOrCheff = () => {
     const {
-      listMenuFood,
-      listBeer, listAlcoholFree, listAdditional, valueTotal } = this.context;
+      listMenu: {
+        candy, food, allDrinks: {
+          alcoholFree, beer,
+        }, additional,
+      }, valueTotal, listMenu } = this.context;
 
     const order = {
-      foods: listMenuFood.filter((item) => item.amount > 0),
+      foods: food.filter((item) => item.amount > 0),
       drinks: [
-        ...listBeer.filter((item) => item.amount > 0),
-        ...listAlcoholFree.filter((item) => item.amount > 0),
+        ...beer.filter((item) => item.amount > 0),
+        ...alcoholFree.filter((item) => item.amount > 0),
       ],
-      additional: listAdditional.sauce.filter((item) => item.amount > 0),
+      additional: [
+        ...additional.sauce.filter((item) => item.amount > 0),
+        ...candy.filter((item) => item.amount > 0),
+      ],
       value: valueTotal,
     };
 
     sendMensage(this.state, order);
 
     this.context.counterRequest = 0;
-    this.context.listAlcoholFree = listAlcoholFree.map((iten) => {
+    listMenu.alcoholFree = alcoholFree.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
-    this.context.listMenuFood = listMenuFood.map((iten) => {
+    listMenu.food = food.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
-    this.context.listBeer = listBeer.map((iten) => {
+    listMenu.beer = beer.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    listMenu.candy = candy.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;

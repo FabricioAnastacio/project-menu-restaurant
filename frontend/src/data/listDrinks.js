@@ -1,7 +1,7 @@
 import { drinks } from '../pictures/exportImgs';
 
 const listDrinks = {
-  drink: [
+  beer: [
     {
       id: 1,
       img: drinks.heineken,
