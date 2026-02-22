@@ -2,6 +2,8 @@ import React from 'react';
 import AppContext from '../context/AppContext';
 import '../style/listOrder.css';
 
+const TX = 4;
+
 class ListOrder extends React.Component {
   constructor() {
     super();
@@ -47,7 +49,11 @@ class ListOrder extends React.Component {
             ))
           }
         </ul>
-        <h3 className="valueAll">{ `Total: R$ ${valueAll}` }</h3>
+        <div className="CustFinally">
+          <h5>{ `Pedido:_______R$${valueAll}` }</h5>
+          <h5>Tx Entrega:__+R$4.00</h5>
+          <h3>{ `Total:__R$${(Number(valueAll) + TX).toFixed(2)}` }</h3>
+        </div>
       </section>
     );
   }

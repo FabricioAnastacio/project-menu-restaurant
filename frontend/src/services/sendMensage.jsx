@@ -9,9 +9,8 @@ export const sendMensage = (dataClient, order) => {
     clientPayment,
     clientChange,
   } = dataClient;
-
   const { foods, drinks, additional, value } = order;
-
+  const TX = 4;
   const mensage = `*#Novo Pedido*
 
 *Para:* ${clientName}
@@ -33,16 +32,17 @@ export const sendMensage = (dataClient, order) => {
 ${foods.map((item) => `- ${item.amount}_____${item.name}
 ${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
 `).join('')}
-
 *Bebidas:*
 ${drinks.map((item) => `- ${item.amount}_____${item.name}
 ${item.obs !== '' ? `Observação: ${item.obs}\n` : ''}
 `).join('')}
-
 *Adicionais:*
 ${additional.map((item) => `- ${item.amount}_____${item.name}\n`).join('')}
+-----------------------------------------------
+Pedido: R$${value}
++R$4.00
 
-*Total:* ${value}
+*Total:* R$${(Number(value) + TX).toFixed(2)}
 `;
 
   window.open(`https://wa.me/+5531999739177/?text=${encodeURIComponent(mensage)}`);

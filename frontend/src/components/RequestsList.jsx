@@ -183,6 +183,7 @@ class RequestsList extends React.Component {
           <section className="header-request" id="Header">
             <div className="cost">
               <h4 className="value-total">{ `Total: R$ ${valueTotal.toFixed(2)}` }</h4>
+              <h5>Taxa entrega: R$4.00</h5>
             </div>
             <div className="img-header" />
           </section>
