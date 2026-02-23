@@ -1,0 +1,108 @@
+*,
+*:focus{outline: none}
+
+.Form-Info {
+  padding: 0 10px;
+}
+
+.Client-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Div-form {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+  width: 80%;
+}
+
+.Data-Client {
+  display: block;
+  background: transparent;
+  border: 0;
+  border-bottom: solid 1px;
+  border-color: #f10000;
+  transition: all .3s ease;
+  width: 80%;
+  padding: 5px;
+  color: white;
+}
+
+.Data-Client:focus {
+  border-color: rgba(255, 0, 0, 0.753);
+}
+
+.Data-Label {
+  position: absolute;
+  cursor: text;
+  z-index: 2;
+  left: 1px;
+  font-size: 12px;
+  font-weight: bold;
+  background: #ffffff00;
+  padding: 0 5px;
+  border: 0;
+  color: #999;
+  transition: all .3s ease;
+}
+
+.Data-Client:valid + .Data-Label{
+  font-size: 11px;
+  top: -17px;
+  color: rgba(255, 0, 0, 0.493)
+}
+
+.Data-Client:focus + .Data-Label{
+  color: rgb(255, 0, 0);
+  top: -17px;
+}
+
+.Form-Payment {
+  width: 100%;
+}
+
+.Payment {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.Label-pay {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.Btm-order {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-top: 20px;
+  width: 90%;
+}
+
+.Link {
+  color: black;
+}
+
+.Return {
+  background-color: white;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-right: 40px;
+}
+
+
+.Send-Order {
+  background-color: green;
+  border: solid 1px green;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+}

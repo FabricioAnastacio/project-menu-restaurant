@@ -1,63 +1,122 @@
 .Categorys {
+  display: grid;
+  place-items: center;
   position: sticky;
   top: 0;
-  background-color: white;
   z-index: 1;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 1em 1em -1px black;
 }
 
 .Select-item {
-  align-items: center;
   display: flex;
-  height: 40px;
-  padding: 10px 0;
-  justify-content: space-around;
-  margin: 70px 0 5px;
-  width: 90%;
-  z-index: 0;
+  margin-top: 10px;
+  justify-content: space-evenly;
+  width: 100%;
+  input {
+    display: none;
+  }
 }
 
 label {
-  background-color: white;
-  border: 1px solid #f486325d;
-  color: #F48732;
+  background-color: rgba(0, 0, 0, 0.87);
+  border: 1px solid #f432325d;
+  color: #f43232;
   border-radius: 5px;
   font-size: 14px;
-  margin: 9px;
+  margin: 5px;
   padding: 2px 30px;
   transition: .5s;
+  height: 20px;
 }
 
 .Label-select-true {
-  background-color: #F48732;
+  background-color: #f43232;
   border-color: white;
   color: white;
   transform: scale(1.1);
 }
 
-.Select-item-thow-true {
-  align-items: center;
+.Select-item-thow {
   display: flex;
-  margin-bottom: 10px;
-  margin-right: 4%;
+  align-items: center;
+  margin-bottom: 5px;
   justify-content: space-evenly;
-  width: 80%;
-}
-
-.Select-item-thow-false {
-  transition: 0s;
-  opacity: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.Label-select-thow-true, .Label-select-thow-false {
-  padding: 1px 10px;
-  margin: 0;
+  width: 70%;
+  input {
+    display: none;
+  }
 }
 
 .Label-select-thow-true {
-  background-color: #F48732;
+  background-color: #f43232;
   border-color: white;
   color: white;
   transform: scale(1.1);
+}
+
+.Search_item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  input {
+    margin-left: 10px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+    color: white;
+    padding: 5px;
+  }
+  img {
+    width: 25px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .Categorys {
+    place-items: start;
+    padding-left: 25%;
+  }
+  .Select-item {
+    align-items: center;
+    justify-content: start;
+    margin: 10px 0 10px;
+    width: 50%;
+    label {
+      margin-left: 30px;
+      padding: 5px 40px;
+    }
+  }
+
+  .Select-item-thow {
+    width: 50%;
+    justify-content: start;
+    label {
+      margin-left: 30px;
+    }
+  }
+
+  .Select-item-thow-true {
+    align-items: center;
+    justify-content: start;
+    width: 45%;
+    label {
+      margin: 0 10px;
+      padding: 5px 20px;
+    }
+  }
+
+  .Search_item {
+    margin-left: 30px;
+  }
+  
+  label {
+    font-size: 18px;
+  }
+
+  label:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }

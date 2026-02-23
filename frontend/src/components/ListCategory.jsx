@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import searchIcon from '../pictures/icons8-search-more-48.png';
+import searchIcon from '../pictures/icons8-search-more-white-96.png';
 import '../style/ListCategory.css';
 
 class ListCategory extends React.Component {
   render() {
     const {
-      hotDrink,
-      drinks,
-      foods,
-      alcoholFree,
       beer,
+      allDrinks,
+      foods,
+      candy,
+      alcoholFree,
       handleChenge,
       handleChengeThow,
+      search,
     } = this.props;
+    const isDrinks = allDrinks ? '' : 'none';
+    const isFood = foods ? '' : 'none';
 
     return (
       <div className="Categorys">
         <section className="Select-item">
-          <label className={ `Label-select-${drinks}` }>
+          <label className={ `Label-select-${allDrinks}` }>
             <input
               type="checkbox"
-              checked={ drinks }
-              name="drink"
+              checked={ allDrinks }
+              name="allDrinks"
               onChange={ handleChenge }
             />
             Bebidas
@@ -34,21 +37,30 @@ class ListCategory extends React.Component {
               name="food"
               onChange={ handleChenge }
             />
-            Petiscos
+            Burgers
           </label>
-          <button className="Btms-search">
-            <img src={ searchIcon } alt="pesquisar" />
-          </button>
-        </section>
-        <section className={ `Select-item-thow-${drinks}` }>
-          <label className={ `Label-select-thow-${hotDrink}` }>
+          <label className={ `Label-select-${candy}` }>
             <input
               type="checkbox"
-              checked={ hotDrink }
-              name="hotDrink"
+              checked={ candy }
+              name="candy"
+              onChange={ handleChenge }
+            />
+            Doces
+          </label>
+        </section>
+        <section
+          style={ { display: isDrinks } }
+          className="Select-item-thow"
+        >
+          <label className={ `Label-select-thow-${alcoholFree}` }>
+            <input
+              type="checkbox"
+              checked={ alcoholFree }
+              name="alcoholFree"
               onChange={ handleChengeThow }
             />
-            Drinks
+            Refri
           </label>
           <label className={ `Label-select-thow-${beer}` }>
             <input
@@ -59,15 +71,16 @@ class ListCategory extends React.Component {
             />
             Cervejas
           </label>
-          <label className={ `Label-select-thow-${alcoholFree}` }>
-            <input
-              type="checkbox"
-              checked={ alcoholFree }
-              name="alcoholFree"
-              onChange={ handleChengeThow }
-            />
-            Sem alcool
-          </label>
+        </section>
+        <section style={ { display: isFood } } className="Search_item">
+          <img src={ searchIcon } alt="Lupa" />
+          <input
+            type="text"
+            placeholder="Buscar..."
+            name="search"
+            value={ search }
+            onChange={ handleChenge }
+          />
         </section>
       </div>
     );
@@ -75,13 +88,14 @@ class ListCategory extends React.Component {
 }
 
 ListCategory.propTypes = {
-  drinks: PropTypes.bool.isRequired,
+  allDrinks: PropTypes.bool.isRequired,
   foods: PropTypes.bool.isRequired,
+  candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
   handleChengeThow: PropTypes.func.isRequired,
   alcoholFree: PropTypes.bool.isRequired,
   beer: PropTypes.bool.isRequired,
-  hotDrink: PropTypes.bool.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 export default ListCategory;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
-import { createListMenuBeer } from '../services/createListMenu';
+import ItemComponent from './ItemComponent';
 
 class Menu extends React.Component {
   constructor() {
@@ -27,7 +27,16 @@ class Menu extends React.Component {
 
   render() {
     const { imgItem, nameItem, description, value } = this.state;
-    const { listMenu, setBlur, imgOpem, isbeer } = this.props;
+    const {
+      listMenu,
+      setBlur,
+      imgOpem,
+      isbeer,
+      isFood,
+      isCandy,
+      counterItens,
+      counterRequestAmount,
+    } = this.props;
     const isOpen = imgOpem ? '' : 'none';
 
     return (
@@ -47,21 +56,25 @@ class Menu extends React.Component {
             >
               <img src={ imgItem } alt={ nameItem } className="IMG-Full" />
             </button>
-            <h4>{ value }</h4>
+            <h4>{ `R$${Number(value).toFixed(2)}` }</h4>
             <p>{ description }</p>
           </div>
         </section>
         <ul className={ `Ul-${imgOpem}` }>
           {
-            isbeer ? createListMenuBeer(listMenu[0], this.getItem, setBlur) : (
+            (
               listMenu.map((item, key) => (
-                <li key={ key }>
-                  <button onClick={ () => { this.getItem(item); setBlur(); } }>
-                    <div style={ { backgroundImage: `url(${item.img})` } } />
-                    <p>{ item.name }</p>
-                  </button>
-                  <h4>{ item.value }</h4>
-                </li>
+                <ItemComponent
+                  key={ key }
+                  item={ item }
+                  isFood={ isFood }
+                  isbeer={ isbeer }
+                  isCandy={ isCandy }
+                  getItem={ this.getItem }
+                  setBlur={ setBlur }
+                  counterItens={ counterItens }
+                  counterRequestAmount={ counterRequestAmount }
+                />
               ))
             )
           }
@@ -75,6 +88,10 @@ Menu.propTypes = {
   listMenu: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
+  counterItens: PropTypes.number.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
+  isFood: PropTypes.bool.isRequired,
+  isCandy: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
   isbeer: PropTypes.bool.isRequired,

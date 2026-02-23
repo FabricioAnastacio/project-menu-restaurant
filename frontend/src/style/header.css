@@ -1,12 +1,3 @@
-header {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 1;
-  background-color: white;
-}
-
 .Header-geral-true {
   filter: blur(2px);
   opacity: .5;
@@ -18,24 +9,22 @@ header {
   background-image: url('../pictures/logo.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 200px;
-  border-bottom: 2px solid #F48732;
+  background-size: 160px;
   display: flex;
-  height: 48vmin;
+  height: 38vmin;
   justify-content: space-between;
   width: 100%;
-  z-index: 0;
   h1 {
     font-size: 20px;
     font-weight: 900;
+    color: #fdfdfd;
     margin: 0 10px;
-    text-shadow: .5px .5px 1.5px black;
+    text-shadow: .5px .5px 1.5px rgb(255, 0, 0);
   };
 }
 
 .Title-profile {
   margin: 5px;
-  position: relative;
   top: 50px;
 }
 
@@ -74,10 +63,6 @@ header {
   transform: scale(.9);
 }
 
-input {
-  display: none;
-}
-
 @media screen and (min-width: 900px) {
   .Header-Fixed {
     background-color: black;
@@ -93,7 +78,7 @@ input {
   }
 
   .Header-Title {
-    background-size: 450px;
+    background-size: 350px;
     height: 35vmin;
   }
 

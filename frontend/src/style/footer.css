@@ -1,29 +1,22 @@
-.Footer-page-false, .Footer-page-true {
+footer {
   align-items: center;
-  background-color: transparent;
-  box-shadow: inset 0 2em 3em -2.5em #F48732,
-  inset 0 -2.5em 3em -2.5em #F48732;
-  color: black;
+  background-color: black;
+  box-shadow: 0 1em 2em 2em black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 15vmin;
+  margin-top: 25vmin;
   padding: 4vmin;
-}
-
-.Footer-page-false {
-  position: relative;
-  z-index: 1;
+  margin-bottom: 80px;
 }
 
 .Footer-page-true {
   filter: blur(1px);
-  position: relative;
-  z-index: 0;
 }
 
 hr {
-  background-color: black;
+  background-color: white;
   height: 1px;
   width: 50%;
 }
@@ -34,7 +27,7 @@ p {
 }
 
 .Link-name {
-  color: #F48732;
+  color: red;
   text-decoration: none;
 }
 
