@@ -22,7 +22,7 @@ class Header extends React.Component {
           <section className="Section-network">
             <a
               className="Btms-network"
-              href="https://wa.me/31997466373"
+              href="https://wa.me/31999739177"
               target="_blank"
               rel="noreferrer"
             >
