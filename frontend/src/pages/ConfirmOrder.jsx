@@ -75,6 +75,11 @@ class ConfirmOrder extends React.Component {
       iten.obs = '';
       return iten;
     });
+    additional.sauce = additional.sauce.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
   };
 
   render() {

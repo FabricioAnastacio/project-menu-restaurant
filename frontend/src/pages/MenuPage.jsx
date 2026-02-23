@@ -43,7 +43,7 @@ class MenuPage extends React.Component {
 
   searchItem = (value) => {
     const { food } = this.state;
-    const menuActual = food ? listFoods : listDrinks;
+    const menuActual = food ? listFoods.food : listDrinks.alcoholFree;
     if (value.length === 0) return menuActual;
     return menuActual.filter((a) => a.name.toUpperCase().includes(value.toUpperCase()));
   };

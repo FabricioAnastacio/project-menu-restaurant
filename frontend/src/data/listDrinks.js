@@ -4,6 +4,7 @@ const listDrinks = {
   beer: [
     {
       id: 1,
+      obs: '',
       img: drinks.heineken,
       name: 'Heineken Latão 473ml',
       description: '',
@@ -12,6 +13,7 @@ const listDrinks = {
     },
     {
       id: 2,
+      obs: '',
       img: drinks.brahama,
       name: 'Brahama Latão 473ml',
       description: '',
@@ -22,6 +24,7 @@ const listDrinks = {
   alcoholFree: [
     {
       id: 1,
+      obs: '',
       img: drinks.agua,
       name: 'Agua mineral',
       description: '',
@@ -30,6 +33,7 @@ const listDrinks = {
     },
     {
       id: 2,
+      obs: '',
       img: drinks.aguaGas,
       name: 'Agua mineral c/gás',
       description: '',
@@ -38,6 +42,7 @@ const listDrinks = {
     },
     {
       id: 3,
+      obs: '',
       img: drinks.cocaLata,
       name: 'Coca Lata 350ml',
       description: '',
@@ -46,6 +51,7 @@ const listDrinks = {
     },
     {
       id: 4,
+      obs: '',
       img: drinks.cocaLataZero,
       name: 'Coca Lata Zero 350ml',
       description: '',
@@ -54,6 +60,7 @@ const listDrinks = {
     },
     {
       id: 5,
+      obs: '',
       img: drinks.coca600,
       name: 'Coca 600ml',
       description: '',
@@ -62,7 +69,8 @@ const listDrinks = {
     },
     {
       id: 6,
-      img: drinks.coca1l,
+      obs: '',
+      img: drinks.fanta2l,
       name: 'Fanta Laranja 2l',
       description: '',
       value: 12.00,
@@ -70,6 +78,7 @@ const listDrinks = {
     },
     {
       id: 7,
+      obs: '',
       img: drinks.coca2l,
       name: 'Coca 2L',
       description: '',
@@ -78,6 +87,7 @@ const listDrinks = {
     },
     {
       id: 8,
+      obs: '',
       img: drinks.guaranaLata,
       name: 'Guarana lata 350ml',
       description: '',
@@ -86,6 +96,7 @@ const listDrinks = {
     },
     {
       id: 9,
+      obs: '',
       img: drinks.guarana600,
       name: 'Guarana 600ml',
       description: '',
@@ -94,6 +105,7 @@ const listDrinks = {
     },
     {
       id: 10,
+      obs: '',
       img: drinks.guarana2l,
       name: 'Guarana 2L',
       description: '',
@@ -102,6 +114,7 @@ const listDrinks = {
     },
     {
       id: 11,
+      obs: '',
       img: drinks.h2o,
       name: 'H2O 500ml',
       description: '',
@@ -110,7 +123,8 @@ const listDrinks = {
     },
     {
       id: 12,
-      img: drinks.coca600Zero,
+      obs: '',
+      img: drinks.h2OLimonet,
       name: 'H2O Limoneto 500ml',
       description: '',
       value: 9.00,
@@ -118,7 +132,8 @@ const listDrinks = {
     },
     {
       id: 13,
-      img: drinks.coca600Zero,
+      obs: '',
+      img: drinks.gatoradLar,
       name: 'Gatorade Laranja 500ml',
       description: '',
       value: 9.00,
@@ -126,7 +141,8 @@ const listDrinks = {
     },
     {
       id: 14,
-      img: drinks.coca600Zero,
+      obs: '',
+      img: drinks.monster,
       name: 'Monsters 473ml',
       description: '',
       value: 13.00,

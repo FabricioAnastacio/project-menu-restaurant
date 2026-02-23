@@ -144,9 +144,6 @@ class ItemComponent extends React.Component {
   };
 
   addNewItem = (item, isFood, isbeer, isCandy) => {
-    console.log(isbeer);
-    console.log(isFood);
-    console.log(isCandy);
     if (isFood) this.addFood(item);
     else if (isbeer) this.addDrink(item);
     else if (isCandy) this.addCandy(item);

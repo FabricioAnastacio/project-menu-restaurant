@@ -56,7 +56,7 @@ class Menu extends React.Component {
             >
               <img src={ imgItem } alt={ nameItem } className="IMG-Full" />
             </button>
-            <h4>{ value }</h4>
+            <h4>{ `R$${Number(value).toFixed(2)}` }</h4>
             <p>{ description }</p>
           </div>
         </section>

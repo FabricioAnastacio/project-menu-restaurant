@@ -143,7 +143,7 @@ class RequestsList extends React.Component {
   };
 
   removeAllItens = () => {
-    const { listMenu: { food, allDrinks }, listMenu } = this.context;
+    const { listMenu: { food, allDrinks, candy, additional }, listMenu } = this.context;
 
     this.context.counterRequest = 0;
     allDrinks.alcoholFree = allDrinks.alcoholFree.map((iten) => {
@@ -157,6 +157,16 @@ class RequestsList extends React.Component {
       return iten;
     });
     allDrinks.beer = allDrinks.beer.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    additional.sauce = additional.sauce.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    listMenu.candy = candy.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
