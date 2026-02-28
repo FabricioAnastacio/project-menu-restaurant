@@ -25,7 +25,7 @@ const listFoods = {
     {
       id: 3,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.superSayajin,
       name: 'Super Sayajin',
       description:
         'Pão, bife 90g, mussarela, salada, milho e batata.',
@@ -35,7 +35,7 @@ const listFoods = {
     {
       id: 4,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.hawkBacon,
       name: 'Hawk Bacon',
       description:
         'Pão, bife 90g, bacon, ovo, presunto, mussarela, requeijão cremoso, salada, milho e batata.',
@@ -45,7 +45,7 @@ const listFoods = {
     {
       id: 5,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.fenix,
       name: 'Fênix Burger',
       description: 'Pão, bife 90g, frango desfiado, requeijão cremoso, calabresa,cebola roxa caramelizada, mussarela, salada, milho e batata.',
       value: 25.00,
@@ -63,7 +63,7 @@ const listFoods = {
     {
       id: 7,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.bigTanjiro,
       name: 'Big Tanjiro',
       description: 'Pão, 2 bifes 90g, frango desfiado, requeijão cremoso, 2 ovos, bacon, presunto, mussarela, cebola roxa caramelizada, salada, milho e batata.',
       value: 30.00,
@@ -72,8 +72,8 @@ const listFoods = {
     {
       id: 8,
       obs: '',
-      img: foods.hamburgueAsemSalada,
-      name: 'Baby Stitch',
+      img: foods.babyStitch,
+      name: 'Baby Stitch - ARTESANAL',
       description: 'Pão brioche, blend bovino 120g, bacon fatiado, cheddar e molho especial. (Acompanha Fritas Pokê 150g)',
       value: 25.00,
       amount: 0,
@@ -81,8 +81,8 @@ const listFoods = {
     {
       id: 9,
       obs: '',
-      img: foods.hamburgueAb,
-      name: 'Titan Blindado',
+      img: foods.titanBlind,
+      name: 'Titan Blindado - ARTESANAL',
       description: 'Pão brioche, blend bovino 120g, bacon fatiado, mussarela, cheddar, cebola roxa e molho especial. (Acompanha katana Batata 150g)',
       value: 27.00,
       amount: 0,
@@ -90,8 +90,8 @@ const listFoods = {
     {
       id: 10,
       obs: '',
-      img: foods.hamburgueA2b,
-      name: 'Titan Colossal',
+      img: foods.tatanColoss,
+      name: 'Titan Colossal - ARTESANAL',
       description: 'Pão brioche, 2 blends bovinos 120g, queijo empanado crocante, bacon fatiado, cheddar, salada, cebola roxa e molho especial. (Acompanha Katana Batata 150g)',
       value: 35.00,
       amount: 0,

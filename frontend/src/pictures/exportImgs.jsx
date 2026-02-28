@@ -18,11 +18,14 @@ import monster from './bebidas/alcoholfree/monster.jpg';
 import brahama from './bebidas/beers/brahama.jpg';
 import heineken from './bebidas/beers/heineken.png';
 
-import hamburgueA from './foods/hamburguerA.jpg';
-import hamburgueA2b from './foods/hamburguerA2b.jpg';
-import hamburgueAb from './foods/hamburguerAb.jpg';
-import hamburgueAsemSalada from './foods/hamburguerAsemSalada.jpg';
+import babyStitch from './foods/babyStitch.jpg';
+import bigTanjiro from './foods/bigTanjiro.jpg';
+import fenix from './foods/fenix.jpg';
+import hawkBacon from './foods/hawkBacon.jpg';
 import hamburgueAtop from './foods/hamburguerAtop.jpg';
+import tatanColoss from './foods/tatanColoss.jpg';
+import titanBlind from './foods/titanBlind.jpg';
+import superSayajin from './foods/superSayajin.jpg';
 import hamburgueP from './foods/hamburguerP.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
@@ -52,10 +55,13 @@ export const drinks = {
 };
 
 export const foods = {
-  hamburgueA,
-  hamburgueA2b,
-  hamburgueAb,
-  hamburgueAsemSalada,
+  babyStitch,
+  bigTanjiro,
+  fenix,
+  hawkBacon,
+  tatanColoss,
+  titanBlind,
+  superSayajin,
   hamburgueAtop,
   hamburgueP,
   hallsExtra,
