@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: end;
-  margin: 10px 40px;
+  margin: 10px 10px;
 }
 
 .List-Order {
@@ -11,26 +11,35 @@
   align-items: start;
   flex-direction: column;
   li {
-    width: 80%;
+    width: 85%;
     margin: 0;
-    border-bottom: 1px dotted white;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.644);
     margin-bottom: 6px;
     padding: 0;
   }
   div {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 75%;
   }
 }
 
+.Iten-name {
+  width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .CustFinally {
-  text-align: end;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
   h5, h3 {
-    margin: 0 0 2px 0;
-  }
-  h5 {
-    text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.575);
+    margin: 3px 0 2px 0;
   }
   h3 {
     margin-top: 10px;

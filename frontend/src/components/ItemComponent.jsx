@@ -175,12 +175,14 @@ class ItemComponent extends React.Component {
             </div>
           </div>
         </section>
-        <div
-          className="imgs-menu"
-          onClick={ () => { getItem(item); setBlur(); } }
-          style={ { backgroundImage: `url(${item.img})` } }
-          aria-hidden="true"
-        />
+        <div className="AriaButton" onClick={ () => { getItem(item); setBlur(); } } aria-hidden="true">
+          <div
+            className="imgs-menu"
+            style={ { backgroundImage: `url(${item.img})` } }
+            aria-hidden="true"
+          />
+          <p>Detalhes...</p>
+        </div>
       </li>
     );
   }

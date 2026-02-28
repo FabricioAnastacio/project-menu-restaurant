@@ -34,17 +34,12 @@ class ConfirmOrder extends React.Component {
   sendOrCheff = () => {
     const {
       listMenu: {
-        candy, food, allDrinks: {
-          alcoholFree, beer,
-        }, additional,
+        candy, food, allDrinks, additional,
       }, valueTotal, listMenu } = this.context;
 
     const order = {
       foods: food.filter((item) => item.amount > 0),
-      drinks: [
-        ...beer.filter((item) => item.amount > 0),
-        ...alcoholFree.filter((item) => item.amount > 0),
-      ],
+      drinks: allDrinks.filter((item) => item.amount > 0),
       additional: [
         ...additional.sauce.filter((item) => item.amount > 0),
         ...candy.filter((item) => item.amount > 0),
@@ -55,17 +50,12 @@ class ConfirmOrder extends React.Component {
     sendMensage(this.state, order);
 
     this.context.counterRequest = 0;
-    listMenu.alcoholFree = alcoholFree.map((iten) => {
+    listMenu.allDrinks = allDrinks.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
     listMenu.food = food.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    listMenu.beer = beer.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;

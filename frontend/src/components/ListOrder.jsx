@@ -43,7 +43,7 @@ class ListOrder extends React.Component {
                 <p>{ item.amount }</p>
                 { item.obs !== '' && (<p className="Tag-Item">Edited</p>)}
                 <div>
-                  <p>{ item.name }</p>
+                  <p className="Iten-name">{ item.name }</p>
                   <p>{ `R$ ${(item.value * item.amount).toFixed(2)}` }</p>
                 </div>
               </li>
@@ -51,9 +51,18 @@ class ListOrder extends React.Component {
           }
         </ul>
         <div className="CustFinally">
-          <h5>{ `Pedido:_______R$${valueAll}` }</h5>
-          <h5>Tx Entrega:__+R$4.00</h5>
-          <h3>{ `Total:__R$${(Number(valueAll) + TX).toFixed(2)}` }</h3>
+          <h5>
+            <span>Pedido:</span>
+            <span>{ `R$${valueAll}` }</span>
+          </h5>
+          <h5>
+            <span>Tx Entrega:</span>
+            <span>+R$4.00</span>
+          </h5>
+          <h3>
+            <span>Total:</span>
+            <span>{ `R$${(Number(valueAll) + TX).toFixed(2)}` }</span>
+          </h3>
         </div>
       </section>
     );

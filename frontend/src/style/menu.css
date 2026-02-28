@@ -91,12 +91,18 @@ li {
   }
 }
 
+.AriaButton {
+  text-align: center;
+  background-color: rgb(167, 0, 0);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 .imgs-menu {
   background-position: center;
   background-size: cover;
   border-radius: 10px;
   height: 90px;
-  margin: 0 10px 0 0;
   position: relative;
   width: 100px;
   transition: .7s;
