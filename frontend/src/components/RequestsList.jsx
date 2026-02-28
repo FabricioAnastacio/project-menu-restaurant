@@ -15,26 +15,24 @@ class RequestsList extends React.Component {
       valueTotal: 0,
       requestFoods: [],
       requestDrinks: [],
-      requestSoftDrinks: [],
       requestSauce: [],
+      requestCandy: [],
     };
   }
 
   componentDidMount() {
     const {
-      listMenu: { food, candy,
-        allDrinks: { alcoholFree, beer }, additional } } = this.context;
+      listMenu: { food, candy, allDrinks, additional } } = this.context;
     const requestFoods = [];
     const requestDrinks = [];
-    const requestSoftDrinks = [];
+    const requestCandy = [];
 
     requestFoods.push(...food.filter((item) => item.amount > 0));
-    requestDrinks.push(...beer.filter((item) => item.amount > 0));
-    requestSoftDrinks.push(...candy.filter((item) => item.amount > 0));
-    requestSoftDrinks.push(...alcoholFree.filter((item) => item.amount > 0));
+    requestDrinks.push(...allDrinks.filter((item) => item.amount > 0));
+    requestCandy.push(...candy.filter((item) => item.amount > 0));
 
     const requestAllItens = [
-      ...requestFoods, ...requestDrinks, ...requestSoftDrinks, ...additional.sauce];
+      ...requestFoods, ...requestDrinks, ...requestCandy, ...additional.sauce];
 
     let valueTotal = 0;
     requestAllItens.forEach((item) => {
@@ -46,14 +44,13 @@ class RequestsList extends React.Component {
       valueTotal,
       requestFoods,
       requestDrinks,
-      requestSoftDrinks,
+      requestCandy,
       requestSauce: additional.sauce,
     });
   }
 
   addNewItem = (item, type) => {
-    const {
-      requestSoftDrinks,
+    const { requestCandy,
       requestFoods, requestDrinks, requestSauce, valueTotal } = this.state;
     this.setState({
       valueTotal: valueTotal + item.value,
@@ -73,9 +70,9 @@ class RequestsList extends React.Component {
           return a;
         }),
       });
-    } else if (type === 'softDrink') {
+    } else if (type === 'candy') {
       this.setState({
-        requestSoftDrinks: requestSoftDrinks.map((a) => {
+        requestCandy: requestCandy.map((a) => {
           if (a.id === item.id) a.amount += 1;
           return a;
         }),
@@ -92,18 +89,18 @@ class RequestsList extends React.Component {
 
   updateCounterRequest = () => {
     const {
-      requestSoftDrinks,
+      requestCandy,
       requestFoods, requestDrinks, requestSauce, valueTotal } = this.state;
 
     const updateCounter = [
-      ...requestSoftDrinks, ...requestFoods, ...requestDrinks, ...requestSauce];
+      ...requestCandy, ...requestFoods, ...requestDrinks, ...requestSauce];
     this.context.counterRequest = updateCounter.length;
     this.context.valueTotal = valueTotal.toFixed(2);
   };
 
   removeItem = (item, type) => {
     const {
-      requestSoftDrinks,
+      requestCandy,
       requestFoods,
       requestDrinks, requestSauce, valueTotal } = this.state;
 
@@ -125,9 +122,9 @@ class RequestsList extends React.Component {
           return a.amount > 0 ?? a;
         }),
       });
-    } else if (type === 'softDrink') {
+    } else if (type === 'candy') {
       this.setState({
-        requestSoftDrinks: requestSoftDrinks.filter((a) => {
+        requestCandy: requestCandy.filter((a) => {
           if (a.id === item.id) a.amount -= 1;
           return a.amount > 0 && a;
         }),
@@ -146,17 +143,12 @@ class RequestsList extends React.Component {
     const { listMenu: { food, allDrinks, candy, additional }, listMenu } = this.context;
 
     this.context.counterRequest = 0;
-    allDrinks.alcoholFree = allDrinks.alcoholFree.map((iten) => {
+    listMenu.allDrinks = allDrinks.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
     listMenu.food = food.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    allDrinks.beer = allDrinks.beer.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -176,7 +168,7 @@ class RequestsList extends React.Component {
       valueTotal: 0,
       requestFoods: [],
       requestDrinks: [],
-      requestSoftDrinks: [],
+      requestCandy: [],
     });
   };
 
@@ -185,7 +177,7 @@ class RequestsList extends React.Component {
       valueTotal,
       requestFoods,
       requestDrinks,
-      requestSoftDrinks,
+      requestCandy,
       requestSauce,
     } = this.state;
     this.updateCounterRequest();
@@ -235,11 +227,11 @@ class RequestsList extends React.Component {
               )
             }
             {
-              requestSoftDrinks.map(
+              requestCandy.map(
                 (item, key) => (<RenderItem
                   key={ key }
                   item={ item }
-                  type="softDrink"
+                  type="candy"
                   removeItem={ this.removeItem }
                   addNewItem={ this.addNewItem }
                 />),

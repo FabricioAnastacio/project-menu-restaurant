@@ -31,7 +31,6 @@ class Menu extends React.Component {
       listMenu,
       setBlur,
       imgOpem,
-      isbeer,
       isFood,
       isCandy,
       counterItens,
@@ -76,7 +75,6 @@ class Menu extends React.Component {
                   key={ key }
                   item={ item }
                   isFood={ isFood }
-                  isbeer={ isbeer }
                   isCandy={ isCandy }
                   getItem={ this.getItem }
                   setBlur={ setBlur }
@@ -102,7 +100,6 @@ Menu.propTypes = {
   isCandy: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
-  isbeer: PropTypes.bool.isRequired,
 };
 
 export default Menu;

@@ -17,9 +17,7 @@ class MenuPage extends React.Component {
       search: '',
       allDrinks: false,
       food: true,
-      beer: false,
       candy: false,
-      alcoholFree: true,
       list: listFoods.food,
       imgOpen: false,
       counterItens: 0,
@@ -29,8 +27,6 @@ class MenuPage extends React.Component {
       allDrinks: ['candy', 'food'],
       food: ['allDrinks', 'candy'],
       candy: ['allDrinks', 'food'],
-      beer: ['alcoholFree'],
-      alcoholFree: ['beer'],
     };
   }
 
@@ -43,7 +39,7 @@ class MenuPage extends React.Component {
 
   searchItem = (value) => {
     const { food } = this.state;
-    const menuActual = food ? listFoods.food : listDrinks.alcoholFree;
+    const menuActual = food ? listFoods.food : listDrinks;
     if (value.length === 0) return menuActual;
     return menuActual.filter((a) => a.name.toUpperCase().includes(value.toUpperCase()));
   };
@@ -66,23 +62,21 @@ class MenuPage extends React.Component {
       [name]: checked,
       [relatedKey[0]]: !checked,
       [relatedKey[1]]: !checked,
-      list: name === 'allDrinks' ? listMenu[name].alcoholFree : listMenu[name],
-      beer: false,
-      alcoholFree: true,
+      list: listMenu[name],
     });
   };
 
-  handleChengeThowSelection = ({ target }) => {
-    const { name, checked } = target;
-    const relatedKey = this.pairMap[name];
+  // handleChengeThowSelection = ({ target }) => {
+  //   const { name, checked } = target;
+  //   const relatedKey = this.pairMap[name];
 
-    if (!checked === true) return;
-    this.setState({
-      [name]: checked,
-      [relatedKey[0]]: !checked,
-      list: listDrinks[name],
-    });
-  };
+  //   if (!checked === true) return;
+  //   this.setState({
+  //     [name]: checked,
+  //     [relatedKey[0]]: !checked,
+  //     list: listDrinks[name],
+  //   });
+  // };
 
   setBlur = () => {
     const { imgOpen } = this.state;
@@ -104,8 +98,6 @@ class MenuPage extends React.Component {
       allDrinks,
       food,
       candy,
-      beer,
-      alcoholFree,
       imgOpen,
       list,
       counterItens,
@@ -123,17 +115,13 @@ class MenuPage extends React.Component {
           handleChengeThow={ this.handleChengeThowSelection }
           allDrinks={ allDrinks }
           foods={ food }
-          beer={ beer }
           candy={ candy }
-          alcoholFree={ alcoholFree }
         />
         <Menu
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
-          isbeer={ beer }
           isFood={ food }
           isCandy={ candy }
-          isAlcoholFree={ alcoholFree }
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }

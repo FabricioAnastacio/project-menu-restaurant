@@ -6,16 +6,12 @@ import '../style/ListCategory.css';
 class ListCategory extends React.Component {
   render() {
     const {
-      beer,
       allDrinks,
       foods,
       candy,
-      alcoholFree,
       handleChenge,
-      handleChengeThow,
       search,
     } = this.props;
-    const isDrinks = allDrinks ? '' : 'none';
     const isFood = foods ? '' : 'none';
 
     return (
@@ -49,29 +45,6 @@ class ListCategory extends React.Component {
             Doces
           </label>
         </section>
-        <section
-          style={ { display: isDrinks } }
-          className="Select-item-thow"
-        >
-          <label className={ `Label-select-thow-${alcoholFree}` }>
-            <input
-              type="checkbox"
-              checked={ alcoholFree }
-              name="alcoholFree"
-              onChange={ handleChengeThow }
-            />
-            Refri
-          </label>
-          <label className={ `Label-select-thow-${beer}` }>
-            <input
-              type="checkbox"
-              checked={ beer }
-              name="beer"
-              onChange={ handleChengeThow }
-            />
-            Cervejas
-          </label>
-        </section>
         <section style={ { display: isFood } } className="Search_item">
           <img src={ searchIcon } alt="Lupa" />
           <input
@@ -92,9 +65,6 @@ ListCategory.propTypes = {
   foods: PropTypes.bool.isRequired,
   candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
-  handleChengeThow: PropTypes.func.isRequired,
-  alcoholFree: PropTypes.bool.isRequired,
-  beer: PropTypes.bool.isRequired,
   search: PropTypes.string.isRequired,
 };
 

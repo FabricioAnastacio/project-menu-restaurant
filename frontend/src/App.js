@@ -18,10 +18,7 @@ class App extends React.Component {
           food: listFoods.food,
           candy: listFoods.candy,
           additional: listFoods.additional,
-          allDrinks: {
-            alcoholFree: listDrinks.alcoholFree,
-            beer: listDrinks.beer,
-          },
+          allDrinks: listDrinks,
         },
         counterRequest: 0,
         valueTotal: 0,
