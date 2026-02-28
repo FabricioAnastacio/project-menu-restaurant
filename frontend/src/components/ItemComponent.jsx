@@ -151,7 +151,7 @@ class ItemComponent extends React.Component {
       <li>
         <section className="Description_Item">
           <h3>{ `${item.id} - ${item.name}` }</h3>
-          <p>{ item.description }</p>
+          <p>{ item.ingredients.map((ing) => `${ing}, `) }</p>
           <div className="Value_Sale">
             <h4>{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
@@ -195,6 +195,7 @@ ItemComponent.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    ingredients: PropTypes.arrayOf([]).isRequired,
     value: PropTypes.number.isRequired,
     amount: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
