@@ -11,7 +11,7 @@ export const sendMensage = (dataClient, order) => {
   } = dataClient;
   const { foods, drinks, additional, value } = order;
   const TX = 4;
-  const mensage = `*#Novo Pedido*
+  const mensage = `*#Big Lanches do TANJIRO*
 
 *Para:* ${clientName}
 *Contato:* ${clientContact}
