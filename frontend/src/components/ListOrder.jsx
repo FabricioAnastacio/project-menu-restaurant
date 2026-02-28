@@ -42,7 +42,7 @@ class ListOrder extends React.Component {
               <li key={ i }>
                 <p>{ item.amount }</p>
                 { item.obs !== '' && (<p className="Tag-Item">Edited</p>)}
-                <div>
+                <div className="Iten-value">
                   <p className="Iten-name">{ item.name }</p>
                   <p>{ `R$ ${(item.value * item.amount).toFixed(2)}` }</p>
                 </div>

@@ -17,11 +17,12 @@
     margin-bottom: 6px;
     padding: 0;
   }
-  div {
-    display: flex;
-    justify-content: space-between;
-    width: 75%;
-  }
+}
+
+.Iten-value {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
 }
 
 .Iten-name {
