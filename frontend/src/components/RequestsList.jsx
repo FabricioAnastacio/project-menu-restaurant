@@ -90,10 +90,14 @@ class RequestsList extends React.Component {
   updateCounterRequest = () => {
     const {
       requestCandy,
-      requestFoods, requestDrinks, requestSauce, valueTotal } = this.state;
+      requestFoods, requestDrinks, requestSauce, valueTotal,
+    } = this.state;
 
     const updateCounter = [
-      ...requestCandy, ...requestFoods, ...requestDrinks, ...requestSauce];
+      ...requestCandy, ...requestFoods, ...requestDrinks,
+      ...requestSauce.filter((item) => item.amount > 0),
+    ];
+
     this.context.counterRequest = updateCounter.length;
     this.context.valueTotal = valueTotal.toFixed(2);
   };

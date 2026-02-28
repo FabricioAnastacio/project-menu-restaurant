@@ -107,7 +107,6 @@ RenderItem.propTypes = {
   type: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
-  // requestItemCustom: PropTypes.arrayOf([]).isRequired,
 };
 
 export default RenderItem;

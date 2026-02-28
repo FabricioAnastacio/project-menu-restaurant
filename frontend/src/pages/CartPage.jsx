@@ -9,7 +9,7 @@ class Cart extends React.Component {
     return (
       <div className="page-cart">
         <RequestsList />
-        <FooterRotes counterItens={ 0 } />
+        <FooterRotes counterItens={ 0 } imgOpem={ false } />
       </div>
     );
   }
