@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import github from '../pictures/svgs/icons8-github.svg';
-import linkedin from '../pictures/svgs/icons8-linkedin.svg';
-import instagram from '../pictures/svgs/icons8-instagram.svg';
+import github from '../pictures/icons8-github-96.png';
+import linkedin from '../pictures/icons8-linkedin-96.png';
+import instagram from '../pictures/icons8-instagram-96.png';
 import '../style/footer.css';
 
 class Footer extends React.Component {
@@ -16,7 +16,7 @@ class Footer extends React.Component {
           {' '}
           <a
             className="Link-name"
-            href="https://github.com/FabricioAnastacio"
+            href="https://fabriciomyportifolio.vercel.app/home"
             target="_blank"
             rel="noreferrer"
           >
