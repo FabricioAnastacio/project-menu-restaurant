@@ -112,6 +112,19 @@ li {
   }
 }
 
+.List-ing {
+  margin: 0;
+  padding: 0;
+  width: 90%;
+}
+
+.Ing {
+  text-align: start;
+  border-color: #ff0000b2;
+  padding-bottom: 2px;
+  font-size: 13px;
+}
+
 .Value_Sale {
   display: flex;
   align-items: center;

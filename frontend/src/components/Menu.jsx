@@ -11,7 +11,7 @@ class Menu extends React.Component {
     this.state = {
       imgItem: '',
       nameItem: '',
-      description: '',
+      ingredients: [''],
       value: '',
     };
   }
@@ -20,13 +20,13 @@ class Menu extends React.Component {
     this.setState({
       imgItem: item.img,
       nameItem: item.name,
-      description: item.description,
+      ingredients: item.ingredients,
       value: item.value,
     });
   };
 
   render() {
-    const { imgItem, nameItem, description, value } = this.state;
+    const { imgItem, nameItem, ingredients, value } = this.state;
     const {
       listMenu,
       setBlur,
@@ -57,7 +57,15 @@ class Menu extends React.Component {
               <img src={ imgItem } alt={ nameItem } className="IMG-Full" />
             </button>
             <h4>{ `R$${Number(value).toFixed(2)}` }</h4>
-            <p>{ description }</p>
+            <ol className="List-ing">
+              {
+                ingredients.map((ing, i) => (
+                  <li key={ i } className="Ing">
+                    { ing }
+                  </li>
+                ))
+              }
+            </ol>
           </div>
         </section>
         <ul className={ `Ul-${imgOpem}` }>
