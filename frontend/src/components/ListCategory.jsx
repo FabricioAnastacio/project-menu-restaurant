@@ -11,11 +11,11 @@ class ListCategory extends React.Component {
       candy,
       handleChenge,
       search,
+      setBlur,
     } = this.props;
-    const isFood = foods ? '' : 'none';
 
     return (
-      <div className="Categorys">
+      <div className={ `Categorys setblur-${setBlur}` }>
         <section className="Select-item">
           <label className={ `Label-select-${allDrinks}` }>
             <input
@@ -45,7 +45,7 @@ class ListCategory extends React.Component {
             Doces
           </label>
         </section>
-        <section style={ { display: isFood } } className="Search_item">
+        <section className="Search_item">
           <img src={ searchIcon } alt="Lupa" />
           <input
             type="text"
@@ -66,6 +66,7 @@ ListCategory.propTypes = {
   candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
+  setBlur: PropTypes.bool.isRequired,
 };
 
 export default ListCategory;

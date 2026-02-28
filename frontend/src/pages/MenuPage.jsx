@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import listFoods from '../data/listFoods';
-import listDrinks from '../data/listDrinks';
 import Footer from '../components/Footer';
 import ListCategory from '../components/ListCategory';
 import '../style/menuPage.css';
@@ -19,6 +18,7 @@ class MenuPage extends React.Component {
       food: true,
       candy: false,
       list: listFoods.food,
+      listActual: 'food',
       imgOpen: false,
       counterItens: 0,
     };
@@ -38,8 +38,9 @@ class MenuPage extends React.Component {
   }
 
   searchItem = (value) => {
-    const { food } = this.state;
-    const menuActual = food ? listFoods.food : listDrinks;
+    const { listActual } = this.state;
+    const { listMenu } = this.context;
+    const menuActual = listMenu[listActual];
     if (value.length === 0) return menuActual;
     return menuActual.filter((a) => a.name.toUpperCase().includes(value.toUpperCase()));
   };
@@ -63,20 +64,9 @@ class MenuPage extends React.Component {
       [relatedKey[0]]: !checked,
       [relatedKey[1]]: !checked,
       list: listMenu[name],
+      listActual: name,
     });
   };
-
-  // handleChengeThowSelection = ({ target }) => {
-  //   const { name, checked } = target;
-  //   const relatedKey = this.pairMap[name];
-
-  //   if (!checked === true) return;
-  //   this.setState({
-  //     [name]: checked,
-  //     [relatedKey[0]]: !checked,
-  //     list: listDrinks[name],
-  //   });
-  // };
 
   setBlur = () => {
     const { imgOpen } = this.state;
@@ -112,9 +102,9 @@ class MenuPage extends React.Component {
         <ListCategory
           search={ search }
           handleChenge={ this.handleChenge }
-          handleChengeThow={ this.handleChengeThowSelection }
           allDrinks={ allDrinks }
           foods={ food }
+          setBlur={ imgOpen }
           candy={ candy }
         />
         <Menu
@@ -126,7 +116,7 @@ class MenuPage extends React.Component {
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
         />
-        <FooterRotes counterItens={ counterItens } />
+        <FooterRotes counterItens={ counterItens } imgOpem={ imgOpen } />
         <Footer imgOpem={ imgOpen } />
       </div>
     );

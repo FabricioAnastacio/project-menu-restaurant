@@ -19,10 +19,10 @@ class FooterRotes extends React.Component {
   };
 
   render() {
-    const { counterItens } = this.props;
+    const { counterItens, imgOpem } = this.props;
 
     return (
-      <section className="footer-pages">
+      <section className={ `footer-pages setblur-${imgOpem}` }>
         <ul>
           <li className="icon-menu">
             <Link to="/" className="iconRote snack">
@@ -44,6 +44,7 @@ FooterRotes.contextType = AppContext;
 
 FooterRotes.propTypes = {
   counterItens: PropTypes.number.isRequired,
+  imgOpem: PropTypes.bool.isRequired,
 };
 
 export default FooterRotes;

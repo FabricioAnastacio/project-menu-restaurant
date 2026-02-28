@@ -1,3 +1,8 @@
+.setblur-true {
+  filter: blur(2px);
+  opacity: .5;
+}
+
 .Section-Details-false, .Section-Details-true {
   background-color: rgba(0, 0, 0, 0.767);
   bottom: 0;
