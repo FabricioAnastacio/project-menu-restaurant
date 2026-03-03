@@ -156,10 +156,10 @@ class ItemComponent extends React.Component {
             <h4>{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
               <button
-                className="buy"
-                onClick={ () => this.addNewItem(item, isFood, isCandy) }
+                className="sell"
+                onClick={ () => this.removeItem(item, isFood, isCandy) }
               >
-                +
+                -
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : 'item' }>
                 {
@@ -167,10 +167,10 @@ class ItemComponent extends React.Component {
                 }
               </p>
               <button
-                className="sell"
-                onClick={ () => this.removeItem(item, isFood, isCandy) }
+                className="buy"
+                onClick={ () => this.addNewItem(item, isFood, isCandy) }
               >
-                -
+                +
               </button>
             </div>
           </div>
