@@ -71,9 +71,9 @@ class RenderItem extends React.Component {
               }
             </div>
           </div>
-          <button onClick={ () => addNewItem(item, type) }>+</button>
-          <p>{ item.amount }</p>
           <button onClick={ () => removeItem(item, type) }>-</button>
+          <p>{ item.amount }</p>
+          <button onClick={ () => addNewItem(item, type) }>+</button>
         </div>
         {
           type !== 'sauce' && (
