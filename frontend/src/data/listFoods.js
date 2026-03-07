@@ -3,6 +3,23 @@
 import { foods } from '../pictures/exportImgs';
 
 const listFoods = {
+  promotional: [
+    {
+      id: 1,
+      obs: '',
+      img: foods.hamburgueP,
+      name: 'Combo Antbarreras',
+      description: 'União que abala os Marleanos',
+      ingredients: {
+        idFood: ['9', '10'],
+        idDrink: ['7'],
+        idSauce: ['1', '1'],
+        idCandy: [''],
+      },
+      value: 81.50,
+      amount: 0,
+    },
+  ],
   food: [
     {
       id: 1,
