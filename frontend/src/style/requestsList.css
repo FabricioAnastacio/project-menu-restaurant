@@ -75,6 +75,9 @@
   justify-content: space-between;
   width: 100%;
 }
+.btn {
+  font-size: 18px;
+}
 
 .item-title {
   display: flex;

@@ -65,15 +65,15 @@ class RenderItem extends React.Component {
                     className={ `Btm-Observation-${obs}` }
                     onClick={ this.onClickAddObs }
                   >
-                    { !obs ? 'Add observação' : 'Rm observação' }
+                    { !obs ? 'observação' : 'Apagar' }
                   </button>
                 )
               }
             </div>
           </div>
-          <button onClick={ () => removeItem(item, type) }>-</button>
+          <button className="btn" onClick={ () => removeItem(item, type) }>-</button>
           <p>{ item.amount }</p>
-          <button onClick={ () => addNewItem(item, type) }>+</button>
+          <button className="btn" onClick={ () => addNewItem(item, type) }>+</button>
         </div>
         {
           type !== 'sauce' && (
