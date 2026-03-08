@@ -40,7 +40,6 @@ class Menu extends React.Component {
       counterRequestAmount,
     } = this.props;
     const isOpen = imgOpem ? '' : 'none';
-
     return (
       <main>
         <div className={ `Container-carousel setblur-${imgOpem}` }>
@@ -83,7 +82,7 @@ class Menu extends React.Component {
         <ul className={ `Ul-${imgOpem}` }>
           {
             (
-              listMenu.map((item, key) => (
+              listMenu.classic?.map((item, key) => (
                 <ItemComponent
                   key={ key }
                   item={ item }
