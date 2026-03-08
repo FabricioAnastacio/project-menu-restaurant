@@ -33,6 +33,8 @@ import maineseCasa from './foods/maioneseCasa.jpg';
 import tridentMela from './foods/tridentMela.jpg';
 import tridentMenta from './foods/tridentMenta.jpg';
 
+import tanjiroDelivery from './foods/promotional/tanjiroDelivery.jpg';
+
 export const drinks = {
   fanta2l,
   gatoradLar,
@@ -68,4 +70,5 @@ export const foods = {
   maineseCasa,
   tridentMela,
   tridentMenta,
+  tanjiroDelivery,
 };

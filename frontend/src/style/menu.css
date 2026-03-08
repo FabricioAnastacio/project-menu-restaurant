@@ -108,6 +108,73 @@ li {
   transition: .7s;
 }
 
+/*Carrossel Promocional */
+
+.Container-carousel {
+  padding-bottom: 10px;
+  text-align: center;
+  margin-top: 10px;
+  background-color: black;
+  box-shadow: 1px 1px 10px 10px black;
+  h4 {
+    margin: 15px 0;
+    color: gold;
+  }
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  margin: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  div {
+    height: 280px;
+    width: 250px;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    h5 {
+      margin: 0;
+      background-color: black;
+      padding: 0 10px 0 0;
+      border-radius: 0 1em 0 0;
+    }
+    p {
+      margin: 0;
+      background-color: black;
+      padding: 0 10px 0 0;
+      border-radius: 0 1em 0 0;
+    }
+  }
+}
+
+.Item-Promotional {
+  border-bottom: 0;
+  margin: 0;
+  padding: 1px;
+}
+
+/* @keyframes scrolling {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
+/*===*/
+
 .Description_Item, .Btm-fullImg {
   display: flex;
   align-items: start;
