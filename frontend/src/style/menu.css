@@ -83,7 +83,7 @@ li {
   padding-top: 0;
   h4 {
     font-size: 16px;
-    color: rgb(202, 0, 0);
+    color: gold;
   }
   p {
     font-size: 13px;
@@ -172,18 +172,32 @@ li {
 }
 
 .buy {
-  border: 1px solid green;
+  border: 1px solid #961212;
+  background-color: #961212;
   font-size: 20px;
-  color: green;
+  color: gold;
 }
 .sell {
-  border: 1px solid red;
+  border: 1px solid #961212;
+  background-color: #961212;
   font-size: 20px;
-  color: red;
+  color: white;
 }
 
-h3 {
+.title-item {
+  width: 90vw;
+  color: gold;
   text-align: center;
+  margin-bottom: 21px;
+}
+
+.number-item {
+  margin-right: 10px;
+  border: 1px solid gold;
+  /* background: linear-gradient(to bottom, #961212 50%, black 50%); */
+  background-color: #961212;
+  padding: 5px 11px;
+  border-radius: 5em;
 }
 
 @media screen and (min-width: 900px) {
