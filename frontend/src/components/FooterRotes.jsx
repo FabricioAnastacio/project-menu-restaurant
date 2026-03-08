@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import iconsCart from '../pictures/icons8-fast-cart-96.png';
-import iconsFastFood from '../pictures/icons8-fast-food-96.png';
+import iconsCart from '../pictures/icons8-order-96.png';
+import iconsFastFood from '../pictures/icons8-fast-food2-96.png';
 import AppContext from '../context/AppContext';
 import '../style/footerRotes.css';
 
@@ -28,11 +28,13 @@ class FooterRotes extends React.Component {
             <Link to="/" className="iconRote snack">
               <img src={ iconsFastFood } alt="Hamburguer" />
             </Link>
+            Cardapio
           </li>
           <li>
             <Link to={ { pathname: '/cart', hash: '#Header' } } className="iconRote cart">
               { this.buttonCart(counterItens) }
             </Link>
+            Pedido
           </li>
         </ul>
       </section>
