@@ -154,7 +154,7 @@ class ItemComponent extends React.Component {
             <span className="number-item">{ item.id }</span>
             { item.name }
           </h3>
-          <p>{ item.ingredients.map((ing) => `${ing}, `) }</p>
+          <p>{ item.ingredients.map((ing, i) => (i + 1 === item.ingredients.length ? `${ing}.` : `${ing}, `)) }</p>
           <div className="Value_Sale">
             <h4 className="price">{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
