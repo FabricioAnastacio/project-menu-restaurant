@@ -150,10 +150,10 @@ class ItemComponent extends React.Component {
     return (
       <li>
         <section className="Description_Item">
-          <h3 className="title-item">
-            <span className="number-item">{ item.id }</span>
-            { item.name }
-          </h3>
+          <div className="title-item">
+            <h3 className="number-item">{ item.id }</h3>
+            <h3 className="text-item">{ item.name }</h3>
+          </div>
           <p>{ item.ingredients.map((ing, i) => (i + 1 === item.ingredients.length ? `${ing}.` : `${ing}, `)) }</p>
           <div className="Value_Sale">
             <h4 className="price">{ `R$${item.value.toFixed(2)}` }</h4>

@@ -185,10 +185,10 @@ li {
 }
 
 .title-item {
-  width: 90vw;
+  display: flex;
+  align-items: center;
+  width: 120%;
   color: gold;
-  text-align: center;
-  margin-bottom: 21px;
 }
 
 .number-item {
@@ -196,7 +196,7 @@ li {
   border: 1px solid gold;
   /* background: linear-gradient(to bottom, #961212 50%, black 50%); */
   background-color: #961212;
-  padding: 5px 11px;
+  padding: 5px 10px;
   border-radius: 5em;
 }
 
