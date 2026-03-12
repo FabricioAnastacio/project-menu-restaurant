@@ -33,7 +33,7 @@ class ListCategory extends React.Component {
               name="food"
               onChange={ handleChenge }
             />
-            Hambúrguer
+            Burgers
           </label>
           <label className={ `Label-select-${candy}` }>
             <input
