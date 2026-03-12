@@ -22,6 +22,8 @@ class App extends React.Component {
         },
         counterRequest: 0,
         valueTotal: 0,
+        btnCart: false,
+        btnMenu: true,
       },
     };
   }
