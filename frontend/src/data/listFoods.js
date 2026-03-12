@@ -90,7 +90,7 @@ const listFoods = {
       img: foods.titanBlind,
       name: 'Titan Blindado ARTESANAL',
       description: 'Blindagem ativada. Impacto liberado. Estrutura pesada. Presença dominante.',
-      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Mussarela', ' Cheddar', ' Bacon fatiado', ' Cebola roxa',  ' Molho especial', ' (ACOMPANHA KATANA BATATA 150G)'],
+      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Mussarela', ' Cheddar', ' Bacon fatiado', ' Cebola roxa', ' Molho especial', ' (ACOMPANHA KATANA BATATA 150G)'],
       value: 27.00,
       amount: 0,
     },
