@@ -89,7 +89,7 @@
   margin-left: 10px;
   width: 80%;
   h1 {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -99,6 +99,7 @@
   color: rgb(247, 218, 89);
   padding: 0;
   margin-left: 30%;
+  font-size: 15px;
   text-decoration: underline;
 }
 

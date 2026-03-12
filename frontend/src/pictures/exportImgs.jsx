@@ -26,6 +26,8 @@ import hamburgueAtop from './foods/hamburguerAtop.jpg';
 import tatanColoss from './foods/tatanColoss.jpg';
 import titanBlind from './foods/titanBlind.jpg';
 import superSayajin from './foods/superSayajin.jpg';
+import kuririn from './foods/kuririn.jpg';
+import natureza from './foods/natureza.jpg';
 import hamburgueP from './foods/hamburguerP.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
@@ -68,4 +70,6 @@ export const foods = {
   maineseCasa,
   tridentMela,
   tridentMenta,
+  kuririn,
+  natureza,
 };

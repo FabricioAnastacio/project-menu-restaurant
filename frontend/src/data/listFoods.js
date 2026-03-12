@@ -7,7 +7,7 @@ const listFoods = {
     {
       id: 1,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.kuririn,
       name: 'Kuririn',
       description: 'Pão, Bife, Salada, Milho e batata',
       ingredients: ['Pão', ' Bife', ' Salada', 'Milho e batata'],
@@ -57,7 +57,7 @@ const listFoods = {
     {
       id: 6,
       obs: '',
-      img: foods.hamburgueP,
+      img: foods.natureza,
       name: 'Beleza da Natureza',
       description: 'Pão, Ovo, Cebola roxa caramelizada, Mussarela, Salada, Milho e batata',
       ingredients: ['VEGETARIANO', 'Pão', ' Ovo', ' Cebola roxa', ' Mussarela', ' Salada', ' Milho e batata'],
