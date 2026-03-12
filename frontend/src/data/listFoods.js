@@ -59,7 +59,7 @@ const listFoods = {
       obs: '',
       img: foods.natureza,
       name: 'Beleza da Natureza',
-      description: 'Pão, Ovo, Cebola roxa caramelizada, Mussarela, Salada, Milho e batata',
+      description: 'Pão, Ovo, Mussarela, Salada, Milho e batata',
       ingredients: ['VEGETARIANO', 'Pão', ' Ovo', ' Cebola roxa', ' Mussarela', ' Salada', ' Milho e batata'],
       value: 14.50,
       amount: 0,
