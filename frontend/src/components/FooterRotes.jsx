@@ -52,7 +52,7 @@ class FooterRotes extends React.Component {
             <Link to={ { pathname: '/cart', hash: '#Header' } } className="iconRote cart">
               { this.buttonCart(counterItens) }
             </Link>
-            Pedido
+            Próximo
           </li>
         </ul>
       </section>

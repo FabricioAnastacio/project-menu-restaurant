@@ -22,13 +22,16 @@ import babyStitch from './foods/babyStitch.jpg';
 import bigTanjiro from './foods/bigTanjiro.jpg';
 import fenix from './foods/fenix.jpg';
 import hawkBacon from './foods/hawkBacon.jpg';
-import hamburgueAtop from './foods/hamburguerAtop.jpg';
-import tatanColoss from './foods/tatanColoss.jpg';
+import titanColoss from './foods/titanColoss.jpg';
 import titanBlind from './foods/titanBlind.jpg';
 import superSayajin from './foods/superSayajin.jpg';
 import kuririn from './foods/kuririn.jpg';
 import natureza from './foods/natureza.jpg';
+<<<<<<< HEAD
 import hamburgueP from './foods/hamburguerP.jpg';
+=======
+import kame from './foods/kame.jpg';
+>>>>>>> refs/remotes/origin/main
 
 import hallsExtra from './foods/hallsExtra.jpg';
 import maineseCasa from './foods/maioneseCasa.jpg';
@@ -61,11 +64,10 @@ export const foods = {
   bigTanjiro,
   fenix,
   hawkBacon,
-  tatanColoss,
+  titanColoss,
   titanBlind,
   superSayajin,
-  hamburgueAtop,
-  hamburgueP,
+  kame,
   hallsExtra,
   maineseCasa,
   tridentMela,
