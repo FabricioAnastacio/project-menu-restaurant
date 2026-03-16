@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "iphone14": "npx playwright open --device='iPhone 14 Pro' http://localhost:3000",
+    "iphone16": "npx playwright open --browser=webkit --viewport-size=430,932 http://localhost:3000"
   },
   "eslintConfig": {
     "extends": [
