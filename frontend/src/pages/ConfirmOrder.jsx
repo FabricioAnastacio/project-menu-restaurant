@@ -35,7 +35,7 @@ class ConfirmOrder extends React.Component {
     const {
       listMenu: {
         candy, food, allDrinks, additional,
-      }, valueTotal, listMenu } = this.context;
+      }, valueTotal } = this.context;
 
     const order = {
       foods: food.filter((item) => item.amount > 0),
@@ -46,6 +46,12 @@ class ConfirmOrder extends React.Component {
       ],
       value: valueTotal,
     };
+
+    if (order.foods.length + order.drinks.length + order.additional.length === 0) {
+      return alert(
+        'Ocorreu um erro ao enviar o pedido.\nPor favor escolha novamente seu lanche.',
+      );
+    }
 
     sendMensage(this.state, order);
 
