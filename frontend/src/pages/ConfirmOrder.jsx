@@ -48,6 +48,7 @@ class ConfirmOrder extends React.Component {
     };
 
     if (order.foods.length + order.drinks.length + order.additional.length === 0) {
+      // eslint-disable-next-line no-alert
       return alert(
         'Ocorreu um erro ao enviar o pedido.\nPor favor escolha novamente seu lanche.',
       );
