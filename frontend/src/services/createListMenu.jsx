@@ -1,42 +1,63 @@
-export function createListMenuBeer(list, getItem, setBlur) {
+import ItemComponent from '../components/ItemComponent';
+
+// eslint-disable-next-line max-params
+export function createListMenuBurguer(
+  list,
+  getItem,
+  setBlur,
+  imgOpem,
+  counterItens,
+  counterRequestAmount,
+) {
   return (
-    <>
-      <h3>Chopp</h3>
+    <ul className={ `Ul-${imgOpem}` }>
       {
-        list.chopp.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.clasic.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="clasic"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-      <h3>600ml</h3>
+      <h3 className="Titles-Burger">ESPECIAL DOS HASHIRAS</h3>
       {
-        list.sixHundred.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.handmade.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="handmade"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-      <h3>Long Neck</h3>
+      <h3 className="Titles-Burger">MOLHOS</h3>
       {
-        list.longNeck.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.sauce.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="sauce"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-    </>
+    </ul>
   );
 }

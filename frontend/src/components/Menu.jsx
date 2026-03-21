@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import '../style/menu.css';
 import ItemComponent from './ItemComponent';
+import { createListMenuBurguer } from '../services/createListMenu';
 
 class Menu extends React.Component {
   constructor() {
@@ -59,24 +60,35 @@ class Menu extends React.Component {
             <p>{ description }</p>
           </div>
         </section>
-        <ul className={ `Ul-${imgOpem}` }>
-          {
-            (
-              listMenu.map((item, key) => (
-                <ItemComponent
-                  key={ key }
-                  item={ item }
-                  isFood={ isFood }
-                  isCandy={ isCandy }
-                  getItem={ this.getItem }
-                  setBlur={ setBlur }
-                  counterItens={ counterItens }
-                  counterRequestAmount={ counterRequestAmount }
-                />
-              ))
+        {
+          isFood ? (
+            createListMenuBurguer(
+              listMenu,
+              this.getItem,
+              setBlur,
+              imgOpem,
+              counterItens,
+              counterRequestAmount,
             )
-          }
-        </ul>
+          ) : (
+            <ul className={ `Ul-${imgOpem}` }>
+              {
+                listMenu.map((item, key) => (
+                  <ItemComponent
+                    key={ key }
+                    item={ item }
+                    isFood={ isFood }
+                    isCandy={ isCandy }
+                    getItem={ this.getItem }
+                    setBlur={ setBlur }
+                    counterItens={ counterItens }
+                    counterRequestAmount={ counterRequestAmount }
+                  />
+                ))
+              }
+            </ul>
+          )
+        }
       </main>
     );
   }

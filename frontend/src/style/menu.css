@@ -79,6 +79,14 @@ ul {
   z-index: 0;
 }
 
+.Titles-Burger {
+  text-align: center;
+  margin-top: 40px;
+  color: #961212;
+  text-shadow: .5px .5px 1px gold;
+  font-size: 20px;
+}
+
 li {
   align-items: center;
   border-bottom: .5px solid #ff0000;
