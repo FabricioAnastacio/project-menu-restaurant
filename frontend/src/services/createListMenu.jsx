@@ -42,7 +42,7 @@ export function createListMenuBurguer(
           />
         ))
       }
-      <h3 className="Titles-Burger">ADICIONAIS</h3>
+      <h3 className="Titles-Burger">ACOMPANHAMENTOS</h3>
       {
         list.additional.map((item, key) => (
           <ItemComponent

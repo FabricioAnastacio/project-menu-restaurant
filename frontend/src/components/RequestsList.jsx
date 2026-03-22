@@ -13,6 +13,7 @@ class RequestsList extends React.Component {
 
     this.state = {
       valueTotal: 0,
+      grup: ['clasic', 'handmade', 'additional', 'drinks', 'candy'],
       request: {
         clasic: [],
         handmade: [],
@@ -20,7 +21,6 @@ class RequestsList extends React.Component {
         drinks: [],
         candy: [],
       },
-      grup: ['clasic', 'handmade', 'additional', 'drinks', 'candy'],
     };
   }
 
