@@ -53,7 +53,7 @@ class RequestsList extends React.Component {
 
     const requestAllItens = [
       ...request.additional, ...request.clasic, ...request.handmade,
-      ...request.drinks, ...request.candy,
+      ...request.drinks, ...request.candy, ...request.souce,
     ];
 
     let valueTotal = 0;
