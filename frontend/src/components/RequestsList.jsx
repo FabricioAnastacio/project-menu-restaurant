@@ -13,26 +13,43 @@ class RequestsList extends React.Component {
 
     this.state = {
       valueTotal: 0,
-      requestFoods: [],
-      requestDrinks: [],
-      requestSauce: [],
-      requestCandy: [],
+      request: {
+        clasic: [],
+        handmade: [],
+        additional: [],
+        drinks: [],
+        candy: [],
+      },
+      grup: ['clasic', 'handmade', 'additional', 'drinks', 'candy'],
     };
   }
 
   componentDidMount() {
     const {
-      listMenu: { food, candy, allDrinks, additional } } = this.context;
-    const requestFoods = [];
-    const requestDrinks = [];
-    const requestCandy = [];
+      listMenu: {
+        food: { clasic, handmade, additional },
+        candy,
+        allDrinks,
+      },
+    } = this.context;
+    const request = {
+      clasic: [],
+      handmade: [],
+      additional: [],
+      drinks: [],
+      candy: [],
+    };
 
-    requestFoods.push(...food.filter((item) => item.amount > 0));
-    requestDrinks.push(...allDrinks.filter((item) => item.amount > 0));
-    requestCandy.push(...candy.filter((item) => item.amount > 0));
+    request.clasic.push(...clasic.filter((item) => item.amount > 0));
+    request.handmade.push(...handmade.filter((item) => item.amount > 0));
+    request.additional.push(...additional.filter((item) => item.amount > 0));
+    request.drinks.push(...allDrinks.filter((item) => item.amount > 0));
+    request.candy.push(...candy.filter((item) => item.amount > 0));
 
     const requestAllItens = [
-      ...requestFoods, ...requestDrinks, ...requestCandy, ...additional.sauce];
+      ...request.additional, ...request.clasic, ...request.handmade,
+      ...request.drinks, ...request.candy,
+    ];
 
     let valueTotal = 0;
     requestAllItens.forEach((item) => {
@@ -42,109 +59,64 @@ class RequestsList extends React.Component {
 
     this.setState({
       valueTotal,
-      requestFoods,
-      requestDrinks,
-      requestCandy,
-      requestSauce: additional.sauce,
+      request,
     });
   }
 
-  addNewItem = (item, type) => {
-    const { requestCandy,
-      requestFoods, requestDrinks, requestSauce, valueTotal } = this.state;
+  addNewItem = (item, grup) => {
+    const { request, valueTotal } = this.state;
     this.setState({
       valueTotal: valueTotal + item.value,
     });
 
-    if (type === 'food') {
-      this.setState({
-        requestFoods: requestFoods.map((a) => {
-          if (a.id === item.id) a.amount += 1;
-          return a;
-        }),
-      });
-    } else if (type === 'drink') {
-      this.setState({
-        requestDrinks: requestDrinks.map((a) => {
-          if (a.id === item.id) a.amount += 1;
-          return a;
-        }),
-      });
-    } else if (type === 'candy') {
-      this.setState({
-        requestCandy: requestCandy.map((a) => {
-          if (a.id === item.id) a.amount += 1;
-          return a;
-        }),
-      });
-    } else {
-      this.setState({
-        requestSauce: requestSauce.map((a) => {
-          if (a.id === item.id) a.amount += 1;
-          return a;
-        }),
-      });
-    }
+    this.setState({
+      [request[grup]]: request[grup].map((a) => {
+        if (a.id === item.id) a.amount += 1;
+        return a;
+      }),
+    });
   };
 
   updateCounterRequest = () => {
-    const {
-      requestCandy,
-      requestFoods, requestDrinks, requestSauce, valueTotal,
+    const { request, valueTotal,
     } = this.state;
 
     const updateCounter = [
-      ...requestCandy, ...requestFoods, ...requestDrinks,
-      ...requestSauce.filter((item) => item.amount > 0),
+      ...request.clasic, ...request.handmade, ...request.additional,
+      ...request.candy, ...request.drinks,
     ];
 
     this.context.counterRequest = updateCounter.length;
     this.context.valueTotal = valueTotal.toFixed(2);
   };
 
-  removeItem = (item, type) => {
-    const {
-      requestCandy,
-      requestFoods,
-      requestDrinks, requestSauce, valueTotal } = this.state;
+  removeItem = (item, grup) => {
+    const { request, valueTotal } = this.state;
 
     this.setState({
       valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
     });
 
-    if (type === 'food') {
-      this.setState({
-        requestFoods: requestFoods.filter((a) => {
+    this.setState({
+      request: {
+        ...request,
+        [grup]: request[grup].filter((a) => {
           if (a.id === item.id) a.amount -= 1;
           return a.amount > 0 && a;
         }),
-      });
-    } else if (type === 'drink') {
-      this.setState({
-        requestDrinks: requestDrinks.filter((a) => {
-          if (a.id === item.id) a.amount -= 1;
-          return a.amount > 0 ?? a;
-        }),
-      });
-    } else if (type === 'candy') {
-      this.setState({
-        requestCandy: requestCandy.filter((a) => {
-          if (a.id === item.id) a.amount -= 1;
-          return a.amount > 0 && a;
-        }),
-      });
-    } else {
-      this.setState({
-        requestSauce: requestSauce.filter((a) => {
-          if (a.id === item.id && a.amount > 0) a.amount -= 1;
-          return a;
-        }),
-      });
-    }
+      },
+    });
   };
 
   removeAllItens = () => {
-    const { listMenu: { food, allDrinks, candy, additional }, listMenu } = this.context;
+    const {
+      listMenu,
+      listMenu: {
+        food,
+        food: { clasic, handmade, additional },
+        allDrinks, candy,
+      },
+    } = this.context;
 
     this.context.counterRequest = 0;
     listMenu.allDrinks = allDrinks.map((iten) => {
@@ -152,12 +124,17 @@ class RequestsList extends React.Component {
       iten.obs = '';
       return iten;
     });
-    listMenu.food = food.map((iten) => {
+    food.clasic = clasic.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
-    additional.sauce = additional.sauce.map((iten) => {
+    food.handmade = handmade.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    food.additional = additional.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -170,19 +147,21 @@ class RequestsList extends React.Component {
 
     this.setState({
       valueTotal: 0,
-      requestFoods: [],
-      requestDrinks: [],
-      requestCandy: [],
+      request: {
+        clasic: [],
+        handmade: [],
+        additional: [],
+        drinks: [],
+        candy: [],
+      },
     });
   };
 
   render() {
     const {
       valueTotal,
-      requestFoods,
-      requestDrinks,
-      requestCandy,
-      requestSauce,
+      request,
+      grup,
     } = this.state;
     this.updateCounterRequest();
 
@@ -198,48 +177,17 @@ class RequestsList extends React.Component {
           </section>
           <ul className="list-requests">
             {
-              requestSauce.map((item, key) => (
-                <RenderItem
-                  key={ key }
-                  item={ item }
-                  type="sauce"
-                  removeItem={ this.removeItem }
-                  addNewItem={ this.addNewItem }
-                />
+              grup.map((g) => (
+                request[g].map((item, key) => (
+                  <RenderItem
+                    key={ key }
+                    item={ item }
+                    grup={ g }
+                    removeItem={ this.removeItem }
+                    addNewItem={ this.addNewItem }
+                  />
+                ))
               ))
-            }
-            {
-              requestFoods.map(
-                (item, key) => (<RenderItem
-                  key={ key }
-                  item={ item }
-                  type="food"
-                  removeItem={ this.removeItem }
-                  addNewItem={ this.addNewItem }
-                />),
-              )
-            }
-            {
-              requestDrinks.map(
-                (item, key) => (<RenderItem
-                  key={ key }
-                  item={ item }
-                  type="drink"
-                  removeItem={ this.removeItem }
-                  addNewItem={ this.addNewItem }
-                />),
-              )
-            }
-            {
-              requestCandy.map(
-                (item, key) => (<RenderItem
-                  key={ key }
-                  item={ item }
-                  type="candy"
-                  removeItem={ this.removeItem }
-                  addNewItem={ this.addNewItem }
-                />),
-              )
             }
             {
               valueTotal === 0 && (

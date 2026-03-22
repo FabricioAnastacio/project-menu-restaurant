@@ -42,12 +42,12 @@ export function createListMenuBurguer(
           />
         ))
       }
-      <h3 className="Titles-Burger">MOLHOS</h3>
+      <h3 className="Titles-Burger">ADICIONAIS</h3>
       {
-        list.sauce.map((item, key) => (
+        list.additional.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="sauce"
+            grup="additional"
             item={ item }
             isFood
             isCandy={ false }

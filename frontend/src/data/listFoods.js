@@ -1,6 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 import { foods } from '../pictures/exportImgs';
+import logo from '../pictures/logo.jpg';
 
 const listFoods = {
   food: {
@@ -118,11 +119,21 @@ const listFoods = {
         amount: 0,
       },
     ],
-    sauce: [
+    additional: [
       {
         id: 1,
+        img: logo,
+        name: '1-Batata pokê 150G',
+        description: '150g',
+        ingredients: [],
+        value: 8.00,
+        obs: '',
+        amount: 0,
+      },
+      {
+        id: 2,
         img: foods.maineseCasa,
-        name: '1-Mainese da Casa Tradicional 30g',
+        name: '2-Mainese da Casa Tradicional 30g',
         description: '30g',
         ingredients: [],
         value: 3.00,
@@ -163,19 +174,6 @@ const listFoods = {
       amount: 0,
     },
   ],
-  additional: {
-    sauce: [
-      {
-        img: foods.maineseCasa,
-        name: 'Mainese da Casa Tradicional 30g',
-        description: '30g',
-        ingredients: [],
-        value: 3.00,
-        obs: '',
-        amount: 0,
-      },
-    ],
-  },
 };
 
 export default listFoods;

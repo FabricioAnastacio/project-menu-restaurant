@@ -41,12 +41,12 @@ class RenderItem extends React.Component {
 
   render() {
     const { obs, itemObs } = this.state;
-    const { item, key, type, addNewItem, removeItem } = this.props;
+    const { item, key, grup, addNewItem, removeItem } = this.props;
 
     return (
       <li
         key={ key }
-        className={ `request ${type}` }
+        className={ `request ${grup}` }
         // style={ { opacity: `${item.amount === 0 ? '.6' : '1'}` } }
       >
         <div className="item-request">
@@ -59,35 +59,27 @@ class RenderItem extends React.Component {
             <div className="item-name">
               <h1>{ item.name }</h1>
               <p>{ `R$${item.value.toFixed(2)}` }</p>
-              {
-                type !== 'sauce' && (
-                  <button
-                    className={ `Btm-Observation-${obs}` }
-                    onClick={ this.onClickAddObs }
-                  >
-                    { !obs ? 'observação' : 'Apagar' }
-                  </button>
-                )
-              }
+              <button
+                className={ `Btm-Observation-${obs}` }
+                onClick={ this.onClickAddObs }
+              >
+                { !obs ? 'observação' : 'Apagar' }
+              </button>
             </div>
           </div>
-          <button className="btn" onClick={ () => removeItem(item, type) }>-</button>
+          <button className="btn" onClick={ () => removeItem(item, grup) }>-</button>
           <p>{ item.amount }</p>
-          <button className="btn" onClick={ () => addNewItem(item, type) }>+</button>
+          <button className="btn" onClick={ () => addNewItem(item, grup) }>+</button>
         </div>
-        {
-          type !== 'sauce' && (
-            <textarea
-              className="item-obs"
-              name="itemObs"
-              id="obs"
-              value={ itemObs }
-              onChange={ (e) => this.handleChengeObs(e, item) }
-              placeholder="Ex. Sem batata palha"
-              style={ { display: obs ? 'flex' : 'none' } }
-            />
-          )
-        }
+        <textarea
+          className="item-obs"
+          name="itemObs"
+          id="obs"
+          value={ itemObs }
+          onChange={ (e) => this.handleChengeObs(e, item) }
+          placeholder="Ex. Sem batata palha"
+          style={ { display: obs ? 'flex' : 'none' } }
+        />
       </li>
     );
   }
@@ -104,7 +96,7 @@ RenderItem.propTypes = {
     obs: PropTypes.string.isRequired,
   }).isRequired,
   key: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
+  grup: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
 };

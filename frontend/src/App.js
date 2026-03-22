@@ -17,7 +17,6 @@ class App extends React.Component {
         listMenu: {
           food: listFoods.food,
           candy: listFoods.candy,
-          additional: listFoods.additional,
           allDrinks: listDrinks,
         },
         counterRequest: 0,
