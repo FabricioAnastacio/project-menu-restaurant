@@ -98,7 +98,7 @@ const listFoods = {
       id: 10,
       obs: '',
       img: foods.titanAttack,
-      name: 'Titan de Ataque',
+      name: 'Titan de Ataque ARTESANAL',
       description: 'Direto das muralhas ele surge: Duas carnes suculentas e muito cheddar derretido em uma avalanche de molho de bacon titanico. Tudo se une em uma explosão intensa a cada mordida. Ataque total a sua fome!',
       ingredients: ['Pão brioche', ' 2 Blends bovinos de 120g', ' Cheddar e', ' molho de bacon titanico', ' (ACOMPANHA KATANA BATATA 150G)'],
       value: 33.00,
