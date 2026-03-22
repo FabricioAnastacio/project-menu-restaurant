@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 import { foods } from '../pictures/exportImgs';
-import logo from '../pictures/logo.jpg';
+// import logo from '../pictures/logo.jpg';
 
 const listFoods = {
   food: {
@@ -92,7 +92,7 @@ const listFoods = {
         id: 2,
         obs: '',
         img: foods.titanBlind,
-        name: '9-Titan Blindado ARTESANAL',
+        name: '9-Titã Blindado ARTESANAL',
         description: 'Blindagem ativada. Impacto liberado. Estrutura pesada. Presença dominante.',
         ingredients: ['Pão brioche', ' Blend bovino 120g', ' Mussarela', ' Cheddar', ' Bacon fatiado', ' Cebola roxa', ' Molho especial', ' (ACOMPANHA KATANA BATATA 150G)'],
         value: 27.00,
@@ -102,7 +102,7 @@ const listFoods = {
         id: 3,
         obs: '',
         img: foods.titanAttack,
-        name: '10-Titan de Ataque ARTESANAL',
+        name: '10-Titã de Attack ARTESANAL',
         description: 'Direto das muralhas ele surge: Duas carnes suculentas e muito cheddar derretido em uma avalanche de molho de bacon titanico. Tudo se une em uma explosão intensa a cada mordida. Ataque total a sua fome!',
         ingredients: ['Pão brioche', ' 2 Blends bovinos de 120g', ' Cheddar e', ' molho de bacon titanico', ' (ACOMPANHA KATANA BATATA 150G)'],
         value: 33.00,
@@ -112,7 +112,7 @@ const listFoods = {
         id: 4,
         obs: '',
         img: foods.titanColoss,
-        name: '11-Titan Colossal ARTESANAL',
+        name: '11-Titã Colossal ARTESANAL',
         description: 'Quando ele surge… tudo para. Gigante, carregado e absolutamente destruidor de fome.',
         ingredients: ['Pão brioche', ' 2 Blends bovinos de 120g', ' Cheddar', ' Queijo empanado crocante', ' Bacon fatiado', ' Cebola roxa', ' Alface', ' Tomate e', ' Molho especial barbecue', ' (ACOMPANHA KATANA BATATA 150G)'],
         value: 35.00,
@@ -122,18 +122,28 @@ const listFoods = {
     additional: [
       {
         id: 1,
-        img: logo,
-        name: '1-Batata pokê 150G',
+        img: foods.poke,
+        name: '1-Fritas pokê 150G',
         description: '150g',
         ingredients: [],
-        value: 8.00,
+        value: 7.00,
         obs: '',
         amount: 0,
       },
       {
         id: 2,
+        img: foods.katana,
+        name: '2-Katana batata 150G',
+        description: '150g',
+        ingredients: [],
+        value: 5.50,
+        obs: '',
+        amount: 0,
+      },
+      {
+        id: 3,
         img: foods.maineseCasa,
-        name: '2-Mainese da Casa Tradicional 30g',
+        name: '3-Mainese da Casa Tradicional 30g',
         description: '30g',
         ingredients: [],
         value: 3.00,
