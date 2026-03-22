@@ -28,6 +28,7 @@ import superSayajin from './foods/superSayajin.jpg';
 import kuririn from './foods/kuririn.jpg';
 import natureza from './foods/natureza.jpg';
 import kame from './foods/kame.jpg';
+import titanAttack from './foods/titanAttack.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
 import maineseCasa from './foods/maioneseCasa.jpg';
@@ -70,4 +71,5 @@ export const foods = {
   tridentMenta,
   kuririn,
   natureza,
+  titanAttack,
 };
