@@ -21,6 +21,8 @@ class MenuPage extends React.Component {
       listActual: 'food',
       imgOpen: false,
       counterItens: 0,
+      isVisibleH: false,
+      isVisibleA: false,
     };
 
     this.pairMap = {
@@ -82,6 +84,19 @@ class MenuPage extends React.Component {
     });
   };
 
+  onVisible = (isVisible, type) => {
+    switch (type) {
+    case 'H':
+      this.setState({ isVisibleH: isVisible });
+      break;
+    case 'A':
+      this.setState({ isVisibleA: isVisible });
+      break;
+    default:
+      break;
+    }
+  };
+
   render() {
     const {
       search,
@@ -91,6 +106,8 @@ class MenuPage extends React.Component {
       imgOpen,
       list,
       counterItens,
+      isVisibleH,
+      isVisibleA,
     } = this.state;
 
     return (
@@ -106,6 +123,8 @@ class MenuPage extends React.Component {
           foods={ food }
           setBlur={ imgOpen }
           candy={ candy }
+          isVisibleH={ isVisibleH }
+          isVisibleA={ isVisibleA }
         />
         <Menu
           setBlur={ this.setBlur }
@@ -115,6 +134,7 @@ class MenuPage extends React.Component {
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
+          onVisible={ this.onVisible }
         />
         <FooterRotes counterItens={ counterItens } imgOpem={ imgOpen } />
         <Footer imgOpem={ imgOpen } />

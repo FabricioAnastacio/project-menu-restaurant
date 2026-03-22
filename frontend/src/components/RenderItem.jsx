@@ -59,27 +59,35 @@ class RenderItem extends React.Component {
             <div className="item-name">
               <h1>{ item.name }</h1>
               <p>{ `R$${item.value.toFixed(2)}` }</p>
-              <button
-                className={ `Btm-Observation-${obs}` }
-                onClick={ this.onClickAddObs }
-              >
-                { !obs ? 'observação' : 'Apagar' }
-              </button>
+              {
+                grup !== 'souce' && (
+                  <button
+                    className={ `Btm-Observation-${obs}` }
+                    onClick={ this.onClickAddObs }
+                  >
+                    { !obs ? 'observação' : 'Apagar' }
+                  </button>
+                )
+              }
             </div>
           </div>
           <button className="btn" onClick={ () => removeItem(item, grup) }>-</button>
           <p>{ item.amount }</p>
           <button className="btn" onClick={ () => addNewItem(item, grup) }>+</button>
         </div>
-        <textarea
-          className="item-obs"
-          name="itemObs"
-          id="obs"
-          value={ itemObs }
-          onChange={ (e) => this.handleChengeObs(e, item) }
-          placeholder="Ex. Sem batata palha"
-          style={ { display: obs ? 'flex' : 'none' } }
-        />
+        {
+          grup !== 'souce' && (
+            <textarea
+              className="item-obs"
+              name="itemObs"
+              id="obs"
+              value={ itemObs }
+              onChange={ (e) => this.handleChengeObs(e, item) }
+              placeholder="Ex. Sem batata palha"
+              style={ { display: obs ? 'flex' : 'none' } }
+            />
+          )
+        }
       </li>
     );
   }

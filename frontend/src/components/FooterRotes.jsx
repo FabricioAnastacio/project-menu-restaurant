@@ -36,20 +36,24 @@ class FooterRotes extends React.Component {
         <ul>
           <li
             className={ `icon-menu isSelect${btnMenu}` }
-            onClick={ () => this.handleNav(btnMenu) }
-            aria-hidden="true"
           >
-            <Link to="/" className="iconRote snack">
+            <Link
+              onClick={ () => this.handleNav(btnMenu) }
+              to="/"
+              className="iconRote snack"
+            >
               <img src={ iconsFastFood } alt="Hamburguer" />
             </Link>
             Cardapio
           </li>
           <li
             className={ `isSelect${btnCart}` }
-            onClick={ () => this.handleNav(btnCart) }
-            aria-hidden="true"
           >
-            <Link to={ { pathname: '/cart', hash: '#Header' } } className="iconRote cart">
+            <Link
+              to={ { pathname: '/cart', hash: '#Header' } }
+              onClick={ () => this.handleNav(btnCart) }
+              className="iconRote cart"
+            >
               { this.buttonCart(counterItens) }
             </Link>
             Próximo
