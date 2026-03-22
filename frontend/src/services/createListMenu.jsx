@@ -8,8 +8,8 @@ export function createListMenuBurguer(
   imgOpem,
   counterItens,
   counterRequestAmount,
-  ref1,
-  ref2,
+  // ref1,
+  // ref2,
 ) {
   return (
     <ul className={ `Ul-${imgOpem}` }>
@@ -30,7 +30,7 @@ export function createListMenuBurguer(
       }
       <view>
         <h3
-          ref={ ref1 }
+          // ref={ ref1 }
           className="Titles-Burger"
           id="handmade"
         >
@@ -52,7 +52,13 @@ export function createListMenuBurguer(
           />
         ))
       }
-      <h3 ref={ ref2 } className="Titles-Burger" id="additional">ACOMPANHAMENTOS</h3>
+      <h3
+        // ref={ ref2 }
+        className="Titles-Burger"
+        id="additional"
+      >
+        ACOMPANHAMENTOS
+      </h3>
       {
         list.additional.map((item, key) => (
           <ItemComponent

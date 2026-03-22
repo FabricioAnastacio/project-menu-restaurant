@@ -10,8 +10,8 @@ class ListCategory extends React.Component {
       candy,
       handleChenge,
       setBlur,
-      isVisibleH,
-      isVisibleA,
+      // isVisibleH,
+      // isVisibleA,
     } = this.props;
 
     return (
@@ -46,16 +46,16 @@ class ListCategory extends React.Component {
           </label>
         </section>
         {
-          foods && (
-            <section className="Search_item_link">
-              <a className={ `Link-a Link-a-${isVisibleH}` } href="#handmade">
-                Artesanais
-              </a>
-              <a className={ `Link-a Link-a-${isVisibleA}` } href="#additional">
-                Acompanhamentos
-              </a>
-            </section>
-          )
+          // foods && (
+          //   <section className="Search_item_link">
+          //     <a className={ `Link-a Link-a-${isVisibleH}` } href="#handmade">
+          //       Artesanais
+          //     </a>
+          //     <a className={ `Link-a Link-a-${isVisibleA}` } href="#additional">
+          //       Acompanhamentos
+          //     </a>
+          //   </section>
+          // )
         }
       </div>
     );
@@ -68,8 +68,8 @@ ListCategory.propTypes = {
   candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
   setBlur: PropTypes.bool.isRequired,
-  isVisibleH: PropTypes.bool.isRequired,
-  isVisibleA: PropTypes.bool.isRequired,
+  // isVisibleH: PropTypes.bool.isRequired,
+  // isVisibleA: PropTypes.bool.isRequired,
 };
 
 export default ListCategory;
