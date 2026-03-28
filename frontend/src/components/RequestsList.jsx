@@ -12,6 +12,7 @@ class RequestsList extends React.Component {
     super();
 
     this.state = {
+      data: new Date().getDay(),
       valueTotal: 0,
       grup: ['clasic', 'handmade', 'additional', 'drinks', 'candy'],
       request: {
@@ -181,6 +182,7 @@ class RequestsList extends React.Component {
       valueTotal,
       request,
       grup,
+      data,
     } = this.state;
     this.updateCounterRequest();
 
@@ -234,11 +236,13 @@ class RequestsList extends React.Component {
             >
               Limpar lista
             </button>
-            <button className="Button-ConfirmCart" onClick={ this.verifyList }>
+            <button
+              className={ data > 0 ? 'Button-ConfirmCart' : 'Button-ConfirmCart-dis' }
+              onClick={ this.verifyList }
+            >
               <Link
                 to={ valueTotal === 0 ? '' : '/order' }
                 className="linkOrder"
-                aria-disabled
               >
                 Confirmar
               </Link>
