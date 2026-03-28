@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 import listFoods from '../data/listFoods';
@@ -34,6 +35,8 @@ class MenuPage extends React.Component {
 
   componentDidMount() {
     const { counterRequest } = this.context;
+    const day = new Date().getDay();
+    if (day === 0) toast.info('Não estamos abertos hoje!');
     this.setState({
       counterItens: counterRequest,
     });
@@ -112,6 +115,7 @@ class MenuPage extends React.Component {
 
     return (
       <div className="PageMenu">
+        <ToastContainer />
         <Header
           title="CARDAPIO"
           imgOpen={ imgOpen }
