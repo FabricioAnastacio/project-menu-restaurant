@@ -39,7 +39,7 @@
 
 .Section-Details-true {
   opacity: 1;
-  z-index: 1;
+  z-index: 2;
   div {
     display: grid;
     place-items: center;
@@ -49,7 +49,7 @@
   }
   .IMG-Full {
     border-radius: 20px;
-    width: 95%;
+    width: 280px;
     background-color: white;
   }
 }
@@ -85,8 +85,8 @@ ul {
   margin-top: 40px;
   text-align: center;
   text-shadow: 1px 1px 10px black;
-  box-shadow: 1px 1px 40px black inset;
-  background-color: #961212;
+  box-shadow: 0 20px 20px -20px  #ff0404c7;
+  background: linear-gradient(to bottom, transparent 0%, #ff0404 250%);
   padding: 20px 0;
 }
 
@@ -126,6 +126,81 @@ li {
   width: 100px;
   transition: .7s;
 }
+
+/*Carrossel Promocional */
+
+.Container-carousel {
+  position: relative;
+  max-width: 99%;
+  margin: 0 auto;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 1;
+}
+
+.left {
+  right: auto;
+  left: 0;
+  background: linear-gradient(to left, transparent 0%, black 300%);
+  border-radius: 20px 0 0 20px;
+} 
+
+.rigth {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to right, transparent 0%, black 300%);
+  border-radius: 0 20px 20px 0;
+}
+
+.carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+  margin: 0;
+  overflow-x: auto;
+  z-index: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.Item-Promotional {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  div {
+    height: 280px;
+    width: 250px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    h5 {
+      margin: 0;
+      background-color: black;
+      padding: 0 10px 0 0;
+      border-radius: 0 1em 0 0;
+    }
+    p {
+      margin: 0;
+      background-color: black;
+      padding: 0 10px 0 0;
+      border-radius: 0 1em 0 0;
+    }
+  }
+}
+
+/*===*/
 
 .Description_Item, .Btm-fullImg {
   display: flex;

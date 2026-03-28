@@ -1,18 +1,61 @@
+/* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 import { foods } from '../pictures/exportImgs';
 // import logo from '../pictures/logo.jpg';
 
 const listFoods = {
+  highlights: [
+    {
+      id: 1,
+      obs: '',
+      img: foods.sorteio,
+      name: 'SORTEIO',
+      description: 'GANHE UM COMBO',
+      value: 0,
+      amount: 0,
+    },
+    {
+      id: 2,
+      obs: '',
+      img: foods.combo,
+      name: '1- Combo Hawk Bacon',
+      description: 'O lanche que ataca com sabor pesado!',
+      ingredients: ['2 Hawk Bacon', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
+      value: 52.00,
+      amount: 0,
+    },
+    {
+      id: 2,
+      obs: '',
+      img: foods.tanjiroDelivery,
+      name: 'Delivery',
+      description: 'Entregamos 19h-23h',
+      value: 0,
+      amount: 0,
+    },
+  ],
   food: {
-    clasic: [
+    combo: [
+      {
+        id: 1,
+        obs: '',
+        img: foods.combo,
+        name: '1- Combo Hawk Bacon',
+        description: 'O lanche que ataca com sabor pesado!',
+        ingredients: ['2 Hawk Bacon', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
+        value: 52.00,
+        amount: 0,
+      },
+    ],
+    classic: [
       {
         id: 1,
         obs: '',
         img: foods.kuririn,
         name: '1-Kuririn',
-        description: 'Pão, Bife 90g, Salada, Milho e batata',
-        ingredients: ['Pão', ' Bife 90g', ' Salada', ' Milho e batata'],
+        description: 'Pão, Bife, Salada, Milho e batata',
+        ingredients: ['Pão', ' Bife', ' Salada', 'Milho e batata'],
         value: 12.50,
         amount: 0,
       },

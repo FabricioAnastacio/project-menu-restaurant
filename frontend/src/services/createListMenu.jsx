@@ -14,10 +14,47 @@ export function createListMenuBurguer(
   return (
     <ul className={ `Ul-${imgOpem}` }>
       {
-        list.clasic.map((item, key) => (
+        list.combo.length > 0 && (
+          <view>
+            <h3
+              // ref={ ref1 }
+              className="Titles-Burger"
+              id="handmade"
+            >
+              COMBOS
+            </h3>
+          </view>
+        )
+      }
+      {
+        list.combo.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="clasic"
+            grup="combo"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
+        ))
+      }
+      <view>
+        <h3
+          // ref={ ref1 }
+          className="Titles-Burger"
+          id="handmade"
+        >
+          CLASSICOS
+        </h3>
+      </view>
+      {
+        list.classic.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="classic"
             item={ item }
             isFood
             isCandy={ false }
