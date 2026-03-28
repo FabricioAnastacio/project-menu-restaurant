@@ -40,6 +40,8 @@ import tridentMenta from './foods/tridentMenta.jpg';
 import tanjiroDelivery from './foods/highlights/tanjiroDelivery.jpg';
 import sorteio from './foods/highlights/sorteio.jpg';
 
+import combo from './foods/combo.jpg';
+
 export const drinks = {
   fanta2l,
   gatoradLar,
@@ -81,4 +83,5 @@ export const foods = {
   poke,
   katana,
   sorteio,
+  combo,
 };

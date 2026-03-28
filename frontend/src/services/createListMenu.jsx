@@ -14,10 +14,23 @@ export function createListMenuBurguer(
   return (
     <ul className={ `Ul-${imgOpem}` }>
       {
+        list.combo.length > 0 && (
+          <view>
+            <h3
+              // ref={ ref1 }
+              className="Titles-Burger"
+              id="handmade"
+            >
+              COMBOS
+            </h3>
+          </view>
+        )
+      }
+      {
         list.combo.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="classic"
+            grup="combo"
             item={ item }
             isFood
             isCandy={ false }
@@ -28,6 +41,15 @@ export function createListMenuBurguer(
           />
         ))
       }
+      <view>
+        <h3
+          // ref={ ref1 }
+          className="Titles-Burger"
+          id="handmade"
+        >
+          CLASSICOS
+        </h3>
+      </view>
       {
         list.classic.map((item, key) => (
           <ItemComponent

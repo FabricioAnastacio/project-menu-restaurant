@@ -14,10 +14,11 @@ class RequestsList extends React.Component {
     this.state = {
       data: new Date().getDay(),
       valueTotal: 0,
-      grup: ['classic', 'handmade', 'additional', 'drinks', 'candy'],
+      grup: ['classic', 'combo', 'handmade', 'additional', 'drinks', 'candy'],
       request: {
         classic: [],
         handmade: [],
+        combo: [],
         additional: [],
         drinks: [],
         candy: [],
@@ -29,7 +30,7 @@ class RequestsList extends React.Component {
   componentDidMount() {
     const {
       listMenu: {
-        food: { classic, handmade, additional },
+        food: { classic, combo, handmade, additional },
         candy,
         allDrinks,
       },
@@ -37,12 +38,14 @@ class RequestsList extends React.Component {
     const request = {
       classic: [],
       handmade: [],
+      combo: [],
       additional: [],
       drinks: [],
       candy: [],
       souce: [],
     };
     const idItemRemov = 3;
+    request.combo.push(...combo.filter((item) => item.amount > 0));
     request.classic.push(...classic.filter((item) => item.amount > 0));
     request.handmade.push(...handmade.filter((item) => item.amount > 0));
     request.additional.push(
@@ -54,7 +57,7 @@ class RequestsList extends React.Component {
 
     const requestAllItens = [
       ...request.additional, ...request.classic, ...request.handmade,
-      ...request.drinks, ...request.candy, ...request.souce,
+      ...request.drinks, ...request.candy, ...request.souce, ...request.combo,
     ];
 
     let valueTotal = 0;
@@ -89,7 +92,7 @@ class RequestsList extends React.Component {
 
     const updateCounter = [
       ...request.classic, ...request.handmade, ...request.additional,
-      ...request.candy, ...request.drinks,
+      ...request.candy, ...request.drinks, request.combo,
     ];
 
     this.context.counterRequest = updateCounter.length;
@@ -126,12 +129,13 @@ class RequestsList extends React.Component {
     }
   };
 
+  // eslint-disable-next-line react-func/max-lines-per-function
   removeAllItens = () => {
     const {
       listMenu,
       listMenu: {
         food,
-        food: { classic, handmade, additional },
+        food: { classic, combo, handmade, additional },
         allDrinks, candy,
       },
     } = this.context;
@@ -144,6 +148,11 @@ class RequestsList extends React.Component {
       return iten;
     });
     food.classic = classic.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    food.combo = combo.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -169,6 +178,7 @@ class RequestsList extends React.Component {
       request: {
         classic: [],
         handmade: [],
+        combo: [],
         additional: [],
         drinks: [],
         candy: [],
