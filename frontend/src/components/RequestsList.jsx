@@ -14,7 +14,9 @@ class RequestsList extends React.Component {
     this.state = {
       data: new Date().getDay(),
       valueTotal: 0,
-      grup: ['classic', 'combo', 'handmade', 'additional', 'drinks', 'candy'],
+      grup: [
+        'classic', 'combo', 'handmade', 'additional', 'drinks', 'candy',
+      ],
       request: {
         classic: [],
         handmade: [],
@@ -44,20 +46,18 @@ class RequestsList extends React.Component {
       candy: [],
       souce: [],
     };
-    const idItemRemov = 3;
     request.combo.push(...combo.filter((item) => item.amount > 0));
     request.classic.push(...classic.filter((item) => item.amount > 0));
     request.handmade.push(...handmade.filter((item) => item.amount > 0));
     request.additional.push(
-      ...additional.filter((item) => item.amount > 0 && item.id !== idItemRemov),
+      ...additional.filter((item) => item.amount > 0),
     );
     request.drinks.push(...allDrinks.filter((item) => item.amount > 0));
     request.candy.push(...candy.filter((item) => item.amount > 0));
-    request.souce.push(...additional.filter((item) => item.id === idItemRemov));
 
     const requestAllItens = [
       ...request.additional, ...request.classic, ...request.handmade,
-      ...request.drinks, ...request.candy, ...request.souce, ...request.combo,
+      ...request.drinks, ...request.candy, ...request.combo,
     ];
 
     let valueTotal = 0;
@@ -106,27 +106,15 @@ class RequestsList extends React.Component {
       valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
     });
 
-    if (grup !== 'souce') {
-      this.setState({
-        request: {
-          ...request,
-          [grup]: request[grup].filter((a) => {
-            if (a.id === item.id) a.amount -= 1;
-            return a.amount > 0 && a;
-          }),
-        },
-      });
-    } else {
-      this.setState({
-        request: {
-          ...request,
-          [grup]: request[grup].filter((a) => {
-            if (a.id === item.id && a.amount > 0) a.amount -= 1;
-            return a;
-          }),
-        },
-      });
-    }
+    this.setState({
+      request: {
+        ...request,
+        [grup]: request[grup].filter((a) => {
+          if (a.id === item.id) a.amount -= 1;
+          return a.amount > 0 && a;
+        }),
+      },
+    });
   };
 
   // eslint-disable-next-line react-func/max-lines-per-function
@@ -207,17 +195,6 @@ class RequestsList extends React.Component {
             <div className="img-header" />
           </section>
           <ul className="list-requests">
-            {
-              request.souce.map((item, key) => (
-                <RenderItem
-                  key={ key }
-                  item={ item }
-                  grup="souce"
-                  removeItem={ this.removeItem }
-                  addNewItem={ this.addNewItem }
-                />
-              ))
-            }
             {
               grup.map((g) => (
                 request[g].map((item, key) => (
