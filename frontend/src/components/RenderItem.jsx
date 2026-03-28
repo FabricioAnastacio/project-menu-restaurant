@@ -41,12 +41,12 @@ class RenderItem extends React.Component {
 
   render() {
     const { obs, itemObs } = this.state;
-    const { item, key, type, addNewItem, removeItem } = this.props;
+    const { item, key, grup, addNewItem, removeItem } = this.props;
 
     return (
       <li
         key={ key }
-        className={ `request ${type}` }
+        className={ `request ${grup}` }
         style={ { opacity: `${item.amount === 0 ? '.6' : '1'}` } }
       >
         <div className="item-request">
@@ -60,23 +60,23 @@ class RenderItem extends React.Component {
               <h1>{ item.name }</h1>
               <p>{ `R$${item.value.toFixed(2)}` }</p>
               {
-                type !== 'sauce' && (
+                grup !== 'souce' && (
                   <button
                     className={ `Btm-Observation-${obs}` }
                     onClick={ this.onClickAddObs }
                   >
-                    { !obs ? 'Add observação' : 'Rm observação' }
+                    { !obs ? 'observação' : 'Apagar' }
                   </button>
                 )
               }
             </div>
           </div>
-          <button onClick={ () => removeItem(item, type) }>-</button>
+          <button className="btn" onClick={ () => removeItem(item, grup) }>-</button>
           <p>{ item.amount }</p>
-          <button onClick={ () => addNewItem(item, type) }>+</button>
+          <button className="btn" onClick={ () => addNewItem(item, grup) }>+</button>
         </div>
         {
-          type !== 'sauce' && (
+          grup !== 'souce' && (
             <textarea
               className="item-obs"
               name="itemObs"
@@ -104,7 +104,7 @@ RenderItem.propTypes = {
     obs: PropTypes.string.isRequired,
   }).isRequired,
   key: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
+  grup: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
 };

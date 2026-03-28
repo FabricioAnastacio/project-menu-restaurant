@@ -5,6 +5,7 @@ import listFoods from '../data/listFoods';
 import '../style/menu.css';
 import ItemComponent from './ItemComponent';
 import ItemPromotional from './ItemPromotional';
+import { createListMenuBurguer } from '../services/createListMenu';
 
 class Menu extends React.Component {
   constructor() {
@@ -17,7 +18,34 @@ class Menu extends React.Component {
       value: '',
       promotinal: listFoods.promotional,
     };
+    // this.elementRef1 = createRef();
+    // this.elementRef2 = createRef();
   }
+
+  // componentDidMount() {
+  //   const { onVisible } = this.props;
+  //   this.observer = new IntersectionObserver((entrys) => {
+  //     entrys.forEach((entry) => {
+  //       if (entry.target === this.elementRef1.current) {
+  //         onVisible(entry.isIntersecting, 'H');
+  //       }
+  //       if (entry.target === this.elementRef2.current) {
+  //         onVisible(entry.isIntersecting, 'A');
+  //       }
+  //     });
+  //   }, {
+  //     threshold: 0.5,
+  //   });
+
+  //   if (this.elementRef1.current) this.observer.observe(this.elementRef1.current);
+  //   if (this.elementRef2.current) this.observer.observe(this.elementRef2.current);
+  // }
+
+  // componentWillUnmount() {
+  //   if (this.observer) {
+  //     this.observer.disconnect();
+  //   }
+  // }
 
   getItem = (item) => {
     this.setState({
@@ -43,7 +71,6 @@ class Menu extends React.Component {
     return (
       <main>
         <div className={ `Container-carousel setblur-${imgOpem}` }>
-          <h4>COMBO DO DIA</h4>
           <ul className="carousel">
             {
               promotinal.map((item, key) => (
@@ -79,24 +106,37 @@ class Menu extends React.Component {
             <p>{ description }</p>
           </div>
         </section>
-        <ul className={ `Ul-${imgOpem}` }>
-          {
-            (
-              listMenu.classic?.map((item, key) => (
-                <ItemComponent
-                  key={ key }
-                  item={ item }
-                  isFood={ isFood }
-                  isCandy={ isCandy }
-                  getItem={ this.getItem }
-                  setBlur={ setBlur }
-                  counterItens={ counterItens }
-                  counterRequestAmount={ counterRequestAmount }
-                />
-              ))
+        {
+          isFood ? (
+            createListMenuBurguer(
+              listMenu,
+              this.getItem,
+              setBlur,
+              imgOpem,
+              counterItens,
+              counterRequestAmount,
+              // this.elementRef1,
+              // this.elementRef2,
             )
-          }
-        </ul>
+          ) : (
+            <ul className={ `Ul-${imgOpem}` }>
+              {
+                listMenu.map((item, key) => (
+                  <ItemComponent
+                    key={ key }
+                    item={ item }
+                    isFood={ isFood }
+                    isCandy={ isCandy }
+                    getItem={ this.getItem }
+                    setBlur={ setBlur }
+                    counterItens={ counterItens }
+                    counterRequestAmount={ counterRequestAmount }
+                  />
+                ))
+              }
+            </ul>
+          )
+        }
       </main>
     );
   }
@@ -112,6 +152,7 @@ Menu.propTypes = {
   isCandy: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
+  // onVisible: PropTypes.func.isRequired,
 };
 
 export default Menu;

@@ -31,21 +31,34 @@ class ConfirmOrder extends React.Component {
     });
   };
 
+  // eslint-disable-next-line react-func/max-lines-per-function
   sendOrCheff = () => {
     const {
+      listMenu,
       listMenu: {
-        candy, food, allDrinks, additional,
-      }, valueTotal, listMenu } = this.context;
+        food,
+        food: { classic, handmade, additional },
+        candy, allDrinks }, valueTotal } = this.context;
 
     const order = {
-      foods: food.filter((item) => item.amount > 0),
+      foods: [
+        ...handmade.filter((item) => item.amount > 0),
+        ...classic.filter((item) => item.amount > 0),
+      ],
       drinks: allDrinks.filter((item) => item.amount > 0),
       additional: [
-        ...additional.sauce.filter((item) => item.amount > 0),
+        ...additional.filter((item) => item.amount > 0),
         ...candy.filter((item) => item.amount > 0),
       ],
       value: valueTotal,
     };
+
+    if (order.foods.length + order.drinks.length + order.additional.length === 0) {
+      // eslint-disable-next-line no-alert
+      return alert(
+        'Ocorreu um erro ao enviar o pedido.\nPor favor escolha novamente seu lanche.',
+      );
+    }
 
     sendMensage(this.state, order);
 
@@ -55,17 +68,22 @@ class ConfirmOrder extends React.Component {
       iten.obs = '';
       return iten;
     });
-    listMenu.food = food.map((iten) => {
+    food.classic = classic.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    food.handmade = handmade.map((iten) => {
+      iten.amount = 0;
+      iten.obs = '';
+      return iten;
+    });
+    food.additional = additional.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
     });
     listMenu.candy = candy.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    additional.sauce = additional.sauce.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;

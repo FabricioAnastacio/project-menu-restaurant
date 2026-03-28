@@ -1,42 +1,79 @@
-export function createListMenuBeer(list, getItem, setBlur) {
+import ItemComponent from '../components/ItemComponent';
+
+// eslint-disable-next-line max-params
+export function createListMenuBurguer(
+  list,
+  getItem,
+  setBlur,
+  imgOpem,
+  counterItens,
+  counterRequestAmount,
+  // ref1,
+  // ref2,
+) {
   return (
-    <>
-      <h3>Chopp</h3>
+    <ul className={ `Ul-${imgOpem}` }>
       {
-        list.chopp.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.classic.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="classic"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-      <h3>600ml</h3>
+      <view>
+        <h3
+          // ref={ ref1 }
+          className="Titles-Burger"
+          id="handmade"
+        >
+          ESPECIAL DOS HASHIRAS
+        </h3>
+      </view>
       {
-        list.sixHundred.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.handmade.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="handmade"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-      <h3>Long Neck</h3>
+      <h3
+        // ref={ ref2 }
+        className="Titles-Burger"
+        id="additional"
+      >
+        ACOMPANHAMENTOS
+      </h3>
       {
-        list.longNeck.map((item, key) => (
-          <li key={ key }>
-            <button onClick={ () => { getItem(item); setBlur(); } }>
-              <div style={ { backgroundImage: `url(${item.img})` } } />
-              <p>{ item.name }</p>
-            </button>
-            <h4>{ item.value }</h4>
-          </li>
+        list.additional.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="additional"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
         ))
       }
-    </>
+    </ul>
   );
 }

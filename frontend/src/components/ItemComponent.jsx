@@ -14,11 +14,11 @@ class ItemComponent extends React.Component {
     };
   }
 
-  addFood = (item) => {
+  addFood = (item, grup) => {
     const { counterRequestAmount, counterItens } = this.props;
     const { listMenu } = this.context;
 
-    listMenu.food = listMenu.food.map((ite) => {
+    listMenu.food[grup] = listMenu.food[grup].map((ite) => {
       if (ite.id === item.id) {
         if (ite.amount === 0) counterRequestAmount(counterItens + 1);
         ite.amount += 1;
@@ -62,11 +62,11 @@ class ItemComponent extends React.Component {
     });
   };
 
-  removeFood = (item) => {
+  removeFood = (item, grup) => {
     const { counterRequestAmount, counterItens } = this.props;
     const { listMenu } = this.context;
 
-    listMenu.food = listMenu.food.map((ite) => {
+    listMenu.food[grup] = listMenu.food[grup].map((ite) => {
       if (ite.id === item.id && ite.amount > 0) {
         ite.amount -= 1;
         this.setState({
@@ -110,14 +110,14 @@ class ItemComponent extends React.Component {
     });
   };
 
-  addNewItem = (item, isFood, isCandy) => {
-    if (isFood) this.addFood(item);
+  addNewItem = (item, isFood, isCandy, grup) => {
+    if (isFood) this.addFood(item, grup);
     else if (isCandy) this.addCandy(item);
     else this.addDrink(item);
   };
 
-  removeItem = (item, isFood, isCandy) => {
-    if (isFood) this.removeFood(item);
+  removeItem = (item, isFood, isCandy, grup) => {
+    if (isFood) this.removeFood(item, grup);
     else if (isCandy) this.removeCandy(item);
     else this.removeDrink(item);
   };
@@ -125,7 +125,7 @@ class ItemComponent extends React.Component {
   // Cara, todo b.o. é aqui. Pensa em algo e pessa na logica desse codigo por completo
   // Encontre uma solução!!
 
-  getCounter = (isFood, isCandy, id) => {
+  getCounter = (isFood, isCandy, id, grup) => {
     const { counterDrink, counterFood, counterCandy } = this.state;
     const {
       listMenu: { food, allDrinks, candy } } = this.context;
@@ -140,7 +140,7 @@ class ItemComponent extends React.Component {
       return counterDrink;
     }
 
-    if (isFood) return food[id - 1].amount;
+    if (isFood) return food[grup][id - 1].amount;
 
     if (isCandy) return candy[id - 1].amount;
 
@@ -148,30 +148,36 @@ class ItemComponent extends React.Component {
   };
 
   render() {
-    const { item, isFood, isCandy, getItem, setBlur } = this.props;
+    const { item, isFood, isCandy, getItem, setBlur, grup } = this.props;
+
+    const numItem = item.name.split('-')[0];
+    const nameItem = item.name.split('-')[1];
 
     return (
       <li>
         <section className="Description_Item">
-          <h3>{ `${item.id} - ${item.name}` }</h3>
-          <p>{ item.ingredients.map((ing) => `${ing}, `) }</p>
+          <div className="title-item">
+            <h3 className="number-item">{ numItem }</h3>
+            <h3 className="text-item">{ nameItem }</h3>
+          </div>
+          <p>{ item.ingredients.map((ing, i) => (i + 1 === item.ingredients.length ? `${ing}.` : `${ing}, `)) }</p>
           <div className="Value_Sale">
-            <h4>{ `R$${item.value.toFixed(2)}` }</h4>
+            <h4 className="price">{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
               <button
                 className="sell"
-                onClick={ () => this.removeItem(item, isFood, isCandy) }
+                onClick={ () => this.removeItem(item, isFood, isCandy, grup) }
               >
                 -
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : 'item' }>
                 {
-                  this.getCounter(isFood, isCandy, item.id)
+                  this.getCounter(isFood, isCandy, item.id, grup)
                 }
               </p>
               <button
                 className="buy"
-                onClick={ () => this.addNewItem(item, isFood, isCandy) }
+                onClick={ () => this.addNewItem(item, isFood, isCandy, grup) }
               >
                 +
               </button>
@@ -209,6 +215,7 @@ ItemComponent.propTypes = {
   isCandy: PropTypes.bool.isRequired,
   getItem: PropTypes.func.isRequired,
   setBlur: PropTypes.func.isRequired,
+  grup: PropTypes.string.isRequired,
 };
 
 export default ItemComponent;

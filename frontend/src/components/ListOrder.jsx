@@ -16,15 +16,18 @@ class ListOrder extends React.Component {
 
   componentDidMount() {
     const {
-      listMenu: { food, candy, allDrinks, additional },
+      listMenu: {
+        food: { classic, handmade, additional },
+        candy, allDrinks },
       valueTotal,
     } = this.context;
     const { listOrder } = this.state;
 
-    listOrder.push(...food.filter((item) => item.amount > 0));
+    listOrder.push(...classic.filter((item) => item.amount > 0));
+    listOrder.push(...handmade.filter((item) => item.amount > 0));
+    listOrder.push(...additional.filter((item) => item.amount > 0));
     listOrder.push(...allDrinks.filter((item) => item.amount > 0));
     listOrder.push(...candy.filter((item) => item.amount > 0));
-    listOrder.push(...additional.sauce.filter((item) => item.amount > 0));
 
     this.setState({
       listOrder,
@@ -43,7 +46,7 @@ class ListOrder extends React.Component {
                 <p>{ item.amount }</p>
                 { item.obs !== '' && (<p className="Tag-Item">Edited</p>)}
                 <div className="Iten-value">
-                  <p className="Iten-name">{ item.name }</p>
+                  <p className="Iten-name">{ item.name.split('-')[1] }</p>
                   <p>{ `R$ ${(item.value * item.amount).toFixed(2)}` }</p>
                 </div>
               </li>

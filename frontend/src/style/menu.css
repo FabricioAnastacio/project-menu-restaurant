@@ -19,10 +19,12 @@
   div {
     color: white;
     padding: 10px;
-    place-items: center;
+    h4 {
+      color: gold;
+    }
     .Btm-fullImg {
-      display: grid;
       place-items: center;
+      padding: 0;
     }
   }
 }
@@ -38,12 +40,17 @@
 .Section-Details-true {
   opacity: 1;
   z-index: 1;
+  div {
+    display: grid;
+    place-items: center;
+  }
   p {
     font-size: 14px;
   }
   .IMG-Full {
     border-radius: 20px;
     width: 95%;
+    background-color: white;
   }
 }
 
@@ -72,6 +79,17 @@ ul {
   z-index: 0;
 }
 
+.Titles-Burger {
+  color: gold;
+  font-size: 20px;
+  margin-top: 40px;
+  text-align: center;
+  text-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 40px black inset;
+  background-color: #961212;
+  padding: 20px 0;
+}
+
 li {
   align-items: center;
   border-bottom: .5px solid #ff0000;
@@ -83,7 +101,7 @@ li {
   padding-top: 0;
   h4 {
     font-size: 16px;
-    color: rgb(202, 0, 0);
+    color: gold;
   }
   p {
     font-size: 13px;
@@ -101,6 +119,7 @@ li {
 .imgs-menu {
   background-position: center;
   background-size: cover;
+  background-color: white;
   border-radius: 10px;
   height: 90px;
   position: relative;
@@ -239,18 +258,32 @@ li {
 }
 
 .buy {
-  border: 1px solid green;
+  border: 1px solid #961212;
+  background-color: #961212;
   font-size: 20px;
-  color: green;
+  color: gold;
 }
 .sell {
-  border: 1px solid red;
+  border: 1px solid #961212;
+  background-color: #961212;
   font-size: 20px;
-  color: red;
+  color: white;
 }
 
-h3 {
-  text-align: center;
+.title-item {
+  display: flex;
+  align-items: center;
+  width: 120%;
+  color: gold;
+}
+
+.number-item {
+  margin-right: 10px;
+  border: 1px solid gold;
+  /* background: linear-gradient(to bottom, #961212 50%, black 50%); */
+  background-color: #961212;
+  padding: 5px 10px;
+  border-radius: 5em;
 }
 
 @media screen and (min-width: 900px) {

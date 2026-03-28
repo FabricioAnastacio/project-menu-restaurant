@@ -22,11 +22,15 @@ import babyStitch from './foods/babyStitch.jpg';
 import bigTanjiro from './foods/bigTanjiro.jpg';
 import fenix from './foods/fenix.jpg';
 import hawkBacon from './foods/hawkBacon.jpg';
-import hamburgueAtop from './foods/hamburguerAtop.jpg';
-import tatanColoss from './foods/tatanColoss.jpg';
+import titanColoss from './foods/titanColoss.jpg';
 import titanBlind from './foods/titanBlind.jpg';
 import superSayajin from './foods/superSayajin.jpg';
-import hamburgueP from './foods/hamburguerP.jpg';
+import kuririn from './foods/kuririn.jpg';
+import natureza from './foods/natureza.jpg';
+import kame from './foods/kame.jpg';
+import titanAttack from './foods/titanAttack.jpg';
+import poke from './foods/poke.jpg';
+import katana from './foods/katana.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
 import maineseCasa from './foods/maioneseCasa.jpg';
@@ -61,14 +65,18 @@ export const foods = {
   bigTanjiro,
   fenix,
   hawkBacon,
-  tatanColoss,
+  titanColoss,
   titanBlind,
   superSayajin,
-  hamburgueAtop,
-  hamburgueP,
+  kame,
   hallsExtra,
   maineseCasa,
   tridentMela,
   tridentMenta,
   tanjiroDelivery,
+  kuririn,
+  natureza,
+  titanAttack,
+  poke,
+  katana,
 };
