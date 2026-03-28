@@ -14,9 +14,9 @@ class RequestsList extends React.Component {
     this.state = {
       data: new Date().getDay(),
       valueTotal: 0,
-      grup: ['clasic', 'handmade', 'additional', 'drinks', 'candy'],
+      grup: ['classic', 'handmade', 'additional', 'drinks', 'candy'],
       request: {
-        clasic: [],
+        classic: [],
         handmade: [],
         additional: [],
         drinks: [],
@@ -29,13 +29,13 @@ class RequestsList extends React.Component {
   componentDidMount() {
     const {
       listMenu: {
-        food: { clasic, handmade, additional },
+        food: { classic, handmade, additional },
         candy,
         allDrinks,
       },
     } = this.context;
     const request = {
-      clasic: [],
+      classic: [],
       handmade: [],
       additional: [],
       drinks: [],
@@ -43,7 +43,7 @@ class RequestsList extends React.Component {
       souce: [],
     };
     const idItemRemov = 3;
-    request.clasic.push(...clasic.filter((item) => item.amount > 0));
+    request.classic.push(...classic.filter((item) => item.amount > 0));
     request.handmade.push(...handmade.filter((item) => item.amount > 0));
     request.additional.push(
       ...additional.filter((item) => item.amount > 0 && item.id !== idItemRemov),
@@ -53,7 +53,7 @@ class RequestsList extends React.Component {
     request.souce.push(...additional.filter((item) => item.id === idItemRemov));
 
     const requestAllItens = [
-      ...request.additional, ...request.clasic, ...request.handmade,
+      ...request.additional, ...request.classic, ...request.handmade,
       ...request.drinks, ...request.candy, ...request.souce,
     ];
 
@@ -88,7 +88,7 @@ class RequestsList extends React.Component {
     } = this.state;
 
     const updateCounter = [
-      ...request.clasic, ...request.handmade, ...request.additional,
+      ...request.classic, ...request.handmade, ...request.additional,
       ...request.candy, ...request.drinks,
     ];
 
@@ -131,7 +131,7 @@ class RequestsList extends React.Component {
       listMenu,
       listMenu: {
         food,
-        food: { clasic, handmade, additional },
+        food: { classic, handmade, additional },
         allDrinks, candy,
       },
     } = this.context;
@@ -143,7 +143,7 @@ class RequestsList extends React.Component {
       iten.obs = '';
       return iten;
     });
-    food.clasic = clasic.map((iten) => {
+    food.classic = classic.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -167,7 +167,7 @@ class RequestsList extends React.Component {
     this.setState({
       valueTotal: 0,
       request: {
-        clasic: [],
+        classic: [],
         handmade: [],
         additional: [],
         drinks: [],

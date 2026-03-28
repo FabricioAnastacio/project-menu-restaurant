@@ -14,10 +14,10 @@ export function createListMenuBurguer(
   return (
     <ul className={ `Ul-${imgOpem}` }>
       {
-        list.clasic.map((item, key) => (
+        list.classic.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="clasic"
+            grup="classic"
             item={ item }
             isFood
             isCandy={ false }

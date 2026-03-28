@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import iconeClose from '../pictures/icons8-fechar-janela-96.png';
+import listFoods from '../data/listFoods';
 import '../style/menu.css';
 import ItemComponent from './ItemComponent';
+import ItemPromotional from './ItemPromotional';
 import { createListMenuBurguer } from '../services/createListMenu';
 
 class Menu extends React.Component {
@@ -14,6 +16,7 @@ class Menu extends React.Component {
       nameItem: '',
       description: '',
       value: '',
+      promotinal: listFoods.promotional,
     };
     // this.elementRef1 = createRef();
     // this.elementRef2 = createRef();
@@ -54,7 +57,7 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { imgItem, nameItem, description, value } = this.state;
+    const { imgItem, nameItem, description, value, promotinal } = this.state;
     const {
       listMenu,
       setBlur,
@@ -67,6 +70,23 @@ class Menu extends React.Component {
     const isOpen = imgOpem ? '' : 'none';
     return (
       <main>
+        <div className={ `Container-carousel setblur-${imgOpem}` }>
+          <ul className="carousel">
+            {
+              promotinal.map((item, key) => (
+                <ItemPromotional
+                  className="Item-Promotional"
+                  key={ key }
+                  item={ item }
+                  getItem={ this.getItem }
+                  setBlur={ setBlur }
+                  counterItens={ counterItens }
+                  counterRequestAmount={ counterRequestAmount }
+                />
+              ))
+            }
+          </ul>
+        </div>
         <section style={ { display: isOpen } } className={ `Section-Details-${imgOpem}` }>
           <div>
             <button

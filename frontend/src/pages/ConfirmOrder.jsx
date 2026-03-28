@@ -37,13 +37,13 @@ class ConfirmOrder extends React.Component {
       listMenu,
       listMenu: {
         food,
-        food: { clasic, handmade, additional },
+        food: { classic, handmade, additional },
         candy, allDrinks }, valueTotal } = this.context;
 
     const order = {
       foods: [
         ...handmade.filter((item) => item.amount > 0),
-        ...clasic.filter((item) => item.amount > 0),
+        ...classic.filter((item) => item.amount > 0),
       ],
       drinks: allDrinks.filter((item) => item.amount > 0),
       additional: [
@@ -68,7 +68,7 @@ class ConfirmOrder extends React.Component {
       iten.obs = '';
       return iten;
     });
-    food.clasic = clasic.map((iten) => {
+    food.classic = classic.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;

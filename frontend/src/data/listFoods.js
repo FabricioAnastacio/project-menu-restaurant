@@ -1,18 +1,81 @@
+/* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 import { foods } from '../pictures/exportImgs';
 // import logo from '../pictures/logo.jpg';
 
 const listFoods = {
+  promotional: [
+    {
+      id: 1,
+      obs: '',
+      img: foods.kuririn,
+      name: 'Combo Antbarreras',
+      description: 'União que abala os Marleanos',
+      ingredients: {
+        idFood: ['9', '10'],
+        idDrink: ['7'],
+        idSauce: ['1', '1'],
+        idCandy: [''],
+      },
+      value: 81.50,
+      amount: 0,
+    },
+    {
+      id: 2,
+      obs: '',
+      img: foods.tanjiroDelivery,
+      name: 'Entregas 18-22:40',
+      description: '',
+      ingredients: {
+        idFood: [],
+        idDrink: [],
+        idSauce: [],
+        idCandy: [],
+      },
+      value: 81.50,
+      amount: 0,
+    },
+    {
+      id: 3,
+      obs: '',
+      img: foods.bigTanjiro,
+      name: 'Big Tanjiro',
+      description: '',
+      ingredients: {
+        idFood: [],
+        idDrink: [],
+        idSauce: [],
+        idCandy: [],
+      },
+      value: 81.50,
+      amount: 0,
+    },
+    {
+      id: 4,
+      obs: '',
+      img: foods.titanAttack,
+      name: 'Titã de Attack',
+      description: '',
+      ingredients: {
+        idFood: [],
+        idDrink: [],
+        idSauce: [],
+        idCandy: [],
+      },
+      value: 81.50,
+      amount: 0,
+    },
+  ],
   food: {
-    clasic: [
+    classic: [
       {
         id: 1,
         obs: '',
         img: foods.kuririn,
         name: '1-Kuririn',
-        description: 'Pão, Bife 90g, Salada, Milho e batata',
-        ingredients: ['Pão', ' Bife 90g', ' Salada', ' Milho e batata'],
+        description: 'Pão, Bife, Salada, Milho e batata',
+        ingredients: ['Pão', ' Bife', ' Salada', 'Milho e batata'],
         value: 12.50,
         amount: 0,
       },

@@ -122,6 +122,9 @@ class ItemComponent extends React.Component {
     else this.removeDrink(item);
   };
 
+  // Cara, todo b.o. é aqui. Pensa em algo e pessa na logica desse codigo por completo
+  // Encontre uma solução!!
+
   getCounter = (isFood, isCandy, id, grup) => {
     const { counterDrink, counterFood, counterCandy } = this.state;
     const {
