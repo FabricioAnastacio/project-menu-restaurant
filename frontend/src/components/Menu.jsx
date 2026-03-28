@@ -4,8 +4,8 @@ import iconeClose from '../pictures/icons8-fechar-janela-96.png';
 import listFoods from '../data/listFoods';
 import '../style/menu.css';
 import ItemComponent from './ItemComponent';
-import ItemPromotional from './ItemPromotional';
 import { createListMenuBurguer } from '../services/createListMenu';
+import Carousel from './Carousel';
 
 class Menu extends React.Component {
   constructor() {
@@ -16,7 +16,7 @@ class Menu extends React.Component {
       nameItem: '',
       description: '',
       value: '',
-      promotinal: listFoods.promotional,
+      highlights: listFoods.highlights,
     };
     // this.elementRef1 = createRef();
     // this.elementRef2 = createRef();
@@ -57,7 +57,7 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { imgItem, nameItem, description, value, promotinal } = this.state;
+    const { imgItem, nameItem, description, value, highlights } = this.state;
     const {
       listMenu,
       setBlur,
@@ -70,23 +70,12 @@ class Menu extends React.Component {
     const isOpen = imgOpem ? '' : 'none';
     return (
       <main>
-        <div className={ `Container-carousel setblur-${imgOpem}` }>
-          <ul className="carousel">
-            {
-              promotinal.map((item, key) => (
-                <ItemPromotional
-                  className="Item-Promotional"
-                  key={ key }
-                  item={ item }
-                  getItem={ this.getItem }
-                  setBlur={ setBlur }
-                  counterItens={ counterItens }
-                  counterRequestAmount={ counterRequestAmount }
-                />
-              ))
-            }
-          </ul>
-        </div>
+        <Carousel
+          highlights={ highlights }
+          imgOpem={ imgOpem }
+          getItem={ this.getItem }
+          setBlur={ setBlur }
+        />
         <section style={ { display: isOpen } } className={ `Section-Details-${imgOpem}` }>
           <div>
             <button
@@ -102,7 +91,11 @@ class Menu extends React.Component {
             >
               <img src={ imgItem } alt={ nameItem } className="IMG-Full" />
             </button>
-            <h4>{ `R$${Number(value).toFixed(2)}` }</h4>
+            {
+              value > 0 && (
+                <h4>{ `R$${Number(value).toFixed(2)}` }</h4>
+              )
+            }
             <p>{ description }</p>
           </div>
         </section>

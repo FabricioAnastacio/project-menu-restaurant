@@ -37,7 +37,8 @@ import maineseCasa from './foods/maioneseCasa.jpg';
 import tridentMela from './foods/tridentMela.jpg';
 import tridentMenta from './foods/tridentMenta.jpg';
 
-import tanjiroDelivery from './foods/promotional/tanjiroDelivery.jpg';
+import tanjiroDelivery from './foods/highlights/tanjiroDelivery.jpg';
+import sorteio from './foods/highlights/sorteio.jpg';
 
 export const drinks = {
   fanta2l,
@@ -79,4 +80,5 @@ export const foods = {
   titanAttack,
   poke,
   katana,
+  sorteio,
 };

@@ -5,69 +5,61 @@ import { foods } from '../pictures/exportImgs';
 // import logo from '../pictures/logo.jpg';
 
 const listFoods = {
-  promotional: [
+  highlights: [
     {
       id: 1,
       obs: '',
-      img: foods.kuririn,
-      name: 'Combo Antbarreras',
-      description: 'União que abala os Marleanos',
+      img: foods.sorteio,
+      name: 'SORTEIO',
+      description: 'GANHE UM COMBO',
       ingredients: {
-        idFood: ['9', '10'],
-        idDrink: ['7'],
-        idSauce: ['1', '1'],
-        idCandy: [''],
+        idFood: [],
+        idDrink: [],
+        idSauce: [],
+        idCandy: [],
       },
-      value: 81.50,
+      value: 0,
       amount: 0,
     },
     {
       id: 2,
       obs: '',
       img: foods.tanjiroDelivery,
-      name: 'Entregas 18-22:40',
-      description: '',
+      name: 'Delivery',
+      description: 'Entregamos 19h-23h',
       ingredients: {
         idFood: [],
         idDrink: [],
         idSauce: [],
         idCandy: [],
       },
-      value: 81.50,
-      amount: 0,
-    },
-    {
-      id: 3,
-      obs: '',
-      img: foods.bigTanjiro,
-      name: 'Big Tanjiro',
-      description: '',
-      ingredients: {
-        idFood: [],
-        idDrink: [],
-        idSauce: [],
-        idCandy: [],
-      },
-      value: 81.50,
-      amount: 0,
-    },
-    {
-      id: 4,
-      obs: '',
-      img: foods.titanAttack,
-      name: 'Titã de Attack',
-      description: '',
-      ingredients: {
-        idFood: [],
-        idDrink: [],
-        idSauce: [],
-        idCandy: [],
-      },
-      value: 81.50,
+      value: 0,
       amount: 0,
     },
   ],
   food: {
+    combo: [
+      {
+        id: 1,
+        obs: '',
+        img: foods.kuririn,
+        name: '1- Combo Kuririn',
+        description: 'Pão, Bife, Salada, Milho e batata',
+        ingredients: ['Pão', ' Bife', ' Salada', 'Milho e batata'],
+        value: 12.50,
+        amount: 0,
+      },
+      {
+        id: 2,
+        obs: '',
+        img: foods.kame,
+        name: '2- Combo Mestre Kame',
+        description: 'Pão, Bife 90g, Ovo, Salada, Milho e batata.',
+        ingredients: ['Pão', ' Bife 90g', ' Ovo', ' Salada', ' Milho e batata'],
+        value: 14.50,
+        amount: 0,
+      },
+    ],
     classic: [
       {
         id: 1,

@@ -14,6 +14,21 @@ export function createListMenuBurguer(
   return (
     <ul className={ `Ul-${imgOpem}` }>
       {
+        list.combo.map((item, key) => (
+          <ItemComponent
+            key={ key }
+            grup="classic"
+            item={ item }
+            isFood
+            isCandy={ false }
+            getItem={ getItem }
+            setBlur={ setBlur }
+            counterItens={ counterItens }
+            counterRequestAmount={ counterRequestAmount }
+          />
+        ))
+      }
+      {
         list.classic.map((item, key) => (
           <ItemComponent
             key={ key }
