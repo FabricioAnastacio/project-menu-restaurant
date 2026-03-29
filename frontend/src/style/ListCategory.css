@@ -32,9 +32,9 @@ label {
 }
 
 .Label-select-true {
-  background-color: #f43232;
-  border-color: white;
-  color: white;
+  background-color: #961212;
+  border-color: gold;
+  color: gold;
   transform: scale(1.1);
 }
 

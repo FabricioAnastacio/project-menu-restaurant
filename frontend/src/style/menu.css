@@ -82,16 +82,14 @@ ul {
 .Titles-Burger {
   color: gold;
   font-size: 20px;
-  margin-top: 40px;
   text-align: start;
-  /* text-shadow: 0px 0px 5px white; */
-  /* border-top: solid 1px white; */
-  /* background: linear-gradient(to bottom, transparent 0%, #ff1008 190%); */
-  border-bottom: 1px solid gold;
-  padding: 20px 0 5px 0;
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 30px;
+  text-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 20px black inset;
+  background-color: #961212;
+  padding: 10px 0 10px 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 5em;
 }
 
 li {

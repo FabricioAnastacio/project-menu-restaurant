@@ -12,7 +12,7 @@ export function createListMenuBurguer(
   // ref1,
   // ref2,
 ) {
-  const combos = list.combo.filter((item) => item.displayDate === data);
+  const combos = list.combo.filter((item) => item.displayDate.includes(data));
 
   return (
     <ul className={ `Ul-${imgOpem}` }>

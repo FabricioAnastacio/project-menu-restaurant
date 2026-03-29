@@ -61,10 +61,9 @@ class Menu extends React.Component {
     const { highlights, data } = this.state;
     const { listMenu, imgOpem, setBlur } = this.props;
 
-    const eigth = 8;
     const allHighlights = [...listMenu.combo, ...highlights];
     const displayHighlights = allHighlights.filter(
-      (item) => item.displayDate === data || item.displayDate === eigth,
+      (item) => item.displayDate.includes(data),
     );
 
     return (
