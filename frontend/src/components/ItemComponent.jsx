@@ -187,7 +187,7 @@ class ItemComponent extends React.Component {
             style={ { backgroundImage: `url(${item.img})` } }
             aria-hidden="true"
           />
-          <p>Detalhes...</p>
+          <p>Ver...</p>
         </div>
       </li>
     );
