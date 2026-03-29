@@ -121,7 +121,7 @@ class MenuPage extends React.Component {
         <div className="Desktop-msg">
           <h1>Atenção</h1>
           <img className="qrcode" src={ qrcode } alt="Qr code Big lanches do Tanjiro" />
-          <p>Nosso sistema ainda não esta disponivel para desktop!</p>
+          <p>Nosso sistema não esta disponivel para desktop no momento!</p>
           <p>Por favor, escaneie o QR code e acesse pelo celular.</p>
         </div>
       );
