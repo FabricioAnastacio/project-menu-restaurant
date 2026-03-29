@@ -92,7 +92,7 @@ class RequestsList extends React.Component {
 
     const updateCounter = [
       ...request.classic, ...request.handmade, ...request.additional,
-      ...request.candy, ...request.drinks, request.combo,
+      ...request.candy, ...request.drinks, ...request.combo,
     ];
 
     this.context.counterRequest = updateCounter.length;
