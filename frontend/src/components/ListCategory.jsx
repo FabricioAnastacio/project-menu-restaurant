@@ -46,16 +46,19 @@ class ListCategory extends React.Component {
           </label>
         </section>
         {
-          // foods && (
-          //   <section className="Search_item_link">
-          //     <a className={ `Link-a Link-a-${isVisibleH}` } href="#handmade">
-          //       Artesanais
-          //     </a>
-          //     <a className={ `Link-a Link-a-${isVisibleA}` } href="#additional">
-          //       Acompanhamentos
-          //     </a>
-          //   </section>
-          // )
+          foods && (
+            <section className="section_links">
+              <a className="Link-a" href="#classic">
+                Classicos
+              </a>
+              <a className="Link-a" href="#handmade">
+                Artesanais
+              </a>
+              <a className="Link-a" href="#additional">
+                Acompanhamentos
+              </a>
+            </section>
+          )
         }
       </div>
     );

@@ -36,7 +36,7 @@ class MenuPage extends React.Component {
   componentDidMount() {
     const { counterRequest } = this.context;
     const day = new Date().getDay();
-    if (day === 0) toast.info('Não estamos abertos hoje!');
+    if (day === 0) toast.info('Não estamos funcionando hoje!');
     this.setState({
       counterItens: counterRequest,
     });

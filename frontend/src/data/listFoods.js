@@ -25,7 +25,7 @@ const listFoods = {
       nameHighlights: 'Delivery',
       displayDate: 8,
       description: 'Entregamos Segunda a Sabado de 19h as 23h',
-      value: 0,
+      value: 4.00,
       amount: 0,
     },
   ],

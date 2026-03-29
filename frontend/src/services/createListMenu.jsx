@@ -1,5 +1,6 @@
 import ItemComponent from '../components/ItemComponent';
 
+const data = new Date().getDay();
 // eslint-disable-next-line max-params
 export function createListMenuBurguer(
   list,
@@ -11,23 +12,25 @@ export function createListMenuBurguer(
   // ref1,
   // ref2,
 ) {
+  const combos = list.combo.filter((item) => item.displayDate === data);
+
   return (
     <ul className={ `Ul-${imgOpem}` }>
       {
-        list.combo.length > 0 && (
+        combos.length > 0 && (
           <view>
             <h3
               // ref={ ref1 }
               className="Titles-Burger"
               id="handmade"
             >
-              COMBOS
+              COMBO DO DIA
             </h3>
           </view>
         )
       }
       {
-        list.combo.map((item, key) => (
+        combos.map((item, key) => (
           <ItemComponent
             key={ key }
             grup="combo"
@@ -45,7 +48,7 @@ export function createListMenuBurguer(
         <h3
           // ref={ ref1 }
           className="Titles-Burger"
-          id="handmade"
+          id="classic"
         >
           CLASSICOS
         </h3>
