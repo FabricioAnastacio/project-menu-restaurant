@@ -12,6 +12,7 @@ class Menu extends React.Component {
     super();
 
     this.state = {
+      data: new Date().getDay(),
       imgItem: '',
       nameItem: '',
       description: '',
@@ -56,8 +57,28 @@ class Menu extends React.Component {
     });
   };
 
+  rederCarousel = () => {
+    const { highlights, data } = this.state;
+    const { listMenu, imgOpem, setBlur } = this.props;
+
+    const eigth = 8;
+    const allHighlights = [...listMenu.combo, ...highlights];
+    const displayHighlights = allHighlights.filter(
+      (item) => item.displayDate === data || item.displayDate === eigth,
+    );
+
+    return (
+      <Carousel
+        highlights={ displayHighlights }
+        imgOpem={ imgOpem }
+        getItem={ this.getItem }
+        setBlur={ setBlur }
+      />
+    );
+  };
+
   render() {
-    const { imgItem, nameItem, description, value, highlights } = this.state;
+    const { imgItem, nameItem, description, value } = this.state;
     const {
       listMenu,
       setBlur,
@@ -70,12 +91,7 @@ class Menu extends React.Component {
     const isOpen = imgOpem ? '' : 'none';
     return (
       <main>
-        <Carousel
-          highlights={ highlights }
-          imgOpem={ imgOpem }
-          getItem={ this.getItem }
-          setBlur={ setBlur }
-        />
+        { isFood && this.rederCarousel() }
         <section style={ { display: isOpen } } className={ `Section-Details-${imgOpem}` }>
           <div>
             <button

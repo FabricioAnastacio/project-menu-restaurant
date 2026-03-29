@@ -1,0 +1,82 @@
+.Container-carousel {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5px;
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 1;
+}
+
+.left {
+  right: auto;
+  left: 0;
+  background: linear-gradient(to left, transparent 0%, black 300%);
+} 
+
+.rigth {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to right, transparent 0%, black 300%);
+}
+
+.carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  gap: 5px;
+  overflow-x: auto;
+  z-index: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.Logo-status {
+  height: 40px;
+  border-radius: 5em;
+  border: 1px solid red;
+}
+
+.Item-Promotional {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background-color: transparent;
+  div {
+    height: 280px;
+    width: 180px;
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding-left: 2px;
+    padding-top: 10px;
+    h5 {
+      color: white;
+      margin: 0;
+      margin: 5px 0;
+      background: linear-gradient(to left, transparent 0%, rgb(0, 0, 0) 100%);
+      width: 90%;
+      padding-left: 10px;
+      border-radius: 15px;
+    }
+  }
+}
