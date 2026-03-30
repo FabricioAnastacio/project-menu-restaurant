@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import logo from '../pictures/logo.jpg';
 
 class ItemPromotional extends React.Component {
   render() {
@@ -11,8 +12,8 @@ class ItemPromotional extends React.Component {
           style={ { backgroundImage: `url(${item.img})` } }
           aria-hidden="true"
         >
-          <h5>{ item.name }</h5>
-          <p>{ item.description }</p>
+          <img className="Logo-status" src={ logo } alt="Logo Big Tanjiro" />
+          <h5>{ item.nameHighlights }</h5>
         </div>
       </li>
     );
@@ -22,7 +23,7 @@ class ItemPromotional extends React.Component {
 ItemPromotional.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
+    nameHighlights: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf([]).isRequired,
     value: PropTypes.number.isRequired,

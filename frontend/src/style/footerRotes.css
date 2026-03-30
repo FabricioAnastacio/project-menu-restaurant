@@ -61,6 +61,7 @@ a {
 }
 
 .isSelectfalse {
+  border-radius: 0;
   border-bottom: 0;
   img {
     filter: brightness(0) invert(.8);
@@ -68,6 +69,7 @@ a {
 }
 
 .isSelecttrue {
+  border-radius: 0;
   border-bottom: 1px solid red;
   img {
     transform: scale(1.1);

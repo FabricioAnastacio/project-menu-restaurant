@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 /* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
@@ -9,20 +10,12 @@ const listFoods = {
     {
       id: 1,
       obs: '',
+      displayDate: [0, 1, 2, 3, 4, 5, 6],
       img: foods.sorteio,
-      name: 'SORTEIO',
-      description: 'GANHE UM COMBO',
+      name: 'Sorteio',
+      nameHighlights: 'SORTEIO',
+      description: 'GANHE UM COMBO - Vá ate nossa pagina do instagram e participe!',
       value: 0,
-      amount: 0,
-    },
-    {
-      id: 2,
-      obs: '',
-      img: foods.combo,
-      name: '1- Combo Hawk Bacon',
-      description: 'O lanche que ataca com sabor pesado!',
-      ingredients: ['2 Hawk Bacon', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
-      value: 52.00,
       amount: 0,
     },
     {
@@ -30,8 +23,10 @@ const listFoods = {
       obs: '',
       img: foods.tanjiroDelivery,
       name: 'Delivery',
-      description: 'Entregamos 19h-23h',
-      value: 0,
+      nameHighlights: 'Delivery',
+      displayDate: [0, 1, 2, 3, 4, 5, 6],
+      description: 'Entregamos Segunda a Sabado de 19h as 23h',
+      value: 4.00,
       amount: 0,
     },
   ],
@@ -39,12 +34,26 @@ const listFoods = {
     combo: [
       {
         id: 1,
+        displayDate: [6],
         obs: '',
-        img: foods.combo,
-        name: '1- Combo Hawk Bacon',
+        img: foods.comboHawk,
+        name: '1-Combo Hawk Bacon',
+        nameHighlights: 'Combo do dia',
         description: 'O lanche que ataca com sabor pesado!',
         ingredients: ['2 Hawk Bacon', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
         value: 52.00,
+        amount: 0,
+      },
+      {
+        id: 2,
+        displayDate: [3],
+        obs: '',
+        img: foods.comboSayajin,
+        name: '2-Combo Sayajin',
+        nameHighlights: 'Combo do dia',
+        description: 'Faça a fusão e aumente seus poderes com esse combo incrivel!',
+        ingredients: ['2 Super Sayajin', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
+        value: 41.00,
         amount: 0,
       },
     ],

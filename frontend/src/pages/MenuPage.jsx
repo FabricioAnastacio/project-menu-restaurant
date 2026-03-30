@@ -8,6 +8,7 @@ import ListCategory from '../components/ListCategory';
 import '../style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
+import qrcode from '../pictures/qrcodeTanjiro.jpg';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -22,6 +23,7 @@ class MenuPage extends React.Component {
       listActual: 'food',
       imgOpen: false,
       counterItens: 0,
+      width: window.innerWidth,
       // isVisibleH: false,
       // isVisibleA: false,
     };
@@ -36,7 +38,7 @@ class MenuPage extends React.Component {
   componentDidMount() {
     const { counterRequest } = this.context;
     const day = new Date().getDay();
-    if (day === 0) toast.info('Não estamos abertos hoje!');
+    if (day === 0) toast.info('Não estamos funcionando hoje!');
     this.setState({
       counterItens: counterRequest,
     });
@@ -109,9 +111,21 @@ class MenuPage extends React.Component {
       imgOpen,
       list,
       counterItens,
+      width,
       // isVisibleH,
       // isVisibleA,
     } = this.state;
+    const maxWidth = 920;
+    if (width > maxWidth) {
+      return (
+        <div className="Desktop-msg">
+          <h1>Atenção</h1>
+          <img className="qrcode" src={ qrcode } alt="Qr code Big lanches do Tanjiro" />
+          <p>Nosso sistema não esta disponivel para desktop no momento!</p>
+          <p>Por favor, escaneie o QR code e acesse pelo celular.</p>
+        </div>
+      );
+    }
 
     return (
       <div className="PageMenu">

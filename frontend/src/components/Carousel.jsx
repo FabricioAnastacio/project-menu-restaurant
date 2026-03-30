@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ItemPromotional from './ItemPromotional';
+import '../style/Carousel.css';
 
 class Carousel extends React.Component {
   render() {
@@ -12,7 +13,6 @@ class Carousel extends React.Component {
     } = this.props;
     return (
       <div className={ `Container-carousel setblur-${imgOpem}` }>
-        <h1 className="arrow left">{ ' ' }</h1>
         <ul className="carousel">
           {
             highlights.map((item, key) => (
@@ -26,7 +26,6 @@ class Carousel extends React.Component {
             ))
           }
         </ul>
-        <h1 className="arrow rigth">{ ' ' }</h1>
       </div>
     );
   }

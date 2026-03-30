@@ -6,7 +6,7 @@
   z-index: 2;
   background-color: rgb(0, 0, 0);
   box-shadow: 0px 1em 1em -1px black;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .Select-item {
@@ -19,7 +19,7 @@
   }
 }
 
-label, .Link-a {
+label {
   background-color: rgba(0, 0, 0, 0.87);
   border: 1px solid #f432325d;
   color: #f43232;
@@ -31,11 +31,40 @@ label, .Link-a {
   height: 20px;
 }
 
-.Label-select-true, .Link-a-true {
-  background-color: #f43232;
-  border-color: white;
-  color: white;
+.Label-select-true {
+  background-color: #961212;
+  border-color: gold;
+  color: gold;
   transform: scale(1.1);
+}
+
+.section_links {
+  width: 90%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: start;
+}
+
+.Link-a {
+  border: 1px solid #f432325d;
+  color: #f43232;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px 5px;
+  margin: 5px;
+  transition: .5s;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.Link-a:hover {
+  transform: scale(1.1);
+}
+
+.Link-a:active {
+  background-color: #f43232;
+  color: white;
 }
 
 .Search_item_link {
