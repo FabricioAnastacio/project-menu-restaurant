@@ -11,8 +11,12 @@ class ItemPromotional extends React.Component {
           onClick={ () => { getItem(item); setBlur(); } }
           style={ { backgroundImage: `url(${item.img})` } }
           aria-hidden="true"
+          className="Story"
         >
-          <img className="Logo-status" src={ logo } alt="Logo Big Tanjiro" />
+          <div className="Header-story">
+            <img className="Logo-status" src={ logo } alt="Logo Big Tanjiro" />
+            { item.isNew && (<h1>NOVIDADE</h1>) }
+          </div>
           <h5>{ item.nameHighlights }</h5>
         </div>
       </li>
@@ -24,6 +28,7 @@ ItemPromotional.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
     nameHighlights: PropTypes.string.isRequired,
+    isNew: PropTypes.bool.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf([]).isRequired,
     value: PropTypes.number.isRequired,

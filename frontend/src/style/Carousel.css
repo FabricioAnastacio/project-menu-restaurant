@@ -7,29 +7,6 @@
   padding-bottom: 10px;
 }
 
-.arrow {
-  display: grid;
-  place-items: center;
-  position: absolute;
-  margin: 0;
-  top: 0;
-  bottom: 0;
-  width: 50px;
-  z-index: 1;
-}
-
-.left {
-  right: auto;
-  left: 0;
-  background: linear-gradient(to left, transparent 0%, black 300%);
-} 
-
-.rigth {
-  left: auto;
-  right: 0;
-  background: linear-gradient(to right, transparent 0%, black 300%);
-}
-
 .carousel {
   display: flex;
   flex-flow: row nowrap;
@@ -47,6 +24,50 @@
   border: 1px solid red;
 }
 
+.Header-story {
+  display: flex;
+  align-items: center;
+  width: 114%;
+  justify-content: space-between;
+  padding: 5px;
+  h1 {
+    margin: 0;
+    background-color: white;
+    padding: 2px 20px;
+    color: red;
+    font-size: 15px;
+    font-weight: 900;
+    transform: rotate(40deg);
+    text-shadow: 0 0 10px gold;
+    box-shadow: 0 0 1px 10px black;
+    clip-path: polygon(0% 0%, 0% 0%, 84% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+.Story {
+  height: 250px;
+  width: 150px;
+  border-radius: 20px;
+  background-position: center;
+  background-size: cover;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding-left: 2px;
+  padding-top: 5px;
+  h5 {
+    color: white;
+    margin: 0;
+    margin: 5px 0;
+    background: linear-gradient(to left, transparent 0%, rgb(0, 0, 0) 100%);
+    width: 90%;
+    padding-left: 10px;
+    border-radius: 15px;
+    }
+}
+
 .Item-Promotional {
   border: 0;
   margin: 0;
@@ -56,27 +77,4 @@
   flex-direction: column;
   align-items: start;
   background-color: transparent;
-  div {
-    height: 250px;
-    width: 150px;
-    border-radius: 20px;
-    background-position: center;
-    background-size: cover;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-    padding-left: 2px;
-    padding-top: 10px;
-    h5 {
-      color: white;
-      margin: 0;
-      margin: 5px 0;
-      background: linear-gradient(to left, transparent 0%, rgb(0, 0, 0) 100%);
-      width: 90%;
-      padding-left: 10px;
-      border-radius: 15px;
-    }
-  }
 }
