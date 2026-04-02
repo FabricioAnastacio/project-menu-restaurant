@@ -60,7 +60,7 @@ const listFoods = {
     combo: [
       {
         id: 1,
-        displayDate: [6],
+        displayDate: [5],
         obs: '',
         img: foods.comboHawk,
         name: '1-Combo Hawk Bacon',
@@ -72,7 +72,7 @@ const listFoods = {
       },
       {
         id: 2,
-        displayDate: [3],
+        displayDate: [4],
         obs: '',
         img: foods.comboSayajin,
         name: '2-Combo Sayajin',
