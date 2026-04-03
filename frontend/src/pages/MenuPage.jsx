@@ -112,8 +112,6 @@ class MenuPage extends React.Component {
       list,
       counterItens,
       width,
-      // isVisibleH,
-      // isVisibleA,
     } = this.state;
     const maxWidth = 920;
     if (width > maxWidth) {
