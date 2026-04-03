@@ -2,7 +2,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
-import { foods } from '../pictures/exportImgs';
+import { foods } from '../assets/pictures/exportImgs';
 // import logo from '../pictures/logo.jpg';
 
 const listFoods = {

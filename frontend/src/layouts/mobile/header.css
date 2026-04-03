@@ -6,7 +6,7 @@
 .Header-Title {
   align-items: end;
   background-color: black;
-  background-image: url('../pictures/logo.jpg');
+  background-image: url('../../assets/pictures/logo.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 160px;

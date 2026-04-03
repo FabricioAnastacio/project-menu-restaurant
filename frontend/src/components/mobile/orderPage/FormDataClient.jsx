@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../style/formDataClient.css';
+import '../../../layouts/mobile/orderPage/formDataClient.css';
 
 class FormDataClient extends React.Component {
   constructor() {

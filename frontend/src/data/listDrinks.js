@@ -1,4 +1,4 @@
-import { drinks } from '../pictures/exportImgs';
+import { drinks } from '../assets/pictures/exportImgs';
 
 const listDrinks = [
   {

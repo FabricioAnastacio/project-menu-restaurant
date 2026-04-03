@@ -1,14 +1,14 @@
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import Header from '../components/Header';
-import Menu from '../components/Menu';
+import Header from '../components/common/Header';
+import Menu from '../components/mobile/menuPage/Menu';
 import listFoods from '../data/listFoods';
-import Footer from '../components/Footer';
-import ListCategory from '../components/ListCategory';
-import '../style/menuPage.css';
+import Footer from '../components/common/Footer';
+import ListCategory from '../components/common/ListCategory';
+import '../assets/style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
-import qrcode from '../pictures/qrcodeTanjiro.jpg';
+import qrcode from '../assets/pictures/qrcodeTanjiro.jpg';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -89,20 +89,7 @@ class MenuPage extends React.Component {
     });
   };
 
-  // onVisible = (isVisible, type) => {
-  //   switch (type) {
-  //   case 'H':
-  //     this.setState({ isVisibleH: isVisible });
-  //     break;
-  //   case 'A':
-  //     this.setState({ isVisibleA: isVisible });
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // };
-
-  render() {
+  renderDisplayMobile = () => {
     const {
       search,
       allDrinks,
@@ -111,21 +98,7 @@ class MenuPage extends React.Component {
       imgOpen,
       list,
       counterItens,
-      width,
-      // isVisibleH,
-      // isVisibleA,
     } = this.state;
-    const maxWidth = 920;
-    if (width > maxWidth) {
-      return (
-        <div className="Desktop-msg">
-          <h1>Atenção</h1>
-          <img className="qrcode" src={ qrcode } alt="Qr code Big lanches do Tanjiro" />
-          <p>Nosso sistema não esta disponivel para desktop no momento!</p>
-          <p>Por favor, escaneie o QR code e acesse pelo celular.</p>
-        </div>
-      );
-    }
 
     return (
       <div className="PageMenu">
@@ -141,8 +114,6 @@ class MenuPage extends React.Component {
           foods={ food }
           setBlur={ imgOpen }
           candy={ candy }
-          // isVisibleH={ isVisibleH }
-          // isVisibleA={ isVisibleA }
         />
         <Menu
           setBlur={ this.setBlur }
@@ -152,12 +123,29 @@ class MenuPage extends React.Component {
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
-          // onVisible={ this.onVisible }
         />
         <FooterRotes counterItens={ counterItens } imgOpem={ imgOpen } />
         <Footer imgOpem={ imgOpen } />
       </div>
     );
+  };
+
+  renderDisplayDesktop = () => {
+    return (
+      <div className="Desktop-msg">
+        <h1>Atenção</h1>
+        <img className="qrcode" src={ qrcode } alt="Qr code Big lanches do Tanjiro" />
+        <p>Nosso sistema não esta disponivel para desktop no momento!</p>
+        <p>Por favor, escaneie o QR code e acesse pelo celular.</p>
+      </div>
+    );
+  };
+
+  render() {
+    const { width } = this.state;
+    const maxWidth = 920;
+
+    return width > maxWidth ? this.renderDisplayDesktop() : this.renderDisplayMobile();
   }
 }
 

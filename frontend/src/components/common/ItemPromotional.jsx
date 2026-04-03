@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import logo from '../pictures/logo.jpg';
+import logo from '../../assets/pictures/logo.jpg';
 
 class ItemPromotional extends React.Component {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ItemPromotional from './ItemPromotional';
-import '../style/Carousel.css';
+import '../../layouts/mobile/menuPage/Carousel.css';
 
 class Carousel extends React.Component {
   render() {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../style/header.css';
-import iconsWhatsapp from '../pictures/icons8-whatsapp-48.png';
-import iconsInstagram from '../pictures/icons8-instagram-48.png';
+import '../../layouts/mobile/header.css';
+import iconsWhatsapp from '../../assets/pictures/icons8-whatsapp-48.png';
+import iconsInstagram from '../../assets/pictures/icons8-instagram-48.png';
 
 class Header extends React.Component {
   render() {

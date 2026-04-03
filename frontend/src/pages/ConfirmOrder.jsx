@@ -1,9 +1,9 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import '../style/confirmOrder.css';
-import FormDataClient from '../components/FormDataClient';
-import ListOrder from '../components/ListOrder';
+import Footer from '../components/common/Footer';
+import Header from '../components/common/Header';
+import '../assets/style/confirmOrder.css';
+import FormDataClient from '../components/mobile/orderPage/FormDataClient';
+import ListOrder from '../components/mobile/orderPage/ListOrder';
 import AppContext from '../context/AppContext';
 import { sendMensage } from '../services/sendMensage';
 

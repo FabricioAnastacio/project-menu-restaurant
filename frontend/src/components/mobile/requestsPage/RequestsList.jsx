@@ -2,9 +2,9 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../context/AppContext';
-import '../style/requestsList.css';
-import '../style/footer.css';
+import AppContext from '../../../context/AppContext';
+import '../../../layouts/mobile/requestPage/requestsList.css';
+import '../../../layouts/mobile/footer.css';
 import RenderItem from './RenderItem';
 
 class RequestsList extends React.Component {
