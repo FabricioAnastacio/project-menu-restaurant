@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import iconsCart from '../pictures/icons8-order-96.png';
-import iconsFastFood from '../pictures/icons8-fast-food2-96.png';
+import iconsCart from '../assets/pictures/icons8-order-96.png';
+import iconsFastFood from '../assets/pictures/icons8-fast-food2-96.png';
 import AppContext from '../context/AppContext';
-import '../style/footerRotes.css';
+import '../layouts/mobile/footerRotes.css';
 
 class FooterRotes extends React.Component {
   handleNav = (param) => {

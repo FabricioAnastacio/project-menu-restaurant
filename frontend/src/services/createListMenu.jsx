@@ -1,4 +1,4 @@
-import ItemComponent from '../components/ItemComponent';
+import ItemComponent from '../components/mobile/menuPage/ItemComponent';
 
 const data = new Date().getDay();
 // eslint-disable-next-line max-params
@@ -9,8 +9,6 @@ export function createListMenuBurguer(
   imgOpem,
   counterItens,
   counterRequestAmount,
-  // ref1,
-  // ref2,
 ) {
   const combos = list.combo.filter((item) => item.displayDate.includes(data));
 
@@ -20,7 +18,6 @@ export function createListMenuBurguer(
         combos.length > 0 && (
           <view>
             <h3
-              // ref={ ref1 }
               className="Titles-Burger"
               id="handmade"
             >
@@ -46,7 +43,6 @@ export function createListMenuBurguer(
       }
       <view>
         <h3
-          // ref={ ref1 }
           className="Titles-Burger"
           id="classic"
         >
@@ -70,7 +66,6 @@ export function createListMenuBurguer(
       }
       <view>
         <h3
-          // ref={ ref1 }
           className="Titles-Burger"
           id="handmade"
         >
@@ -93,7 +88,6 @@ export function createListMenuBurguer(
         ))
       }
       <h3
-        // ref={ ref2 }
         className="Titles-Burger"
         id="additional"
       >

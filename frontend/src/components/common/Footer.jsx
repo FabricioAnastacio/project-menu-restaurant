@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import github from '../pictures/icons8-github-96.png';
-import linkedin from '../pictures/icons8-linkedin-96.png';
-import instagram from '../pictures/icons8-instagram-96.png';
-import '../style/footer.css';
+import github from '../../assets/pictures/icons8-github-96.png';
+import linkedin from '../../assets/pictures/icons8-linkedin-96.png';
+import instagram from '../../assets/pictures/icons8-instagram-96.png';
+import '../../layouts/mobile/footer.css';
 
 class Footer extends React.Component {
   render() {

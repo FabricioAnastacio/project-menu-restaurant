@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/aviliation.css';
+import '../assets/style/aviliation.css';
 import { Link } from 'react-router-dom';
 
 class Avaliations extends React.Component {

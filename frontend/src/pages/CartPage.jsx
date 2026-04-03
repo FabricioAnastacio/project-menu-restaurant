@@ -1,6 +1,6 @@
 import React from 'react';
-import RequestsList from '../components/RequestsList';
-import '../style/cartPage.css';
+import RequestsList from '../components/mobile/requestsPage/RequestsList';
+import '../assets/style/cartPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
 

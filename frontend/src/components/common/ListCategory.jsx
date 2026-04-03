@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../style/ListCategory.css';
+import '../../layouts/mobile/menuPage/ListCategory.css';
 
 class ListCategory extends React.Component {
   render() {
@@ -10,8 +10,6 @@ class ListCategory extends React.Component {
       candy,
       handleChenge,
       setBlur,
-      // isVisibleH,
-      // isVisibleA,
     } = this.props;
 
     return (
@@ -71,8 +69,6 @@ ListCategory.propTypes = {
   candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
   setBlur: PropTypes.bool.isRequired,
-  // isVisibleH: PropTypes.bool.isRequired,
-  // isVisibleA: PropTypes.bool.isRequired,
 };
 
 export default ListCategory;

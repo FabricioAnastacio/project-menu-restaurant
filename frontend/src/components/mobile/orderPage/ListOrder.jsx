@@ -1,6 +1,6 @@
 import React from 'react';
-import AppContext from '../context/AppContext';
-import '../style/listOrder.css';
+import AppContext from '../../../context/AppContext';
+import '../../../layouts/mobile/orderPage/listOrder.css';
 
 const TX = 4;
 
