@@ -43,7 +43,7 @@ import sorteio from './foods/highlights/sorteio.jpg';
 
 import comboHawk from './foods/comboHawk.jpg';
 import comboSayajin from './foods/comboSayajin.jpg';
-import comboTitanico from './foods/comboTitanico.jpg'
+import comboTitanico from './foods/comboTitanico.jpg';
 
 export const drinks = {
   fanta2l,
