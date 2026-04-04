@@ -82,6 +82,18 @@ const listFoods = {
         value: 41.00,
         amount: 0,
       },
+      {
+        id: 3,
+        displayDate: [6],
+        obs: '',
+        img: foods.comboTitanico,
+        name: '2-Combo Artesanal Titãnico',
+        nameHighlights: 'Combo do dia',
+        description: 'Quando esses dois titãs se juntam não tem fome que aguente!',
+        ingredients: ['1 Titã de Attack', ' 1 Titã Blindado', ' 2 Katana Batata', ' 1 Coca-Cola 600ml', ' 2 Maionese D\'Casa'],
+        value: 68.00,
+        amount: 0,
+      },
     ],
     classic: [
       {

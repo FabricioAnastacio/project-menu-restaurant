@@ -22,7 +22,6 @@ export function createListMenuBurguer(
             <h3
               // ref={ ref1 }
               className="Titles-Burger"
-              id="handmade"
             >
               COMBO DO DIA
             </h3>
