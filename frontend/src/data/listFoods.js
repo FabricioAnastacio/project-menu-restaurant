@@ -10,7 +10,7 @@ const listFoods = {
     {
       id: 1,
       obs: '',
-      displayDate: [6, 0, 1, 2],
+      displayDate: [],
       img: foods.sorteio,
       name: 'Sorteio',
       nameHighlights: 'SORTEIO',
