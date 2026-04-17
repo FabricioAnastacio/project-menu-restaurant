@@ -32,6 +32,7 @@ import titanAttack from './foods/titanAttack.jpg';
 import poke from './foods/poke.jpg';
 import katana from './foods/katana.jpg';
 import gula from './foods/gula.jpg';
+import luaSuperior from './foods/luaSuperior.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
 import maineseCasa from './foods/maioneseCasa.jpg';
@@ -83,6 +84,7 @@ export const foods = {
   kuririn,
   natureza,
   titanAttack,
+  luaSuperior,
   poke,
   katana,
   sorteio,
