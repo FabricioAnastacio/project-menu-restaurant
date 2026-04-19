@@ -1,0 +1,63 @@
+import React from 'react';
+import scooter from '../pictures/icons8-scooter-96.png';
+import clock from '../pictures/icons8-clock-96.png';
+import '../style/InfoOperation.css';
+
+class InfoOperation extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      dataActual: new Date(),
+      isOpen: false,
+    };
+  }
+
+  componentDidMount() {
+    const { dataActual } = this.state;
+    const hour = dataActual.getHours();
+    const day = dataActual.getDay();
+    const hourStart = 19;
+    const hourEnd = 23;
+    if (hour >= hourStart && hour < hourEnd && day !== 0) {
+      this.setState({ isOpen: true });
+    } else {
+      this.setState({ isOpen: false });
+    }
+  }
+
+  render() {
+    const { isOpen } = this.state;
+
+    return (
+      <section className="Header_hours">
+        <div className="Djob_hours">
+          <img src={ clock } alt="Scooter de entrega" />
+          <div>
+            <p>Segunda - Sabado</p>
+            <p>
+              19:00 - 23:00
+              <span
+                style={ {
+                  color: isOpen ? 'green' : 'red',
+                } }
+                className="Opem_status"
+              >
+                { isOpen ? ' Aberto!' : ' Fechado!' }
+              </span>
+            </p>
+          </div>
+        </div>
+        <div className="Delivery_value">
+          <img src={ scooter } alt="Scooter de entrega" />
+          <div>
+            <p>Teixeiras - MG</p>
+            <p style={ { textDecoration: 'underline' } }>Centro: R$4,00</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+export default InfoOperation;

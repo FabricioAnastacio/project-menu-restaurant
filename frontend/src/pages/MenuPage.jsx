@@ -9,8 +9,7 @@ import '../style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
 import qrcode from '../pictures/qrcodeTanjiro.jpg';
-import scooter from '../pictures/icons8-scooter-96.png';
-import clock from '../pictures/icons8-clock-96.png';
+import InfoOperation from '../components/InfoOperation';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -127,22 +126,7 @@ class MenuPage extends React.Component {
           setBlur={ imgOpen }
           candy={ candy }
         />
-        <section className="Header_hours">
-          <div className="Djob_hours">
-            <img src={ clock } alt="Scooter de entrega" />
-            <div>
-              <p>Segunda - Sabado</p>
-              <p>19:00 - 23:00</p>
-            </div>
-          </div>
-          <div className="Delivery_value">
-            <img src={ scooter } alt="Scooter de entrega" />
-            <div>
-              <p>Teixeiras - MG</p>
-              <p>Centro: R$4,00</p>
-            </div>
-          </div>
-        </section>
+        <InfoOperation />
         <Menu
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }

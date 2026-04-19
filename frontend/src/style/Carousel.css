@@ -1,15 +1,28 @@
 .Container-carousel {
   position: relative;
   max-width: 100%;
-  margin: 5px auto;
+  margin: 0 auto;
   padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Indicative_arrow {
+  position: absolute;
+  left: auto;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.37);
+  padding: 15px 0 15px 15px;
+  border-radius: 5em 0 0 5em;
+  height: 30px;
 }
 
 .carousel {
   display: flex;
   flex-flow: row nowrap;
   margin: 0;
-  gap: 6px;
+  gap: 10px;
   overflow-x: auto;
   z-index: 0;
   -ms-overflow-style: none;
@@ -38,7 +51,7 @@
     transform: rotate(40deg);
     text-shadow: 0 0 10px gold;
     box-shadow: 0 0 1px 10px black;
-    clip-path: polygon(0% 0%, 0% 0%, 84% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 0% 0%, 80% 0%, 96% 100%, 0% 100%);
   }
 }
 
@@ -55,12 +68,13 @@
   justify-content: space-between;
   padding-left: 2px;
   padding-top: 5px;
+  border: 1px solid rgba(255, 0, 0, 0.39);
   h5 {
     color: white;
     margin: 0;
-    margin: 5px 0;
     background: linear-gradient(to left, transparent 0%, rgb(0, 0, 0) 100%);
     width: 90%;
+    padding: 5px 0;
     padding-left: 10px;
     border-radius: 15px;
   }
@@ -70,7 +84,7 @@
   border: 0;
   margin: 0;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: start;

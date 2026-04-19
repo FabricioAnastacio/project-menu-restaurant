@@ -1,4 +1,7 @@
 import ItemComponent from '../components/ItemComponent';
+import katanaDuo from '../pictures/icons8-katanaDuo-100.png';
+import burguer from '../pictures/icons8-hambúrguer-50.png';
+import potato from '../pictures/icons8-batatas-fritas-50.png';
 
 const data = new Date().getDay();
 // eslint-disable-next-line max-params
@@ -9,8 +12,6 @@ export function createListMenuBurguer(
   imgOpem,
   counterItens,
   counterRequestAmount,
-  // ref1,
-  // ref2,
 ) {
   const combos = list.combo.filter((item) => item.displayDate.includes(data));
 
@@ -20,7 +21,6 @@ export function createListMenuBurguer(
         combos.length > 0 && (
           <view>
             <h3
-              // ref={ ref1 }
               className="Titles-Burger"
             >
               COMBO DO DIA
@@ -45,10 +45,10 @@ export function createListMenuBurguer(
       }
       <view>
         <h3
-          // ref={ ref1 }
           className="Titles-Burger"
           id="classic"
         >
+          <img className="Icon_title" src={ burguer } alt="Hamburguer" />
           CLASSICOS
         </h3>
       </view>
@@ -69,10 +69,10 @@ export function createListMenuBurguer(
       }
       <view>
         <h3
-          // ref={ ref1 }
           className="Titles-Burger"
           id="handmade"
         >
+          <img className="Icon_title" src={ katanaDuo } alt="Katanas" />
           ESPECIAL DOS HASHIRAS
         </h3>
       </view>
@@ -92,10 +92,10 @@ export function createListMenuBurguer(
         ))
       }
       <h3
-        // ref={ ref2 }
         className="Titles-Burger"
         id="additional"
       >
+        <img className="Icon_title" src={ potato } alt="Batata" />
         ACOMPANHAMENTOS
       </h3>
       {

@@ -92,15 +92,22 @@ ul {
 }
 
 .Titles-Burger {
+  display: flex;
+  align-items: center;
   color: gold;
   font-size: 20px;
   text-align: start;
   text-shadow: 1px 1px 10px black;
   box-shadow: 1px 1px 20px black inset;
   background-color: #961212;
-  padding: 10px 0 10px 10px;
+  padding: 10px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+}
+
+.Icon_title {
+  height: 25px;
+  margin-right: 5px;
 }
 
 li {
