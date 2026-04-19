@@ -27,7 +27,13 @@ class Carousel extends React.Component {
             ))
           }
         </ul>
-        <img src={ arrowRigth } alt="Seta para direita" className="Indicative_arrow" />
+        {
+          highlights.length > 0 && <img
+            src={ arrowRigth }
+            alt="Seta para direita"
+            className="Indicative_arrow"
+          />
+        }
       </div>
     );
   }
