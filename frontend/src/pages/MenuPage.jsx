@@ -9,6 +9,8 @@ import '../style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
 import qrcode from '../pictures/qrcodeTanjiro.jpg';
+import scooter from '../pictures/icons8-scooter-96.png';
+import clock from '../pictures/icons8-clock-96.png';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -24,8 +26,6 @@ class MenuPage extends React.Component {
       imgOpen: false,
       counterItens: 0,
       width: window.innerWidth,
-      // isVisibleH: false,
-      // isVisibleA: false,
     };
 
     this.pairMap = {
@@ -89,19 +89,6 @@ class MenuPage extends React.Component {
     });
   };
 
-  // onVisible = (isVisible, type) => {
-  //   switch (type) {
-  //   case 'H':
-  //     this.setState({ isVisibleH: isVisible });
-  //     break;
-  //   case 'A':
-  //     this.setState({ isVisibleA: isVisible });
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // };
-
   render() {
     const {
       search,
@@ -112,8 +99,6 @@ class MenuPage extends React.Component {
       list,
       counterItens,
       width,
-      // isVisibleH,
-      // isVisibleA,
     } = this.state;
     const maxWidth = 920;
     if (width > maxWidth) {
@@ -141,9 +126,23 @@ class MenuPage extends React.Component {
           foods={ food }
           setBlur={ imgOpen }
           candy={ candy }
-          // isVisibleH={ isVisibleH }
-          // isVisibleA={ isVisibleA }
         />
+        <section className="Header_hours">
+          <div className="Djob_hours">
+            <img src={ clock } alt="Scooter de entrega" />
+            <div>
+              <p>Segunda - Sabado</p>
+              <p>19:00 - 23:00</p>
+            </div>
+          </div>
+          <div className="Delivery_value">
+            <img src={ scooter } alt="Scooter de entrega" />
+            <div>
+              <p>Teixeiras - MG</p>
+              <p>Centro: R$4,00</p>
+            </div>
+          </div>
+        </section>
         <Menu
           setBlur={ this.setBlur }
           imgOpem={ imgOpen }
@@ -152,7 +151,6 @@ class MenuPage extends React.Component {
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
-          // onVisible={ this.onVisible }
         />
         <FooterRotes counterItens={ counterItens } imgOpem={ imgOpen } />
         <Footer imgOpem={ imgOpen } />

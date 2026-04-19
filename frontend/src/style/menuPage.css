@@ -8,3 +8,28 @@
 main {
   flex-grow: 1;
 }
+
+.Header_hours {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  background-color: black;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(129, 129, 129, 0.397);
+}
+
+.Djob_hours, .Delivery_value {
+  display: flex;
+  align-items: center;
+  background-color: rgba(129, 128, 128, 0.26);
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.048);
+  img {
+    height: 30px;
+  }
+}
+
+.Delivery_value {
+  text-align: end;
+}
