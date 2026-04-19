@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import iconeClose from '../../../assets/pictures/icons8-fechar-janela-96.png';
 import listFoods from '../../../data/listFoods';
 import '../../../layouts/mobile/menuPage/menu.css';
+import '../../../layouts/mobile/menuPage/ListCategory.css';
 import ItemComponent from './ItemComponent';
 import { createListMenuBurguer } from '../../../services/createListMenu';
 import Carousel from '../../common/Carousel';

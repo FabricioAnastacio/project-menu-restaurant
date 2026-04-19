@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../layouts/mobile/header.css';
 import iconsWhatsapp from '../../assets/pictures/icons8-whatsapp-48.png';
 import iconsInstagram from '../../assets/pictures/icons8-instagram-48.png';
+import '../../layouts/mobile/header.css';
 
-class Header extends React.Component {
+class HeaderMobile extends React.Component {
   render() {
     const {
       imgOpen,
@@ -43,9 +43,9 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = {
+HeaderMobile.propTypes = {
   imgOpen: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default HeaderMobile;

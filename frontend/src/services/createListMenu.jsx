@@ -19,7 +19,6 @@ export function createListMenuBurguer(
           <view>
             <h3
               className="Titles-Burger"
-              id="handmade"
             >
               COMBO DO DIA
             </h3>

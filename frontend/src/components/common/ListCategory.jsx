@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../layouts/mobile/menuPage/ListCategory.css';
 
 class ListCategory extends React.Component {
   render() {

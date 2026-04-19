@@ -1,6 +1,5 @@
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import Header from '../components/common/Header';
 import Menu from '../components/mobile/menuPage/Menu';
 import listFoods from '../data/listFoods';
 import Footer from '../components/common/Footer';
@@ -8,7 +7,9 @@ import ListCategory from '../components/common/ListCategory';
 import '../assets/style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
-import qrcode from '../assets/pictures/qrcodeTanjiro.jpg';
+import HeaderDesktop from '../components/desktop/Header';
+import HeaderMobile from '../components/mobile/Header';
+// import qrcode from '../assets/pictures/qrcodeTanjiro.jpg';
 
 class MenuPage extends React.Component {
   constructor() {
@@ -103,7 +104,7 @@ class MenuPage extends React.Component {
     return (
       <div className="PageMenu">
         <ToastContainer />
-        <Header
+        <HeaderMobile
           title="CARDAPIO"
           imgOpen={ imgOpen }
         />
@@ -131,12 +132,37 @@ class MenuPage extends React.Component {
   };
 
   renderDisplayDesktop = () => {
+    const {
+      allDrinks,
+      food,
+      candy,
+      imgOpen,
+      list,
+      counterItens,
+    } = this.state;
+
     return (
-      <div className="Desktop-msg">
-        <h1>Atenção</h1>
-        <img className="qrcode" src={ qrcode } alt="Qr code Big lanches do Tanjiro" />
-        <p>Nosso sistema não esta disponivel para desktop no momento!</p>
-        <p>Por favor, escaneie o QR code e acesse pelo celular.</p>
+      <div className="PageMenu-desktop">
+        <ToastContainer />
+        <HeaderDesktop
+          title="CARDAPIO"
+          imgOpen={ imgOpen }
+          handleChenge={ this.handleChenge }
+          allDrinks={ allDrinks }
+          foods={ food }
+          setBlur={ imgOpen }
+          candy={ candy }
+        />
+        <Menu
+          setBlur={ this.setBlur }
+          imgOpem={ imgOpen }
+          isFood={ food }
+          isCandy={ candy }
+          listMenu={ list }
+          counterItens={ counterItens }
+          counterRequestAmount={ this.counterRequestAmount }
+        />
+        <Footer imgOpem={ imgOpen } />
       </div>
     );
   };

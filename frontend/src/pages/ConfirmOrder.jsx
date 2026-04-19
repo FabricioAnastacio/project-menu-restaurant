@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/common/Footer';
-import Header from '../components/common/Header';
+import Header from '../components/mobile/Header';
 import '../assets/style/confirmOrder.css';
 import FormDataClient from '../components/mobile/orderPage/FormDataClient';
 import ListOrder from '../components/mobile/orderPage/ListOrder';
