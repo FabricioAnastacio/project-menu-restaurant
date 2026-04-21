@@ -1,0 +1,129 @@
+.Page-ItemDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.Header_top {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 90%;
+}
+
+.Header_title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fdfdfd;
+  margin: 0 10px;
+  text-shadow: .5px .5px 1.5px rgb(255, 0, 0);
+}
+
+.Return_icon {
+  padding: 0 10px;
+  img {
+    height: 20px;
+    padding: 10px;
+    transform: scaleX(-1);
+    background-color: rgba(255, 255, 255, 0.11);
+    border: 1px solid white;
+    border-radius: 5em;
+  }
+}
+
+.Header_logo {
+  height: 70px;
+}
+
+.Details_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  img {
+    height: 250px;
+    max-width: 90%;
+    object-fit: cover;
+    margin: 10px 0;
+  }
+}
+
+.Title_details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 95%;
+  h3 {
+    display: flex;
+    color: gold;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+.Title {
+  width: 70%;
+  span {
+    margin-right: 5px;
+    background-color: #961212;
+    border: 1px solid gold;
+    padding: 8px 13px;
+    border-radius: 5em;
+  }
+}
+
+.Details_value {
+  font-size: 20px;
+}
+
+.Description {
+  margin: 10px 0;
+  font-size: 15px;
+  padding: 10px 25px;
+}
+
+.Line_separation {
+  margin-top: 20px;
+  width: 90%;
+  border-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.144);
+  height: 2px;
+}
+
+.Details_ingredients {
+  margin-top: 50px;
+  width: 85%;
+  border: 2px solid rgba(255, 255, 255, 0.041);
+  background-color: rgba(255, 255, 255, 0.151);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.Ingredients_title {
+  margin-top: 0;
+  color: rgba(255, 255, 255, 0.623);
+  font-weight: 900;
+}
+
+.Ingredients_list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.Ingredient {
+  background-color: transparent;
+  border: 0;
+  margin: 4px 0;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.623);
+  border-bottom: 1px dotted rgb(0, 0, 0);
+}

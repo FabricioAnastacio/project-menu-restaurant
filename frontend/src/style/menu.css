@@ -110,7 +110,7 @@ ul {
   margin-right: 5px;
 }
 
-li {
+.Menu_item {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -235,7 +235,6 @@ li {
 .number-item {
   margin-right: 10px;
   border: 1px solid gold;
-  /* background: linear-gradient(to bottom, #961212 50%, black 50%); */
   background-color: #961212;
   padding: 5px 10px;
   border-radius: 5em;

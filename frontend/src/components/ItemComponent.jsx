@@ -152,7 +152,7 @@ class ItemComponent extends React.Component {
     const nameItem = item.name.split('-')[1];
 
     return (
-      <li>
+      <li className="Menu_item">
         <section className="Description_Item">
           <div className="title-item">
             <h3 className="number-item">{ numItem }</h3>
@@ -183,7 +183,12 @@ class ItemComponent extends React.Component {
           </div>
         </section>
         <div className="AriaButton">
-          <Link to={ `/item/${item.group}/${item.id}` }>
+          <Link
+            to={ {
+              pathname: `/item/${item.group}/${item.id}`,
+              hash: 'Header',
+            } }
+          >
             <div
               className="imgs-menu"
               style={ { backgroundImage: `url(${item.img})` } }

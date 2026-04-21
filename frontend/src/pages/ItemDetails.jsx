@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import wrapperRoute from '../hooks/wrapperRoute';
 import AppContext from '../context/AppContext';
+import Footer from '../components/Footer';
+import '../style/itemDetails.css';
+import DetailsItem from '../components/DetailsItem';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -12,6 +15,9 @@ class ItemDetails extends React.Component {
       item: {
         name: '',
         img: '',
+        ingredients: [],
+        description: '',
+        value: 0,
       },
     };
   }
@@ -30,10 +36,10 @@ class ItemDetails extends React.Component {
     const { item } = this.state;
 
     return (
-      <div>
-        <h1>{ item.name }</h1>
-        <img src={ item.img } alt={ item.name } style={ { height: '300px' } } />
-      </div>
+      <main className="Page-ItemDetails">
+        <DetailsItem item={ item } />
+        <Footer />
+      </main>
     );
   }
 }

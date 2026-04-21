@@ -45,7 +45,7 @@ class ListOrder extends React.Component {
         <ul className="List-Order">
           {
             listOrder.map((item, i) => (
-              <li key={ i }>
+              <li key={ i } className="Order">
                 <p>{ item.amount }</p>
                 { item.obs !== '' && (<p className="Tag-Item">Edited</p>)}
                 <div className="Iten-value">
