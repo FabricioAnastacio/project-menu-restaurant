@@ -1,10 +1,13 @@
 .Header_hours {
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0) 40%);
+  padding: 20px 0;
+}
+
+.Info_operation {
   display: flex;
   justify-content: space-around;
   margin: 0;
-  background-color: black;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(129, 129, 129, 0.397);
+  margin-bottom: 10px;
 }
 
 .Djob_hours, .Delivery_value {
@@ -25,4 +28,18 @@
 
 .Delivery_value {
   text-align: end;
+}
+
+.Operation {
+  text-align: center;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.Opem_status {
+  width: 80px;
+  margin: 2px auto;
+  border: 1px solid;
+  border-radius: 10px;
 }

@@ -26,26 +26,18 @@ class InfoOperation extends React.Component {
     }
   }
 
-  render() {
-    const { isOpen } = this.state;
-
+  renderInfoOperation = () => {
     return (
-      <section className="Header_hours">
-        <div className="Djob_hours">
-          <img src={ clock } alt="Scooter de entrega" />
-          <div>
-            <p>Segunda - Sabado</p>
-            <p>
-              19:00 - 23:00
-              <span
-                style={ {
-                  color: isOpen ? 'green' : 'red',
-                } }
-                className="Opem_status"
-              >
-                { isOpen ? ' Aberto!' : ' Fechado!' }
-              </span>
-            </p>
+      <div className="Info_operation">
+        <div>
+          <div className="Djob_hours">
+            <img src={ clock } alt="Scooter de entrega" />
+            <div>
+              <p>Segunda - Sabado</p>
+              <p>
+                19:00 - 23:00
+              </p>
+            </div>
           </div>
         </div>
         <div className="Delivery_value">
@@ -54,6 +46,27 @@ class InfoOperation extends React.Component {
             <p>Teixeiras - MG</p>
             <p style={ { textDecoration: 'underline' } }>Centro: R$4,00</p>
           </div>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const { isOpen } = this.state;
+
+    return (
+      <section className="Header_hours">
+        { this.renderInfoOperation() }
+        <div className="Operation">
+          <p>Funcionamento</p>
+          <p
+            style={ {
+              color: isOpen ? 'green' : '#f43232da',
+            } }
+            className="Opem_status"
+          >
+            { isOpen ? ' Aberto' : ' Fechado' }
+          </p>
         </div>
       </section>
     );

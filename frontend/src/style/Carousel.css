@@ -1,28 +1,33 @@
 .Container-carousel {
   position: relative;
   max-width: 100%;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 10px auto;
+  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .Indicative_arrow {
+  display: flex;
+  align-items: center;
+  margin: 0;
   position: absolute;
   left: auto;
   right: 0;
   background-color: rgba(0, 0, 0, 0.37);
-  padding: 15px 0 15px 15px;
-  border-radius: 5em 0 0 5em;
-  height: 30px;
+  padding: 15px 0 15px 5px;
+  height: 90%;
+  img {
+    height: 30px;
+  }
 }
 
 .carousel {
   display: flex;
   flex-flow: row nowrap;
   margin: 0;
-  gap: 10px;
+  gap: 6px;
   overflow-x: auto;
   z-index: 0;
   -ms-overflow-style: none;
@@ -58,7 +63,7 @@
 .Story {
   height: 250px;
   width: 150px;
-  border-radius: 20px;
+  border-radius: 15px;
   background-position: center;
   background-size: cover;
   color: black;
@@ -71,11 +76,9 @@
   h5 {
     color: white;
     margin: 0;
-    background: linear-gradient(to left, transparent 0%, rgb(0, 0, 0) 100%);
     width: 90%;
     padding: 5px 0;
     padding-left: 10px;
-    border-radius: 0 20px 0 20px;
   }
 }
 

@@ -28,11 +28,14 @@ class Carousel extends React.Component {
           }
         </ul>
         {
-          highlights.length > 0 && <img
-            src={ arrowRigth }
-            alt="Seta para direita"
-            className="Indicative_arrow"
-          />
+          highlights.length > 2 && (
+            <p className="Indicative_arrow">
+              <img
+                src={ arrowRigth }
+                alt="Seta para direita"
+              />
+            </p>
+          )
         }
       </div>
     );

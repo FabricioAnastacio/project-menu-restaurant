@@ -19,34 +19,7 @@ class Menu extends React.Component {
       value: '',
       highlights: listFoods.highlights,
     };
-    // this.elementRef1 = createRef();
-    // this.elementRef2 = createRef();
   }
-
-  // componentDidMount() {
-  //   const { onVisible } = this.props;
-  //   this.observer = new IntersectionObserver((entrys) => {
-  //     entrys.forEach((entry) => {
-  //       if (entry.target === this.elementRef1.current) {
-  //         onVisible(entry.isIntersecting, 'H');
-  //       }
-  //       if (entry.target === this.elementRef2.current) {
-  //         onVisible(entry.isIntersecting, 'A');
-  //       }
-  //     });
-  //   }, {
-  //     threshold: 0.5,
-  //   });
-
-  //   if (this.elementRef1.current) this.observer.observe(this.elementRef1.current);
-  //   if (this.elementRef2.current) this.observer.observe(this.elementRef2.current);
-  // }
-
-  // componentWillUnmount() {
-  //   if (this.observer) {
-  //     this.observer.disconnect();
-  //   }
-  // }
 
   getItem = (item) => {
     this.setState({
@@ -123,8 +96,6 @@ class Menu extends React.Component {
               imgOpem,
               counterItens,
               counterRequestAmount,
-              // this.elementRef1,
-              // this.elementRef2,
             )
           ) : (
             <ul className={ `Ul-${imgOpem}` }>
@@ -160,7 +131,6 @@ Menu.propTypes = {
   isCandy: PropTypes.bool.isRequired,
   setBlur: PropTypes.func.isRequired,
   imgOpem: PropTypes.bool.isRequired,
-  // onVisible: PropTypes.func.isRequired,
 };
 
 export default Menu;
