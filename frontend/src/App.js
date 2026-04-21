@@ -35,7 +35,7 @@ class App extends React.Component {
       <AppContext.Provider value={ value }>
         <Routes>
           <Route exact path="/" Component={ MenuPage } />
-          <Route exact path="/:item/:group/:id" Component={ ItemDetails } />
+          <Route exact path="/item/:group/:id" Component={ ItemDetails } />
           <Route exact path="/cart" Component={ Cart } />
           <Route exact path="/order" Component={ ConfirmOrder } />
           <Route exact path="/avaliation" Component={ Avaliations } />

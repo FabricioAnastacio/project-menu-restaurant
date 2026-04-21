@@ -183,7 +183,7 @@ class ItemComponent extends React.Component {
           </div>
         </section>
         <div className="AriaButton">
-          <Link to="/item/classic/1">
+          <Link to={ `/item/${item.group}/${item.id}` }>
             <div
               className="imgs-menu"
               style={ { backgroundImage: `url(${item.img})` } }
@@ -205,6 +205,7 @@ ItemComponent.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf([]).isRequired,
+    group: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
     amount: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
