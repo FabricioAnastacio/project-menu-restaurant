@@ -14,7 +14,7 @@ class RequestsList extends React.Component {
     this.state = {
       data: new Date().getDay(),
       valueTotal: 0,
-      grup: [
+      groupMaping: [
         'classic', 'combo', 'handmade', 'additional', 'drinks', 'candy',
       ],
       request: {
@@ -32,9 +32,11 @@ class RequestsList extends React.Component {
   componentDidMount() {
     const {
       listMenu: {
-        food: { classic, combo, handmade, additional },
-        candy,
-        allDrinks,
+        menu: {
+          food: { combo, classic, handmade, additional },
+          drinks,
+          candy,
+        },
       },
     } = this.context;
     const request = {
@@ -52,7 +54,7 @@ class RequestsList extends React.Component {
     request.additional.push(
       ...additional.filter((item) => item.amount > 0),
     );
-    request.drinks.push(...allDrinks.filter((item) => item.amount > 0));
+    request.drinks.push(...drinks.filter((item) => item.amount > 0));
     request.candy.push(...candy.filter((item) => item.amount > 0));
 
     const requestAllItens = [
@@ -72,20 +74,6 @@ class RequestsList extends React.Component {
     });
   }
 
-  addNewItem = (item, grup) => {
-    const { request, valueTotal } = this.state;
-    this.setState({
-      valueTotal: valueTotal + item.value,
-    });
-
-    this.setState({
-      [request[grup]]: request[grup].map((a) => {
-        if (a.id === item.id) a.amount += 1;
-        return a;
-      }),
-    });
-  };
-
   updateCounterRequest = () => {
     const { request, valueTotal,
     } = this.state;
@@ -99,7 +87,21 @@ class RequestsList extends React.Component {
     this.context.valueTotal = valueTotal.toFixed(2);
   };
 
-  removeItem = (item, grup) => {
+  addNewItem = (item) => {
+    const { request, valueTotal } = this.state;
+    this.setState({
+      valueTotal: valueTotal + item.value,
+    });
+
+    this.setState({
+      [request[item.group]]: request[item.group].map((a) => {
+        if (a.id === item.id) a.amount += 1;
+        return a;
+      }),
+    });
+  };
+
+  removeItem = (item) => {
     const { request, valueTotal } = this.state;
 
     this.setState({
@@ -109,7 +111,7 @@ class RequestsList extends React.Component {
     this.setState({
       request: {
         ...request,
-        [grup]: request[grup].filter((a) => {
+        [item.group]: request[item.group].filter((a) => {
           if (a.id === item.id) a.amount -= 1;
           return a.amount > 0 && a;
         }),
@@ -120,17 +122,20 @@ class RequestsList extends React.Component {
   // eslint-disable-next-line react-func/max-lines-per-function
   removeAllItens = () => {
     const {
-      listMenu,
       listMenu: {
-        food,
-        food: { classic, combo, handmade, additional },
-        allDrinks, candy,
+        menu,
+        menu: {
+          food,
+          food: { combo, classic, handmade, additional },
+          drinks,
+          candy,
+        },
       },
     } = this.context;
     const { request } = this.state;
 
     this.context.counterRequest = 0;
-    listMenu.allDrinks = allDrinks.map((iten) => {
+    menu.drinks = drinks.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -155,7 +160,7 @@ class RequestsList extends React.Component {
       iten.obs = '';
       return iten;
     });
-    listMenu.candy = candy.map((iten) => {
+    menu.candy = candy.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -179,7 +184,7 @@ class RequestsList extends React.Component {
     const {
       valueTotal,
       request,
-      grup,
+      groupMaping,
       data,
     } = this.state;
     this.updateCounterRequest();
@@ -196,12 +201,11 @@ class RequestsList extends React.Component {
           </section>
           <ul className="list-requests">
             {
-              grup.map((g) => (
+              groupMaping.map((g) => (
                 request[g].map((item, key) => (
                   <RenderItem
                     key={ key }
                     item={ item }
-                    grup={ g }
                     removeItem={ this.removeItem }
                     addNewItem={ this.addNewItem }
                   />

@@ -34,11 +34,13 @@ class ConfirmOrder extends React.Component {
   // eslint-disable-next-line react-func/max-lines-per-function
   sendOrCheff = () => {
     const {
-      listMenu,
       listMenu: {
-        food,
-        food: { classic, combo, handmade, additional },
-        candy, allDrinks }, valueTotal } = this.context;
+        menu,
+        menu: {
+          food,
+          food: { classic, combo, handmade, additional },
+          candy, drinks,
+        } }, valueTotal } = this.context;
 
     const order = {
       foods: [
@@ -46,7 +48,7 @@ class ConfirmOrder extends React.Component {
         ...classic.filter((item) => item.amount > 0),
         ...combo.filter((item) => item.amount > 0),
       ],
-      drinks: allDrinks.filter((item) => item.amount > 0),
+      drinks: drinks.filter((item) => item.amount > 0),
       additional: [
         ...additional.filter((item) => item.amount > 0),
         ...candy.filter((item) => item.amount > 0),
@@ -64,7 +66,7 @@ class ConfirmOrder extends React.Component {
     sendMensage(this.state, order);
 
     this.context.counterRequest = 0;
-    listMenu.allDrinks = allDrinks.map((iten) => {
+    menu.drinks = drinks.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
@@ -89,7 +91,7 @@ class ConfirmOrder extends React.Component {
       iten.obs = '';
       return iten;
     });
-    listMenu.candy = candy.map((iten) => {
+    menu.candy = candy.map((iten) => {
       iten.amount = 0;
       iten.obs = '';
       return iten;
