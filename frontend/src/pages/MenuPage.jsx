@@ -82,8 +82,6 @@ class MenuPage extends React.Component {
       );
     }
 
-    console.log(list);
-
     return (
       <div className="PageMenu">
         <ToastContainer />

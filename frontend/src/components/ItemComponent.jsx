@@ -31,38 +31,6 @@ class ItemComponent extends React.Component {
     });
   };
 
-  addDrink = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { allDrinks }, listMenu } = this.context;
-
-    listMenu.allDrinks = allDrinks.map((ite) => {
-      if (ite.id === item.id) {
-        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
-        ite.amount += 1;
-        this.setState({
-          counterDrink: ite.amount,
-        });
-      }
-      return ite;
-    });
-  };
-
-  addCandy = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { candy }, listMenu } = this.context;
-
-    listMenu.candy = candy.map((ite) => {
-      if (ite.id === item.id) {
-        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
-        ite.amount += 1;
-        this.setState({
-          counterCandy: ite.amount,
-        });
-      }
-      return ite;
-    });
-  };
-
   removeFood = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
     const { listMenu: { menu, menu: { food } } } = this.context;
@@ -79,11 +47,27 @@ class ItemComponent extends React.Component {
     });
   };
 
+  addDrink = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listMenu: { menu, menu: { drinks } } } = this.context;
+
+    menu.drinks = drinks.map((ite) => {
+      if (ite.id === item.id) {
+        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
+        ite.amount += 1;
+        this.setState({
+          counterDrink: ite.amount,
+        });
+      }
+      return ite;
+    });
+  };
+
   removeDrink = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { allDrinks }, listMenu } = this.context;
+    const { listMenu: { menu, menu: { drinks } } } = this.context;
 
-    listMenu.allDrinks = allDrinks.map((ite) => {
+    menu.allDrinks = drinks.map((ite) => {
       if (ite.id === item.id && ite.amount > 0) {
         ite.amount -= 1;
         this.setState({
@@ -95,11 +79,27 @@ class ItemComponent extends React.Component {
     });
   };
 
+  addCandy = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { listMenu: { menu, menu: { candy } } } = this.context;
+
+    menu.candy = candy.map((ite) => {
+      if (ite.id === item.id) {
+        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
+        ite.amount += 1;
+        this.setState({
+          counterCandy: ite.amount,
+        });
+      }
+      return ite;
+    });
+  };
+
   removeCandy = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { candy }, listMenu } = this.context;
+    const { listMenu: { menu, menu: { candy } } } = this.context;
 
-    listMenu.candy = candy.map((ite) => {
+    menu.candy = candy.map((ite) => {
       if (ite.id === item.id && ite.amount > 0) {
         ite.amount -= 1;
         this.setState({

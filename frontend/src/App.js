@@ -3,12 +3,12 @@ import React from 'react';
 import MenuPage from './pages/MenuPage';
 import Avaliations from './pages/AvaliationsPage';
 import food from './data/listFoods';
-import listDrinks from './data/listDrinks';
+import drinks from './data/listDrinks';
 import Cart from './pages/CartPage';
 import AppContext from './context/AppContext';
 import ConfirmOrder from './pages/ConfirmOrder';
 import ItemDetails from './pages/ItemDetails';
-import listCandy from './data/listCandy';
+import candy from './data/listCandy';
 import listHighlights from './data/listHighlights';
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       value: {
         listMenu: {
-          menu: { food, listDrinks, listCandy },
+          menu: { food, drinks, candy },
           highlights: listHighlights,
         },
         counterRequest: 0,
