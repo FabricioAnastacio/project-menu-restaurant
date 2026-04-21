@@ -2,12 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import MenuPage from './pages/MenuPage';
 import Avaliations from './pages/AvaliationsPage';
-import listFoods from './data/listFoods';
+import food from './data/listFoods';
 import listDrinks from './data/listDrinks';
 import Cart from './pages/CartPage';
 import AppContext from './context/AppContext';
 import ConfirmOrder from './pages/ConfirmOrder';
 import ItemDetails from './pages/ItemDetails';
+import listCandy from './data/listCandy';
+import listHighlights from './data/listHighlights';
 
 class App extends React.Component {
   constructor() {
@@ -16,9 +18,8 @@ class App extends React.Component {
     this.state = {
       value: {
         listMenu: {
-          food: listFoods.food,
-          candy: listFoods.candy,
-          allDrinks: listDrinks,
+          menu: { food, listDrinks, listCandy },
+          highlights: listHighlights,
         },
         counterRequest: 0,
         valueTotal: 0,
@@ -34,7 +35,7 @@ class App extends React.Component {
       <AppContext.Provider value={ value }>
         <Routes>
           <Route exact path="/" Component={ MenuPage } />
-          <Route exact path="/item/:group/:id" Component={ ItemDetails } />
+          <Route exact path="/:item/:group/:id" Component={ ItemDetails } />
           <Route exact path="/cart" Component={ Cart } />
           <Route exact path="/order" Component={ ConfirmOrder } />
           <Route exact path="/avaliation" Component={ Avaliations } />

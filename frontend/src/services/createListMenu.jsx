@@ -7,16 +7,13 @@ const data = new Date().getDay();
 // eslint-disable-next-line max-params
 export function createListMenuBurguer(
   list,
-  getItem,
-  setBlur,
-  imgOpem,
   counterItens,
   counterRequestAmount,
 ) {
   const combos = list.combo.filter((item) => item.displayDate.includes(data));
 
   return (
-    <ul className={ `Ul-${imgOpem}` }>
+    <ul className={ `Ul-${false}` }>
       {
         combos.length > 0 && (
           <view>
@@ -32,12 +29,9 @@ export function createListMenuBurguer(
         combos.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="combo"
             item={ item }
             isFood
             isCandy={ false }
-            getItem={ getItem }
-            setBlur={ setBlur }
             counterItens={ counterItens }
             counterRequestAmount={ counterRequestAmount }
           />
@@ -56,12 +50,9 @@ export function createListMenuBurguer(
         list.classic.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="classic"
             item={ item }
             isFood
             isCandy={ false }
-            getItem={ getItem }
-            setBlur={ setBlur }
             counterItens={ counterItens }
             counterRequestAmount={ counterRequestAmount }
           />
@@ -80,12 +71,9 @@ export function createListMenuBurguer(
         list.handmade.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="handmade"
             item={ item }
             isFood
             isCandy={ false }
-            getItem={ getItem }
-            setBlur={ setBlur }
             counterItens={ counterItens }
             counterRequestAmount={ counterRequestAmount }
           />
@@ -102,12 +90,9 @@ export function createListMenuBurguer(
         list.additional.map((item, key) => (
           <ItemComponent
             key={ key }
-            grup="additional"
             item={ item }
             isFood
             isCandy={ false }
-            getItem={ getItem }
-            setBlur={ setBlur }
             counterItens={ counterItens }
             counterRequestAmount={ counterRequestAmount }
           />

@@ -28,11 +28,11 @@ class FooterRotes extends React.Component {
   };
 
   render() {
-    const { counterItens, imgOpem } = this.props;
+    const { counterItens } = this.props;
     const { btnMenu, btnCart } = this.context;
 
     return (
-      <section className={ `footer-pages setblur-${imgOpem}` }>
+      <section className={ `footer-pages setblur-${false}` }>
         <ul>
           <li
             className={ `icon-menu isSelect${btnMenu}` }
@@ -68,7 +68,6 @@ FooterRotes.contextType = AppContext;
 
 FooterRotes.propTypes = {
   counterItens: PropTypes.number.isRequired,
-  imgOpem: PropTypes.bool.isRequired,
 };
 
 export default FooterRotes;

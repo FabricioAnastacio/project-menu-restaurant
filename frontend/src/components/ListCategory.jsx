@@ -5,23 +5,20 @@ import '../style/ListCategory.css';
 class ListCategory extends React.Component {
   render() {
     const {
-      allDrinks,
+      drinks,
       foods,
       candy,
       handleChenge,
-      setBlur,
-      // isVisibleH,
-      // isVisibleA,
     } = this.props;
 
     return (
-      <div className={ `Categorys setblur-${setBlur}` }>
+      <div className={ `Categorys setblur-${false}` }>
         <section className="Select-item">
-          <label className={ `Label-select-${allDrinks}` }>
+          <label className={ `Label-select-${drinks}` }>
             <input
               type="checkbox"
-              checked={ allDrinks }
-              name="allDrinks"
+              checked={ drinks }
+              name="drinks"
               onChange={ handleChenge }
             />
             Bebidas
@@ -66,13 +63,10 @@ class ListCategory extends React.Component {
 }
 
 ListCategory.propTypes = {
-  allDrinks: PropTypes.bool.isRequired,
+  drinks: PropTypes.bool.isRequired,
   foods: PropTypes.bool.isRequired,
   candy: PropTypes.bool.isRequired,
   handleChenge: PropTypes.func.isRequired,
-  setBlur: PropTypes.bool.isRequired,
-  // isVisibleH: PropTypes.bool.isRequired,
-  // isVisibleA: PropTypes.bool.isRequired,
 };
 
 export default ListCategory;
