@@ -8,7 +8,11 @@ class ItemPromotional extends React.Component {
     const { item, className } = this.props;
     return (
       <li className={ className }>
-        <Link to={ `/item/${item.group}/${item.id}` }>
+        <Link
+          to={
+            item.group !== 'highlights' && `/item/${item.group}/${item.id}`
+          }
+        >
           <div
             style={ { backgroundImage: `url(${item.img})` } }
             aria-hidden="true"

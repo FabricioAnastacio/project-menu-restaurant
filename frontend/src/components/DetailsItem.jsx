@@ -134,6 +134,7 @@ class DetailsItem extends React.Component {
               }
             </ul>
           </div>
+          <a className="Btm_Up" href="#Header">Subir</a>
         </div>
       </section>
     );

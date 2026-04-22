@@ -109,17 +109,14 @@ class ItemComponent extends React.Component {
         </section>
         <div className="AriaButton">
           <Link
-            to={ {
-              pathname: `/item/${item.group}/${item.id}`,
-              hash: 'Header',
-            } }
+            to={ `/item/${item.group}/${item.id}/#Header` }
           >
             <div
               className="imgs-menu"
               style={ { backgroundImage: `url(${item.img})` } }
               aria-hidden="true"
             />
-            <p>Ver...</p>
+            <p>Ver detalhes</p>
           </Link>
         </div>
       </li>
