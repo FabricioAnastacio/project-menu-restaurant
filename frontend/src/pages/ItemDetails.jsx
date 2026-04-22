@@ -27,11 +27,12 @@ class ItemDetails extends React.Component {
   componentDidMount() {
     const { groupFood } = this.state;
     const { params: { group, id } } = this.props;
-    const { listMenu: { menu: { food, drinks, candy } } } = this.context;
+    const { listMenu: { menu: { food, drinks, candy } }, counterRequest } = this.context;
 
     if (groupFood.includes(group)) this.setState({ item: food[group][id - 1] });
     else if (group === 'drinks') this.setState({ item: drinks[id - 1] });
     else this.setState({ item: candy[id - 1] });
+    this.setState({ counterItens: counterRequest });
   }
 
   counterRequestAmount = (value) => {

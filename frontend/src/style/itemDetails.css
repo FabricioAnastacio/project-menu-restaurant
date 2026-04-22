@@ -116,6 +116,7 @@
 
 .Value_actual {
   margin: 0;
+  transition: all .3s ease-in;
 }
 
 .Item_amount {
@@ -125,7 +126,6 @@
 
 .btm_add {
   color: gold;
-  transition: all .1s ease-in-out;
 }
 
 .btm_remove {
@@ -133,11 +133,11 @@
 }
 
 .btm_add, .btm_remove {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.507);
   border: 1px solid #961212;
   border-radius: 5px;
-  padding: 2px 10px;
-  font-size: 15px;
+  padding: 5px 10px;
+  font-size: 16px;
 }
 
 .btm_add:active, .btm_remove:active {

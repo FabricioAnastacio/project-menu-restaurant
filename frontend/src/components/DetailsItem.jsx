@@ -91,7 +91,10 @@ class DetailsItem extends React.Component {
           <p className="Description">{ item.description }</p>
           <img src={ item.img } alt={ item.name } />
           <div className="Viwer_buy">
-            <h4 className="Value_actual">
+            <h4
+              className="Value_actual"
+              style={ { color: item.amount > 0 ? 'gold' : 'white' } }
+            >
               {
                 (item.value * item.amount).toLocaleString('pt-BR', {
                   style: 'currency', currency: 'BRL' })
