@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.9.7",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
