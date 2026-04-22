@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import github from '../pictures/icons8-github-96.png';
 import linkedin from '../pictures/icons8-linkedin-96.png';
 import instagram from '../pictures/icons8-instagram-96.png';
@@ -7,10 +6,8 @@ import '../style/footer.css';
 
 class Footer extends React.Component {
   render() {
-    const { imgOpem } = this.props;
-
     return (
-      <footer className={ `Footer-page-${imgOpem}` }>
+      <footer className={ `Footer-page-${false}` }>
         <p>
           Direct by
           {' '}
@@ -68,9 +65,5 @@ class Footer extends React.Component {
     );
   }
 }
-
-Footer.propTypes = {
-  imgOpem: PropTypes.bool.isRequired,
-};
 
 export default Footer;

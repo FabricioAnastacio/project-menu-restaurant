@@ -9,29 +9,25 @@ import '../style/menuPage.css';
 import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
 import qrcode from '../pictures/qrcodeTanjiro.jpg';
+import InfoOperation from '../components/InfoOperation';
 
 class MenuPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      search: '',
-      allDrinks: false,
+      drinks: false,
       food: true,
       candy: false,
-      list: listFoods.food,
-      listActual: 'food',
-      imgOpen: false,
+      list: listFoods,
       counterItens: 0,
       width: window.innerWidth,
-      // isVisibleH: false,
-      // isVisibleA: false,
     };
 
     this.pairMap = {
-      allDrinks: ['candy', 'food'],
-      food: ['allDrinks', 'candy'],
-      candy: ['allDrinks', 'food'],
+      drinks: ['candy', 'food'],
+      food: ['drinks', 'candy'],
+      candy: ['drinks', 'food'],
     };
   }
 
@@ -44,41 +40,17 @@ class MenuPage extends React.Component {
     });
   }
 
-  searchItem = (value) => {
-    const { listActual } = this.state;
-    const { listMenu } = this.context;
-    const menuActual = listMenu[listActual];
-    if (value.length === 0) return menuActual;
-    return menuActual.filter((a) => a.name.toUpperCase().includes(value.toUpperCase()));
-  };
-
   handleChenge = ({ target }) => {
-    const { name, checked, type, value } = target;
-    const { listMenu } = this.context;
+    const { name, checked } = target;
+    const { listMenu: { menu } } = this.context;
     const relatedKey = this.pairMap[name];
-
-    if (type === 'text') {
-      this.setState({
-        [name]: value,
-        list: this.searchItem(value),
-      });
-      return;
-    }
 
     if (!checked) return;
     this.setState({
       [name]: checked,
       [relatedKey[0]]: !checked,
       [relatedKey[1]]: !checked,
-      list: listMenu[name],
-      listActual: name,
-    });
-  };
-
-  setBlur = () => {
-    const { imgOpen } = this.state;
-    this.setState({
-      imgOpen: !imgOpen,
+      list: menu[name],
     });
   };
 
@@ -89,31 +61,14 @@ class MenuPage extends React.Component {
     });
   };
 
-  // onVisible = (isVisible, type) => {
-  //   switch (type) {
-  //   case 'H':
-  //     this.setState({ isVisibleH: isVisible });
-  //     break;
-  //   case 'A':
-  //     this.setState({ isVisibleA: isVisible });
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // };
-
   render() {
     const {
-      search,
-      allDrinks,
+      drinks,
       food,
       candy,
-      imgOpen,
       list,
       counterItens,
       width,
-      // isVisibleH,
-      // isVisibleA,
     } = this.state;
     const maxWidth = 920;
     if (width > maxWidth) {
@@ -132,30 +87,23 @@ class MenuPage extends React.Component {
         <ToastContainer />
         <Header
           title="CARDAPIO"
-          imgOpen={ imgOpen }
         />
         <ListCategory
-          search={ search }
           handleChenge={ this.handleChenge }
-          allDrinks={ allDrinks }
+          drinks={ drinks }
           foods={ food }
-          setBlur={ imgOpen }
           candy={ candy }
-          // isVisibleH={ isVisibleH }
-          // isVisibleA={ isVisibleA }
         />
+        <InfoOperation />
         <Menu
-          setBlur={ this.setBlur }
-          imgOpem={ imgOpen }
           isFood={ food }
           isCandy={ candy }
           listMenu={ list }
           counterItens={ counterItens }
           counterRequestAmount={ this.counterRequestAmount }
-          // onVisible={ this.onVisible }
         />
-        <FooterRotes counterItens={ counterItens } imgOpem={ imgOpen } />
-        <Footer imgOpem={ imgOpen } />
+        <FooterRotes counterItens={ counterItens } />
+        <Footer />
       </div>
     );
   }

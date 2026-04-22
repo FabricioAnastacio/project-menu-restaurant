@@ -7,12 +7,11 @@ import iconsInstagram from '../pictures/icons8-instagram-48.png';
 class Header extends React.Component {
   render() {
     const {
-      imgOpen,
       title,
     } = this.props;
 
     return (
-      <header className={ `Header-geral-${imgOpen}` }>
+      <header className={ `Header-geral-${false}` }>
         <div className="Header-Title">
           <aside className="Title-profile">
             <h1>
@@ -44,7 +43,6 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  imgOpen: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
 };
 

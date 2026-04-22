@@ -46,7 +46,7 @@ class RenderItem extends React.Component {
     return (
       <li
         key={ key }
-        className={ `request ${grup}` }
+        className={ `request ${grup} Menu_item` }
         style={ { opacity: `${item.amount === 0 ? '.6' : '1'}` } }
       >
         <div className="item-request">

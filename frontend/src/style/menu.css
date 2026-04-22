@@ -92,18 +92,25 @@ ul {
 }
 
 .Titles-Burger {
+  display: flex;
+  align-items: center;
   color: gold;
   font-size: 20px;
   text-align: start;
   text-shadow: 1px 1px 10px black;
   box-shadow: 1px 1px 20px black inset;
   background-color: #961212;
-  padding: 10px 0 10px 10px;
+  padding: 10px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
 
-li {
+.Icon_title {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.Menu_item {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -129,6 +136,12 @@ li {
   background-color: rgb(167, 0, 0);
   border: 1px solid black;
   border-radius: 10px;
+  a {
+    color: white;
+  }
+  p {
+    animation: pulsar 2.5s infinite;
+  }
 }
 
 .imgs-menu {
@@ -228,10 +241,15 @@ li {
 .number-item {
   margin-right: 10px;
   border: 1px solid gold;
-  /* background: linear-gradient(to bottom, #961212 50%, black 50%); */
   background-color: #961212;
   padding: 5px 10px;
   border-radius: 5em;
+}
+
+@keyframes pulsar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 @media screen and (min-width: 900px) {

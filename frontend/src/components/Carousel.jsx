@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ItemPromotional from './ItemPromotional';
 import '../style/Carousel.css';
+import arrowRigth from '../pictures/icons8-forward-100.png';
 
 class Carousel extends React.Component {
   render() {
@@ -26,6 +27,16 @@ class Carousel extends React.Component {
             ))
           }
         </ul>
+        {
+          highlights.length > 2 && (
+            <p className="Indicative_arrow">
+              <img
+                src={ arrowRigth }
+                alt="Seta para direita"
+              />
+            </p>
+          )
+        }
       </div>
     );
   }
