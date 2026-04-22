@@ -20,6 +20,7 @@ class ItemDetails extends React.Component {
         description: '',
         value: 0,
       },
+      counterItens: 0,
     };
   }
 
@@ -33,13 +34,24 @@ class ItemDetails extends React.Component {
     else this.setState({ item: candy[id - 1] });
   }
 
+  counterRequestAmount = (value) => {
+    this.context.counterRequest = value;
+    this.setState({
+      counterItens: value,
+    });
+  };
+
   render() {
-    const { item } = this.state;
+    const { item, counterItens } = this.state;
     const { counterRequest } = this.context;
 
     return (
       <main className="Page-ItemDetails">
-        <DetailsItem item={ item } />
+        <DetailsItem
+          item={ item }
+          counterRequestAmount={ this.counterRequestAmount }
+          counterItens={ counterItens }
+        />
         <Footer />
         <FooterRotes counterItens={ counterRequest } />
       </main>
