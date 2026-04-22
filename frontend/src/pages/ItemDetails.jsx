@@ -5,6 +5,7 @@ import AppContext from '../context/AppContext';
 import Footer from '../components/Footer';
 import '../style/itemDetails.css';
 import DetailsItem from '../components/DetailsItem';
+import FooterRotes from '../components/FooterRotes';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -34,11 +35,13 @@ class ItemDetails extends React.Component {
 
   render() {
     const { item } = this.state;
+    const { counterRequest } = this.context;
 
     return (
       <main className="Page-ItemDetails">
         <DetailsItem item={ item } />
         <Footer />
+        <FooterRotes counterItens={ counterRequest } />
       </main>
     );
   }

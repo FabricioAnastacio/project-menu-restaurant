@@ -1,141 +1,58 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
+import { addItem, rmItem } from '../services/addOrRmItem';
 
 class ItemComponent extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      counterFood: 0,
-      counterDrink: 0,
-      counterCandy: 0,
+      counterItem: 0,
     };
   }
 
-  addFood = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
+  addNewItem = (item, isFood) => {
     const { listMenu: { menu, menu: { food } } } = this.context;
+    let newAmount = 0;
 
-    menu.food[item.group] = food[item.group].map((ite) => {
-      if (ite.id === item.id) {
-        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
-        ite.amount += 1;
-        this.setState({
-          counterFood: ite.amount,
-        });
-      }
-      return ite;
-    });
+    if (isFood) {
+      const { newList, amount } = addItem(item, food[item.group], this.props);
+      menu.food[item.group] = newList;
+      newAmount = amount;
+    } else {
+      const { newList, amount } = addItem(item, menu[item.group], this.props);
+      menu[item.group] = newList;
+      newAmount = amount;
+    }
+
+    this.setState({ counterItem: newAmount });
   };
 
-  removeFood = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
+  removeItem = (item, isFood) => {
     const { listMenu: { menu, menu: { food } } } = this.context;
+    let newAmount = 0;
 
-    menu.food[item.group] = food[item.group].map((ite) => {
-      if (ite.id === item.id && ite.amount > 0) {
-        ite.amount -= 1;
-        this.setState({
-          counterFood: ite.amount,
-        });
-        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
-      }
-      return ite;
-    });
-  };
+    if (isFood) {
+      const { newList, amount } = rmItem(item, food[item.group], this.props);
+      menu.food[item.group] = newList;
+      newAmount = amount;
+    } else {
+      const { newList, amount } = rmItem(item, menu[item.group], this.props);
+      menu[item.group] = newList;
+      newAmount = amount;
+    }
 
-  addDrink = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { menu, menu: { drinks } } } = this.context;
-
-    menu.drinks = drinks.map((ite) => {
-      if (ite.id === item.id) {
-        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
-        ite.amount += 1;
-        this.setState({
-          counterDrink: ite.amount,
-        });
-      }
-      return ite;
-    });
-  };
-
-  removeDrink = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { menu, menu: { drinks } } } = this.context;
-
-    menu.allDrinks = drinks.map((ite) => {
-      if (ite.id === item.id && ite.amount > 0) {
-        ite.amount -= 1;
-        this.setState({
-          counterDrink: ite.amount,
-        });
-        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
-      }
-      return ite;
-    });
-  };
-
-  addCandy = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { menu, menu: { candy } } } = this.context;
-
-    menu.candy = candy.map((ite) => {
-      if (ite.id === item.id) {
-        if (ite.amount === 0) counterRequestAmount(counterItens + 1);
-        ite.amount += 1;
-        this.setState({
-          counterCandy: ite.amount,
-        });
-      }
-      return ite;
-    });
-  };
-
-  removeCandy = (item) => {
-    const { counterRequestAmount, counterItens } = this.props;
-    const { listMenu: { menu, menu: { candy } } } = this.context;
-
-    menu.candy = candy.map((ite) => {
-      if (ite.id === item.id && ite.amount > 0) {
-        ite.amount -= 1;
-        this.setState({
-          counterCandy: ite.amount,
-        });
-        if (ite.amount === 0) counterRequestAmount(counterItens - 1);
-      }
-      return ite;
-    });
-  };
-
-  addNewItem = (item, isFood, isCandy) => {
-    if (isFood) this.addFood(item);
-    else if (isCandy) this.addCandy(item);
-    else this.addDrink(item);
-  };
-
-  removeItem = (item, isFood, isCandy) => {
-    if (isFood) this.removeFood(item);
-    else if (isCandy) this.removeCandy(item);
-    else this.removeDrink(item);
+    this.setState({ counterItem: newAmount });
   };
 
   getCounter = (isFood, isCandy, { id, group }) => {
-    const { counterDrink, counterFood, counterCandy } = this.state;
-    const {
-      listMenu: { menu: { food, candy, drinks } } } = this.context;
+    const { counterItem } = this.state;
+    const { listMenu: { menu: { food, candy, drinks } } } = this.context;
 
-    const isValuer = counterDrink > 0 && counterFood > 0 && counterCandy > 0;
-
-    if (isValuer) {
-      if (isFood) return counterFood;
-
-      if (isCandy) return counterCandy;
-
-      return counterDrink;
+    if (counterItem > 0) {
+      return counterItem;
     }
 
     if (isFood) return food[group][id - 1].amount;
@@ -158,7 +75,15 @@ class ItemComponent extends React.Component {
             <h3 className="number-item">{ numItem }</h3>
             <h3 className="text-item">{ nameItem }</h3>
           </div>
-          <p>{ item.ingredients.map((ing, i) => (i + 1 === item.ingredients.length ? `${ing}.` : `${ing}, `)) }</p>
+          <p>
+            {
+              item.ingredients.map((ing, i) => (
+                i + 1 === item.ingredients.length
+                  ? `e ${ing}.`
+                  : `${ing}, `
+              ))
+            }
+          </p>
           <div className="Value_Sale">
             <h4 className="price">{ `R$${item.value.toFixed(2)}` }</h4>
             <div className="buttons-sale">
@@ -215,8 +140,6 @@ ItemComponent.propTypes = {
     amount: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
   }).isRequired,
-  counterItens: PropTypes.number.isRequired,
-  counterRequestAmount: PropTypes.func.isRequired,
   isFood: PropTypes.bool.isRequired,
   isCandy: PropTypes.bool.isRequired,
 };
