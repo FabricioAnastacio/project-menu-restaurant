@@ -220,7 +220,7 @@ const listFoods = {
     {
       id: 3,
       img: foods.maineseCasa,
-      name: '3-Mainese da Casa Tradicional 30g',
+      name: '3-Maionese da Casa Tradicional 30g',
       description: '30g',
       ingredients: [],
       group: 'additional',

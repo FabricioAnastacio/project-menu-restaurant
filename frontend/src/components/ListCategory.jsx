@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/ListCategory.css';
+import { HashLink } from 'react-router-hash-link';
 
 class ListCategory extends React.Component {
   render() {
@@ -45,15 +46,15 @@ class ListCategory extends React.Component {
         {
           foods && (
             <section className="section_links">
-              <a className="Link-a" href="#classic">
+              <HashLink smooth className="Link-a" to="#classic">
                 Classicos
-              </a>
-              <a className="Link-a" href="#handmade">
+              </HashLink>
+              <HashLink smooth className="Link-a" to="#handmade">
                 Artesanais
-              </a>
-              <a className="Link-a" href="#additional">
+              </HashLink>
+              <HashLink smooth className="Link-a" to="#additional">
                 Acompanhamentos
-              </a>
+              </HashLink>
             </section>
           )
         }

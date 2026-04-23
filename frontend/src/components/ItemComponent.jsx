@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
 import { addItem, rmItem } from '../services/addOrRmItem';
@@ -10,6 +10,7 @@ class ItemComponent extends React.Component {
 
     this.state = {
       counterItem: 0,
+      groupFood: ['classic', 'handmade', 'additional', 'combo'],
     };
   }
 
@@ -63,13 +64,14 @@ class ItemComponent extends React.Component {
   };
 
   render() {
+    const { groupFood } = this.state;
     const { item, isFood, isCandy } = this.props;
 
     const numItem = item.name.split('-')[0];
     const nameItem = item.name.split('-')[1];
 
     return (
-      <li className="Menu_item">
+      <li className="Menu_item" id={ `${item.group}item${item.id}` }>
         <section className="Description_Item">
           <div className="title-item">
             <h3 className="number-item">{ numItem }</h3>
@@ -108,16 +110,18 @@ class ItemComponent extends React.Component {
           </div>
         </section>
         <div className="AriaButton">
-          <Link
-            to={ `/item/${item.group}/${item.id}/#Header` }
+          <HashLink
+            to={
+              groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
+            }
           >
             <div
               className="imgs-menu"
               style={ { backgroundImage: `url(${item.img})` } }
               aria-hidden="true"
             />
-            <p>Ver detalhes</p>
-          </Link>
+            <p>{ groupFood.includes(item.group) && 'Ver detalhes' }</p>
+          </HashLink>
         </div>
       </li>
     );

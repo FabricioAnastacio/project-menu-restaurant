@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
@@ -12,14 +12,16 @@ class DetailsItem extends React.Component {
 
     this.state = {
       counterItem: 0,
+      groupFood: ['combo', 'classic', 'handmade', 'additional'],
     };
   }
 
   addNewItem = (item) => {
     const { listMenu: { menu, menu: { food } } } = this.context;
+    const { groupFood } = this.state;
     let newAmount = 0;
 
-    if (['handmade', 'classic', 'additional'].includes(item.group)) {
+    if (groupFood.includes(item.group)) {
       const { newList, amount } = addItem(item, food[item.group], this.props);
       menu.food[item.group] = newList;
       newAmount = amount;
@@ -34,9 +36,10 @@ class DetailsItem extends React.Component {
 
   removeItem = (item) => {
     const { listMenu: { menu, menu: { food } } } = this.context;
+    const { groupFood } = this.state;
     let newAmount = 0;
 
-    if (['handmade', 'classic', 'additional'].includes(item.group)) {
+    if (groupFood.includes(item.group)) {
       const { newList, amount } = rmItem(item, food[item.group], this.props);
       menu.food[item.group] = newList;
       newAmount = amount;
@@ -50,20 +53,29 @@ class DetailsItem extends React.Component {
   };
 
   getCounter = ({ id, group }) => {
-    const { counterItem } = this.state;
+    const { counterItem, groupFood } = this.state;
     const { listMenu: { menu: { food, candy, drinks } } } = this.context;
 
     if (counterItem > 0) {
       return counterItem;
     }
 
-    if (['handmade', 'classic', 'additional'].includes(group)) {
+    if (groupFood.includes(group)) {
       return food[group][id - 1].amount;
     }
 
-    if (['candy'].includes(group)) return candy[id - 1].amount;
+    if (group === 'candy') return candy[id - 1].amount;
 
     return drinks[id - 1].amount;
+  };
+
+  getHash = ({ id, group }) => {
+    const { groupFood } = this.state;
+
+    if (group === groupFood[0]) return group;
+    if (groupFood.includes(group) && id - 1 === 0) return group;
+
+    return `${group}item${id - 1}`;
   };
 
   render() {
@@ -74,9 +86,9 @@ class DetailsItem extends React.Component {
     return (
       <section className="Section-DetailsItem" id="Header">
         <header className="Header_top">
-          <Link to="/" className="Return_icon">
+          <HashLink to={ `/#${this.getHash(item)}` } className="Return_icon">
             <img src={ returnIcon } alt="Voltar" />
-          </Link>
+          </HashLink>
           <h1 className="Header_title">DETALHES</h1>
           <img className="Header_logo" src={ logo } alt="Logo" />
         </header>
@@ -134,7 +146,7 @@ class DetailsItem extends React.Component {
               }
             </ul>
           </div>
-          <a className="Btm_Up" href="#Header">Subir</a>
+          <HashLink className="Btm_Up" to={ `/#${this.getHash(item)}` }>Sair</HashLink>
         </div>
       </section>
     );
@@ -145,11 +157,13 @@ DetailsItem.contextType = AppContext;
 
 DetailsItem.propTypes = {
   item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
     value: PropTypes.string.isRequired,
+    group: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
   }).isRequired,
 };

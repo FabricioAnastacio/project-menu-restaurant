@@ -12,7 +12,7 @@ class ItemDetails extends React.Component {
     super();
 
     this.state = {
-      groupFood: ['classic', 'handmade', 'additional'],
+      groupFood: ['classic', 'handmade', 'additional', 'combo'],
       item: {
         name: '',
         img: '',

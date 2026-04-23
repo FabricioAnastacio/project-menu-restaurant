@@ -13,14 +13,14 @@ export function createListMenuBurguer(
   const combos = list.combo.filter((item) => item.displayDate.includes(data));
 
   return (
-    <ul className={ `Ul-${false}` }>
+    <ul className={ `Ul-${false}` } id="combo">
       {
         combos.length > 0 && (
           <view>
             <h3
               className="Titles-Burger"
             >
-              COMBO DO DIA
+              🔥 COMBO DO DIA
             </h3>
           </view>
         )

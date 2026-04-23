@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import logo from '../pictures/logo.jpg';
 
@@ -8,9 +8,10 @@ class ItemPromotional extends React.Component {
     const { item, className } = this.props;
     return (
       <li className={ className }>
-        <Link
+        <HashLink
+          smooth
           to={
-            item.group !== 'highlights' && `/item/${item.group}/${item.id}`
+            item.group !== 'highlights' && `#${item.group}item${item.id - 1}`
           }
         >
           <div
@@ -24,7 +25,7 @@ class ItemPromotional extends React.Component {
             </div>
             <h5>{ item.nameHighlights }</h5>
           </div>
-        </Link>
+        </HashLink>
       </li>
     );
   }
