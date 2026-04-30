@@ -229,7 +229,9 @@ class RequestsList extends React.Component {
               Limpar lista
             </button>
             <button
-              className={ ![0, 5, 6].includes(data) ? 'Button-ConfirmCart' : 'Button-ConfirmCart-dis' }
+              className={
+                ![0, 5, 6].includes(data) ? 'Button-ConfirmCart' : 'Button-ConfirmCart-dis'
+              }
               onClick={ this.verifyList }
             >
               <Link
