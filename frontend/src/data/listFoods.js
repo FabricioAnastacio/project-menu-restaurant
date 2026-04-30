@@ -188,7 +188,7 @@ const listFoods = {
       img: foods.respiracaoChamas,
       name: '13-Respiração das Chamas',
       description: 'Forjado para pedir mais ele surge, Respiração das chamas. Um lanche tropical, doce no primeiro impacto, insano na última mordida... Ele é ousado, intenso e feito para quem busca sabor de verdade.',
-      ingredients: ['Pão brioche', ' 1 Blends bovinos de 120g', ' Bacon fatiado', ' Mussarela', ' Abacaxi com Mel', ' Molho especial barbecue', ' Alface',  ' (ACOMPANHA KATANA BATATA 150G)'],
+      ingredients: ['Pão brioche', ' 1 Blends bovinos de 120g', ' Bacon fatiado', ' Mussarela', ' Abacaxi com Mel', ' Molho especial barbecue', ' Alface', ' (ACOMPANHA KATANA BATATA 150G)'],
       group: 'handmade',
       value: 37.00,
       amount: 0,
