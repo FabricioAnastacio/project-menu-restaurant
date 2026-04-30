@@ -33,6 +33,7 @@ import poke from './foods/poke.jpg';
 import katana from './foods/katana.jpg';
 import gula from './foods/gula.jpg';
 import luaSuperior from './foods/luaSuperior.jpg';
+import respiracaoChamas from './foods/respiracaoChamas.jpg';
 
 import hallsExtra from './foods/hallsExtra.jpg';
 import maineseCasa from './foods/maioneseCasa.jpg';
@@ -41,6 +42,7 @@ import tridentMenta from './foods/tridentMenta.jpg';
 
 import tanjiroDelivery from './foods/highlights/tanjiroDelivery.jpg';
 import sorteio from './foods/highlights/sorteio.jpg';
+import comunicado from './foods/highlights/comunicado.jpg';
 
 import comboHawk from './foods/comboHawk.jpg';
 import comboSayajin from './foods/comboSayajin.jpg';
@@ -92,4 +94,6 @@ export const foods = {
   comboSayajin,
   gula,
   comboTitanico,
+  respiracaoChamas,
+  comunicado,
 };
