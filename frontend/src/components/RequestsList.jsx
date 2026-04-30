@@ -231,8 +231,8 @@ class RequestsList extends React.Component {
             <button
               className={
                 ![0, 5, 6].includes(data)
-                ? 'Button-ConfirmCart'
-                : 'Button-ConfirmCart-dis'
+                  ? 'Button-ConfirmCart'
+                  : 'Button-ConfirmCart-dis'
               }
               onClick={ this.verifyList }
             >
