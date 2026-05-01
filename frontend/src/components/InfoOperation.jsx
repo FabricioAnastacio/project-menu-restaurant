@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import React from 'react';
 import scooter from '../pictures/icons8-scooter-96.png';
 import clock from '../pictures/icons8-clock-96.png';
@@ -19,7 +20,7 @@ class InfoOperation extends React.Component {
     const day = dataActual.getDay();
     const hourStart = 19;
     const hourEnd = 23;
-    if (hour >= hourStart && hour < hourEnd && day !== 0) {
+    if (hour >= hourStart && hour < hourEnd && ![0, 5, 6].includes(day)) {
       this.setState({ isOpen: true });
     } else {
       this.setState({ isOpen: false });
