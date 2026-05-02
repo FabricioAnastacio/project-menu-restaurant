@@ -31,16 +31,30 @@ class ConfirmOrder extends React.Component {
     });
   };
 
-  // eslint-disable-next-line react-func/max-lines-per-function
+  removeAllItems = () => {
+    const { listMenu: { menu, menu: { food, drinks, candy } } } = this.context;
+
+    this.context.counterRequest = 0;
+
+    menu.drinks = drinks.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.classic = food.classic.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.combo = food.combo.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.handmade = food.handmade.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.additional = food.additional.map((item) => ({ ...item, amount: 0, obs: '' }));
+    menu.candy = candy.map((item) => ({ ...item, amount: 0, obs: '' }));
+  };
+
   sendOrCheff = () => {
     const {
       listMenu: {
-        menu,
         menu: {
-          food,
-          food: { classic, combo, handmade, additional },
-          candy, drinks,
-        } }, valueTotal } = this.context;
+          food: { combo, classic, handmade, additional },
+          drinks,
+          candy,
+        },
+      },
+    } = this.context;
+    const { valueTotal } = this.context;
 
     const order = {
       foods: [
@@ -65,37 +79,7 @@ class ConfirmOrder extends React.Component {
 
     sendMensage(this.state, order);
 
-    this.context.counterRequest = 0;
-    menu.drinks = drinks.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.combo = combo.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.classic = classic.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.handmade = handmade.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.additional = additional.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    menu.candy = candy.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
+    this.removeAllItems();
   };
 
   render() {

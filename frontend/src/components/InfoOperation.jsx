@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import React from 'react';
 import scooter from '../pictures/icons8-scooter-96.png';
 import clock from '../pictures/icons8-clock-96.png';

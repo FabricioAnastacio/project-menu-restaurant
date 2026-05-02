@@ -1,4 +1,6 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable max-lines */
+/* eslint-disable no-magic-numbers */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -118,7 +120,6 @@ class RequestsList extends React.Component {
     });
   };
 
-  // eslint-disable-next-line react-func/max-lines-per-function
   removeAllItens = () => {
     const {
       listMenu: {
@@ -134,36 +135,13 @@ class RequestsList extends React.Component {
     const { request } = this.state;
 
     this.context.counterRequest = 0;
-    menu.drinks = drinks.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.classic = classic.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.combo = combo.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.handmade = handmade.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    food.additional = additional.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
-    menu.candy = candy.map((iten) => {
-      iten.amount = 0;
-      iten.obs = '';
-      return iten;
-    });
+
+    menu.drinks = drinks.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.classic = classic.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.combo = combo.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.handmade = handmade.map((item) => ({ ...item, amount: 0, obs: '' }));
+    food.additional = additional.map((item) => ({ ...item, amount: 0, obs: '' }));
+    menu.candy = candy.map((item) => ({ ...item, amount: 0, obs: '' }));
 
     this.setState({
       valueTotal: 0,
