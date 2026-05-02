@@ -3,6 +3,7 @@ import React from 'react';
 import scooter from '../pictures/icons8-scooter-96.png';
 import clock from '../pictures/icons8-clock-96.png';
 import '../style/InfoOperation.css';
+import AppContext from '../context/AppContext';
 
 class InfoOperation extends React.Component {
   constructor() {
@@ -16,11 +17,12 @@ class InfoOperation extends React.Component {
 
   componentDidMount() {
     const { dataActual } = this.state;
+    const { deliveryDayOff } = this.context;
     const hour = dataActual.getHours();
     const day = dataActual.getDay();
     const hourStart = 19;
     const hourEnd = 23;
-    if (hour >= hourStart && hour < hourEnd && ![0, 5, 6].includes(day)) {
+    if (hour >= hourStart && hour < hourEnd && !deliveryDayOff.includes(day)) {
       this.setState({ isOpen: true });
     } else {
       this.setState({ isOpen: false });
@@ -73,5 +75,7 @@ class InfoOperation extends React.Component {
     );
   }
 }
+
+InfoOperation.contextType = AppContext;
 
 export default InfoOperation;

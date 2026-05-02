@@ -1,6 +1,4 @@
-/* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable max-lines */
-/* eslint-disable no-magic-numbers */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -188,6 +186,7 @@ class RequestsList extends React.Component {
       groupMaping,
       data,
     } = this.state;
+    const { deliveryDayOff } = this.context;
     this.updateCounterRequest();
 
     return (
@@ -230,7 +229,7 @@ class RequestsList extends React.Component {
             </button>
             <button
               className={
-                ![0, 5, 6].includes(data)
+                !deliveryDayOff.includes(data)
                   ? 'Button-ConfirmCart'
                   : 'Button-ConfirmCart-dis'
               }
