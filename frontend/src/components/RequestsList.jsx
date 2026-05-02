@@ -1,6 +1,3 @@
-/* eslint-disable sonarjs/cognitive-complexity */
-/* eslint-disable max-lines */
-/* eslint-disable no-magic-numbers */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
