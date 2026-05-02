@@ -1,10 +1,10 @@
 services:
   frontend:
-    container_name: app_frontend
-    build: ./frontend
+    container_name: app_frontend_menu
+    build: ./frontend-menu
     ports:
       - 3000:3000
-    working_dir: /app-frontend
+    working_dir: /app-frontend-menu
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
