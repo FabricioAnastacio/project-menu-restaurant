@@ -2,7 +2,6 @@ import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
-import { addItem, rmItem } from '../services/addOrRmItem';
 
 class ItemComponent extends React.Component {
   constructor() {
@@ -14,38 +13,24 @@ class ItemComponent extends React.Component {
     };
   }
 
-  addNewItem = (item, isFood) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    let newAmount = 0;
+  addNewItem = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
 
-    if (isFood) {
-      const { newList, amount } = addItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = addItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
+    if (item.amount === 0) counterRequestAmount(counterItens + 1);
+    item.amount += 1;
 
-    this.setState({ counterItem: newAmount });
+    this.setState({ counterItem: item.amount });
   };
 
-  removeItem = (item, isFood) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    let newAmount = 0;
+  removeItem = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+    const { counterItem } = this.state;
 
-    if (isFood) {
-      const { newList, amount } = rmItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = rmItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
+    if (item.amount === 0) return;
+    if (counterItem > 0) item.amount -= 1;
+    if (item.amount === 0) counterRequestAmount(counterItens - 1);
 
-    this.setState({ counterItem: newAmount });
+    this.setState({ counterItem: item.amount });
   };
 
   getCounter = (isFood, isCandy, { id, group }) => {
@@ -143,6 +128,8 @@ ItemComponent.propTypes = {
   }).isRequired,
   isFood: PropTypes.bool.isRequired,
   isCandy: PropTypes.bool.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
+  counterItens: PropTypes.number.isRequired,
 };
 
 export default ItemComponent;
