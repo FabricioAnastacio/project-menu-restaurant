@@ -5,6 +5,7 @@ import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
 import { addItem, rmItem } from '../services/addOrRmItem';
+import Additional from './Additional';
 
 class DetailsItem extends React.Component {
   constructor() {
@@ -131,6 +132,9 @@ class DetailsItem extends React.Component {
               </button>
             </div>
           </div>
+          {
+            item.additional.length > 0 && <Additional additional={ item.additional } />
+          }
           <div className="Details_ingredients">
             <h3 className="Ingredients_title">Ingredientes:</h3>
             <ul className="Ingredients_list">
@@ -165,6 +169,11 @@ DetailsItem.propTypes = {
     value: PropTypes.string.isRequired,
     group: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
+    additional: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired,
 };
 

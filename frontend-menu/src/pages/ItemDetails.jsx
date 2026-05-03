@@ -18,6 +18,7 @@ class ItemDetails extends React.Component {
         img: '',
         ingredients: [],
         description: '',
+        additional: [],
         value: 0,
       },
       counterItens: 0,

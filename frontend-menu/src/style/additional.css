@@ -1,0 +1,84 @@
+.Section_additional {
+  width: 90%;
+}
+
+.Title_additional {
+  margin-top: 20px;
+  h3 {
+    margin: 0;
+  }
+}
+
+.List_additional {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.Item_additional {
+  border: 1px solid black;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.281);
+}
+
+.Item_name {
+  font-size: 15px;
+  color: gold;
+  margin-top: 0;
+}
+
+.Item_info {
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+
+.Item_value_and_btm {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+  align-items: end;
+}
+
+.Item_amount_add {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 0 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin: auto 5px;
+}
+
+.Btm_Add, .Btm_Rm {
+  background-color: rgba(255, 0, 0, 0.507);
+  border: 1px solid #961212;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-size: 16px;
+  margin: auto 0;
+}
+
+.Btm_Add:active, .Btm_Rm:active {
+  transform: scale(.9);
+}
+
+.Btm_Add {
+  color: gold;
+}
+
+.Btm_Rm {
+  color: white;
+}
+
+.Max_amount {
+  margin: 0;
+  color: white;
+}
+
+.Item_value {
+  font-size: 15px;
+  color: gold;
+}
