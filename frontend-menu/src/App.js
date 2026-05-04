@@ -12,8 +12,6 @@ import candy from './data/listCandy';
 import listHighlights from './data/listHighlights';
 
 const SUNDAY = 0;
-const FRIDAY = 5;
-const SATURDAY = 6;
 
 class App extends React.Component {
   constructor() {
@@ -27,7 +25,7 @@ class App extends React.Component {
         },
         counterRequest: 0,
         valueTotal: 0,
-        deliveryDayOff: [SUNDAY, FRIDAY, SATURDAY],
+        deliveryDayOff: [SUNDAY],
         btnCart: false,
         btnMenu: true,
       },
