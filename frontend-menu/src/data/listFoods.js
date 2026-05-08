@@ -9,7 +9,7 @@ const listFoods = {
   combo: [
     {
       id: 1,
-      displayDate: [],
+      displayDate: [5],
       obs: '',
       img: foods.comboHawk,
       name: '🔥-Combo Hawk Bacon',
@@ -35,7 +35,7 @@ const listFoods = {
     },
     {
       id: 3,
-      displayDate: [],
+      displayDate: [6],
       obs: '',
       img: foods.comboTitanico,
       name: '🔥-Combo Artesanal Titãnico',
