@@ -4,69 +4,65 @@ import PropTypes from 'prop-types';
 import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
-import { addItem, rmItem } from '../services/addOrRmItem';
+import ItemIngredint from './ItemIngredint';
 
 class DetailsItem extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      counterItem: 0,
       groupFood: ['combo', 'classic', 'handmade', 'additional'],
+      valueItem: 0,
+      txtSale: [],
+      additional: {},
     };
   }
 
+  componentDidMount() {
+    const { item } = this.props;
+    const { listMenu: { menu: { ingAdicional } } } = this.context;
+
+    this.setState({
+      valueItem: item.value,
+      txtSale: [],
+      additional: ingAdicional[item.group],
+    });
+  }
+
   addNewItem = (item) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    const { groupFood } = this.state;
-    let newAmount = 0;
+    const { valueItem, additional, txtSale } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
 
-    if (groupFood.includes(item.group)) {
-      const { newList, amount } = addItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
+    const existItem = foodChenged[item.group].find((itemChenge) => (
+      itemChenge.id === item.id && itemChenge.value === valueItem
+    ) && itemChenge);
+
+    if (foodChenged[item.group].length === 0 || !existItem) {
+      item.amount = 1;
+      foodChenged[item.group].push({
+        ...item,
+        additional: additional.filter((add) => add.amount > 0),
+        value: valueItem,
+      });
     } else {
-      const { newList, amount } = addItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
+      const indexItem = foodChenged[item.group].indexOf(existItem);
+      foodChenged[item.group][indexItem].amount += 1;
+      foodChenged[item.group][indexItem].additional.push(
+        additional.filter((add) => add.amount > 0),
+      );
     }
 
-    this.setState({ counterItem: newAmount });
-  };
-
-  removeItem = (item) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    const { groupFood } = this.state;
-    let newAmount = 0;
-
-    if (groupFood.includes(item.group)) {
-      const { newList, amount } = rmItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = rmItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
-
-    this.setState({ counterItem: newAmount });
-  };
-
-  getCounter = ({ id, group }) => {
-    const { counterItem, groupFood } = this.state;
-    const { listMenu: { menu: { food, candy, drinks } } } = this.context;
-
-    if (counterItem > 0) {
-      return counterItem;
-    }
-
-    if (groupFood.includes(group)) {
-      return food[group][id - 1].amount;
-    }
-
-    if (group === 'candy') return candy[id - 1].amount;
-
-    return drinks[id - 1].amount;
+    this.setState({
+      additional: additional.map((add) => ({ ...add, amount: 0 })),
+      txtSale: [
+        ...txtSale,
+        {
+          idItem: existItem ? existItem.id : item.id,
+          text: `${item.name.split('-')[1]} - ${valueItem.toFixed(2)} adicionado!`,
+        },
+      ],
+      valueItem: item.value,
+    });
   };
 
   getHash = ({ id, group }) => {
@@ -78,10 +74,15 @@ class DetailsItem extends React.Component {
     return `${group}item${id - 1}`;
   };
 
+  chengeValueItem = (value) => {
+    this.setState((prevState) => ({
+      valueItem: prevState.valueItem + value,
+    }));
+  };
+
   render() {
     const { item } = this.props;
-    const itemValue = item.value.toLocaleString('pt-BR', {
-      style: 'currency', currency: 'BRL' });
+    const { valueItem, txtSale, additional } = this.state;
 
     return (
       <section className="Section-DetailsItem" id="Header">
@@ -98,39 +99,65 @@ class DetailsItem extends React.Component {
               <span>{ item.name.split('-')[0] }</span>
               { item.name.split('-')[1] }
             </h3>
-            <h3 className="Details_value">{ itemValue }</h3>
+            <h3 className="Details_value">
+              {
+                item.value.toLocaleString('pt-BR', {
+                  style: 'currency', currency: 'BRL' })
+              }
+            </h3>
           </div>
           <p className="Description">{ item.description }</p>
           <img src={ item.img } alt={ item.name } />
           <div className="Viwer_buy">
-            <h4
-              className="Value_actual"
-              style={ { color: item.amount > 0 ? 'gold' : 'white' } }
-            >
-              {
-                (item.value * item.amount).toLocaleString('pt-BR', {
-                  style: 'currency', currency: 'BRL' })
-              }
-            </h4>
             <div className="Buy_item">
-              {
-                item.amount > 0 && (
-                  <>
-                    <button
-                      onClick={ () => this.removeItem(item) }
-                      className="btm_remove"
-                    >
-                      -
-                    </button>
-                    <p className="Item_amount">{ this.getCounter(item) }</p>
-                  </>
-                )
-              }
+              <h4
+                className="Value_actual"
+                style={ { color: 'gold' } }
+              >
+                {
+                  (valueItem).toLocaleString('pt-BR', {
+                    style: 'currency', currency: 'BRL' })
+                }
+              </h4>
               <button onClick={ () => this.addNewItem(item) } className="btm_add">
-                { item.amount > 0 ? '+' : 'Adicionar' }
+                Adicionar
               </button>
             </div>
+            <ul>
+              {
+                // Nescessario validar a forma de exibição da informação para o cliente.
+                // Deve ser possivel mostrar os adicionais escolhidoscom função de remover o item ou apenas os adicionais escolhidos.
+                txtSale.map((sale) => (
+                  <li key={ sale.id } className="Viwer_Item_buy">
+                    <p>
+                      { sale.text }
+                    </p>
+                    <button className="btm_remove">Remover</button>
+                  </li>
+                ))
+              }
+            </ul>
           </div>
+          {
+            additional.length > 0 && (
+              <section className="Section_additional">
+                <div className="Title_additional">
+                  <h3>Adicionais</h3>
+                </div>
+                <ul className="List_additional">
+                  {
+                    additional.map((ingredint, i) => (
+                      <ItemIngredint
+                        key={ i }
+                        ingredient={ ingredint }
+                        chengeValueItem={ this.chengeValueItem }
+                      />
+                    ))
+                  }
+                </ul>
+              </section>
+            )
+          }
           <div className="Details_ingredients">
             <h3 className="Ingredients_title">Ingredientes:</h3>
             <ul className="Ingredients_list">
@@ -162,9 +189,14 @@ DetailsItem.propTypes = {
     img: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     group: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
+    additional: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      amount: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired,
 };
 
