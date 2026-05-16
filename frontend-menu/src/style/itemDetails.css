@@ -103,6 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-direction: column;
   border-top: 1px solid rgba(255, 255, 255, 0.219);
   border-bottom: 1px solid rgba(255, 255, 255, 0.219);
   padding: 10px 0;
@@ -112,7 +113,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 30%;
+  width: 80%;
 }
 
 .Value_actual {
@@ -127,23 +128,36 @@
 
 .btm_add {
   color: gold;
+  padding: 5px 10px;
+  font-size: 16px;
 }
 
 .btm_remove {
   color: white;
+  padding: 2px 8px;
 }
 
 .btm_add, .btm_remove {
   background-color: rgba(255, 0, 0, 0.507);
   border: 1px solid #961212;
   border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 16px;
 }
 
 .btm_add:active, .btm_remove:active {
   transform: scale(.9);
   background-color: #961212;
+}
+
+.List_buy {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.Viwer_Item_buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
 }
 
 .Details_ingredients {

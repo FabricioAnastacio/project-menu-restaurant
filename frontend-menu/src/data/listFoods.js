@@ -131,20 +131,7 @@ const listFoods = {
       description: 'Determinação que corta qualquer fome. Gigante. Honrado. A vontade de matar sua fome é Imparável.',
       ingredients: ['Pão', ' 2 Bifes 90g', ' Mussarela', ' Requeijão cremoso', ' Bacon', ' Calabresa', ' Frango desfiado', ' Presunto', 'Ovo', ' Salada', ' Milho', ' batata'],
       group: 'classic',
-      additional: [
-        {
-          name: 'Bife 90g',
-          value: 8.00,
-          amount: 0,
-          maxAmount: 1,
-        },
-        {
-          name: 'Ovo',
-          value: 3.00,
-          amount: 0,
-          maxAmount: 2,
-        },
-      ],
+      additional: [],
       value: 30.00,
       amount: 0,
     },
@@ -158,14 +145,7 @@ const listFoods = {
       description: 'Pequeno no tamanho. Caótico no sabor. Uma explosão inesperada a cada mordida.',
       ingredients: ['Pão brioche', ' Blend bovino 120g', ' Cheddar', ' Bacon fatiado', ' Molho especial', ' (ACOMPANHA FRITAS POKÊ 150G)'],
       group: 'handmade',
-      additional: [
-        {
-          name: 'Blend bovino 120g',
-          value: 8.00,
-          amount: 0,
-          maxAmount: 2,
-        },
-      ],
+      additional: [],
       value: 25.00,
       amount: 0,
     },

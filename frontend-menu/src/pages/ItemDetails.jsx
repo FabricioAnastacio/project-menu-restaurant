@@ -47,6 +47,7 @@ class ItemDetails extends React.Component {
     const { item, counterItens } = this.state;
     const { counterRequest } = this.context;
 
+    if (item.name === '') return <h1>Carregando...</h1>;
     return (
       <main className="Page-ItemDetails">
         <DetailsItem

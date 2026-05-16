@@ -22,7 +22,15 @@ class App extends React.Component {
     this.state = {
       value: {
         listMenu: {
-          menu: { food, drinks, candy },
+          menu: {
+            food,
+            drinks,
+            candy,
+            foodChenged: {
+              classic: [],
+              handmade: [],
+            },
+          },
           highlights: listHighlights,
         },
         counterRequest: 0,
