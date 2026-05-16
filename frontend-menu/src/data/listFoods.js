@@ -6,6 +6,96 @@ import { foods } from '../pictures/exportImgs';
 // import logo from '../pictures/logo.jpg';
 
 const listFoods = {
+  ingAdicional: {
+    classic: [
+      {
+        name: 'Bife 90g',
+        value: 4.00,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Bacon cubos',
+        value: 4.00,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Calabresa',
+        value: 4.00,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Mussarela',
+        value: 2.50,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Requeijão cremoso',
+        value: 4.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+      {
+        name: 'Cheddar',
+        value: 4.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+      {
+        name: 'Molho Titânico',
+        value: 3.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+      {
+        name: 'Molho especial',
+        value: 3.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+      {
+        name: 'Molho barbecue',
+        value: 3.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+    ],
+    handmade: [
+      {
+        name: 'Bland bovino 120g',
+        value: 6.50,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Queijo crocante',
+        value: 12.00,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Mussarela',
+        value: 2.50,
+        amount: 0,
+        maxAmount: 2,
+      },
+      {
+        name: 'Requeijão cremoso',
+        value: 4.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+      {
+        name: 'Cheddar',
+        value: 4.50,
+        amount: 0,
+        maxAmount: 1,
+      },
+    ],
+  },
   combo: [
     {
       id: 1,

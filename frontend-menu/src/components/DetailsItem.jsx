@@ -14,39 +14,23 @@ class DetailsItem extends React.Component {
       groupFood: ['combo', 'classic', 'handmade', 'additional'],
       valueItem: 0,
       txtSale: [],
-      additional: [
-        {
-          name: 'Bife 90g',
-          value: 8.00,
-          amount: 0,
-          maxAmount: 1,
-        },
-        {
-          name: 'Ovo',
-          value: 3.00,
-          amount: 0,
-          maxAmount: 2,
-        },
-      ],
+      additional: {},
     };
   }
 
   componentDidMount() {
     const { item } = this.props;
+    const { listMenu: { menu: { ingAdicional } } } = this.context;
 
     this.setState({
       valueItem: item.value,
-      txtSale: [
-        {
-          valueItem: item.value,
-          text: '',
-        },
-      ],
+      txtSale: [],
+      additional: ingAdicional[item.group],
     });
   }
 
   addNewItem = (item) => {
-    const { valueItem, additional } = this.state;
+    const { valueItem, additional, txtSale } = this.state;
     const { listMenu: { menu: { foodChenged } } } = this.context;
 
     const existItem = foodChenged[item.group].find((itemChenge) => (
@@ -70,6 +54,14 @@ class DetailsItem extends React.Component {
 
     this.setState({
       additional: additional.map((add) => ({ ...add, amount: 0 })),
+      txtSale: [
+        ...txtSale,
+        {
+          idItem: existItem ? existItem.id : item.id,
+          text: `${item.name.split('-')[1]} - ${valueItem.toFixed(2)} adicionado!`,
+        },
+      ],
+      valueItem: item.value,
     });
   };
 
@@ -133,6 +125,8 @@ class DetailsItem extends React.Component {
             </div>
             <ul>
               {
+                // Nescessario validar a forma de exibição da informação para o cliente.
+                // Deve ser possivel mostrar os adicionais escolhidoscom função de remover o item ou apenas os adicionais escolhidos.
                 txtSale.map((sale) => (
                   <li key={ sale.id } className="Viwer_Item_buy">
                     <p>
