@@ -209,7 +209,7 @@ const listFoods = {
     {
       id: 1,
       img: foods.katana,
-      name: '2-Katana batata 150G',
+      name: '1-Katana batata 150G',
       description: '150g',
       ingredients: [],
       group: 'additional',
@@ -220,7 +220,7 @@ const listFoods = {
     {
       id: 2,
       img: foods.maineseCasa,
-      name: '3-Maionese da Casa Tradicional 30g',
+      name: '2-Maionese da Casa Tradicional 30g',
       description: '30g',
       ingredients: [],
       group: 'additional',
