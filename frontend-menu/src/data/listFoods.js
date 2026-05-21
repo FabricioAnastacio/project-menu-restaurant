@@ -133,7 +133,7 @@ const listFoods = {
       img: foods.babyStitch,
       name: '8-Baby Stitch ARTESANAL',
       description: 'Pequeno no tamanho. Caótico no sabor. Uma explosão inesperada a cada mordida.',
-      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Cheddar', ' Bacon fatiado', ' Molho especial', ' (ACOMPANHA FRITAS POKÊ 150G)'],
+      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Cheddar', ' Bacon fatiado', ' Molho especial', ' (ACOMPANHA KATANA BATATA 150G)'],
       group: 'handmade',
       value: 25.00,
       amount: 0,
@@ -208,8 +208,8 @@ const listFoods = {
   additional: [
     {
       id: 1,
-      img: foods.poke,
-      name: '1-Fritas pokê 150G',
+      img: foods.katana,
+      name: '2-Katana batata 150G',
       description: '150g',
       ingredients: [],
       group: 'additional',
@@ -219,17 +219,6 @@ const listFoods = {
     },
     {
       id: 2,
-      img: foods.katana,
-      name: '2-Katana batata 150G',
-      description: '150g',
-      ingredients: [],
-      group: 'additional',
-      value: 5.50,
-      obs: '',
-      amount: 0,
-    },
-    {
-      id: 3,
       img: foods.maineseCasa,
       name: '3-Maionese da Casa Tradicional 30g',
       description: '30g',
