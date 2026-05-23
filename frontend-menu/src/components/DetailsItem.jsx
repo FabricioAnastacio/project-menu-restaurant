@@ -15,6 +15,7 @@ class DetailsItem extends React.Component {
       valueItem: 0,
       txtSale: [],
       additional: {},
+      ingOpem: false,
     };
   }
 
@@ -58,7 +59,7 @@ class DetailsItem extends React.Component {
         ...txtSale,
         {
           idItem: existItem ? existItem.id : item.id,
-          text: `${item.name.split('-')[1]} - ${valueItem.toFixed(2)} adicionado!`,
+          text: `${item.name.split('-')[1]} - ${valueItem.toFixed(2)}`,
         },
       ],
       valueItem: item.value,
@@ -80,9 +81,15 @@ class DetailsItem extends React.Component {
     }));
   };
 
+  toggleIngredients = () => {
+    this.setState((prevState) => ({
+      ingOpem: !prevState.ingOpem,
+    }));
+  };
+
   render() {
     const { item } = this.props;
-    const { valueItem, txtSale, additional } = this.state;
+    const { valueItem, txtSale, additional, ingOpem } = this.state;
 
     return (
       <section className="Section-DetailsItem" id="Header">
@@ -108,34 +115,30 @@ class DetailsItem extends React.Component {
           </div>
           <p className="Description">{ item.description }</p>
           <img src={ item.img } alt={ item.name } />
-          <div className="Viwer_buy">
-            <div className="Buy_item">
-              <h4
-                className="Value_actual"
-                style={ { color: 'gold' } }
-              >
-                {
-                  (valueItem).toLocaleString('pt-BR', {
-                    style: 'currency', currency: 'BRL' })
-                }
-              </h4>
-              <button onClick={ () => this.addNewItem(item) } className="btm_add">
-                Adicionar
-              </button>
-            </div>
-            <ul>
+          <div
+            className="Details_ingredients"
+            role="button"
+            onClick={ () => this.toggleIngredients() }
+            onKeyDown={ this.toggleIngredients }
+            tabIndex={ 0 }
+          >
+            <h3 className="Ingredients_title">
+              Ingredientes:
+            </h3>
+            <ul className={ `Ingredients_list listOpem-${ingOpem}` }>
               {
-                // Nescessario validar a forma de exibição da informação para o cliente.
-                // Deve ser possivel mostrar os adicionais escolhidoscom função de remover o item ou apenas os adicionais escolhidos.
-                txtSale.map((sale) => (
-                  <li key={ sale.id } className="Viwer_Item_buy">
-                    <p>
-                      { sale.text }
-                    </p>
-                    <button className="btm_remove">Remover</button>
+                item.ingredients.map((ingr, i) => (
+                  <li
+                    key={ i }
+                    className={ `Ingredient ingOpem-${ingOpem}` }
+                  >
+                    { ingr }
                   </li>
                 ))
               }
+              <p className="btm_more_viwer">
+                {ingOpem ? 'Ver menos...' : 'Ver mais...' }
+              </p>
             </ul>
           </div>
           {
@@ -158,22 +161,37 @@ class DetailsItem extends React.Component {
               </section>
             )
           }
-          <div className="Details_ingredients">
-            <h3 className="Ingredients_title">Ingredientes:</h3>
-            <ul className="Ingredients_list">
-              {
-                item.ingredients.map((ingr, i) => (
-                  <li
-                    key={ i }
-                    className="Ingredient"
-                  >
-                    { ingr }
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
           <HashLink className="Btm_Up" to={ `/#${this.getHash(item)}` }>Sair</HashLink>
+        </div>
+        <div className="Viwer_buy">
+          <ul className="List_Adds">
+            {
+              // Nescessario validar a forma de exibição da informação para o cliente.
+              // Deve ser possivel mostrar os adicionais escolhidoscom função de remover o item ou apenas os adicionais escolhidos.
+              txtSale.map((sale) => (
+                <li key={ sale.id } className="Viwer_Item_buy">
+                  <p>
+                    { sale.text }
+                  </p>
+                  <button className="btm_remove">Remover</button>
+                </li>
+              ))
+            }
+          </ul>
+          <div className="Buy_item">
+            <h4
+              className="Value_actual"
+              style={ { color: 'gold' } }
+            >
+              {
+                (valueItem).toLocaleString('pt-BR', {
+                  style: 'currency', currency: 'BRL' })
+              }
+            </h4>
+            <button onClick={ () => this.addNewItem(item) } className="btm_add">
+              Adicionar
+            </button>
+          </div>
         </div>
       </section>
     );

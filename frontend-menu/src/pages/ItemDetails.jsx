@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import wrapperRoute from '../hooks/wrapperRoute';
 import AppContext from '../context/AppContext';
-import Footer from '../components/Footer';
 import '../style/itemDetails.css';
 import DetailsItem from '../components/DetailsItem';
-import FooterRotes from '../components/FooterRotes';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -45,7 +43,6 @@ class ItemDetails extends React.Component {
 
   render() {
     const { item, counterItens } = this.state;
-    const { counterRequest } = this.context;
 
     if (item.name === '') return <h1>Carregando...</h1>;
     return (
@@ -55,8 +52,6 @@ class ItemDetails extends React.Component {
           counterRequestAmount={ this.counterRequestAmount }
           counterItens={ counterItens }
         />
-        <Footer />
-        <FooterRotes counterItens={ counterRequest } />
       </main>
     );
   }

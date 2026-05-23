@@ -5,6 +5,10 @@
   height: 100%;
 }
 
+.Section-DetailsItem {
+  padding-bottom: 150px;
+}
+
 .Header_top {
   background-color: black;
   display: flex;
@@ -98,15 +102,16 @@
 }
 
 .Viwer_buy {
-  margin-top: 10px;
-  width: 90%;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.219);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.219);
-  padding: 10px 0;
+  background-color: black;
+  padding: 20px 0;
 }
 
 .Buy_item {
@@ -148,11 +153,6 @@
   background-color: #961212;
 }
 
-.List_buy {
-  margin-top: 15px;
-  width: 100%;
-}
-
 .Viwer_Item_buy {
   display: flex;
   align-items: center;
@@ -160,36 +160,65 @@
   margin: 5px 0;
 }
 
+
 .Details_ingredients {
-  margin-top: 20px;
-  width: 85%;
-  border: 2px solid rgba(255, 255, 255, 0.041);
-  background-color: rgba(255, 255, 255, 0.151);
+  width: 90%;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 
 .Ingredients_title {
-  margin-top: 0;
-  color: rgba(255, 255, 255, 0.623);
+  margin: 0;
+  color: white;
   font-weight: 900;
+  border: 0;
 }
 
 .Ingredients_list {
+  padding: 10px 30px;
+  margin: 0 5px;
+  border-radius: 10px;
+  height: 55px;
+  transition: .6s all ease-in-out;
+}
+
+.listOpem-false {
+  background: linear-gradient(to bottom, transparent, #ffffff23);
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  list-style: circle;
+}
+
+.listOpem-true {
+  background-color: #ffffff17;
+  height: auto;
+}
+
+.btm_more_viwer {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  opacity: 1;
+}
+
+/* .Ingredients_list-true {
   display: flex;
   flex-direction: column;
   align-items: start;
   margin-bottom: 10px;
   margin-left: 20px;
-}
+} */
 
 .Ingredient {
   background-color: transparent;
   border: 0;
   margin: 4px 0;
   width: 100%;
-  color: rgba(255, 255, 255, 0.623);
-  border-bottom: 1px dotted rgb(0, 0, 0);
+}
+
+.ingOpem-false {
+  opacity: .5;
 }
 
 .Btm_Up {
