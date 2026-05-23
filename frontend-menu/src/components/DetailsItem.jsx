@@ -49,13 +49,15 @@ class DetailsItem extends React.Component {
     const { valueItem, additional, txtSale } = this.state;
     const { listMenu: { menu: { foodChenged } } } = this.context;
 
-    const existItem = foodChenged[item.group].find((itemChenge) => (
-      itemChenge.id === item.id && itemChenge.value === valueItem
-    ) && itemChenge);
+    const listFoodChenged = foodChenged[item.group];
 
-    item.amount = 1;
+    const newId = listFoodChenged.length > 0
+      ? listFoodChenged[listFoodChenged.length - 1].idChenge + 1 : 1;
+
     foodChenged[item.group].push({
       ...item,
+      amount: 1,
+      idChenge: newId,
       additional: additional.filter((add) => add.amount > 0),
       value: valueItem,
     });
@@ -65,11 +67,61 @@ class DetailsItem extends React.Component {
       txtSale: [
         ...txtSale,
         {
-          idItem: existItem ? existItem.id : item.id,
+          idItem: item.id,
+          idChenge: newId,
           text: `+1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
         },
       ],
       valueItem: item.value,
+    });
+  };
+
+  removeItem = (itemText, item) => {
+    const { txtSale } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
+
+    const newListText = txtSale.filter(
+      (sale) => sale.idChenge !== itemText.idChenge,
+    );
+
+    foodChenged[item.group] = foodChenged[item.group].filter(
+      (iten) => iten.idChenge !== itemText.idChenge,
+    );
+
+    this.setState({
+      txtSale: newListText,
+    });
+  };
+
+  itemSelected = (itemText, item) => {
+    const { additional } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
+
+    const itemSelect = foodChenged[item.group].find(
+      (iten) => iten.idChenge === itemText.idChenge,
+    );
+
+    additional.forEach((add) => {
+      const addSelect = itemSelect.additional.find(
+        (addItem) => addItem.name === add.name,
+      );
+      if (addSelect) add.amount = addSelect.amount;
+    });
+
+    this.setState({
+      additional: [...additional],
+      valueItem: itemSelect.value,
+    });
+
+    this.removeItem(itemText, item);
+  };
+
+  clearListAdds = (valueItem) => {
+    const { additional } = this.state;
+
+    this.setState({
+      additional: additional.map((add) => ({ ...add, amount: 0 })),
+      valueItem,
     });
   };
 
@@ -173,6 +225,12 @@ class DetailsItem extends React.Component {
         </div>
         <div className="Viwer_buy">
           <ul className="List_Item_buy">
+            <button
+              className="Clear_all_adds"
+              onClick={ () => this.clearListAdds(item.value) }
+            >
+              Limpar Adicionais
+            </button>
             {
               additional.length > 0 && additional.map((ingredint) => (
                 ingredint.amount > 0 && (
@@ -211,10 +269,24 @@ class DetailsItem extends React.Component {
             {
               txtSale.map((sale) => (
                 <li key={ sale.id } className="Viwer_Item_buy">
-                  <p>
-                    { sale.text }
-                  </p>
-                  <button className="btm_remove">Remover</button>
+                  <div
+                    className=""
+                    onClick={ () => this.itemSelected(sale, item) }
+                    onKeyDown={ this.itemSelected }
+                    role="button"
+                    tabIndex={ 0 }
+                  >
+                    <p>
+                      { sale.text }
+                    </p>
+                  </div>
+                  <button
+                    className="btm_remove"
+                    onClick={ () => this.removeItem(sale, item) }
+                  >
+                    Remover
+                  </button>
+
                 </li>
               ))
             }
