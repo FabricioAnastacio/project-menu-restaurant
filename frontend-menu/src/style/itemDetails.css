@@ -6,7 +6,7 @@
 }
 
 .Section-DetailsItem {
-  padding-bottom: 150px;
+  padding-bottom: 300px;
 }
 
 .Header_top {
@@ -104,6 +104,7 @@
 .Viwer_buy {
   position: fixed;
   width: 100%;
+  max-height: 250px;
   bottom: 0;
   z-index: 1;
   display: flex;
@@ -111,7 +112,7 @@
   justify-content: space-evenly;
   flex-direction: column;
   background-color: black;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .Buy_item {
@@ -119,6 +120,7 @@
   align-items: center;
   justify-content: space-between;
   width: 80%;
+  margin: 10px 0;
 }
 
 .Value_actual {
@@ -153,13 +155,38 @@
   background-color: #961212;
 }
 
+.List_Item_buy {
+  margin: 0;
+  width: 80%;
+  overflow-y: auto;
+}
+
+.Item_buy {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.List_Adds {
+  width: 90%;
+  margin-top: 0;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
 .Viwer_Item_buy {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 5px 0;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.11);
+  border-radius: 10px;
 }
 
+.Viwer_Item_buy:hover {
+  background-color: rgba(255, 255, 255, 0.384);
+}
 
 .Details_ingredients {
   width: 90%;

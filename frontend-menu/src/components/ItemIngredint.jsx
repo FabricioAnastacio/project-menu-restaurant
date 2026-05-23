@@ -29,7 +29,7 @@ class ItemIngredint extends React.Component {
     const { ingredient } = this.props;
 
     return (
-      <li className="Item_additional">
+      <li className={ `Item_additional item_buy-${ingredient.amount > 0}` }>
         <p className="Item_name">{ ingredient.name }</p>
         <div className="Item_info">
           <div className="Item_value_and_btm">

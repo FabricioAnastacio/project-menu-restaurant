@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
@@ -21,12 +22,26 @@ class DetailsItem extends React.Component {
 
   componentDidMount() {
     const { item } = this.props;
-    const { listMenu: { menu: { ingAdicional } } } = this.context;
+    const { listMenu: { menu: { ingAdicional, foodChenged } } } = this.context;
+
+    const listInitialText = [];
+
+    if (foodChenged[item.group].length > 0) {
+      foodChenged[item.group].forEach((itemChenge) => {
+        if (itemChenge.id === item.id) {
+          const value = itemChenge.value.toFixed(2);
+          listInitialText.push({
+            idItem: itemChenge.id,
+            text: `+1 ${itemChenge.name.split('-')[1]} = ${value}`,
+          });
+        }
+      });
+    }
 
     this.setState({
       valueItem: item.value,
-      txtSale: [],
-      additional: ingAdicional[item.group],
+      txtSale: listInitialText,
+      additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })),
     });
   }
 
@@ -38,20 +53,12 @@ class DetailsItem extends React.Component {
       itemChenge.id === item.id && itemChenge.value === valueItem
     ) && itemChenge);
 
-    if (foodChenged[item.group].length === 0 || !existItem) {
-      item.amount = 1;
-      foodChenged[item.group].push({
-        ...item,
-        additional: additional.filter((add) => add.amount > 0),
-        value: valueItem,
-      });
-    } else {
-      const indexItem = foodChenged[item.group].indexOf(existItem);
-      foodChenged[item.group][indexItem].amount += 1;
-      foodChenged[item.group][indexItem].additional.push(
-        additional.filter((add) => add.amount > 0),
-      );
-    }
+    item.amount = 1;
+    foodChenged[item.group].push({
+      ...item,
+      additional: additional.filter((add) => add.amount > 0),
+      value: valueItem,
+    });
 
     this.setState({
       additional: additional.map((add) => ({ ...add, amount: 0 })),
@@ -59,7 +66,7 @@ class DetailsItem extends React.Component {
         ...txtSale,
         {
           idItem: existItem ? existItem.id : item.id,
-          text: `${item.name.split('-')[1]} - ${valueItem.toFixed(2)}`,
+          text: `+1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
         },
       ],
       valueItem: item.value,
@@ -152,6 +159,7 @@ class DetailsItem extends React.Component {
                     additional.map((ingredint, i) => (
                       <ItemIngredint
                         key={ i }
+                        className="Item_additional"
                         ingredient={ ingredint }
                         chengeValueItem={ this.chengeValueItem }
                       />
@@ -164,17 +172,24 @@ class DetailsItem extends React.Component {
           <HashLink className="Btm_Up" to={ `/#${this.getHash(item)}` }>Sair</HashLink>
         </div>
         <div className="Viwer_buy">
-          <ul className="List_Adds">
+          <ul className="List_Item_buy">
             {
-              // Nescessario validar a forma de exibição da informação para o cliente.
-              // Deve ser possivel mostrar os adicionais escolhidoscom função de remover o item ou apenas os adicionais escolhidos.
-              txtSale.map((sale) => (
-                <li key={ sale.id } className="Viwer_Item_buy">
-                  <p>
-                    { sale.text }
-                  </p>
-                  <button className="btm_remove">Remover</button>
-                </li>
+              additional.length > 0 && additional.map((ingredint) => (
+                ingredint.amount > 0 && (
+                  <li key={ ingredint.name } className="Item_buy">
+                    <p>
+                      {
+                        `${ingredint.amount}x ${ingredint.name}`
+                      }
+                    </p>
+                    <p>
+                      {
+                        (ingredint.value * ingredint.amount).toLocaleString('pt-BR', {
+                          style: 'currency', currency: 'BRL' })
+                      }
+                    </p>
+                  </li>
+                )
               ))
             }
           </ul>
@@ -192,6 +207,18 @@ class DetailsItem extends React.Component {
               Adicionar
             </button>
           </div>
+          <ul className="List_Adds">
+            {
+              txtSale.map((sale) => (
+                <li key={ sale.id } className="Viwer_Item_buy">
+                  <p>
+                    { sale.text }
+                  </p>
+                  <button className="btm_remove">Remover</button>
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </section>
     );
@@ -199,7 +226,6 @@ class DetailsItem extends React.Component {
 }
 
 DetailsItem.contextType = AppContext;
-
 DetailsItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -217,5 +243,4 @@ DetailsItem.propTypes = {
     })).isRequired,
   }).isRequired,
 };
-
 export default DetailsItem;
