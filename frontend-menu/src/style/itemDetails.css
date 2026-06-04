@@ -80,6 +80,25 @@
   }
 }
 
+.Section_obs {
+  width: 90%;
+}
+
+.Title_obs {
+  margin: 5px 0;
+}
+
+.Text_obs {
+  margin: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.185);
+  background-color: rgba(0, 0, 0, 0.438);
+  border-radius: 10px;
+  color: white;
+  height: 100px;
+  width: 90%;
+  padding: 10px;
+}
+
 .Title {
   width: 70%;
   span {
@@ -112,7 +131,8 @@
   justify-content: space-evenly;
   flex-direction: column;
   background-color: black;
-  padding: 10px 0;
+  padding: 0;
+  padding-top: 10px;
 }
 
 .Buy_item {
@@ -121,6 +141,8 @@
   justify-content: space-between;
   width: 80%;
   margin: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  padding-top: 10px;
 }
 
 .Value_actual {
@@ -159,10 +181,12 @@
   margin: 0;
   width: 80%;
   overflow-y: auto;
+}
+
+.Div_clear_all_adds {
   display: flex;
-  align-items: end;
+  width: 90%;
   justify-content: end;
-  flex-direction: column;
 }
 
 .Clear_all_adds {
@@ -185,19 +209,28 @@
 
 .List_Adds {
   width: 90%;
-  margin-top: 0;
+  margin: 0;
   max-height: 100px;
+  padding: 10px 10px;
+  border-radius: 10px 10px 0 0;
   overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.13);
 }
 
 .Viwer_Item_buy {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 5px 0;
+  margin-bottom: 5px;
   padding: 5px;
-  background-color: rgba(255, 255, 255, 0.11);
+  background-color: rgba(255, 255, 255, 0.185);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
+}
+
+.Div_item_select {
+  width: 75%;
+  border-radius: 5px 0 0 5px;
 }
 
 .Details_ingredients {

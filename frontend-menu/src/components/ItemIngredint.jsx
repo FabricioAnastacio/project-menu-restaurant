@@ -36,7 +36,14 @@ class ItemIngredint extends React.Component {
             <button className="Btm_Rm" onClick={ () => this.rmIngredient(ingredient) }>
               -
             </button>
-            <p className="Item_amount_add">{ ingredient.amount }</p>
+            <p
+              className="Item_amount_add"
+              style={ {
+                color: ingredient.amount > 0 && 'rgb(0, 255, 0)',
+              } }
+            >
+              { ingredient.amount }
+            </p>
             <button
               className="Btm_Add"
               onClick={ () => this.addNewIngredient(ingredient) }

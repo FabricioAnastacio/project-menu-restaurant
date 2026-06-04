@@ -17,6 +17,7 @@ class DetailsItem extends React.Component {
       txtSale: [],
       additional: {},
       ingOpem: false,
+      observations: '',
     };
   }
 
@@ -32,7 +33,7 @@ class DetailsItem extends React.Component {
           const value = itemChenge.value.toFixed(2);
           listInitialText.push({
             idItem: itemChenge.id,
-            text: `+1 ${itemChenge.name.split('-')[1]} = ${value}`,
+            text: `x1 ${itemChenge.name.split('-')[1]} = ${value}`,
           });
         }
       });
@@ -46,7 +47,7 @@ class DetailsItem extends React.Component {
   }
 
   addNewItem = (item) => {
-    const { valueItem, additional, txtSale } = this.state;
+    const { valueItem, additional, txtSale, observations } = this.state;
     const { listMenu: { menu: { foodChenged } } } = this.context;
 
     const listFoodChenged = foodChenged[item.group];
@@ -60,6 +61,7 @@ class DetailsItem extends React.Component {
       idChenge: newId,
       additional: additional.filter((add) => add.amount > 0),
       value: valueItem,
+      obs: observations,
     });
 
     this.setState({
@@ -69,10 +71,11 @@ class DetailsItem extends React.Component {
         {
           idItem: item.id,
           idChenge: newId,
-          text: `+1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
+          text: `x1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
         },
       ],
       valueItem: item.value,
+      observations: '',
     });
   };
 
@@ -111,6 +114,7 @@ class DetailsItem extends React.Component {
     this.setState({
       additional: [...additional],
       valueItem: itemSelect.value,
+      observations: itemSelect.obs,
     });
 
     this.removeItem(itemText, item);
@@ -146,9 +150,15 @@ class DetailsItem extends React.Component {
     }));
   };
 
+  chengeObs = ({ target: { value } }) => {
+    this.setState({
+      observations: value,
+    });
+  };
+
   render() {
     const { item } = this.props;
-    const { valueItem, txtSale, additional, ingOpem } = this.state;
+    const { valueItem, txtSale, additional, ingOpem, observations } = this.state;
 
     return (
       <section className="Section-DetailsItem" id="Header">
@@ -221,16 +231,29 @@ class DetailsItem extends React.Component {
               </section>
             )
           }
-          <HashLink className="Btm_Up" to={ `/#${this.getHash(item)}` }>Sair</HashLink>
+          <section className="Section_obs">
+            <div>
+              <h3 className="Title_obs">Observações</h3>
+            </div>
+            <textarea
+              className="Text_obs"
+              placeholder="Ex: Sem cebola, por favor!"
+              value={ observations }
+              name="obs"
+              onChange={ this.chengeObs }
+            />
+          </section>
         </div>
         <div className="Viwer_buy">
-          <ul className="List_Item_buy">
+          <div className="Div_clear_all_adds">
             <button
               className="Clear_all_adds"
               onClick={ () => this.clearListAdds(item.value) }
             >
-              Limpar Adicionais
+              Limpar Lista
             </button>
+          </div>
+          <ul className="List_Item_buy">
             {
               additional.length > 0 && additional.map((ingredint) => (
                 ingredint.amount > 0 && (
@@ -270,7 +293,7 @@ class DetailsItem extends React.Component {
               txtSale.map((sale) => (
                 <li key={ sale.id } className="Viwer_Item_buy">
                   <div
-                    className=""
+                    className="Div_item_select"
                     onClick={ () => this.itemSelected(sale, item) }
                     onKeyDown={ this.itemSelected }
                     role="button"
@@ -286,7 +309,6 @@ class DetailsItem extends React.Component {
                   >
                     Remover
                   </button>
-
                 </li>
               ))
             }
@@ -308,6 +330,7 @@ DetailsItem.propTypes = {
     value: PropTypes.number.isRequired,
     group: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
+    obs: PropTypes.string.isRequired,
     additional: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
