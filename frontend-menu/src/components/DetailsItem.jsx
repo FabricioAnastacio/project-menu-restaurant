@@ -6,6 +6,7 @@ import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
 import ItemIngredint from './ItemIngredint';
+import Footer from './Footer';
 
 class DetailsItem extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class DetailsItem extends React.Component {
       groupFood: ['combo', 'classic', 'handmade', 'additional'],
       valueItem: 0,
       txtSale: [],
-      additional: {},
+      additional: [],
       ingOpem: false,
       observations: '',
     };
@@ -72,6 +73,10 @@ class DetailsItem extends React.Component {
           idItem: item.id,
           idChenge: newId,
           text: `x1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
+          tags: {
+            isAdd: additional.find((iten) => iten.amount > 0),
+            isObs: observations !== '',
+          },
         },
       ],
       valueItem: item.value,
@@ -126,6 +131,7 @@ class DetailsItem extends React.Component {
     this.setState({
       additional: additional.map((add) => ({ ...add, amount: 0 })),
       valueItem,
+      observations: '',
     });
   };
 
@@ -159,6 +165,8 @@ class DetailsItem extends React.Component {
   render() {
     const { item } = this.props;
     const { valueItem, txtSale, additional, ingOpem, observations } = this.state;
+
+    if (additional.length === 0) return <h1>Carregando...</h1>;
 
     return (
       <section className="Section-DetailsItem" id="Header">
@@ -210,30 +218,28 @@ class DetailsItem extends React.Component {
               </p>
             </ul>
           </div>
-          {
-            additional.length > 0 && (
-              <section className="Section_additional">
-                <div className="Title_additional">
-                  <h3>Adicionais</h3>
-                </div>
-                <ul className="List_additional">
-                  {
-                    additional.map((ingredint, i) => (
-                      <ItemIngredint
-                        key={ i }
-                        className="Item_additional"
-                        ingredient={ ingredint }
-                        chengeValueItem={ this.chengeValueItem }
-                      />
-                    ))
-                  }
-                </ul>
-              </section>
-            )
-          }
+          <section className="Section_additional">
+            <div className="Title_section">
+              <h3>Adicionais</h3>
+              <hr id="tag_color_Add" />
+            </div>
+            <ul className="List_additional">
+              {
+                additional.map((ingredint, i) => (
+                  <ItemIngredint
+                    key={ i }
+                    className="Item_additional"
+                    ingredient={ ingredint }
+                    chengeValueItem={ this.chengeValueItem }
+                  />
+                ))
+              }
+            </ul>
+          </section>
           <section className="Section_obs">
-            <div>
+            <div className="Title_section">
               <h3 className="Title_obs">Observações</h3>
+              <hr id="tag_color_obs" />
             </div>
             <textarea
               className="Text_obs"
@@ -243,7 +249,23 @@ class DetailsItem extends React.Component {
               onChange={ this.chengeObs }
             />
           </section>
+          <section className="Section_info">
+            <h4 className="Info_h4">Informações:</h4>
+            <p className="Info_p">
+              <hr id="tag_color_Add" />
+              = &quot;Possue adicionais&quot;
+            </p>
+            <p className="Info_p">
+              <hr id="tag_color_obs" />
+              = &quot;Possue observações&quot;
+            </p>
+            <p className="Info_text">
+              - Cada item adicionado é contabilizado no carrinho,
+              para finalizar a compra, valte a tela menu e siga em &quot;Proximo&quot;.
+            </p>
+          </section>
         </div>
+        <Footer />
         <div className="Viwer_buy">
           <div className="Div_clear_all_adds">
             <button
@@ -255,7 +277,7 @@ class DetailsItem extends React.Component {
           </div>
           <ul className="List_Item_buy">
             {
-              additional.length > 0 && additional.map((ingredint) => (
+              additional.map((ingredint) => (
                 ingredint.amount > 0 && (
                   <li key={ ingredint.name } className="Item_buy">
                     <p>
@@ -274,6 +296,13 @@ class DetailsItem extends React.Component {
               ))
             }
           </ul>
+          <div className="div_tags_buy">
+            {
+              additional.find((ing) => ing.amount > 0)
+              && <hr id="tag_color_Add" />
+            }
+            { observations !== '' && <hr id="tag_color_obs" /> }
+          </div>
           <div className="Buy_item">
             <h4
               className="Value_actual"
@@ -302,6 +331,12 @@ class DetailsItem extends React.Component {
                     <p>
                       { sale.text }
                     </p>
+                    <div className="div_tags_buy">
+                      {
+                        sale.tags.isAdd && <hr id="tag_color_Add" />
+                      }
+                      { sale.tags.isObs && <hr id="tag_color_obs" /> }
+                    </div>
                   </div>
                   <button
                     className="btm_remove"

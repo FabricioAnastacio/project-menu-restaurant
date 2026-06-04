@@ -2,8 +2,11 @@
   width: 90%;
 }
 
-.Title_additional {
+.Title_section {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   h3 {
     margin: 0;
   }
