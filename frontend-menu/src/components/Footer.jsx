@@ -2,15 +2,49 @@ import React from 'react';
 import github from '../pictures/icons8-github-96.png';
 import linkedin from '../pictures/icons8-linkedin-96.png';
 import instagram from '../pictures/icons8-instagram-96.png';
+import tanjNezu from '../pictures/tanjiroAndNezuko.webp';
+import whatsapp from '../pictures/icons8-whatsapp-64.png';
 import '../style/footer.css';
 
 class Footer extends React.Component {
-  render() {
+  getPubliFooter = () => {
     return (
-      <footer className={ `Footer-page-${false}` }>
+      <div className="Footer-publi-secund">
+        <section className="Section-Links">
+          <a
+            className="Link-social"
+            href="https://www.instagram.com/biglanchesdotanjiro/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={ instagram } alt="Instagram Link" />
+          </a>
+          <a
+            className="Link-social"
+            href="https://wa.me/31999739177"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={ whatsapp } alt="WhatsApp Link" />
+          </a>
+        </section>
+        <p>
+          Big Lanches Do Tanjiro
+          <br />
+          &copy; 2026
+          <br />
+          Todos os direitos reservados
+        </p>
+      </div>
+    );
+  };
+
+  getMyPubliFooter = () => {
+    return (
+      <div className="Footer-publi-end">
         <p>
           Direct by
-          {' '}
+          <br />
           <a
             className="Link-name"
             href="https://fabriciomyportifolio.vercel.app/home"
@@ -20,7 +54,6 @@ class Footer extends React.Component {
             Fabrício&reg; 2024
           </a>
         </p>
-        <hr />
         <section className="Section-Links">
           <a
             className="Link-social"
@@ -47,7 +80,7 @@ class Footer extends React.Component {
             <img src={ instagram } alt="Instagram Link" />
           </a>
         </section>
-        <section className="Section-Publi">
+        <section className="Section-Publi-end">
           <p>
             ícones by
             {' '}
@@ -61,6 +94,20 @@ class Footer extends React.Component {
             </a>
           </p>
         </section>
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <footer className={ `Footer-page-${false}` }>
+        <img className="TanjNezu-Footer" src={ tanjNezu } alt="Tanjiro and Nezuko" />
+        <p>Obrigado pela visita!</p>
+        <div className="Footer-content">
+          { this.getMyPubliFooter() }
+          <hr className="line_center" />
+          { this.getPubliFooter() }
+        </div>
       </footer>
     );
   }

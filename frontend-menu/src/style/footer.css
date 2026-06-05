@@ -1,24 +1,49 @@
 footer {
   align-items: center;
-  background-color: black;
-  box-shadow: 0 1em 2em 2em black;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 25vmin;
-  padding: 4vmin;
-  margin-bottom: 80px;
+  margin-bottom: 110px;
+  color: rgba(255, 255, 255, 0.384);
+}
+
+.TanjNezu-Footer {
+  height: 90px;
+  margin: 10px 0;
+  filter: contrast(1.40) drop-shadow(0px 10px 5px black) opacity(.6);
+  z-index: -1;
+}
+
+.Footer-content {
+  display: flex;
+  width: 99%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Footer-publi-secund {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+}
+
+.Footer-publi-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .Footer-page-true {
   filter: blur(1px);
 }
 
-hr {
-  background-color: white;
-  height: 1px;
-  width: 50%;
+.line_center {
+  background-color: rgba(255, 255, 255, 0.096);
+  border: 0;
+  height: 50px;
+  width: 2px;
+  border-radius: 5em;
 }
 
 p {
@@ -26,20 +51,27 @@ p {
   margin: 5px;
 }
 
+.Section-Publi-end {
+  a {
+    color: rgba(255, 255, 255, 0.247);
+  }
+}
+
 .Link-name {
-  color: red;
-  text-decoration: none;
+  color: rgba(255, 255, 255, 0.247);
+  text-decoration: overline;
 }
 
 .Section-Links {
   display: flex;
-  justify-content: space-between;
   width: 40%;
+  z-index: -1;
 }
 
 .Link-social {
   img {
     width: 25px;
+    opacity: .5;
   }
 }
 
