@@ -17,7 +17,7 @@ footer {
 
 .Footer-content {
   display: flex;
-  width: 99%;
+  width: 95%;
   align-items: center;
   justify-content: space-between;
 }
@@ -27,6 +27,12 @@ footer {
   flex-direction: column;
   align-items: start;
   text-align: start;
+}
+
+.Info_version {
+  margin: 0;
+  width: 100%;
+  text-align: end;
 }
 
 .Footer-publi-end {

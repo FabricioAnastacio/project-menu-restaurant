@@ -38,6 +38,7 @@ class Footer extends React.Component {
           <br />
           Todos os direitos reservados
         </p>
+        <p className="Info_version">v1.0.1</p>
       </div>
     );
   };
