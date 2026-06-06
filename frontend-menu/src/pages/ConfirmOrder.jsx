@@ -109,7 +109,7 @@ class ConfirmOrder extends React.Component {
           clientChange={ clientChange }
           sendOrCheff={ this.sendOrCheff }
         />
-        <Footer imgOpem={ false } />
+        <Footer imgOpem={ false } page="order" />
       </main>
     );
   }

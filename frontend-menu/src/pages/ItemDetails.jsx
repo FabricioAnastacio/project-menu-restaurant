@@ -4,6 +4,7 @@ import wrapperRoute from '../hooks/wrapperRoute';
 import AppContext from '../context/AppContext';
 import '../style/itemDetails.css';
 import DetailsItem from '../components/DetailsItem';
+import Footer from '../components/Footer';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -52,6 +53,7 @@ class ItemDetails extends React.Component {
           counterRequestAmount={ this.counterRequestAmount }
           counterItens={ counterItens }
         />
+        <Footer />
       </main>
     );
   }

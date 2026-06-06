@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  footer {
+    margin-top: 0;
+  }
 }
 
 .Header_top {
@@ -141,7 +144,7 @@
   flex-direction: column;
   background-color: black;
   padding: 0;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .div_tags_buy {

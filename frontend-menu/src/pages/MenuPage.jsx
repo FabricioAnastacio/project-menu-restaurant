@@ -104,7 +104,7 @@ class MenuPage extends React.Component {
           counterRequestAmount={ this.counterRequestAmount }
         />
         <FooterRotes counterItens={ counterItens } />
-        <Footer />
+        <Footer page="menu" />
       </div>
     );
   }

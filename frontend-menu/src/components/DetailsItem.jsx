@@ -6,7 +6,6 @@ import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
 import ItemIngredint from './ItemIngredint';
-import Footer from './Footer';
 
 class DetailsItem extends React.Component {
   constructor() {
@@ -265,7 +264,6 @@ class DetailsItem extends React.Component {
             </p>
           </section>
         </div>
-        <Footer />
         <div className="Viwer_buy">
           <div className="Div_clear_all_adds">
             <button

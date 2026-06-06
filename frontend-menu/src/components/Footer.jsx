@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import github from '../pictures/icons8-github-96.png';
 import linkedin from '../pictures/icons8-linkedin-96.png';
 import instagram from '../pictures/icons8-instagram-96.png';
 import tanjNezu from '../pictures/tanjiroAndNezuko.webp';
+import rengoku from '../pictures/rengoku.png';
+import logo from '../pictures/logoNoBack.png';
 import whatsapp from '../pictures/icons8-whatsapp-64.png';
 import '../style/footer.css';
 
@@ -98,10 +101,27 @@ class Footer extends React.Component {
     );
   };
 
+  getImgFooter = () => {
+    const { page } = this.props;
+
+    switch (page) {
+    case 'order':
+      return tanjNezu;
+    case 'menu':
+      return rengoku;
+    default:
+      return logo;
+    }
+  };
+
   render() {
     return (
       <footer className={ `Footer-page-${false}` }>
-        <img className="TanjNezu-Footer" src={ tanjNezu } alt="Tanjiro and Nezuko" />
+        <img
+          className="TanjNezu-Footer"
+          src={ this.getImgFooter() }
+          alt="Tanjiro and Nezuko"
+        />
         <p>Obrigado pela visita!</p>
         <div className="Footer-content">
           { this.getMyPubliFooter() }
@@ -112,5 +132,9 @@ class Footer extends React.Component {
     );
   }
 }
+
+Footer.propTypes = {
+  page: PropTypes.string.isRequired,
+};
 
 export default Footer;
