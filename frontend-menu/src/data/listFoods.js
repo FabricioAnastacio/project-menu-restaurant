@@ -99,7 +99,7 @@ const listFoods = {
   combo: [
     {
       id: 1,
-      displayDate: [],
+      displayDate: [5, 6],
       obs: '',
       img: foods.comboHawk,
       name: '🔥-Combo Hawk Bacon',

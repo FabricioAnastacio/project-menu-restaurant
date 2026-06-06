@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
@@ -6,6 +5,7 @@ import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
 import ItemIngredint from './ItemIngredint';
+import BarOrder from './barOrderDetails';
 
 class DetailsItem extends React.Component {
   constructor() {
@@ -25,6 +25,8 @@ class DetailsItem extends React.Component {
     const { item } = this.props;
     const { listMenu: { menu: { ingAdicional, foodChenged } } } = this.context;
 
+    if (item.group === 'combo' || item.group === 'additional') return;
+
     const listInitialText = [];
 
     if (foodChenged[item.group].length > 0) {
@@ -33,106 +35,25 @@ class DetailsItem extends React.Component {
           const value = itemChenge.value.toFixed(2);
           listInitialText.push({
             idItem: itemChenge.id,
+            idChenge: itemChenge.idChenge,
             text: `x1 ${itemChenge.name.split('-')[1]} = ${value}`,
+            tags: {
+              isAdd: itemChenge.additional.length > 0,
+              isObs: itemChenge.obs !== '',
+            },
           });
         }
       });
-    }
+    } // somente para carregar o texto da lista
+
+    console.log(foodChenged[item.group]);
 
     this.setState({
-      valueItem: item.value,
+      valueItem: item.value, // valor do item sem adicionais
       txtSale: listInitialText,
-      additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })),
+      additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
     });
   }
-
-  addNewItem = (item) => {
-    const { valueItem, additional, txtSale, observations } = this.state;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
-
-    const listFoodChenged = foodChenged[item.group];
-
-    const newId = listFoodChenged.length > 0
-      ? listFoodChenged[listFoodChenged.length - 1].idChenge + 1 : 1;
-
-    foodChenged[item.group].push({
-      ...item,
-      amount: 1,
-      idChenge: newId,
-      additional: additional.filter((add) => add.amount > 0),
-      value: valueItem,
-      obs: observations,
-    });
-
-    this.setState({
-      additional: additional.map((add) => ({ ...add, amount: 0 })),
-      txtSale: [
-        ...txtSale,
-        {
-          idItem: item.id,
-          idChenge: newId,
-          text: `x1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
-          tags: {
-            isAdd: additional.find((iten) => iten.amount > 0),
-            isObs: observations !== '',
-          },
-        },
-      ],
-      valueItem: item.value,
-      observations: '',
-    });
-  };
-
-  removeItem = (itemText, item) => {
-    const { txtSale } = this.state;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
-
-    const newListText = txtSale.filter(
-      (sale) => sale.idChenge !== itemText.idChenge,
-    );
-
-    foodChenged[item.group] = foodChenged[item.group].filter(
-      (iten) => iten.idChenge !== itemText.idChenge,
-    );
-
-    this.setState({
-      txtSale: newListText,
-    });
-  };
-
-  itemSelected = (itemText, item) => {
-    const { additional } = this.state;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
-
-    const itemSelect = foodChenged[item.group].find(
-      (iten) => iten.idChenge === itemText.idChenge,
-    );
-
-    additional.forEach((add) => {
-      const addSelect = itemSelect.additional.find(
-        (addItem) => addItem.name === add.name,
-      );
-      if (addSelect) add.amount = addSelect.amount;
-    });
-
-    this.setState({
-      additional: [...additional],
-      valueItem: itemSelect.value,
-      observations: itemSelect.obs,
-    });
-
-    this.removeItem(itemText, item);
-  };
-
-  clearListAdds = (valueItem) => {
-    const { additional } = this.state;
-
-    this.setState({
-      additional: additional.map((add) => ({ ...add, amount: 0 })),
-      valueItem,
-      observations: '',
-    });
-  };
 
   getHash = ({ id, group }) => {
     const { groupFood } = this.state;
@@ -147,6 +68,25 @@ class DetailsItem extends React.Component {
     this.setState((prevState) => ({
       valueItem: prevState.valueItem + value,
     }));
+  };
+
+  updateQuantityAdd = (newList) => {
+    this.setState({
+      additional: newList,
+    });
+  };
+
+  updateObsAndValueItem = (value, observations) => {
+    this.setState({
+      valueItem: value,
+      observations,
+    });
+  };
+
+  updateTextSale = (newlistText) => {
+    this.setState({
+      txtSale: newlistText,
+    });
   };
 
   toggleIngredients = () => {
@@ -264,89 +204,18 @@ class DetailsItem extends React.Component {
             </p>
           </section>
         </div>
-        <div className="Viwer_buy">
-          <div className="Div_clear_all_adds">
-            <button
-              className="Clear_all_adds"
-              onClick={ () => this.clearListAdds(item.value) }
-            >
-              Limpar Lista
-            </button>
-          </div>
-          <ul className="List_Item_buy">
-            {
-              additional.map((ingredint) => (
-                ingredint.amount > 0 && (
-                  <li key={ ingredint.name } className="Item_buy">
-                    <p>
-                      {
-                        `${ingredint.amount}x ${ingredint.name}`
-                      }
-                    </p>
-                    <p>
-                      {
-                        (ingredint.value * ingredint.amount).toLocaleString('pt-BR', {
-                          style: 'currency', currency: 'BRL' })
-                      }
-                    </p>
-                  </li>
-                )
-              ))
-            }
-          </ul>
-          <div className="div_tags_buy">
-            {
-              additional.find((ing) => ing.amount > 0)
-              && <hr id="tag_color_Add" />
-            }
-            { observations !== '' && <hr id="tag_color_obs" /> }
-          </div>
-          <div className="Buy_item">
-            <h4
-              className="Value_actual"
-              style={ { color: 'gold' } }
-            >
-              {
-                (valueItem).toLocaleString('pt-BR', {
-                  style: 'currency', currency: 'BRL' })
-              }
-            </h4>
-            <button onClick={ () => this.addNewItem(item) } className="btm_add">
-              Adicionar
-            </button>
-          </div>
-          <ul className="List_Adds">
-            {
-              txtSale.map((sale) => (
-                <li key={ sale.id } className="Viwer_Item_buy">
-                  <div
-                    className="Div_item_select"
-                    onClick={ () => this.itemSelected(sale, item) }
-                    onKeyDown={ this.itemSelected }
-                    role="button"
-                    tabIndex={ 0 }
-                  >
-                    <p>
-                      { sale.text }
-                    </p>
-                    <div className="div_tags_buy">
-                      {
-                        sale.tags.isAdd && <hr id="tag_color_Add" />
-                      }
-                      { sale.tags.isObs && <hr id="tag_color_obs" /> }
-                    </div>
-                  </div>
-                  <button
-                    className="btm_remove"
-                    onClick={ () => this.removeItem(sale, item) }
-                  >
-                    Remover
-                  </button>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+        <BarOrder
+          item={ item }
+          additional={ additional }
+          observations={ observations }
+          valueItem={ valueItem }
+          txtSale={ txtSale }
+          clearListAdds={ this.clearListAdds }
+          updateQuantityAdd={ this.updateQuantityAdd }
+          itemSelected={ this.itemSelected }
+          updateObsAndValueItem={ this.updateObsAndValueItem }
+          updateTextSale={ this.updateTextSale }
+        />
       </section>
     );
   }
