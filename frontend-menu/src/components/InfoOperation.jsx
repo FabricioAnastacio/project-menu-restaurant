@@ -35,7 +35,7 @@ class InfoOperation extends React.Component {
           <div className="Djob_hours">
             <img src={ clock } alt="Scooter de entrega" />
             <div>
-              <p>Terça - Sabado</p>
+              <p>Quarta - Sabado</p>
               <p>
                 19:00 - 23:00
               </p>
