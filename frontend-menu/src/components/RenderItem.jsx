@@ -14,7 +14,7 @@ class RenderItem extends React.Component {
   componentDidMount() {
     const { item } = this.props;
 
-    if (item.obs !== '') this.setState({ obs: true, itemObs: item.obs });
+    if (item.obs !== '') this.setState({ itemObs: item.obs });
   }
 
   componentWillUnmount() {
@@ -31,10 +31,7 @@ class RenderItem extends React.Component {
   };
 
   onClickAddObs = () => {
-    const { obs } = this.state;
-
     this.setState({
-      obs: !obs,
       itemObs: '',
     });
   };
@@ -64,7 +61,7 @@ class RenderItem extends React.Component {
                 grup !== 'souce' && (
                   <button
                     className={ `Btm-Observation-${obs}` }
-                    onClick={ this.onClickAddObs }
+                    onClick={ () => this.setState({ obs: !obs }) }
                   >
                     { !obs ? 'Informações' : 'Fechar' }
                   </button>
@@ -102,9 +99,17 @@ class RenderItem extends React.Component {
         {
           grup !== 'souce' && (
             <div style={ { display: obs ? 'flex' : 'none' } } className="item-container">
-              <label className="Label_Item_obs" htmlFor="obs">
-                Observações:
-              </label>
+              <div className="item-obs-header">
+                <label className="Label_Item_obs" htmlFor="obs">
+                  Observações:
+                </label>
+                <button
+                  onClick={ this.onClickAddObs }
+                  className="Btm_clear_obs"
+                >
+                  Limpar
+                </button>
+              </div>
               <textarea
                 className="item-obs"
                 name="itemObs"

@@ -140,9 +140,16 @@
   width: 100%;
 }
 
-.Label_Item_obs {
+.item-obs-header {
   position: relative;
-  top: 9px;
+  top: 10px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Label_Item_obs {
   background-color: transparent;
   border: 0;
   margin: 0 10px;
@@ -150,6 +157,13 @@
   width: fit-content;
   color: gold;
   background-color: #191919;
+}
+
+.Btm_clear_obs {
+  background-color: rgb(46, 0, 0);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 0, 0.185);
+  color: rgba(255, 0, 0, 0.726);
 }
 
 .item-obs {
