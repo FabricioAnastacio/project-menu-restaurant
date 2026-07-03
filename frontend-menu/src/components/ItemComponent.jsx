@@ -13,6 +13,11 @@ class ItemComponent extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { item } = this.props;
+    this.setState({ counterItem: item.amount });
+  }
+
   addNewItem = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
 
@@ -31,21 +36,6 @@ class ItemComponent extends React.Component {
     if (item.amount === 0) counterRequestAmount(counterItens - 1);
 
     this.setState({ counterItem: item.amount });
-  };
-
-  getCounter = (isFood, isCandy, { id, group }) => {
-    const { counterItem } = this.state;
-    const { listMenu: { menu: { food, candy, drinks } } } = this.context;
-
-    if (counterItem > 0) {
-      return counterItem;
-    }
-
-    if (isFood) return food[group][id - 1].amount;
-
-    if (isCandy) return candy[id - 1].amount;
-
-    return drinks[id - 1].amount;
   };
 
   render() {
@@ -82,7 +72,7 @@ class ItemComponent extends React.Component {
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : 'item' }>
                 {
-                  this.getCounter(isFood, isCandy, item)
+                  item.amount
                 }
               </p>
               <button
@@ -94,20 +84,28 @@ class ItemComponent extends React.Component {
             </div>
           </div>
         </section>
-        <div className="AriaButton">
-          <HashLink
-            to={
-              groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
-            }
-          >
-            <div
-              className="imgs-menu"
-              style={ { backgroundImage: `url(${item.img})` } }
-              aria-hidden="true"
-            />
-            <p>{ groupFood.includes(item.group) && 'Ver detalhes' }</p>
-          </HashLink>
-        </div>
+        <section>
+          <div className="AriaButton">
+            <HashLink
+              to={
+                groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
+              }
+            >
+              <div
+                className="imgs-menu"
+                style={ { backgroundImage: `url(${item.img})` } }
+                aria-hidden="true"
+              />
+              <p>{ groupFood.includes(item.group) && 'Ver detalhes' }</p>
+            </HashLink>
+          </div>
+          <div>
+            <p className="Title_info_order">Seu pedido</p>
+            <p className="Value_order">
+              0
+            </p>
+          </div>
+        </section>
       </li>
     );
   }
