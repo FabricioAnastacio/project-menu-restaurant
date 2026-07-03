@@ -92,10 +92,13 @@ class BarOrder extends React.Component {
       additional,
       observations,
       updateQuantityAdd,
+      counterRequestAmount,
       updateObsAndValueItem,
     } = this.props;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
+    const { listMenu: { menu: { foodChenged } }, counterRequest } = this.context;
     const { txtSale } = this.state;
+
+    counterRequestAmount(counterRequest + 1);
 
     if (additional.length === 0) {
       this.updateAmount(item, 'add');
@@ -136,9 +139,11 @@ class BarOrder extends React.Component {
   };
 
   removeItem = (itemText, item) => {
-    const { additional } = this.props;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
+    const { additional, counterRequestAmount } = this.props;
+    const { listMenu: { menu: { foodChenged } }, counterRequest } = this.context;
     const { txtSale } = this.state;
+
+    counterRequestAmount(counterRequest - 1);
 
     if (additional.length === 0) {
       this.updateAmount(item, 'rm');
@@ -311,5 +316,6 @@ BarOrder.propTypes = {
   valueItem: PropTypes.number.isRequired,
   updateObsAndValueItem: PropTypes.func.isRequired,
   updateQuantityAdd: PropTypes.func.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
 };
 export default BarOrder;

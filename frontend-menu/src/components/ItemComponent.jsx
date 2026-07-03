@@ -24,7 +24,7 @@ class ItemComponent extends React.Component {
   addNewItem = (item) => {
     const { counterRequestAmount, counterItens } = this.props;
 
-    if (item.amount === 0) counterRequestAmount(counterItens + 1);
+    counterRequestAmount(counterItens + 1);
     item.amount += 1;
 
     this.setState({ counterItem: item.amount });
@@ -35,8 +35,10 @@ class ItemComponent extends React.Component {
     const { counterItem } = this.state;
 
     if (item.amount === 0) return;
-    if (counterItem > 0) item.amount -= 1;
-    if (item.amount === 0) counterRequestAmount(counterItens - 1);
+    if (counterItem > 0) {
+      item.amount -= 1;
+      counterRequestAmount(counterItens - 1);
+    }
 
     this.setState({ counterItem: item.amount });
   };

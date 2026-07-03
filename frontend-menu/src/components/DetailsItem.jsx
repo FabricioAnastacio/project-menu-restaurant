@@ -74,7 +74,7 @@ class DetailsItem extends React.Component {
   };
 
   render() {
-    const { item } = this.props;
+    const { item, counterRequestAmount } = this.props;
     const { valueItem, additional, ingOpem, observations } = this.state;
 
     return (
@@ -183,6 +183,7 @@ class DetailsItem extends React.Component {
           additional={ additional }
           observations={ observations }
           valueItem={ valueItem }
+          counterRequestAmount={ counterRequestAmount }
           updateQuantityAdd={ this.updateQuantityAdd }
           updateObsAndValueItem={ this.updateObsAndValueItem }
         />
@@ -209,5 +210,6 @@ DetailsItem.propTypes = {
       amount: PropTypes.number.isRequired,
     })).isRequired,
   }).isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
 };
 export default DetailsItem;

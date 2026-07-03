@@ -83,16 +83,9 @@ class RequestsList extends React.Component {
   }
 
   updateCounterRequest = () => {
-    const { request, valueTotal,
+    const { valueTotal,
     } = this.state;
 
-    const updateCounter = [
-      ...request.classic, ...request.handmade, ...request.additional,
-      ...request.candy, ...request.drinks, ...request.combo,
-      ...request.foodChenged.classic, ...request.foodChenged.handmade,
-    ];
-
-    this.context.counterRequest = updateCounter.length;
     this.context.valueTotal = valueTotal.toFixed(2);
   };
 
@@ -101,6 +94,8 @@ class RequestsList extends React.Component {
     this.setState({
       valueTotal: valueTotal + item.value,
     });
+
+    this.context.counterRequest += 1;
 
     this.setState({
       [request[item.group]]: request[item.group].map((a) => {
@@ -112,6 +107,8 @@ class RequestsList extends React.Component {
 
   removeItem = (item) => {
     const { request, valueTotal } = this.state;
+
+    this.context.counterRequest -= 1;
 
     this.setState({
       valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
