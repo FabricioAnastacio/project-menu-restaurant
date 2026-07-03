@@ -122,6 +122,7 @@ const listDrinks = [
     value: 9.00,
     amount: 0,
   },
+  /*
   {
     id: 12,
     obs: '',
@@ -133,6 +134,7 @@ const listDrinks = [
     value: 9.00,
     amount: 0,
   },
+  */
   {
     id: 13,
     obs: '',
