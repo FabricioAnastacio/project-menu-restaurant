@@ -10,12 +10,28 @@ class ItemComponent extends React.Component {
     this.state = {
       counterItem: 0,
       groupFood: ['classic', 'handmade', 'additional', 'combo'],
+      valueOrder: 0.00,
     };
   }
 
   componentDidMount() {
     const { item } = this.props;
-    this.setState({ counterItem: item.amount });
+    const { listMenu: { menu: { foodChenged } } } = this.context;
+
+    this.setState({
+      counterItem: item.amount,
+    });
+
+    if (item.group === 'classic' || item.group === 'handmade') {
+      if (foodChenged[item.group].length === 0) return;
+      foodChenged[item.group].forEach((itemChenge) => {
+        if (itemChenge.id === item.id) {
+          this.setState((prevState) => ({
+            valueOrder: itemChenge.value * itemChenge.amount + prevState.valueOrder,
+          }));
+        }
+      });
+    }
   }
 
   addNewItem = (item) => {
@@ -39,7 +55,7 @@ class ItemComponent extends React.Component {
   };
 
   render() {
-    const { groupFood } = this.state;
+    const { groupFood, valueOrder } = this.state;
     const { item, isFood, isCandy } = this.props;
 
     const numItem = item.name.split('-')[0];
@@ -100,9 +116,12 @@ class ItemComponent extends React.Component {
             </HashLink>
           </div>
           <div>
-            <p className="Title_info_order">Seu pedido</p>
+            <p className="Title_info_order">Pedido</p>
             <p className="Value_order">
-              0
+              { (item.value * item.amount + valueOrder).toLocaleString(
+                'pt-BR',
+                { style: 'currency', currency: 'BRL' },
+              ) }
             </p>
           </div>
         </section>
