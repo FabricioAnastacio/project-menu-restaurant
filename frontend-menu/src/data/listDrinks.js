@@ -122,6 +122,7 @@ const listDrinks = [
     value: 9.00,
     amount: 0,
   },
+  /*
   {
     id: 12,
     obs: '',
@@ -133,8 +134,9 @@ const listDrinks = [
     value: 9.00,
     amount: 0,
   },
+  */
   {
-    id: 13,
+    id: 12,
     obs: '',
     img: drinks.gatoradLar,
     name: '13-Gatorade Laranja 500ml',
@@ -145,7 +147,7 @@ const listDrinks = [
     amount: 0,
   },
   {
-    id: 14,
+    id: 13,
     obs: '',
     img: drinks.monster,
     name: '14-Energetico Monsters 473ml',
@@ -156,7 +158,7 @@ const listDrinks = [
     amount: 0,
   },
   {
-    id: 15,
+    id: 14,
     obs: '',
     img: drinks.heineken,
     name: '15-Heineken Latão 473ml',
@@ -167,7 +169,7 @@ const listDrinks = [
     amount: 0,
   },
   {
-    id: 16,
+    id: 15,
     obs: '',
     img: drinks.brahama,
     name: '16-Brahama Latão 473ml',
