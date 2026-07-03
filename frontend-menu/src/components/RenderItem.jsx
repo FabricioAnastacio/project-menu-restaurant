@@ -41,7 +41,8 @@ class RenderItem extends React.Component {
 
   render() {
     const { obs, itemObs } = this.state;
-    const { item, key, grup, addNewItem, removeItem } = this.props;
+    const { item, key, grup, addNewItem, removeItem, removeItemChenged,
+    } = this.props;
 
     return (
       <li
@@ -65,27 +66,68 @@ class RenderItem extends React.Component {
                     className={ `Btm-Observation-${obs}` }
                     onClick={ this.onClickAddObs }
                   >
-                    { !obs ? 'observação' : 'Apagar' }
+                    { !obs ? 'Informações' : 'Fechar' }
                   </button>
                 )
               }
             </div>
           </div>
-          <button className="btn" onClick={ () => removeItem(item, grup) }>-</button>
-          <p>{ item.amount }</p>
-          <button className="btn" onClick={ () => addNewItem(item, grup) }>+</button>
+          {
+            item.idChenge ? (
+              <button
+                className="btn_remove"
+                onClick={ () => removeItemChenged(item) }
+              >
+                Remover
+              </button>
+            ) : (
+              <div className="item_btms">
+                <button
+                  className="btn"
+                  onClick={ () => removeItem(item, grup) }
+                >
+                  -
+                </button>
+                <p>{ item.amount }</p>
+                <button
+                  className="btn"
+                  onClick={ () => addNewItem(item, grup) }
+                >
+                  +
+                </button>
+              </div>
+            )
+          }
         </div>
         {
           grup !== 'souce' && (
-            <textarea
-              className="item-obs"
-              name="itemObs"
-              id="obs"
-              value={ itemObs }
-              onChange={ (e) => this.handleChengeObs(e, item) }
-              placeholder="Ex. Sem batata palha"
-              style={ { display: obs ? 'flex' : 'none' } }
-            />
+            <div style={ { display: obs ? 'flex' : 'none' } } className="item-container">
+              <label className="Label_Item_obs" htmlFor="obs">
+                Observações:
+              </label>
+              <textarea
+                className="item-obs"
+                name="itemObs"
+                id="obs"
+                value={ itemObs }
+                onChange={ (e) => this.handleChengeObs(e, item) }
+                placeholder="Ex. Sem batata palha"
+              />
+              {
+                item.idChenge && (
+                  <ul className="List_aditional_order">
+                    <p>Adicionais:</p>
+                    { item.additional.map((add, keyAdd) => (
+                      <li key={ keyAdd } className="Item_aditional_order">
+                        <p>{ add.amount }</p>
+                        <p>{ add.name }</p>
+                        <p>{ `R$${add.value.toFixed(2)}` }</p>
+                      </li>
+                    )) }
+                  </ul>
+                )
+              }
+            </div>
           )
         }
       </li>
@@ -107,6 +149,7 @@ RenderItem.propTypes = {
   grup: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
+  removeItemChenged: PropTypes.func.isRequired,
 };
 
 export default RenderItem;

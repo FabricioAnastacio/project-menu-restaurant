@@ -80,6 +80,19 @@
   }
 }
 
+.item_btms {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 10px;
+  }
+}
+
+.btn_remove {
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
 .btn {
   font-size: 18px;
   width: 30px;
@@ -121,15 +134,45 @@
   color: rgb(255, 87, 87);
 }
 
+.item-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Label_Item_obs {
+  position: relative;
+  top: 9px;
+  background-color: transparent;
+  border: 0;
+  margin: 0 10px;
+  padding: 0;
+  width: fit-content;
+  color: gold;
+  background-color: #191919;
+}
+
 .item-obs {
-  margin-top: 20px;
   background-color: transparent;
   border: 1px solid rgb(153, 153, 153);
   border-radius: 5px;
   color: white;
   width: 90%;
   height: 80px;
-  padding: 5px 10px;
+  padding: 10px;
+}
+
+.List_aditional_order {
+  list-style: none;
+}
+
+.Item_aditional_order {
+  border: 1px solid black;
+  background-color: #212121;
+  border-radius: 10px;
+  padding: 10px 5px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .alertErro-List {

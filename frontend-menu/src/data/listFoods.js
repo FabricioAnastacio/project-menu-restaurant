@@ -109,7 +109,6 @@ const listFoods = {
       group: 'combo',
       additional: [],
       value: 52.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -124,7 +123,6 @@ const listFoods = {
       group: 'combo',
       additional: [],
       value: 41.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -139,7 +137,6 @@ const listFoods = {
       group: 'combo',
       additional: [],
       value: 68.00,
-      valueOrder: 0.00,
       amount: 0,
     },
   ],
@@ -154,7 +151,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 12.50,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -167,7 +163,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 14.50,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -180,7 +175,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 16.50,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -193,7 +187,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 22.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -206,7 +199,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 25.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -219,7 +211,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 14.50,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -232,7 +223,6 @@ const listFoods = {
       group: 'classic',
       additional: [],
       value: 30.00,
-      valueOrder: 0,
       amount: 0,
     },
   ],
@@ -247,7 +237,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 25.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -260,7 +249,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 26.50,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -273,7 +261,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 27.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -286,7 +273,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 33.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -299,7 +285,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 34.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -312,7 +297,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 37.00,
-      valueOrder: 0,
       amount: 0,
     },
     {
@@ -325,7 +309,6 @@ const listFoods = {
       group: 'handmade',
       additional: [],
       value: 38.00,
-      valueOrder: 0,
       amount: 0,
     },
   ],
@@ -339,7 +322,6 @@ const listFoods = {
       group: 'additional',
       additional: [],
       value: 7.00,
-      valueOrder: 0,
       obs: '',
       amount: 0,
     },
@@ -352,7 +334,6 @@ const listFoods = {
       group: 'additional',
       additional: [],
       value: 5.50,
-      valueOrder: 0,
       obs: '',
       amount: 0,
     },
@@ -365,7 +346,6 @@ const listFoods = {
       group: 'additional',
       additional: [],
       value: 3.00,
-      valueOrder: 0,
       obs: '',
       amount: 0,
     },

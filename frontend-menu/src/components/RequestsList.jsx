@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -13,7 +14,7 @@ class RequestsList extends React.Component {
       data: new Date().getDay(),
       valueTotal: 0,
       groupMaping: [
-        'classic', 'combo', 'handmade', 'additional', 'drinks', 'candy',
+        'classic', 'handmade', 'combo', 'additional', 'drinks', 'candy',
       ],
       request: {
         classic: [],
@@ -23,6 +24,10 @@ class RequestsList extends React.Component {
         drinks: [],
         candy: [],
         souce: [],
+        foodChenged: {
+          classic: [],
+          handmade: [],
+        },
       },
     };
   }
@@ -34,6 +39,7 @@ class RequestsList extends React.Component {
           food: { combo, classic, handmade, additional },
           drinks,
           candy,
+          foodChenged,
         },
       },
     } = this.context;
@@ -58,6 +64,7 @@ class RequestsList extends React.Component {
     const requestAllItens = [
       ...request.additional, ...request.classic, ...request.handmade,
       ...request.drinks, ...request.candy, ...request.combo,
+      ...foodChenged.classic, ...foodChenged.handmade,
     ];
 
     let valueTotal = 0;
@@ -68,7 +75,10 @@ class RequestsList extends React.Component {
 
     this.setState({
       valueTotal,
-      request,
+      request: {
+        ...request,
+        foodChenged,
+      },
     });
   }
 
@@ -79,6 +89,7 @@ class RequestsList extends React.Component {
     const updateCounter = [
       ...request.classic, ...request.handmade, ...request.additional,
       ...request.candy, ...request.drinks, ...request.combo,
+      ...request.foodChenged.classic, ...request.foodChenged.handmade,
     ];
 
     this.context.counterRequest = updateCounter.length;
@@ -117,6 +128,26 @@ class RequestsList extends React.Component {
     });
   };
 
+  removeItemChenged = (item) => {
+    const { request, valueTotal } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
+
+    const newList = request.foodChenged[item.group].filter((a) => a.id !== item.id);
+
+    foodChenged[item.group] = newList;
+
+    this.setState({
+      valueTotal: valueTotal - item.value,
+      request: {
+        ...request,
+        foodChenged: {
+          ...request.foodChenged,
+          [item.group]: newList,
+        },
+      },
+    });
+  };
+
   removeAllItens = () => {
     const {
       listMenu: {
@@ -126,6 +157,7 @@ class RequestsList extends React.Component {
           food: { combo, classic, handmade, additional },
           drinks,
           candy,
+          foodChenged,
         },
       },
     } = this.context;
@@ -139,6 +171,8 @@ class RequestsList extends React.Component {
     food.handmade = handmade.map((item) => ({ ...item, amount: 0, obs: '' }));
     food.additional = additional.map((item) => ({ ...item, amount: 0, obs: '' }));
     menu.candy = candy.map((item) => ({ ...item, amount: 0, obs: '' }));
+    foodChenged.classic = [];
+    foodChenged.handmade = [];
 
     this.setState({
       valueTotal: 0,
@@ -150,6 +184,10 @@ class RequestsList extends React.Component {
         drinks: [],
         candy: [],
         souce: request.souce,
+        foodChenged: {
+          classic: [],
+          handmade: [],
+        },
       },
     });
   };
@@ -181,6 +219,19 @@ class RequestsList extends React.Component {
                   <RenderItem
                     key={ key }
                     item={ item }
+                    removeItem={ this.removeItem }
+                    addNewItem={ this.addNewItem }
+                  />
+                ))
+              ))
+            }
+            {
+              ['classic', 'handmade'].map((g) => (
+                request.foodChenged[g].map((item, key) => (
+                  <RenderItem
+                    key={ key }
+                    item={ item }
+                    removeItemChenged={ this.removeItemChenged }
                     removeItem={ this.removeItem }
                     addNewItem={ this.addNewItem }
                   />
