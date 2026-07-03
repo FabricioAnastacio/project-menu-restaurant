@@ -248,7 +248,6 @@ class BarOrder extends React.Component {
           </button>
         </div>
         <ul className="List_Adds">
-          <p>Pedidos:</p>
           {
             txtSale.map((sale) => (
               <li key={ sale.id } className="Viwer_Item_buy">

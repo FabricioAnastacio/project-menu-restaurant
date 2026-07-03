@@ -87,6 +87,8 @@
 
 .Tags_item {
   display: flex;
+  justify-content: end;
+  margin-top: 5px;
 }
 
 .item_btms {

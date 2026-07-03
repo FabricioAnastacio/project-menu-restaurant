@@ -70,7 +70,13 @@ class RenderItem extends React.Component {
             </div>
           </div>
           <div className="Div_item_btns_tags">
-            <hr style={ { border: '0' } } />
+            <div className="Tags_item">
+              {
+                item.additional.find((ing) => ing.amount > 0)
+                && <hr id="tag_color_Add" />
+              }
+              { itemObs !== '' && <hr id="tag_color_obs" /> }
+            </div>
             {
               item.idChenge ? (
                 <button
@@ -97,13 +103,7 @@ class RenderItem extends React.Component {
                 </div>
               )
             }
-            <div className="Tags_item">
-              {
-                item.additional.find((ing) => ing.amount > 0)
-                && <hr id="tag_color_Add" />
-              }
-              { itemObs !== '' && <hr id="tag_color_obs" /> }
-            </div>
+            <hr style={ { border: '0' } } />
           </div>
         </div>
         {
