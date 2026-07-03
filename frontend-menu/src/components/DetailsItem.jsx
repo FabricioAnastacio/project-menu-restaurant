@@ -14,7 +14,6 @@ class DetailsItem extends React.Component {
     this.state = {
       groupFood: ['combo', 'classic', 'handmade', 'additional'],
       valueItem: 0,
-      txtSale: [],
       additional: [],
       ingOpem: false,
       observations: '',
@@ -23,34 +22,13 @@ class DetailsItem extends React.Component {
 
   componentDidMount() {
     const { item } = this.props;
-    const { listMenu: { menu: { ingAdicional, foodChenged } } } = this.context;
+    const { listMenu: { menu: { ingAdicional } } } = this.context;
+
+    this.setState({ valueItem: item.value });
 
     if (item.group === 'combo' || item.group === 'additional') return;
 
-    const listInitialText = [];
-
-    if (foodChenged[item.group].length > 0) {
-      foodChenged[item.group].forEach((itemChenge) => {
-        if (itemChenge.id === item.id) {
-          const value = itemChenge.value.toFixed(2);
-          listInitialText.push({
-            idItem: itemChenge.id,
-            idChenge: itemChenge.idChenge,
-            text: `x1 ${itemChenge.name.split('-')[1]} = ${value}`,
-            tags: {
-              isAdd: itemChenge.additional.length > 0,
-              isObs: itemChenge.obs !== '',
-            },
-          });
-        }
-      });
-    } // somente para carregar o texto da lista
-
-    console.log(foodChenged[item.group]);
-
     this.setState({
-      valueItem: item.value, // valor do item sem adicionais
-      txtSale: listInitialText,
       additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
     });
   }
@@ -83,12 +61,6 @@ class DetailsItem extends React.Component {
     });
   };
 
-  updateTextSale = (newlistText) => {
-    this.setState({
-      txtSale: newlistText,
-    });
-  };
-
   toggleIngredients = () => {
     this.setState((prevState) => ({
       ingOpem: !prevState.ingOpem,
@@ -103,9 +75,7 @@ class DetailsItem extends React.Component {
 
   render() {
     const { item } = this.props;
-    const { valueItem, txtSale, additional, ingOpem, observations } = this.state;
-
-    if (additional.length === 0) return <h1>Carregando...</h1>;
+    const { valueItem, additional, ingOpem, observations } = this.state;
 
     return (
       <section className="Section-DetailsItem" id="Header">
@@ -157,24 +127,28 @@ class DetailsItem extends React.Component {
               </p>
             </ul>
           </div>
-          <section className="Section_additional">
-            <div className="Title_section">
-              <h3>Adicionais</h3>
-              <hr id="tag_color_Add" />
-            </div>
-            <ul className="List_additional">
-              {
-                additional.map((ingredint, i) => (
-                  <ItemIngredint
-                    key={ i }
-                    className="Item_additional"
-                    ingredient={ ingredint }
-                    chengeValueItem={ this.chengeValueItem }
-                  />
-                ))
-              }
-            </ul>
-          </section>
+          {
+            additional.length > 0 && (
+              <section className="Section_additional">
+                <div className="Title_section">
+                  <h3>Adicionais</h3>
+                  <hr id="tag_color_Add" />
+                </div>
+                <ul className="List_additional">
+                  {
+                    additional.map((ingredint, i) => (
+                      <ItemIngredint
+                        key={ i }
+                        className="Item_additional"
+                        ingredient={ ingredint }
+                        chengeValueItem={ this.chengeValueItem }
+                      />
+                    ))
+                  }
+                </ul>
+              </section>
+            )
+          }
           <section className="Section_obs">
             <div className="Title_section">
               <h3 className="Title_obs">Observações</h3>
@@ -209,12 +183,8 @@ class DetailsItem extends React.Component {
           additional={ additional }
           observations={ observations }
           valueItem={ valueItem }
-          txtSale={ txtSale }
-          clearListAdds={ this.clearListAdds }
           updateQuantityAdd={ this.updateQuantityAdd }
-          itemSelected={ this.itemSelected }
           updateObsAndValueItem={ this.updateObsAndValueItem }
-          updateTextSale={ this.updateTextSale }
         />
       </section>
     );
