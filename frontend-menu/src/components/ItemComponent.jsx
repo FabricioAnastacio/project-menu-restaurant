@@ -10,28 +10,15 @@ class ItemComponent extends React.Component {
     this.state = {
       counterItem: 0,
       groupFood: ['classic', 'handmade', 'additional', 'combo'],
-      valueOrder: 0.00,
     };
   }
 
   componentDidMount() {
     const { item } = this.props;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
 
     this.setState({
       counterItem: item.amount,
     });
-
-    if (item.group === 'classic' || item.group === 'handmade') {
-      if (foodChenged[item.group].length === 0) return;
-      foodChenged[item.group].forEach((itemChenge) => {
-        if (itemChenge.id === item.id) {
-          this.setState((prevState) => ({
-            valueOrder: itemChenge.value * itemChenge.amount + prevState.valueOrder,
-          }));
-        }
-      });
-    }
   }
 
   addNewItem = (item) => {
@@ -55,7 +42,7 @@ class ItemComponent extends React.Component {
   };
 
   render() {
-    const { groupFood, valueOrder } = this.state;
+    const { groupFood } = this.state;
     const { item, isFood, isCandy } = this.props;
 
     const numItem = item.name.split('-')[0];
@@ -100,30 +87,30 @@ class ItemComponent extends React.Component {
             </div>
           </div>
         </section>
-        <section>
+        <section className="Img_Item_btm">
           <div className="AriaButton">
-            <HashLink
-              to={
-                groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
-              }
-            >
-              <div
-                className="imgs-menu"
-                style={ { backgroundImage: `url(${item.img})` } }
-                aria-hidden="true"
-              />
-              <p>{ groupFood.includes(item.group) && 'Ver detalhes' }</p>
-            </HashLink>
+            <div
+              className="imgs-menu"
+              style={ { backgroundImage: `url(${item.img})` } }
+              aria-hidden="true"
+            />
           </div>
-          <div>
-            <p className="Title_info_order">Pedido</p>
-            <p className="Value_order">
-              { (item.value * item.amount + valueOrder).toLocaleString(
-                'pt-BR',
-                { style: 'currency', currency: 'BRL' },
-              ) }
-            </p>
-          </div>
+          <HashLink
+            to={
+              groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
+            }
+          >
+            {
+              groupFood.includes(item.group) && (
+                <button className="Btm_Adit">
+                  {
+                    item.group === 'combo'
+                    || item.group === 'additional' ? 'Detalhes' : 'Adicionais'
+                  }
+                </button>
+              )
+            }
+          </HashLink>
         </section>
       </li>
     );
