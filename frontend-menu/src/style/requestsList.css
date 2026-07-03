@@ -71,13 +71,22 @@
 
 .item-request {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
   p {
     margin: 5px;
     font-size: 17px;
   }
+}
+
+.Div_item_btns_tags {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Tags_item {
+  display: flex;
 }
 
 .item_btms {

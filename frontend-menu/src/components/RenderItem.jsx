@@ -69,32 +69,42 @@ class RenderItem extends React.Component {
               }
             </div>
           </div>
-          {
-            item.idChenge ? (
-              <button
-                className="btn_remove"
-                onClick={ () => removeItemChenged(item) }
-              >
-                Remover
-              </button>
-            ) : (
-              <div className="item_btms">
+          <div className="Div_item_btns_tags">
+            <hr style={ { border: '0' } } />
+            {
+              item.idChenge ? (
                 <button
-                  className="btn"
-                  onClick={ () => removeItem(item, grup) }
+                  className="btn_remove"
+                  onClick={ () => removeItemChenged(item) }
                 >
-                  -
+                  Remover
                 </button>
-                <p>{ item.amount }</p>
-                <button
-                  className="btn"
-                  onClick={ () => addNewItem(item, grup) }
-                >
-                  +
-                </button>
-              </div>
-            )
-          }
+              ) : (
+                <div className="item_btms">
+                  <button
+                    className="btn"
+                    onClick={ () => removeItem(item, grup) }
+                  >
+                    -
+                  </button>
+                  <p>{ item.amount }</p>
+                  <button
+                    className="btn"
+                    onClick={ () => addNewItem(item, grup) }
+                  >
+                    +
+                  </button>
+                </div>
+              )
+            }
+            <div className="Tags_item">
+              {
+                item.additional.find((ing) => ing.amount > 0)
+                && <hr id="tag_color_Add" />
+              }
+              { itemObs !== '' && <hr id="tag_color_obs" /> }
+            </div>
+          </div>
         </div>
         {
           grup !== 'souce' && (
