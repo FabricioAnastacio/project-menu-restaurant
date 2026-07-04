@@ -101,7 +101,10 @@ class ConfirmOrder extends React.Component {
       clientChange,
     } = this.state;
     return (
-      <main className="Order-Page">
+      <main
+        className="Order-Page"
+        style={ { viewTransitionName: 'page' } }
+      >
         <Header title="PEDIDO" imgOpen={ false } />
         <ListOrder />
         <FormDataClient

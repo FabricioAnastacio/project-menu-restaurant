@@ -8,8 +8,15 @@ class Cart extends React.Component {
   render() {
     return (
       <div className="page-cart">
-        <RequestsList />
-        <FooterRotes counterItens={ 0 } imgOpem={ false } />
+        <div
+          style={ {
+            viewTransitionName: 'page',
+            height: '100%',
+          } }
+        >
+          <RequestsList />
+        </div>
+        <FooterRotes imgOpem={ false } />
       </div>
     );
   }

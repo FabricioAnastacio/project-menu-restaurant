@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../style/formDataClient.css';
+import TransitionLink from '../helper/TransitionLink';
 
 class FormDataClient extends React.Component {
   constructor() {
@@ -219,9 +219,13 @@ class FormDataClient extends React.Component {
             this.renderPayment()
           }
           <div className="Btm-order">
-            <button className="Return">
-              <Link to="/cart" className="Link">Voltar</Link>
-            </button>
+            <TransitionLink
+              to="/cart"
+              className="Return"
+              direction="back"
+            >
+              Voltar
+            </TransitionLink>
             <button
               type="submit"
               className="Send-Order"

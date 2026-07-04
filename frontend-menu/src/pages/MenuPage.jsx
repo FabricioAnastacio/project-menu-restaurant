@@ -56,7 +56,8 @@ class MenuPage extends React.Component {
   };
 
   counterRequestAmount = (value) => {
-    this.context.counterRequest = value;
+    const { updateCounterRequest } = this.context;
+    updateCounterRequest(value);
     this.setState({
       counterItens: value,
     });
@@ -85,26 +86,28 @@ class MenuPage extends React.Component {
 
     return (
       <div className="PageMenu">
-        <ToastContainer />
-        <Header
-          title="CARDAPIO"
-        />
-        <ListCategory
-          handleChenge={ this.handleChenge }
-          drinks={ drinks }
-          foods={ food }
-          candy={ candy }
-        />
-        <InfoOperation />
-        <Menu
-          isFood={ food }
-          isCandy={ candy }
-          listMenu={ list }
-          counterItens={ counterItens }
-          counterRequestAmount={ this.counterRequestAmount }
-        />
+        <div style={ { viewTransitionName: 'page' } }>
+          <ToastContainer />
+          <Header
+            title="CARDAPIO"
+          />
+          <ListCategory
+            handleChenge={ this.handleChenge }
+            drinks={ drinks }
+            foods={ food }
+            candy={ candy }
+          />
+          <InfoOperation />
+          <Menu
+            isFood={ food }
+            isCandy={ candy }
+            listMenu={ list }
+            counterItens={ counterItens }
+            counterRequestAmount={ this.counterRequestAmount }
+          />
+          <Footer page="menu" />
+        </div>
         <FooterRotes counterItens={ counterItens } />
-        <Footer page="menu" />
       </div>
     );
   }

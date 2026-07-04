@@ -37,7 +37,8 @@ class ItemDetails extends React.Component {
   }
 
   counterRequestAmount = (value) => {
-    this.context.counterRequest = value;
+    const { updateCounterRequest } = this.context;
+    updateCounterRequest(value);
     this.setState({
       counterItens: value,
     });
@@ -48,7 +49,10 @@ class ItemDetails extends React.Component {
 
     if (item.name === '') return <h1>Carregando...</h1>;
     return (
-      <main className="Page-ItemDetails">
+      <main
+        className="Page-ItemDetails"
+        style={ { viewTransitionName: 'page' } }
+      >
         <DetailsItem
           item={ item }
           counterRequestAmount={ this.counterRequestAmount }

@@ -1,18 +1,17 @@
 import React from 'react';
-import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
 import ItemIngredint from './ItemIngredint';
 import BarOrder from './barOrderDetails';
+import TransitionLink from '../helper/TransitionLink';
 
 class DetailsItem extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      groupFood: ['combo', 'classic', 'handmade', 'additional'],
       valueItem: 0,
       additional: [],
       ingOpem: false,
@@ -32,15 +31,6 @@ class DetailsItem extends React.Component {
       additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
     });
   }
-
-  getHash = ({ id, group }) => {
-    const { groupFood } = this.state;
-
-    if (group === groupFood[0]) return group;
-    if (groupFood.includes(group) && id - 1 === 0) return group;
-
-    return `${group}item${id - 1}`;
-  };
 
   chengeValueItem = (value) => {
     this.setState((prevState) => ({
@@ -80,9 +70,12 @@ class DetailsItem extends React.Component {
     return (
       <section className="Section-DetailsItem" id="Header">
         <header className="Header_top">
-          <HashLink to={ `/#${this.getHash(item)}` } className="Return_icon">
+          <TransitionLink
+            to="/"
+            className="Return_icon"
+          >
             <img src={ returnIcon } alt="Voltar" />
-          </HashLink>
+          </TransitionLink>
           <h1 className="Header_title">DETALHES</h1>
           <img className="Header_logo" src={ logo } alt="Logo" />
         </header>
@@ -100,7 +93,10 @@ class DetailsItem extends React.Component {
             </h3>
           </div>
           <p className="Description">{ item.description }</p>
-          <img src={ item.img } alt={ item.name } />
+          <img
+            src={ item.img }
+            alt={ item.name }
+          />
           <div
             className="Details_ingredients"
             role="button"
@@ -196,6 +192,7 @@ DetailsItem.contextType = AppContext;
 DetailsItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    idList: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

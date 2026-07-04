@@ -30,6 +30,9 @@
 
 .Return_icon {
   padding: 0 10px;
+  background-color: transparent;
+  border: 0;
+  color: white;
   img {
     height: 20px;
     padding: 10px;

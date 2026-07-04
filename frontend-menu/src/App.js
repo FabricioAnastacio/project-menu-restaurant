@@ -10,6 +10,7 @@ import ConfirmOrder from './pages/ConfirmOrder';
 import ItemDetails from './pages/ItemDetails';
 import candy from './data/listCandy';
 import listHighlights from './data/listHighlights';
+import './App.css';
 
 const SUNDAY = 0;
 
@@ -35,16 +36,59 @@ class App extends React.Component {
         counterRequest: 0,
         valueTotal: 0,
         deliveryDayOff: [SUNDAY],
-        btnCart: false,
-        btnMenu: true,
+      },
+      locationScroll: {
+        location: '',
+        scroll: 0,
+      },
+      prevLocationScroll: {
+        location: '',
+        scroll: 0,
       },
     };
   }
 
+  getLocationScroll = (location) => {
+    const { prevLocationScroll, locationScroll } = this.state;
+
+    if (prevLocationScroll.location === location) {
+      return prevLocationScroll.scroll;
+    }
+
+    return locationScroll.scroll;
+  };
+
+  saveLocationScroll = (location, scroll) => {
+    const { prevLocationScroll } = this.state;
+
+    this.setState({
+      prevLocationScroll: {
+        location, scroll,
+      },
+      locationScroll: { ...prevLocationScroll },
+    });
+  };
+
+  updateCounterRequest = (counter) => {
+    this.setState((prevState) => ({
+      value: {
+        ...prevState.value,
+        counterRequest: counter,
+      },
+    }));
+  };
+
   render() {
     const { value } = this.state;
     return (
-      <AppContext.Provider value={ value }>
+      <AppContext.Provider
+        value={ {
+          ...value,
+          getLocationScroll: this.getLocationScroll,
+          saveLocationScroll: this.saveLocationScroll,
+          updateCounterRequest: this.updateCounterRequest,
+        } }
+      >
         <Routes>
           <Route exact path="/" Component={ MenuPage } />
           <Route exact path="/item/:group/:id" Component={ ItemDetails } />

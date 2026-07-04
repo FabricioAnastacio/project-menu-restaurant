@@ -236,19 +236,11 @@
   padding: 6px 15px;
   border-radius: 5px;
   margin: 0 auto;
-}
-
-.Button-ConfirmCart-dis {
-  display: none;
+  color: white;
 }
 
 .clear-all:active, .Button-ConfirmCart:active {
   transform: scale(.9);
-}
-
-.linkOrder {
-  color: white;
-  text-decoration: none;
 }
 
 .imgCart {

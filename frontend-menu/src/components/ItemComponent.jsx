@@ -1,7 +1,7 @@
 import React from 'react';
-import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
+import TransitionLink from '../helper/TransitionLink';
 
 class ItemComponent extends React.Component {
   constructor() {
@@ -93,26 +93,28 @@ class ItemComponent extends React.Component {
           <div className="AriaButton">
             <div
               className="imgs-menu"
-              style={ { backgroundImage: `url(${item.img})` } }
+              style={ {
+                backgroundImage: `url(${item.img})`,
+              } }
               aria-hidden="true"
             />
           </div>
-          <HashLink
-            to={
-              groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
-            }
-          >
-            {
-              groupFood.includes(item.group) && (
-                <button className="Btm_Adit">
-                  {
-                    item.group === 'combo'
-                    || item.group === 'additional' ? 'Detalhes' : 'Adicionais'
-                  }
-                </button>
-              )
-            }
-          </HashLink>
+          {
+            groupFood.includes(item.group) && (
+              <TransitionLink
+                to={
+                  groupFood.includes(item.group)
+                  && `/item/${item.group}/${item.id}/#Header`
+                }
+                className="Btm_Adit"
+              >
+                {
+                  item.group === 'combo'
+                  || item.group === 'additional' ? 'Detalhes' : 'Adicionais'
+                }
+              </TransitionLink>
+            )
+          }
         </section>
       </li>
     );
@@ -124,6 +126,7 @@ ItemComponent.contextType = AppContext;
 ItemComponent.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    idList: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf([]).isRequired,

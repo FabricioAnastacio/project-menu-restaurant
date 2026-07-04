@@ -1,10 +1,10 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import '../style/requestsList.css';
 import '../style/footer.css';
 import RenderItem from './RenderItem';
+import TransitionLink from '../helper/TransitionLink';
 
 class RequestsList extends React.Component {
   constructor() {
@@ -91,11 +91,12 @@ class RequestsList extends React.Component {
 
   addNewItem = (item) => {
     const { request, valueTotal } = this.state;
+    const { updateCounterRequest, counterRequest } = this.context;
     this.setState({
       valueTotal: valueTotal + item.value,
     });
 
-    this.context.counterRequest += 1;
+    updateCounterRequest(counterRequest + 1);
 
     this.setState({
       [request[item.group]]: request[item.group].map((a) => {
@@ -107,8 +108,9 @@ class RequestsList extends React.Component {
 
   removeItem = (item) => {
     const { request, valueTotal } = this.state;
+    const { updateCounterRequest, counterRequest } = this.context;
 
-    this.context.counterRequest -= 1;
+    updateCounterRequest(counterRequest - 1);
 
     this.setState({
       valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
@@ -157,10 +159,11 @@ class RequestsList extends React.Component {
           foodChenged,
         },
       },
+      updateCounterRequest,
     } = this.context;
     const { request } = this.state;
 
-    this.context.counterRequest = 0;
+    updateCounterRequest(0);
 
     menu.drinks = drinks.map((item) => ({ ...item, amount: 0, obs: '' }));
     food.classic = classic.map((item) => ({ ...item, amount: 0, obs: '' }));
@@ -250,21 +253,16 @@ class RequestsList extends React.Component {
             >
               Limpar lista
             </button>
-            <button
-              className={
-                !deliveryDayOff.includes(data)
-                  ? 'Button-ConfirmCart'
-                  : 'Button-ConfirmCart-dis'
-              }
-              onClick={ this.verifyList }
-            >
-              <Link
-                to={ valueTotal === 0 ? '' : '/order' }
-                className="linkOrder"
-              >
-                Confirmar
-              </Link>
-            </button>
+            {
+              !deliveryDayOff.includes(data) && (
+                <TransitionLink
+                  to={ valueTotal === 0 ? '' : '/order' }
+                  className="Button-ConfirmCart"
+                >
+                  Confirmar
+                </TransitionLink>
+              )
+            }
           </div>
         </section>
       </section>

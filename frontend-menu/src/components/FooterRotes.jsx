@@ -1,62 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import iconsCart from '../pictures/icons8-order-96.png';
-import iconsFastFood from '../pictures/icons8-fast-food2-96.png';
 import AppContext from '../context/AppContext';
 import '../style/footerRotes.css';
+import wrapperRoute from '../hooks/wrapperRoute';
+import TransitionLink from '../helper/TransitionLink';
+import iconsCart from '../pictures/icons8-order-96.png';
+import iconsFastFood from '../pictures/icons8-fast-food2-96.png';
 
 class FooterRotes extends React.Component {
-  handleNav = (param) => {
-    const { btnCart, btnMenu } = this.context;
+  handleNav = () => {
+    let btnMenu = false;
+    let btnCart = false;
 
-    if (!param) {
-      this.context.btnCart = btnMenu;
-      this.context.btnMenu = btnCart;
+    if (window.location.pathname === '/') {
+      btnMenu = true;
+    } else {
+      btnCart = true;
     }
+
+    return { btnMenu, btnCart };
   };
 
-  buttonCart = (counterItens) => {
+  rederButtonCart = () => {
     return (
-      <div className="button-cart">
-        {
-          counterItens > 0 && <p className="counter-car">{ counterItens }</p>
-        }
+      <div className="Icon_cart">
         <img src={ iconsCart } alt="Carrinho" />
+        <span>Proximo</span>
       </div>
     );
   };
 
   render() {
     const { counterItens } = this.props;
-    const { btnMenu, btnCart } = this.context;
+    const { btnMenu, btnCart } = this.handleNav();
 
     return (
-      <section className={ `footer-pages setblur-${false}` }>
+      <section
+        className={ `footer-pages setblur-${false}` }
+      >
         <ul>
-          <li
-            className={ `icon-menu isSelect${btnMenu}` }
-          >
-            <Link
-              onClick={ () => this.handleNav(btnMenu) }
+          <li className={ `icon-menu isSelect${btnMenu}` }>
+            <TransitionLink
               to="/"
-              className="iconRote snack"
+              className="iconRote"
+              direction="back"
+              funcClick={ this.handleNav }
             >
-              <img src={ iconsFastFood } alt="Hamburguer" />
-            </Link>
-            Cardapio
+              <img src={ iconsFastFood } alt="Cardapio" />
+              Cardapio
+            </TransitionLink>
           </li>
-          <li
-            className={ `isSelect${btnCart}` }
-          >
-            <Link
-              to={ { pathname: '/cart', hash: '#Header' } }
-              onClick={ () => this.handleNav(btnCart) }
-              className="iconRote cart"
+          <li className={ `icon-menu isSelect${btnCart}` }>
+            <TransitionLink
+              to="/cart"
+              className="iconRote snack"
+              direction="next"
+              funcClick={ this.handleNav }
             >
-              { this.buttonCart(counterItens) }
-            </Link>
-            Próximo
+              {
+                counterItens > 0 && <span className="counter-car">{ counterItens }</span>
+              }
+              { this.rederButtonCart() }
+            </TransitionLink>
           </li>
         </ul>
       </section>
@@ -70,4 +75,4 @@ FooterRotes.propTypes = {
   counterItens: PropTypes.number.isRequired,
 };
 
-export default FooterRotes;
+export default wrapperRoute(FooterRotes);
