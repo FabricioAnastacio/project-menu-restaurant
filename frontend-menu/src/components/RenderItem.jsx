@@ -38,7 +38,7 @@ class RenderItem extends React.Component {
 
   render() {
     const { obs, itemObs } = this.state;
-    const { item, key, grup, addNewItem, removeItem, removeItemChenged,
+    const { item, key, grup, addNewItem, removeItem,
     } = this.props;
 
     return (
@@ -81,32 +81,21 @@ class RenderItem extends React.Component {
                 </div>
               )
             }
-            {
-              item.idChenge ? (
-                <button
-                  className="btn_remove"
-                  onClick={ () => removeItemChenged(item) }
-                >
-                  Remover
-                </button>
-              ) : (
-                <div className="item_btms">
-                  <button
-                    className="btn"
-                    onClick={ () => removeItem(item, grup) }
-                  >
-                    -
-                  </button>
-                  <p>{ item.amount }</p>
-                  <button
-                    className="btn"
-                    onClick={ () => addNewItem(item, grup) }
-                  >
-                    +
-                  </button>
-                </div>
-              )
-            }
+            <div className="item_btms">
+              <button
+                className="btn"
+                onClick={ () => removeItem(item, grup) }
+              >
+                -
+              </button>
+              <p>{ item.amount }</p>
+              <button
+                className="btn"
+                onClick={ () => addNewItem(item, grup) }
+              >
+                +
+              </button>
+            </div>
             <hr style={ { border: '0' } } />
           </div>
         </div>
@@ -168,7 +157,6 @@ RenderItem.propTypes = {
   grup: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
   addNewItem: PropTypes.func.isRequired,
-  removeItemChenged: PropTypes.func.isRequired,
 };
 
 export default RenderItem;

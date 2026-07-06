@@ -43,7 +43,7 @@ class BarOrder extends React.Component {
           listInitialText.push({
             idItem: itemChenge.id,
             idChenge: itemChenge.idChenge,
-            text: `x1 ${itemChenge.name.split('-')[1]} = ${value}`,
+            text: `x${itemChenge.amount} ${itemChenge.name.split('-')[1]} = ${value}`,
             tags: {
               isAdd: itemChenge.additional.length > 0,
               isObs: itemChenge.obs !== '',
@@ -105,10 +105,7 @@ class BarOrder extends React.Component {
       return;
     }
 
-    const listFoodChenged = foodChenged[item.group];
-
-    const newId = listFoodChenged.length > 0
-      ? listFoodChenged[listFoodChenged.length - 1].idChenge + 1 : 1;
+    const newId = foodChenged[item.group].length + 1;
 
     foodChenged[item.group].push({
       ...item,

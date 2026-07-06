@@ -98,6 +98,8 @@ class RequestsList extends React.Component {
 
     updateCounterRequest(counterRequest + 1);
 
+    if (item.idChenge) return this.addItemChenged(item);
+
     this.setState({
       [request[item.group]]: request[item.group].map((a) => {
         if (a.id === item.id) a.amount += 1;
@@ -111,6 +113,8 @@ class RequestsList extends React.Component {
     const { updateCounterRequest, counterRequest } = this.context;
 
     updateCounterRequest(counterRequest - 1);
+
+    if (item.idChenge) return this.removeItemChenged(item);
 
     this.setState({
       valueTotal: valueTotal - (item.amount > 0 ? item.value : 0),
@@ -127,11 +131,41 @@ class RequestsList extends React.Component {
     });
   };
 
+  addItemChenged = (item) => {
+    const { request, valueTotal } = this.state;
+    const {
+      listMenu: { menu: { foodChenged } },
+    } = this.context;
+
+    const newList = request.foodChenged[item.group].filter((a) => {
+      if (a.idChenge === item.idChenge) a.amount += 1;
+      return a;
+    });
+
+    foodChenged[item.group] = newList;
+
+    this.setState({
+      valueTotal: valueTotal + item.value,
+      request: {
+        ...request,
+        foodChenged: {
+          ...request.foodChenged,
+          [item.group]: newList,
+        },
+      },
+    });
+  };
+
   removeItemChenged = (item) => {
     const { request, valueTotal } = this.state;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
+    const {
+      listMenu: { menu: { foodChenged } },
+    } = this.context;
 
-    const newList = request.foodChenged[item.group].filter((a) => a.id !== item.id);
+    const newList = request.foodChenged[item.group].filter((a) => {
+      if (a.idChenge === item.idChenge) a.amount -= 1;
+      return a.amount > 0 && a;
+    });
 
     foodChenged[item.group] = newList;
 
