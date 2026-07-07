@@ -10,16 +10,7 @@ class BarOrder extends React.Component {
     super();
 
     this.state = {
-      itemChenge: [{
-        idItem: 0,
-        idChenge: 0,
-        name: '',
-        group: '',
-        obs: '',
-        additional: [],
-        amount: 0,
-        value: 0,
-      }],
+      itemChenge: [],
     };
   }
 
@@ -30,7 +21,7 @@ class BarOrder extends React.Component {
     if (item.group === 'combo' || item.group === 'additional') {
       if (item.amount !== 0) {
         this.setState({
-          itemChenge: [],
+          itemChenge: [item],
         });
       }
 
@@ -48,6 +39,24 @@ class BarOrder extends React.Component {
     this.setState({
       itemChenge: listInitial,
     });
+  }
+
+  componentWillUnmount() {
+    const { item } = this.props;
+    const { itemChenge } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
+
+    if (
+      item.group !== 'additional'
+      && item.group !== 'combo'
+    ) {
+      console.log(itemChenge);
+      console.log(foodChenged[item.group].filter((a) => a.id !== item.id));
+      foodChenged[item.group] = [
+        ...foodChenged[item.group].filter((a) => a.id !== item.id),
+        ...itemChenge,
+      ];
+    }
   }
 
   updateAmount = (exprecion) => {
@@ -221,8 +230,8 @@ class BarOrder extends React.Component {
             onClick={ () => this.addNewItem(item) }
             className="btm_add"
             disabled={
-              item.additional.length === 0
-              && item.amount !== 0
+              (additional.length === 0
+              && item.amount !== 0)
             }
           >
             Adicionar
