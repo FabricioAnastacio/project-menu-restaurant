@@ -5,6 +5,10 @@
   height: 100%;
 }
 
+.Content_list_order {
+  padding-bottom: 150px;
+}
+
 .header-request {
   position: fixed;
   width: 100%;
@@ -211,8 +215,13 @@
 .RequestFooter-cart {
   display: grid;
   place-items: center;
-  margin-top: 50px;
-  padding-bottom: 110px;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.438);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.164);
+  position: fixed;
+  padding: 15px 0;
+  width: 100%;
+  margin-bottom: 85px;
 }
 
 .btms {

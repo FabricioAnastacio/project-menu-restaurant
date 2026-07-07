@@ -3,13 +3,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
+import BarOrderItem from './barOrderItem';
 
 class BarOrder extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      txtSale: [],
+      itemChenge: [{
+        idItem: 0,
+        idChenge: 0,
+        name: '',
+        group: '',
+        obs: '',
+        additional: [],
+        amount: 0,
+        value: 0,
+      }],
     };
   }
 
@@ -20,67 +30,51 @@ class BarOrder extends React.Component {
     if (item.group === 'combo' || item.group === 'additional') {
       if (item.amount !== 0) {
         this.setState({
-          txtSale: [{
-            idItem: item.id,
-            idChenge: item.id, // para itens sem adicionais, o idChenge é igual ao id do item
-            text: `x${item.amount} ${item.name.split('-')[1]} = ${item.value.toFixed(2)}`,
-            tags: {
-              isAdd: item.additional.length > 0,
-              isObs: item.obs !== '',
-            },
-          }],
+          itemChenge: [],
         });
       }
 
       return;
     }
-    const listInitialText = [];
+    const listInitial = [];
 
     if (foodChenged[item.group].length > 0) {
       foodChenged[item.group].forEach((itemChenge) => {
         if (itemChenge.id === item.id) {
-          const value = itemChenge.value.toFixed(2);
-          listInitialText.push({
-            idItem: itemChenge.id,
-            idChenge: itemChenge.idChenge,
-            text: `x${itemChenge.amount} ${itemChenge.name.split('-')[1]} = ${value}`,
-            tags: {
-              isAdd: itemChenge.additional.length > 0,
-              isObs: itemChenge.obs !== '',
-            },
-          });
+          listInitial.push(itemChenge);
         }
       });
     }
-    this.setState({ txtSale: listInitialText });
+    this.setState({
+      itemChenge: listInitial,
+    });
   }
 
-  updateAmount = (item, exprecion) => {
-    const { txtSale } = this.state;
+  updateAmount = (exprecion) => {
+    const { item } = this.props;
 
     if (exprecion === 'add') item.amount += 1;
     else if (exprecion === 'rm') item.amount -= 1;
 
-    if (item.amount === 1) {
+    if (item.amount >= 1) {
       this.setState({
-        txtSale: [{
-          idItem: item.id,
-          idChenge: item.id, // para itens sem adicionais, o idChenge é igual ao id do item
-          text: `x${item.amount} ${item.name.split('-')[1]} = ${item.value.toFixed(2)}`,
-          tags: {
-            isAdd: item.additional.length > 0,
-            isObs: item.obs !== '',
-          },
+        itemChenge: [{
+          ...item,
+          idChenge: item.id,
+          amount: item.amount,
         }],
       });
     } else if (item.amount === 0) {
-      this.setState({ txtSale: [] });
-    } else {
-      const value = (item.value * item.amount).toFixed(2);
       this.setState({
-        txtSale: [{
-          ...txtSale[0],
-          text: `x${item.amount} ${item.name.split('-')[1]} = ${value}`,
+        itemChenge: [{
+          idItem: 0,
+          idChenge: 0,
+          name: '',
+          group: '',
+          obs: '',
+          additional: [],
+          amount: 0,
+          value: 0,
         }],
       });
     }
@@ -95,77 +89,53 @@ class BarOrder extends React.Component {
       counterRequestAmount,
       updateObsAndValueItem,
     } = this.props;
-    const { listMenu: { menu: { foodChenged } }, counterRequest } = this.context;
-    const { txtSale } = this.state;
+    const { counterRequest } = this.context;
+    const { itemChenge } = this.state;
 
     counterRequestAmount(counterRequest + 1);
 
     if (additional.length === 0) {
-      this.updateAmount(item, 'add');
+      this.updateAmount('add');
       return;
     }
 
-    const newId = foodChenged[item.group].length + 1;
-
-    foodChenged[item.group].push({
-      ...item,
-      amount: 1,
-      idChenge: newId,
-      additional: additional.filter((add) => add.amount > 0),
-      value: valueItem,
-      obs: observations,
-    });
-
-    this.setState({
-      txtSale: [
-        ...txtSale,
+    this.setState((prevState) => ({
+      itemChenge: [
+        ...prevState.itemChenge,
         {
-          idItem: item.id,
-          idChenge: newId,
-          text: `x1 ${item.name.split('-')[1]} = ${valueItem.toFixed(2)}`,
-          tags: {
-            isAdd: additional.find((iten) => iten.amount > 0),
-            isObs: observations !== '',
-          },
+          ...item,
+          amount: 1,
+          idChenge: itemChenge[itemChenge.length - 1]
+            ? itemChenge[itemChenge.length - 1].idChenge + 1 : 1,
+          additional: additional.filter((add) => add.amount > 0),
+          value: valueItem,
+          obs: observations,
         },
       ],
-    });
+    }));
 
     updateQuantityAdd(additional.map((add) => ({ ...add, amount: 0 })));
     updateObsAndValueItem(item.value, '');
   };
 
-  removeItem = (itemText, item) => {
-    const { additional, counterRequestAmount } = this.props;
-    const { listMenu: { menu: { foodChenged } }, counterRequest } = this.context;
-    const { txtSale } = this.state;
+  removeItem = (item) => {
+    const { counterRequestAmount } = this.props;
+    const { counterItens } = this.context;
+    const { itemChenge } = this.state;
 
-    counterRequestAmount(counterRequest - 1);
+    counterRequestAmount(counterItens - 1);
 
-    if (additional.length === 0) {
-      this.updateAmount(item, 'rm');
-      return;
-    }
-
-    const newListText = txtSale.filter(
-      (sale) => sale.idChenge !== itemText.idChenge,
-    );
-
-    foodChenged[item.group] = foodChenged[item.group].filter(
-      (iten) => iten.idChenge !== itemText.idChenge,
-    );
-
-    this.setState({ txtSale: newListText });
+    this.setState({ itemChenge: itemChenge.filter((a) => a.idChenge !== item.idChenge) });
   };
 
-  itemSelected = (itemText, item) => {
+  itemSelected = (item) => {
     const { additional, updateQuantityAdd, updateObsAndValueItem } = this.props;
-    const { listMenu: { menu: { foodChenged } } } = this.context;
+    const { itemChenge } = this.state;
 
     if (additional.length === 0) return;
 
-    const itemSelect = foodChenged[item.group].find(
-      (iten) => iten.idChenge === itemText.idChenge,
+    const itemSelect = itemChenge.find(
+      (iten) => iten.idChenge === item.idChenge,
     );
 
     additional.forEach((add) => {
@@ -178,7 +148,7 @@ class BarOrder extends React.Component {
     updateQuantityAdd(additional);
     updateObsAndValueItem(itemSelect.value, itemSelect.obs);
 
-    this.removeItem(itemText, item);
+    this.removeItem(item);
   };
 
   clearListAdds = (valueItem) => {
@@ -194,8 +164,10 @@ class BarOrder extends React.Component {
       additional,
       observations,
       valueItem,
+      counterRequestAmount,
     } = this.props;
-    const { txtSale } = this.state;
+    const { itemChenge } = this.state;
+    const { counterItens } = this.context;
 
     return (
       <div className="Viwer_buy">
@@ -245,38 +217,30 @@ class BarOrder extends React.Component {
                 style: 'currency', currency: 'BRL' })
             }
           </h4>
-          <button onClick={ () => this.addNewItem(item) } className="btm_add">
+          <button
+            onClick={ () => this.addNewItem(item) }
+            className="btm_add"
+            disabled={
+              item.additional.length === 0
+              && item.amount !== 0
+            }
+          >
             Adicionar
           </button>
         </div>
         <ul className="List_Adds">
           {
-            txtSale.map((sale) => (
-              <li key={ sale.id } className="Viwer_Item_buy">
-                <div
-                  className="Div_item_select"
-                  onClick={ () => this.itemSelected(sale, item) }
-                  onKeyDown={ this.itemSelected }
-                  role="button"
-                  tabIndex={ 0 }
-                >
-                  <p>
-                    { sale.text }
-                  </p>
-                  <div className="div_tags_buy">
-                    {
-                      sale.tags.isAdd && <hr id="tag_color_Add" />
-                    }
-                    { sale.tags.isObs && <hr id="tag_color_obs" /> }
-                  </div>
-                </div>
-                <button
-                  className="btm_remove"
-                  onClick={ () => this.removeItem(sale, item) }
-                >
-                  Remover
-                </button>
-              </li>
+            itemChenge.idChenge !== 0
+            && itemChenge.map((chenge) => chenge.amount > 0 && (
+              <BarOrderItem
+                key={ chenge.idChenge }
+                item={ chenge }
+                counterRequestAmount={ counterRequestAmount }
+                counterItens={ counterItens }
+                removeItem={ this.removeItem }
+                itemSelected={ this.itemSelected }
+                updateAmount={ this.updateAmount }
+              />
             ))
           }
         </ul>

@@ -238,7 +238,7 @@ class RequestsList extends React.Component {
 
     return (
       <section className="page-requests">
-        <div>
+        <div className="Content_list_order">
           <section className="header-request" id="Header">
             <div className="cost">
               <h4 className="value-total">{ `Total: R$ ${valueTotal.toFixed(2)}` }</h4>

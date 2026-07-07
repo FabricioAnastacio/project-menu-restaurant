@@ -180,22 +180,33 @@
   color: gold;
   padding: 5px 10px;
   font-size: 16px;
+  transition: all .2s ease-in-out;
 }
 
-.btm_remove {
-  color: white;
-  padding: 2px 8px;
+.btm_add_rm_new_item {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0 20px;
+    font-size: 20px;
+  }
 }
 
-.btm_add, .btm_remove {
+.btm_add {
   background-color: rgba(255, 0, 0, 0.507);
   border: 1px solid #961212;
   border-radius: 5px;
 }
 
-.btm_add:active, .btm_remove:active {
+.btm_add:active {
   transform: scale(.9);
   background-color: #961212;
+}
+
+.btm_add:disabled {
+  transform: scale(.9);
+  color: rgba(255, 217, 0, 0.699);
+  background-color: rgb(83, 0, 0);
 }
 
 .List_Item_buy {

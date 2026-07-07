@@ -12,7 +12,7 @@ import candy from './data/listCandy';
 import listHighlights from './data/listHighlights';
 import './App.css';
 
-// const SUNDAY = 0;
+const SUNDAY = 0;
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +35,7 @@ class App extends React.Component {
         },
         counterRequest: 0,
         valueTotal: 0,
-        deliveryDayOff: [],
+        deliveryDayOff: [SUNDAY],
       },
       locationScroll: {
         location: '',
