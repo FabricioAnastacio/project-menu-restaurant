@@ -103,18 +103,25 @@
   }
 }
 
+.icon-bin {
+  height: 20px;
+}
+
 .btn_remove {
   border-radius: 5px;
   border: 1px solid white;
 }
 
 .btn {
+  display: grid;
+  place-items: center;
   font-size: 18px;
   width: 30px;
   height: 30px;
   border-radius: 10px;
   border: 0;
   margin: 5px;
+  padding: 0;
 }
 
 .btn:active {
@@ -216,7 +223,7 @@
   display: grid;
   place-items: center;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.438);
+  background-color: rgb(19, 19, 19);
   border-bottom: 1px solid rgba(255, 255, 255, 0.164);
   position: fixed;
   padding: 15px 0;
@@ -231,12 +238,18 @@
 }
 
 .clear-all {
+  display: flex;
+  align-items: center;
   background-color: rgb(177, 4, 4);
   color: white;
   padding: 6px 10px;
   border-radius: 5px;
   border: 0;
   margin: 0 auto;
+  .icon-bin {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+  }
 }
 
 .Button-ConfirmCart {

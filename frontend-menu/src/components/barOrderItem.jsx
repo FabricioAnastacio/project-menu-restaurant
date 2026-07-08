@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import bin from '../pictures/icons8-lixeira-48.png';
 
 class BarOrderItem extends React.Component {
   constructor() {
@@ -73,7 +74,8 @@ class BarOrderItem extends React.Component {
           tabIndex={ 0 }
         >
           <p>
-            { `x${counterAmount} ${item.name} = ${value}` }
+            <span className="amout_txt">{ `x${counterAmount} ` }</span>
+            { ` ${item.name.split('-')[1]} = ${value}` }
           </p>
           <div className="div_tags_buy">
             {
@@ -87,7 +89,9 @@ class BarOrderItem extends React.Component {
             className="sell"
             onClick={ () => this.rmAmountItem(item) }
           >
-            -
+            { counterAmount === 1 ? (
+              <img className="icon-bin" src={ bin } alt="Apagar" />
+            ) : '-' }
           </button>
           <p>{ counterAmount }</p>
           <button

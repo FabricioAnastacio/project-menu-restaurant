@@ -5,6 +5,7 @@ import '../style/requestsList.css';
 import '../style/footer.css';
 import RenderItem from './RenderItem';
 import TransitionLink from '../helper/TransitionLink';
+import bin from '../pictures/icons8-lixeira-48.png';
 
 class RequestsList extends React.Component {
   constructor() {
@@ -285,6 +286,7 @@ class RequestsList extends React.Component {
               onClick={ () => this.removeAllItens() }
               className="clear-all"
             >
+              <img className="icon-bin" src={ bin } alt="Apagar" />
               Limpar lista
             </button>
             {

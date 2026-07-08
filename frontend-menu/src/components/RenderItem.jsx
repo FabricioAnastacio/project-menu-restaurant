@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import bin from '../pictures/icons8-lixeira-48.png';
 
 class RenderItem extends React.Component {
   constructor() {
@@ -81,12 +82,15 @@ class RenderItem extends React.Component {
                 </div>
               )
             }
+            <hr style={ { border: '0' } } />
             <div className="item_btms">
               <button
                 className="btn"
                 onClick={ () => removeItem(item, grup) }
               >
-                -
+                { item.amount === 1 ? (
+                  <img className="icon-bin" src={ bin } alt="Apagar" />
+                ) : '-' }
               </button>
               <p>{ item.amount }</p>
               <button

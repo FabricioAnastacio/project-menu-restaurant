@@ -37,6 +37,7 @@ class BarOrder extends React.Component {
         }
       });
     }
+
     this.setState({
       itemChenge: listInitial,
     });
@@ -89,7 +90,8 @@ class BarOrder extends React.Component {
       counterItens,
       updateObsAndValueItem,
     } = this.props;
-    const { itemChenge, amountChgSelect } = this.state;
+    const { amountChgSelect } = this.state;
+    const { listMenu: { menu: { foodChenged } } } = this.context;
 
     counterRequestAmount(counterItens + 1);
 
@@ -104,8 +106,10 @@ class BarOrder extends React.Component {
         {
           ...item,
           amount: amountChgSelect > 0 ? amountChgSelect : 1,
-          idChenge: itemChenge[itemChenge.length - 1]
-            ? itemChenge[itemChenge.length - 1].idChenge + 1 : 1,
+          idChenge: foodChenged[item.group][foodChenged[item.group].length - 1]
+            ? foodChenged[item.group][
+              foodChenged[item.group].length - 1
+            ].idChenge + 1 : 1,
           additional: additional.filter((add) => add.amount > 0),
           value: valueItem,
           obs: observations,
