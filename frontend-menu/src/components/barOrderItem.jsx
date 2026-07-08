@@ -20,6 +20,7 @@ class BarOrderItem extends React.Component {
   addAmoutItem = (item) => {
     const { counterRequestAmount, counterItens, updateAmount } = this.props;
 
+    console.log(counterItens);
     counterRequestAmount(counterItens + 1);
     if (item.group === 'additional' || item.group === 'combo') {
       updateAmount('add');

@@ -51,8 +51,6 @@ class BarOrder extends React.Component {
       item.group !== 'additional'
       && item.group !== 'combo'
     ) {
-      console.log(itemChenge);
-      console.log(foodChenged[item.group].filter((a) => a.id !== item.id));
       foodChenged[item.group] = [
         ...foodChenged[item.group].filter((a) => a.id !== item.id),
         ...itemChenge,
@@ -97,12 +95,12 @@ class BarOrder extends React.Component {
       observations,
       updateQuantityAdd,
       counterRequestAmount,
+      counterItens,
       updateObsAndValueItem,
     } = this.props;
-    const { counterRequest } = this.context;
     const { itemChenge, amountChgSelect } = this.state;
 
-    counterRequestAmount(counterRequest + 1);
+    counterRequestAmount(counterItens + 1);
 
     if (additional.length === 0) {
       this.updateAmount('add');
@@ -178,9 +176,9 @@ class BarOrder extends React.Component {
       observations,
       valueItem,
       counterRequestAmount,
+      counterItens,
     } = this.props;
     const { itemChenge, amountChgSelect } = this.state;
-    const { counterItens } = this.context;
 
     return (
       <div className="Viwer_buy">
@@ -294,5 +292,6 @@ BarOrder.propTypes = {
   updateObsAndValueItem: PropTypes.func.isRequired,
   updateQuantityAdd: PropTypes.func.isRequired,
   counterRequestAmount: PropTypes.func.isRequired,
+  counterItens: PropTypes.number.isRequired,
 };
 export default BarOrder;

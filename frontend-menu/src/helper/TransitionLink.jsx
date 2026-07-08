@@ -7,7 +7,7 @@ class TransitionLink extends React.Component {
   componentDidMount() {
     const { getLocationScroll } = this.context;
 
-    window.scrollTo(0, getLocationScroll());
+    window.scrollTo(0, getLocationScroll(window.location));
   }
 
   saveLocation = () => {
