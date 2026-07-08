@@ -102,10 +102,7 @@ class ItemComponent extends React.Component {
           {
             groupFood.includes(item.group) && (
               <TransitionLink
-                to={
-                  groupFood.includes(item.group)
-                  && `/item/${item.group}/${item.id}/#Header`
-                }
+                to={ `/item/${item.group}/${item.id}/#Header` }
                 className="Btm_Adit"
               >
                 {

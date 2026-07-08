@@ -51,6 +51,8 @@ class App extends React.Component {
   getLocationScroll = (location) => {
     const { prevLocationScroll, locationScroll } = this.state;
 
+    if (prevLocationScroll.location === '/') return 0;
+
     if (prevLocationScroll.location === location) {
       return prevLocationScroll.scroll;
     }

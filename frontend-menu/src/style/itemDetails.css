@@ -218,7 +218,13 @@
 .Div_clear_all_adds {
   display: flex;
   width: 90%;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Amount_item_Select {
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .Clear_all_adds {

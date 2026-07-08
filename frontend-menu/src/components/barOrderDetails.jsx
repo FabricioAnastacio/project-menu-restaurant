@@ -11,6 +11,7 @@ class BarOrder extends React.Component {
 
     this.state = {
       itemChenge: [],
+      amountChgSelect: 0,
     };
   }
 
@@ -99,7 +100,7 @@ class BarOrder extends React.Component {
       updateObsAndValueItem,
     } = this.props;
     const { counterRequest } = this.context;
-    const { itemChenge } = this.state;
+    const { itemChenge, amountChgSelect } = this.state;
 
     counterRequestAmount(counterRequest + 1);
 
@@ -113,7 +114,7 @@ class BarOrder extends React.Component {
         ...prevState.itemChenge,
         {
           ...item,
-          amount: 1,
+          amount: amountChgSelect > 0 ? amountChgSelect : 1,
           idChenge: itemChenge[itemChenge.length - 1]
             ? itemChenge[itemChenge.length - 1].idChenge + 1 : 1,
           additional: additional.filter((add) => add.amount > 0),
@@ -121,6 +122,7 @@ class BarOrder extends React.Component {
           obs: observations,
         },
       ],
+      amountChgSelect: 0,
     }));
 
     updateQuantityAdd(additional.map((add) => ({ ...add, amount: 0 })));
@@ -154,6 +156,7 @@ class BarOrder extends React.Component {
       if (addSelect) add.amount = addSelect.amount;
     });
 
+    this.setState({ amountChgSelect: itemSelect.amount });
     updateQuantityAdd(additional);
     updateObsAndValueItem(itemSelect.value, itemSelect.obs);
 
@@ -165,6 +168,7 @@ class BarOrder extends React.Component {
 
     updateQuantityAdd(additional.map((add) => ({ ...add, amount: 0 })));
     updateObsAndValueItem(valueItem, '');
+    this.setState({ amountChgSelect: 0 });
   };
 
   render() {
@@ -175,12 +179,15 @@ class BarOrder extends React.Component {
       valueItem,
       counterRequestAmount,
     } = this.props;
-    const { itemChenge } = this.state;
+    const { itemChenge, amountChgSelect } = this.state;
     const { counterItens } = this.context;
 
     return (
       <div className="Viwer_buy">
         <div className="Div_clear_all_adds">
+          <p className="Amount_item_Select">
+            { amountChgSelect > 0 && `x${amountChgSelect}` }
+          </p>
           <button
             className="Clear_all_adds"
             onClick={ () => this.clearListAdds(item.value) }
