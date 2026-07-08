@@ -20,7 +20,6 @@ class BarOrderItem extends React.Component {
   addAmoutItem = (item) => {
     const { counterRequestAmount, counterItens, updateAmount } = this.props;
 
-    console.log(counterItens);
     counterRequestAmount(counterItens + 1);
     if (item.group === 'additional' || item.group === 'combo') {
       updateAmount('add');
@@ -36,7 +35,7 @@ class BarOrderItem extends React.Component {
   };
 
   rmAmountItem = (item) => {
-    const { removeItem, updateAmount } = this.props;
+    const { removeItem, updateAmount, counterRequestAmount, counterItens } = this.props;
 
     if (item.group === 'additional' || item.group === 'combo') {
       updateAmount('rm');
@@ -48,6 +47,7 @@ class BarOrderItem extends React.Component {
       this.setState({
         counterAmount: item.amount,
       });
+      counterRequestAmount(counterItens - 1);
       if (item.amount === 0) removeItem(item);
     }
   };
@@ -59,6 +59,10 @@ class BarOrderItem extends React.Component {
     } = this.props;
     const { counterAmount } = this.state;
 
+    const value = (counterAmount * item.value).toLocaleString('pt-BR', {
+      style: 'currency', currency: 'BRL',
+    });
+
     return (
       <li className="Viwer_Item_buy">
         <div
@@ -69,7 +73,7 @@ class BarOrderItem extends React.Component {
           tabIndex={ 0 }
         >
           <p>
-            { `x${counterAmount} ${item.name} = ${item.value}` }
+            { `x${counterAmount} ${item.name} = ${value}` }
           </p>
           <div className="div_tags_buy">
             {

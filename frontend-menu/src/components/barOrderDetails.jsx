@@ -11,7 +11,7 @@ class BarOrder extends React.Component {
 
     this.state = {
       itemChenge: [],
-      amountChgSelect: 0,
+      amountChgSelect: 1,
     };
   }
 
@@ -74,16 +74,7 @@ class BarOrder extends React.Component {
       });
     } else if (item.amount === 0) {
       this.setState({
-        itemChenge: [{
-          idItem: 0,
-          idChenge: 0,
-          name: '',
-          group: '',
-          obs: '',
-          additional: [],
-          amount: 0,
-          value: 0,
-        }],
+        itemChenge: [],
       });
     }
   };
@@ -120,7 +111,7 @@ class BarOrder extends React.Component {
           obs: observations,
         },
       ],
-      amountChgSelect: 0,
+      amountChgSelect: 1,
     }));
 
     updateQuantityAdd(additional.map((add) => ({ ...add, amount: 0 })));
@@ -128,17 +119,16 @@ class BarOrder extends React.Component {
   };
 
   removeItem = (item) => {
-    const { counterRequestAmount } = this.props;
-    const { counterItens } = this.context;
     const { itemChenge } = this.state;
-
-    counterRequestAmount(counterItens - 1);
 
     this.setState({ itemChenge: itemChenge.filter((a) => a.idChenge !== item.idChenge) });
   };
 
   itemSelected = (item) => {
-    const { additional, updateQuantityAdd, updateObsAndValueItem } = this.props;
+    const {
+      additional, updateQuantityAdd, updateObsAndValueItem,
+      counterRequestAmount, counterItens,
+    } = this.props;
     const { itemChenge } = this.state;
 
     if (additional.length === 0) return;
@@ -157,6 +147,7 @@ class BarOrder extends React.Component {
     this.setState({ amountChgSelect: itemSelect.amount });
     updateQuantityAdd(additional);
     updateObsAndValueItem(itemSelect.value, itemSelect.obs);
+    counterRequestAmount(counterItens - item.amount);
 
     this.removeItem(item);
   };
@@ -166,7 +157,7 @@ class BarOrder extends React.Component {
 
     updateQuantityAdd(additional.map((add) => ({ ...add, amount: 0 })));
     updateObsAndValueItem(valueItem, '');
-    this.setState({ amountChgSelect: 0 });
+    this.setState({ amountChgSelect: 1 });
   };
 
   render() {
@@ -184,7 +175,7 @@ class BarOrder extends React.Component {
       <div className="Viwer_buy">
         <div className="Div_clear_all_adds">
           <p className="Amount_item_Select">
-            { amountChgSelect > 0 && `x${amountChgSelect}` }
+            { amountChgSelect > 1 && `x${amountChgSelect}` }
           </p>
           <button
             className="Clear_all_adds"
@@ -227,7 +218,7 @@ class BarOrder extends React.Component {
             style={ { color: 'gold' } }
           >
             {
-              (valueItem).toLocaleString('pt-BR', {
+              (amountChgSelect * valueItem).toLocaleString('pt-BR', {
                 style: 'currency', currency: 'BRL' })
             }
           </h4>
