@@ -1,17 +1,17 @@
 html[data-direction="back"]::view-transition-old(page) {
-  animation: back-old-slide .2s linear;
+  animation: back-old-slide 1s linear;
 }
 
 html[data-direction="back"]::view-transition-new(page) {
-  animation: back-new-slide .2s linear;
+  animation: back-new-slide 1s linear;
 }
 
 html[data-direction="next"]::view-transition-old(page) {
-  animation: next-old-slide .2s linear;
+  animation: next-old-slide 1s linear;
 }
 
 html[data-direction="next"]::view-transition-new(page) {
-  animation: next-new-slide .2s linear;
+  animation: next-new-slide 1s linear;
 }
 
 ::view-transition-group(footer) {

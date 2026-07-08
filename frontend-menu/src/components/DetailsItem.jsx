@@ -73,6 +73,7 @@ class DetailsItem extends React.Component {
           <TransitionLink
             to="/"
             className="Return_icon"
+            direction="back"
           >
             <img src={ returnIcon } alt="Voltar" />
           </TransitionLink>

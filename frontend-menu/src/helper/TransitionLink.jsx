@@ -17,16 +17,16 @@ class TransitionLink extends React.Component {
   };
 
   render() {
-    const { to, children, navigate, className, direction, funcClick } = this.props;
+    const { to, children, navigate, className, direction, disabled } = this.props;
 
     if (!document.startViewTransition) {
       return (
         <button
           className={ className }
+          disabled={ disabled }
           onClick={ () => {
             navigate(to);
             this.saveLocation();
-            funcClick();
           } }
         >
           { children }
@@ -37,6 +37,7 @@ class TransitionLink extends React.Component {
     return (
       <button
         className={ className }
+        disabled={ disabled }
         onClick={ () => {
           document.documentElement.dataset.direction = direction;
           document.startViewTransition(() => {
@@ -59,7 +60,7 @@ TransitionLink.propTypes = {
   className: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   direction: PropTypes.string.isRequired,
-  funcClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default navigateLink(TransitionLink);

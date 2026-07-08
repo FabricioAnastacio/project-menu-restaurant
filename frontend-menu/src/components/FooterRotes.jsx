@@ -44,7 +44,7 @@ class FooterRotes extends React.Component {
               to="/"
               className="iconRote"
               direction="back"
-              funcClick={ this.handleNav }
+              disabled={ window.location.pathname === '/' }
             >
               <img src={ iconsFastFood } alt="Cardapio" />
               Cardapio
@@ -55,7 +55,7 @@ class FooterRotes extends React.Component {
               to="/cart"
               className="iconRote snack"
               direction="next"
-              funcClick={ this.handleNav }
+              disabled={ window.location.pathname === '/cart' }
             >
               {
                 counterItens > 0 && <span className="counter-car">{ counterItens }</span>
