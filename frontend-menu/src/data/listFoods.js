@@ -99,7 +99,7 @@ const listFoods = {
   combo: [
     {
       id: 1,
-      displayDate: [5, 6],
+      displayDate: [5],
       obs: '',
       img: foods.comboHawk,
       name: '🔥-Combo Hawk Bacon',
@@ -127,7 +127,7 @@ const listFoods = {
     },
     {
       id: 3,
-      displayDate: [],
+      displayDate: [6],
       obs: '',
       img: foods.comboTitanico,
       name: '🔥-Combo Artesanal Titãnico',
@@ -233,7 +233,7 @@ const listFoods = {
       img: foods.babyStitch,
       name: '8-Baby Stitch ARTESANAL',
       description: 'Pequeno no tamanho. Caótico no sabor. Uma explosão inesperada a cada mordida.',
-      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Cheddar', ' Bacon fatiado', ' Molho especial', ' (ACOMPANHA FRITAS POKÊ 150G)'],
+      ingredients: ['Pão brioche', ' Blend bovino 120g', ' Cheddar', ' Bacon fatiado', ' Molho especial', ' (ACOMPANHA KATANA BATATA 150G)'],
       group: 'handmade',
       additional: [],
       value: 25.00,
@@ -291,7 +291,7 @@ const listFoods = {
       id: 6,
       obs: '',
       img: foods.respiracaoChamas,
-      name: '13-Respiração das Chamas',
+      name: '13-Respiração das Chamas ARTESANAL',
       description: 'Forjado para pedir mais ele surge, Respiração das chamas. Um lanche tropical, doce no primeiro impacto, insano na última mordida... Ele é ousado, intenso e feito para quem busca sabor de verdade.',
       ingredients: ['Pão brioche', ' 1 Blends bovinos de 120g', ' Bacon fatiado', ' Mussarela', ' Abacaxi com Mel', ' Molho especial barbecue', ' Alface', ' (ACOMPANHA KATANA BATATA 150G)'],
       group: 'handmade',
@@ -315,8 +315,8 @@ const listFoods = {
   additional: [
     {
       id: 1,
-      img: foods.poke,
-      name: '1-Fritas pokê 150G',
+      img: foods.katana,
+      name: '1-Katana batata 150G',
       description: '150g',
       ingredients: ['Batata 150g', 'Sal'],
       group: 'additional',
@@ -327,20 +327,8 @@ const listFoods = {
     },
     {
       id: 2,
-      img: foods.katana,
-      name: '2-Katana batata 150G',
-      description: '150g',
-      ingredients: ['Batata 150g', 'Sal'],
-      group: 'additional',
-      additional: [],
-      value: 5.50,
-      obs: '',
-      amount: 0,
-    },
-    {
-      id: 3,
       img: foods.maineseCasa,
-      name: '3-Maionese da Casa Tradicional 30g',
+      name: '2-Maionese da Casa Tradicional 30g',
       description: '30g',
       ingredients: ['Maionese'],
       group: 'additional',
