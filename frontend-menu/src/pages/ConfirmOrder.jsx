@@ -58,6 +58,7 @@ class ConfirmOrder extends React.Component {
           foodChenged,
         },
       },
+      updateCounterRequest,
     } = this.context;
     const { valueTotal } = this.context;
 
@@ -86,6 +87,7 @@ class ConfirmOrder extends React.Component {
 
     sendMensage(this.state, order);
 
+    updateCounterRequest(0);
     this.removeAllItems();
   };
 

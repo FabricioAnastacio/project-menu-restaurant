@@ -51,7 +51,8 @@ class ListOrder extends React.Component {
                 <p>{ item.amount }</p>
                 <div className="Iten_tags">
                   {
-                    item.additional.find((ing) => ing.amount > 0)
+                    (item.group !== 'drinks' && item.group !== 'candy')
+                    && item.additional.find((ing) => ing.amount > 0)
                     && <hr id="tag_color_Add" />
                   }
                   { item.obs !== '' && <hr id="tag_color_obs" /> }
