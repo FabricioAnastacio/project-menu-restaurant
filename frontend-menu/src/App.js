@@ -13,6 +13,8 @@ import listHighlights from './data/listHighlights';
 import './App.css';
 
 const SUNDAY = 0;
+const MONDAY = 1;
+const TUESDAY = 2;
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +37,7 @@ class App extends React.Component {
         },
         counterRequest: 0,
         valueTotal: 0,
-        deliveryDayOff: [SUNDAY],
+        deliveryDayOff: [SUNDAY, MONDAY, TUESDAY],
       },
       locationScroll: {
         location: '',
