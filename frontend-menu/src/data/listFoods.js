@@ -332,6 +332,7 @@ const listFoods = {
       description: 'Batata, bacon, cheddar Premium e mussarela derretida',
       ingredients: ['Batata', ' Bacon', ' Cheddar PREMIUM', ' Mussarala Derretida'],
       group: 'additional',
+      additional: [],
       value: 35.00,
       obs: '',
       amount: 0,
