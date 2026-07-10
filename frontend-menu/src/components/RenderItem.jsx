@@ -131,8 +131,10 @@ class RenderItem extends React.Component {
                     <p>Adicionais:</p>
                     { item.additional.map((add, keyAdd) => (
                       <li key={ keyAdd } className="Item_aditional_order">
-                        <p>{ add.amount }</p>
-                        <p>{ add.name }</p>
+                        <div className="Amount_name">
+                          <p>{ add.amount }</p>
+                          <p>{ add.name }</p>
+                        </div>
                         <p>{ `R$${add.value.toFixed(2)}` }</p>
                       </li>
                     )) }

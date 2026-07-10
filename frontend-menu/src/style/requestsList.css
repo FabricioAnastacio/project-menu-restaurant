@@ -208,7 +208,15 @@
   border-radius: 10px;
   padding: 10px 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  p {
+    padding: 0 20px;
+  }
+}
+
+.Amount_name {
+  display: flex;
+  align-items: center;
 }
 
 .alertErro-List {
