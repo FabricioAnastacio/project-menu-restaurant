@@ -8,8 +8,8 @@ const minutes = String(data.getMinutes()).padStart(2, '0');
 const getAditionals = (item) => {
   return item.additional.length > 0
     ? `
-    Add:${item.additional.map((add) => add.amount > 0 && `
-        ${add.amount}__${add.name}`).join(',')}`
+    Add:${item.additional.map((add) => add.amount > 0 ? `
+        ${add.amount}__${add.name}` : '').join(',')}`
     : '';
 };
 
