@@ -251,6 +251,7 @@ class BarOrder extends React.Component {
               <BarOrderItem
                 key={ chenge.idChenge }
                 item={ chenge }
+                additional={ additional }
                 counterRequestAmount={ counterRequestAmount }
                 counterItens={ counterItens }
                 removeItem={ this.removeItem }

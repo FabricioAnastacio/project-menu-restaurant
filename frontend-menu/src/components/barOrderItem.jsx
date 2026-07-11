@@ -19,13 +19,13 @@ class BarOrderItem extends React.Component {
   }
 
   addAmoutItem = (item) => {
-    const { counterRequestAmount, counterItens, updateAmount } = this.props;
+    const { counterRequestAmount, counterItens, updateAmount, additional } = this.props;
 
     counterRequestAmount(counterItens + 1);
     if (
       item.group === 'additional'
       || item.group === 'combo'
-      || item.additional.length === 0
+      || additional.length === 0
     ) {
       updateAmount('add');
       this.setState({
@@ -40,13 +40,16 @@ class BarOrderItem extends React.Component {
   };
 
   rmAmountItem = (item) => {
-    const { removeItem, updateAmount, counterRequestAmount, counterItens } = this.props;
+    const {
+      removeItem, updateAmount,
+      counterRequestAmount, counterItens, additional,
+    } = this.props;
 
     counterRequestAmount(counterItens - 1);
     if (
       item.group === 'additional'
       || item.group === 'combo'
-      || item.additional.length === 0
+      || additional.length === 0
     ) {
       updateAmount('rm');
       this.setState({
@@ -136,6 +139,7 @@ BarOrderItem.propTypes = {
   counterRequestAmount: PropTypes.func.isRequired,
   counterItens: PropTypes.number.isRequired,
   updateAmount: PropTypes.func.isRequired,
+  additional: PropTypes.shape([]).isRequired,
 };
 
 export default BarOrderItem;
