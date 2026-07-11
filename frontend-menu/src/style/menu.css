@@ -111,12 +111,11 @@ ul {
 }
 
 .Menu_item {
-  align-items: center;
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.253);
+  background-color: rgba(0, 0, 0, 0.418);
   border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.603);
+  border: 1px solid black;
   list-style: none;
   margin: 10px 10px;
   padding: 10px;
@@ -131,17 +130,18 @@ ul {
   }
 }
 
+.Img_Item_btm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .AriaButton {
   text-align: center;
   background-color: rgb(167, 0, 0);
   border: 1px solid black;
   border-radius: 10px;
-  a {
-    color: white;
-  }
-  p {
-    animation: pulsar 2.5s infinite;
-  }
 }
 
 .imgs-menu {
@@ -153,6 +153,15 @@ ul {
   position: relative;
   width: 100px;
   transition: .7s;
+}
+
+.Btm_Adit {
+  background-color: rgba(167, 0, 0, 0.692);
+  border: 1px solid rgba(167, 0, 0, 0.452);
+  border-radius: 5px;
+  color: gold;
+  padding: 5px 15px;
+  margin-top: 10px;
 }
 
 .Description_Item, .Btm-fullImg {

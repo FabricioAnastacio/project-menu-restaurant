@@ -1,8 +1,11 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../style/formDataClient.css';
+import TransitionLink from '../helper/TransitionLink';
+import cardIcon from '../pictures/icons8-cartão-de-crédito-64.png';
+import dimIcon from '../pictures/icons8-money-48.png';
+import pixIcon from '../pictures/icons8-pix-48.png';
 
 class FormDataClient extends React.Component {
   constructor() {
@@ -14,14 +17,24 @@ class FormDataClient extends React.Component {
       cash: false,
       isBloq: true,
     };
+
+    this.pairMap = {
+      pix: ['card', 'cash'],
+      card: ['pix', 'cash'],
+      cash: ['pix', 'card'],
+    };
   }
 
   handleChengePaymant = ({ target }) => {
     const { pix, card, cash } = this.state;
     const { name, checked } = target;
+    const relatedKey = this.pairMap[name];
 
+    if (!checked) return;
     this.setState({
       [name]: checked,
+      [relatedKey[0]]: !checked,
+      [relatedKey[1]]: !checked,
       isBloq: (pix || card || cash || checked),
     });
   };
@@ -50,37 +63,59 @@ class FormDataClient extends React.Component {
       <div className="Form-Payment">
         <h4>Forma de Pagamento:</h4>
         <div className="Payment">
-          <label htmlFor="cash" className="Label-pay">
-            Dinheiro
-            <input
-              onInvalid={
-                (e) => e.target.setCustomValidity('Selecione uma forma de pagamento!')
-              }
-              type="checkbox"
-              className="Checkbox"
-              checked={ cash }
-              name="cash"
-              id="cash"
-              onChange={ this.handleChengePaymant }
-            />
-          </label>
-          <label htmlFor="pix" className="Label-pay">
-            Pix
-            <input
-              type="checkbox"
-              className="Checkbox"
-              checked={ pix }
-              name="pix"
-              onChange={ this.handleChengePaymant }
-            />
-          </label>
-          <label htmlFor="card" className="Label-pay">
+          <div className="cash_clientChange">
+            <label htmlFor="cash" className={ `Label-pay Label-${cash}` }>
+              <img className="icon_payment" src={ dimIcon } alt="Dinheiro" />
+              Dinheiro
+              <input
+                onInvalid={
+                  (e) => e.target.setCustomValidity('Selecione uma forma de pagamento!')
+                }
+                type="checkbox"
+                className="Checkbox"
+                checked={ cash }
+                name="cash"
+                id="cash"
+                onChange={ this.handleChengePaymant }
+              />
+            </label>
+            <div className="Div-form" style={ { display: cash ? 'flex' : 'none' } }>
+              <input
+                required
+                className="Data-Client"
+                name="clientChange"
+                id="clientChange"
+                value={ clientChange === 0 ? '' : clientChange }
+                type="number"
+                onChange={ handleChenge }
+                autoComplete="off"
+              />
+              <label htmlFor="clientChange" className="Data-Label">
+                Troco para
+              </label>
+            </div>
+          </div>
+          <label htmlFor="card" className={ `Label-pay Label-${card}` }>
+            <img className="icon_payment" src={ cardIcon } alt="Cartão" />
             Cartão
             <input
               type="checkbox"
               className="Checkbox"
               checked={ card }
               name="card"
+              id="card"
+              onChange={ this.handleChengePaymant }
+            />
+          </label>
+          <label htmlFor="pix" className={ `Label-pay Label-${pix}` }>
+            <img className="icon_payment" src={ pixIcon } alt="Pix" />
+            Pix
+            <input
+              type="checkbox"
+              className="Checkbox"
+              checked={ pix }
+              name="pix"
+              id="pix"
               onChange={ this.handleChengePaymant }
             />
           </label>
@@ -91,21 +126,6 @@ class FormDataClient extends React.Component {
         >
           *Selecione uma ou mais formas de pagamento
         </p>
-        <div className="Div-form" style={ { display: cash ? 'flex' : 'none' } }>
-          <input
-            required
-            className="Data-Client"
-            name="clientChange"
-            id="clientChange"
-            value={ clientChange === 0 ? '' : clientChange }
-            type="number"
-            onChange={ handleChenge }
-            autoComplete="off"
-          />
-          <label htmlFor="change" className="Data-Label">
-            Troco para
-          </label>
-        </div>
       </div>
     );
   };
@@ -219,9 +239,13 @@ class FormDataClient extends React.Component {
             this.renderPayment()
           }
           <div className="Btm-order">
-            <button className="Return">
-              <Link to="/cart" className="Link">Voltar</Link>
-            </button>
+            <TransitionLink
+              to="/cart"
+              className="Return"
+              direction="back"
+            >
+              Voltar
+            </TransitionLink>
             <button
               type="submit"
               className="Send-Order"

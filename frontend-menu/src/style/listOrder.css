@@ -17,7 +17,7 @@
   margin: 0;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.644);
   margin-bottom: 6px;
-  padding: 0;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,11 +30,11 @@
 .Iten-value {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 80%;
 }
 
 .Iten-name {
-  width: 70%;
+  width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -53,12 +53,4 @@
   h3 {
     margin-top: 10px;
   }
-}
-
-.Tag-Item {
-  color: black;
-  background-color: yellow;
-  padding: 0 5px;
-  border-radius: 5px;
-  font-size: 9px;
 }

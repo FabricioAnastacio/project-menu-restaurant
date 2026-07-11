@@ -1,94 +1,81 @@
 import React from 'react';
-import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import returnIcon from '../pictures/icons8-forward-100.png';
 import logo from '../pictures/logo.jpg';
 import AppContext from '../context/AppContext';
-import { addItem, rmItem } from '../services/addOrRmItem';
+import ItemIngredint from './ItemIngredint';
+import BarOrder from './barOrderDetails';
+import TransitionLink from '../helper/TransitionLink';
 
 class DetailsItem extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      counterItem: 0,
-      groupFood: ['combo', 'classic', 'handmade', 'additional'],
+      valueItem: 0,
+      additional: [],
+      ingOpem: false,
+      observations: '',
     };
   }
 
-  addNewItem = (item) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    const { groupFood } = this.state;
-    let newAmount = 0;
+  componentDidMount() {
+    const { item } = this.props;
 
-    if (groupFood.includes(item.group)) {
-      const { newList, amount } = addItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = addItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
+    this.setState({ valueItem: item.value });
 
-    this.setState({ counterItem: newAmount });
+    if (item.group === 'combo' || item.group === 'additional') return;
+
+    this.setState({
+      additional: item.additional.map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
+    });
+  }
+
+  chengeValueItem = (value) => {
+    this.setState((prevState) => ({
+      valueItem: prevState.valueItem + value,
+    }));
   };
 
-  removeItem = (item) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    const { groupFood } = this.state;
-    let newAmount = 0;
-
-    if (groupFood.includes(item.group)) {
-      const { newList, amount } = rmItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = rmItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
-
-    this.setState({ counterItem: newAmount });
+  updateQuantityAdd = (newList) => {
+    this.setState({
+      additional: newList,
+    });
   };
 
-  getCounter = ({ id, group }) => {
-    const { counterItem, groupFood } = this.state;
-    const { listMenu: { menu: { food, candy, drinks } } } = this.context;
-
-    if (counterItem > 0) {
-      return counterItem;
-    }
-
-    if (groupFood.includes(group)) {
-      return food[group][id - 1].amount;
-    }
-
-    if (group === 'candy') return candy[id - 1].amount;
-
-    return drinks[id - 1].amount;
+  updateObsAndValueItem = (value, observations) => {
+    this.setState({
+      valueItem: value,
+      observations,
+    });
   };
 
-  getHash = ({ id, group }) => {
-    const { groupFood } = this.state;
+  toggleIngredients = () => {
+    this.setState((prevState) => ({
+      ingOpem: !prevState.ingOpem,
+    }));
+  };
 
-    if (group === groupFood[0]) return group;
-    if (groupFood.includes(group) && id - 1 === 0) return group;
-
-    return `${group}item${id - 1}`;
+  chengeObs = ({ target: { value } }) => {
+    this.setState({
+      observations: value,
+    });
   };
 
   render() {
-    const { item } = this.props;
-    const itemValue = item.value.toLocaleString('pt-BR', {
-      style: 'currency', currency: 'BRL' });
+    const { item, counterRequestAmount, counterItens } = this.props;
+    const { valueItem, additional, ingOpem, observations } = this.state;
 
     return (
       <section className="Section-DetailsItem" id="Header">
         <header className="Header_top">
-          <HashLink to={ `/#${this.getHash(item)}` } className="Return_icon">
+          <TransitionLink
+            to="/"
+            className="Return_icon"
+            direction="back"
+          >
             <img src={ returnIcon } alt="Voltar" />
-          </HashLink>
+          </TransitionLink>
           <h1 className="Header_title">DETALHES</h1>
           <img className="Header_logo" src={ logo } alt="Logo" />
         </header>
@@ -98,74 +85,135 @@ class DetailsItem extends React.Component {
               <span>{ item.name.split('-')[0] }</span>
               { item.name.split('-')[1] }
             </h3>
-            <h3 className="Details_value">{ itemValue }</h3>
-          </div>
-          <p className="Description">{ item.description }</p>
-          <img src={ item.img } alt={ item.name } />
-          <div className="Viwer_buy">
-            <h4
-              className="Value_actual"
-              style={ { color: item.amount > 0 ? 'gold' : 'white' } }
-            >
+            <h3 className="Details_value">
               {
-                (item.value * item.amount).toLocaleString('pt-BR', {
+                item.value.toLocaleString('pt-BR', {
                   style: 'currency', currency: 'BRL' })
               }
-            </h4>
-            <div className="Buy_item">
-              {
-                item.amount > 0 && (
-                  <>
-                    <button
-                      onClick={ () => this.removeItem(item) }
-                      className="btm_remove"
-                    >
-                      -
-                    </button>
-                    <p className="Item_amount">{ this.getCounter(item) }</p>
-                  </>
-                )
-              }
-              <button onClick={ () => this.addNewItem(item) } className="btm_add">
-                { item.amount > 0 ? '+' : 'Adicionar' }
-              </button>
-            </div>
+            </h3>
           </div>
-          <div className="Details_ingredients">
-            <h3 className="Ingredients_title">Ingredientes:</h3>
-            <ul className="Ingredients_list">
+          <p className="Description">{ item.description }</p>
+          <img
+            src={ item.img }
+            alt={ item.name }
+          />
+          <div
+            className="Details_ingredients"
+            role="button"
+            onClick={ () => this.toggleIngredients() }
+            onKeyDown={ this.toggleIngredients }
+            tabIndex={ 0 }
+          >
+            <h3 className="Ingredients_title">
+              Ingredientes:
+            </h3>
+            <ul className={ `Ingredients_list listOpem-${ingOpem}` }>
               {
                 item.ingredients.map((ingr, i) => (
                   <li
                     key={ i }
-                    className="Ingredient"
+                    className={ `Ingredient ingOpem-${ingOpem}` }
                   >
                     { ingr }
                   </li>
                 ))
               }
+              <p className="btm_more_viwer">
+                {ingOpem ? 'Ver menos...' : 'Ver mais...' }
+              </p>
             </ul>
           </div>
-          <HashLink className="Btm_Up" to={ `/#${this.getHash(item)}` }>Sair</HashLink>
+          {
+            additional.length > 0 && (
+              <section className="Section_additional">
+                <div className="Title_section">
+                  <h3>Adicionais</h3>
+                  <hr id="tag_color_Add" />
+                </div>
+                <ul className="List_additional">
+                  {
+                    additional.map((ingredint, i) => (
+                      <ItemIngredint
+                        key={ i }
+                        className="Item_additional"
+                        ingredient={ ingredint }
+                        chengeValueItem={ this.chengeValueItem }
+                      />
+                    ))
+                  }
+                </ul>
+              </section>
+            )
+          }
+          <section className="Section_obs">
+            <div className="Title_section">
+              <h3 className="Title_obs">Observações</h3>
+              <hr id="tag_color_obs" />
+            </div>
+            <textarea
+              className="Text_obs"
+              placeholder={
+                additional.length === 0
+                  ? 'Voce pode colocar observações na tela de pedidos'
+                  : 'Ex: Sem cebola, por favor!'
+              }
+              disabled={ additional.length === 0 }
+              value={ observations }
+              name="obs"
+              onChange={ this.chengeObs }
+            />
+          </section>
+          <section className="Section_info">
+            <h4 className="Info_h4">Informações:</h4>
+            <p className="Info_p">
+              <hr id="tag_color_Add" />
+              = &quot;Possue adicionais&quot;
+            </p>
+            <p className="Info_p">
+              <hr id="tag_color_obs" />
+              = &quot;Possue observações&quot;
+            </p>
+            <p className="Info_text">
+              - Cada item adicionado é contabilizado no carrinho,
+              para finalizar a compra, valte a tela menu e siga em &quot;Proximo&quot;.
+            </p>
+          </section>
         </div>
+        <BarOrder
+          item={ item }
+          additional={ additional }
+          observations={ observations }
+          valueItem={ valueItem }
+          counterItens={ counterItens }
+          counterRequestAmount={ counterRequestAmount }
+          updateQuantityAdd={ this.updateQuantityAdd }
+          updateObsAndValueItem={ this.updateObsAndValueItem }
+        />
       </section>
     );
   }
 }
 
 DetailsItem.contextType = AppContext;
-
 DetailsItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    idList: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
     group: PropTypes.string.isRequired,
     amount: PropTypes.number.isRequired,
+    obs: PropTypes.string.isRequired,
+    additional: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      amount: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
+  counterItens: PropTypes.number.isRequired,
 };
-
 export default DetailsItem;

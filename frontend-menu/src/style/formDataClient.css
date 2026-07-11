@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   width: 80%;
 }
 
@@ -67,15 +67,67 @@
 
 .Payment {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
   padding-left: 10px;
   margin-bottom: 20px;
 }
 
+.cash_clientChange {
+  display: flex;
+  width: 100%;
+  .Div-form {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+  }
+}
+
 .Label-pay {
   display: flex;
-  align-items: center;
+  align-items: center;;
   padding: 5px 10px;
+  transform: scale(.9);
+}
+
+.Label-true {
+  border-color: gold;
+  transform: scale(1);
+}
+
+.icon_payment {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.Checkbox {
+  appearance: none;
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-left: 5px;
+}
+
+.Checkbox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center;
+  transition: 0.125s transform ease-in-out;
+  box-shadow: inset 1rem 1rem gold;
+}
+
+.Checkbox:checked {
+  background-color: #000000b2;
+  border-color: gold;
+}
+
+.Checkbox:checked::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .Btm-order {

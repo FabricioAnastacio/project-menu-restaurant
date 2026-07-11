@@ -5,9 +5,14 @@ import logo from '../pictures/logo.jpg';
 
 class ItemPromotional extends React.Component {
   render() {
-    const { item, className } = this.props;
+    const { item, className, opemImag } = this.props;
     return (
-      <li className={ className }>
+      <li
+        onClick={ () => opemImag(item.img, item.nameHighlights, item.group) }
+        className={ className }
+        onKeyDown={ opemImag }
+        aria-hidden
+      >
         <HashLink
           smooth
           to={
@@ -44,6 +49,7 @@ ItemPromotional.propTypes = {
     img: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string.isRequired,
+  opemImag: PropTypes.func.isRequired,
 };
 
 export default ItemPromotional;
