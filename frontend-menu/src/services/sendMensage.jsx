@@ -9,7 +9,8 @@ const getAditionals = (item) => {
   let addSelected;
   if (item.additional.length > 0) {
     addSelected = item.additional.filter((add) => add.amount > 0);
-  } 
+  }
+
   return addSelected.length > 0
     ? `
     Add:${addSelected.map((add) => `
