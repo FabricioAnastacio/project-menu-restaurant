@@ -10,10 +10,10 @@ const getAditionals = (item) => {
   if (item.additional.length > 0) {
     addSelected = item.additional.filter((add) => add.amount > 0);
     return addSelected.length > 0
-    ? `
-    Add:${addSelected.map((add) => `
-        ${add.amount}__${add.name}`).join(',')}`
-    : '';
+      ? `
+      Add:${addSelected.map((add) => `
+          ${add.amount}__${add.name}`).join(',')}`
+      : '';
   }
 };
 
