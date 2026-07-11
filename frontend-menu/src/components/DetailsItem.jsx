@@ -21,14 +21,13 @@ class DetailsItem extends React.Component {
 
   componentDidMount() {
     const { item } = this.props;
-    const { listMenu: { menu: { ingAdicional } } } = this.context;
 
     this.setState({ valueItem: item.value });
 
     if (item.group === 'combo' || item.group === 'additional') return;
 
     this.setState({
-      additional: ingAdicional[item.group].map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
+      additional: item.additional.map((ing) => ({ ...ing, amount: 0 })), // somente insere os adicionais possiveis
     });
   }
 
@@ -153,7 +152,12 @@ class DetailsItem extends React.Component {
             </div>
             <textarea
               className="Text_obs"
-              placeholder="Ex: Sem cebola, por favor!"
+              placeholder={
+                additional.length === 0
+                  ? 'Voce pode colocar observações na tela de pedidos'
+                  : 'Ex: Sem cebola, por favor!'
+              }
+              disabled={ additional.length === 0 }
               value={ observations }
               name="obs"
               onChange={ this.chengeObs }

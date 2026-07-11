@@ -51,6 +51,7 @@ class BarOrder extends React.Component {
     if (
       item.group !== 'additional'
       && item.group !== 'combo'
+      && item.additional.length !== 0
     ) {
       foodChenged[item.group] = [
         ...foodChenged[item.group].filter((a) => a.id !== item.id),
@@ -90,7 +91,7 @@ class BarOrder extends React.Component {
       counterItens,
       updateObsAndValueItem,
     } = this.props;
-    const { amountChgSelect } = this.state;
+    const { amountChgSelect, itemChenge } = this.state;
     const { listMenu: { menu: { foodChenged } } } = this.context;
 
     counterRequestAmount(counterItens + 1);
@@ -100,16 +101,22 @@ class BarOrder extends React.Component {
       return;
     }
 
+    const endIdFoodCheng = foodChenged[item.group].length > 0
+      ? foodChenged[item.group][foodChenged[item.group].length - 1].idChenge
+      : 0;
+    const endIdItemCheng = itemChenge.length > 0
+      ? itemChenge[itemChenge.length - 1].idChenge
+      : 0;
+
+    const newIdChenge = endIdFoodCheng > endIdItemCheng ? endIdFoodCheng : endIdItemCheng;
+
     this.setState((prevState) => ({
       itemChenge: [
         ...prevState.itemChenge,
         {
           ...item,
           amount: amountChgSelect > 0 ? amountChgSelect : 1,
-          idChenge: foodChenged[item.group][foodChenged[item.group].length - 1]
-            ? foodChenged[item.group][
-              foodChenged[item.group].length - 1
-            ].idChenge + 1 : 1,
+          idChenge: newIdChenge + 1,
           additional: additional.filter((add) => add.amount > 0),
           value: valueItem,
           obs: observations,

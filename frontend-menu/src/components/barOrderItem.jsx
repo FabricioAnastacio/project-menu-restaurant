@@ -22,7 +22,11 @@ class BarOrderItem extends React.Component {
     const { counterRequestAmount, counterItens, updateAmount } = this.props;
 
     counterRequestAmount(counterItens + 1);
-    if (item.group === 'additional' || item.group === 'combo') {
+    if (
+      item.group === 'additional'
+      || item.group === 'combo'
+      || item.additional.length === 0
+    ) {
       updateAmount('add');
       this.setState({
         counterAmount: item.amount + 1,
@@ -39,7 +43,11 @@ class BarOrderItem extends React.Component {
     const { removeItem, updateAmount, counterRequestAmount, counterItens } = this.props;
 
     counterRequestAmount(counterItens - 1);
-    if (item.group === 'additional' || item.group === 'combo') {
+    if (
+      item.group === 'additional'
+      || item.group === 'combo'
+      || item.additional.length === 0
+    ) {
       updateAmount('rm');
       this.setState({
         counterAmount: item.amount - 1,

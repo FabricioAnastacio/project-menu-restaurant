@@ -24,7 +24,6 @@ class App extends React.Component {
       value: {
         listMenu: {
           menu: {
-            ingAdicional: food.ingAdicional,
             food,
             drinks,
             candy,

@@ -194,7 +194,9 @@
   border-radius: 5px;
   color: white;
   width: 90%;
+  max-width: 90%;
   height: 80px;
+  max-height: 160px;
   padding: 10px;
 }
 
