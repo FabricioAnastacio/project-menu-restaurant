@@ -6,10 +6,14 @@ const hour = data.getHours();
 const minutes = String(data.getMinutes()).padStart(2, '0');
 
 const getAditionals = (item) => {
+  //const addSelected = [];
+  //if (item.additional.length > 0) {
+  //  item.additional.forEach((a) => a.amount > 0 && addSelected.push(a));
+  //} 
   return item.additional.length > 0
     ? `
-    Add:${item.additional.map((add) => add.amount > 0 ? `
-        ${add.amount}__${add.name}` : ',').join(',')}`
+    Add:${item.additional.filter((add) => add.amount > 0 && `
+        ${add.amount}__${add.name}`).join(',')}`
     : '';
 };
 
