@@ -580,7 +580,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -629,7 +629,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -678,7 +678,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -727,7 +727,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -776,7 +776,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -825,7 +825,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
@@ -868,7 +868,7 @@ const listFoods = {
         },
         {
           name: 'Bacon Fatiado',
-          value: 6.50,
+          value: 4.00,
           amount: 0,
           maxAmount: 1,
         },
