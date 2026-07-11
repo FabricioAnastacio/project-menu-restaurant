@@ -5,6 +5,25 @@ import '../style/Carousel.css';
 import arrowRigth from '../pictures/icons8-forward-100.png';
 
 class Carousel extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      description: '',
+      imag: '',
+    };
+  }
+
+  opemImag = (imag, desc, group) => {
+    if (group === 'highlights' || group === 'combo') {
+      this.setState({ imag, description: desc });
+    }
+  };
+
+  closeImag = () => {
+    this.setState({ imag: '', description: '' });
+  };
+
   render() {
     const {
       highlights,
@@ -12,8 +31,21 @@ class Carousel extends React.Component {
       getItem,
       setBlur,
     } = this.props;
+    const { imag, description } = this.state;
+
     return (
       <div className={ `Container-carousel setblur-${imgOpem}` }>
+        {
+          imag !== '' && (
+            <div className="Img_opem_Full">
+              <button onClick={ this.closeImag } className="btm_close">X</button>
+              <div className="Img_opem_img">
+                <h3 className="Img_opem_desc">{ description }</h3>
+                <img src={ imag } alt="imagem" />
+              </div>
+            </div>
+          )
+        }
         <ul className="carousel">
           {
             highlights.map((item, key) => (
@@ -23,6 +55,7 @@ class Carousel extends React.Component {
                 item={ item }
                 getItem={ getItem }
                 setBlur={ setBlur }
+                opemImag={ this.opemImag }
               />
             ))
           }
