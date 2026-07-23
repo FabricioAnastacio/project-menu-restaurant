@@ -1,0 +1,88 @@
+.App-header {
+  background-color: black;
+}
+
+.Header-Title-CARDAPIO {
+  position: absolute;
+  align-items: end;
+  display: flex;
+  top: 0;
+  height: 48vmin;
+  justify-content: space-between;
+  width: 100%;
+  h1 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fdfdfd;
+    margin: 0 10px;
+    text-shadow: .5px .5px 1.5px rgb(255, 0, 0);
+  };
+}
+
+.Container_text {
+  padding: 0 25px;
+  margin-bottom: 20px;
+  h2 {
+    margin-top: 0;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  p {
+    color: white;
+    text-align: center;
+    span {
+      font-weight: 800;
+    }
+  }
+}
+
+
+.Header-logoVideo {
+  padding-top: 5px;
+  background-color: black;
+  width: 100%;
+  object-fit: cover;
+}
+
+.Title-profile {
+  margin: 5px;
+  top: 50px;
+  z-index: 1;
+}
+
+.Section-network {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding: 2px 0;
+  top: 10px;
+  width: 60px;
+}
+
+.Btms-network {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  img {
+    margin: 0 2px;
+    margin-bottom: 10px;
+    width: 25px;
+  }
+}
+
+.Btms-search {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  img {
+    margin: 0 5px;
+    width: 25px;
+  }
+}
+
+.Btms-network:active, .Btms-search:active {
+  transform: scale(.9);
+}

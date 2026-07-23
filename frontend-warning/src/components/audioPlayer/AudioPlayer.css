@@ -1,0 +1,63 @@
+.player{
+  position: sticky;
+  width: 80%;
+  color:white;
+  padding:20px;
+  display:flex;
+  gap:15px;
+  border-radius: 50px;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.993) 90%);
+  margin-top: 10px;
+}
+
+.barTime_btmPlayPause {
+  display: flex;
+  align-items: center;
+}
+
+button{
+  width:30px;
+  height:30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+  border-radius:50%;
+  background:rgb(172, 16, 16);
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  transition:.2s;
+  margin-right: 5px;
+}
+
+button:active{
+  transform:scale(1.1);
+}
+
+.duration_bar {
+  width:50%;
+  margin: 0 5px;
+}
+
+.Volume_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Volume_Bar {
+  position: absolute;
+  bottom: 65px;
+  transform: rotate(-90deg);
+  width: 80px;
+  transition: .2s;
+}
+
+input[type=range]{
+  accent-color: rgb(172, 16, 16);
+}

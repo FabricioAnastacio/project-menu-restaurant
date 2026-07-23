@@ -1,0 +1,82 @@
+footer {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 110px;
+  padding: 20px 0;
+  color: rgba(255, 255, 255, 0.562);
+  background-color: rgba(0, 0, 0, 0.89);
+}
+
+.TanjNezu-Footer {
+  height: 90px;
+  margin: 10px 0;
+  filter: contrast(1.40) opacity(.9);
+  filter: drop-shadow(0 10px 5px black)
+}
+
+.Footer-content {
+  display: flex;
+  width: 95%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Footer-publi-secund {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+}
+
+.Info_version {
+  margin: 0;
+  width: 100%;
+  text-align: end;
+}
+
+.Footer-publi-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.Footer-page-true {
+  filter: blur(1px);
+}
+
+.line_center {
+  background-color: rgba(255, 255, 255, 0.281);
+  border: 0;
+  height: 50px;
+  width: 2px;
+  border-radius: 5em;
+}
+
+p {
+  font-size: 12px;
+  margin: 5px;
+}
+
+.Section-Publi-end {
+  a {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.Link-name {
+  color: rgb(255, 255, 255);
+  text-decoration: overline;
+}
+
+.Section-Links {
+  display: flex;
+}
+
+.Link-social {
+  img {
+    width: 25px;
+    opacity: .5;
+  }
+}

@@ -1,0 +1,42 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.Desktop-msg {
+  display: grid;
+  place-items: center;
+  color: white;
+  img {
+    height: 280px;
+    border-radius: 20px;
+  }
+  p {
+    margin-top: 20px;
+  }
+}
+
+.main {
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 0.151);
+  margin-bottom: 30px;
+}
+
+.Comunicado {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  animation: 2s burn infinite alternate;
+}
+
+@keyframes burn {
+  0% {
+    box-shadow: 0 0 10px #ff4500, 0 0 10px #ff8c00, 0 0 20px #ff0000;
+  }
+  100% {
+    box-shadow: 0 0 20px #ff8c00, 0 0 25px #ffa500, 0 0 40px #ff4500;
+  }
+}
