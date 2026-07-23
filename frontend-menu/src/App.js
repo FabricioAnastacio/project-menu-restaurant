@@ -38,7 +38,7 @@ class App extends React.Component {
         counterRequest: 0,
         valueTotal: 0,
         deliveryDayOff: [
-          SUNDAY, MONDAY, TUESDAY, WEDNESDA,
+          SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
         ],
       },
       locationScroll: {
