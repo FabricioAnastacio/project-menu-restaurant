@@ -4,7 +4,17 @@
   "description": "Backend do sistema de delivery do Big Lanches do Tanjiro",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
+    "test:coverage": "nyc npm run test",
+    "test:coverage:json": "nyc --reporter=json-summary npm run test",
+    "db:reset": "npx tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "build": "tsc --project tsconfig.json",
+    "prestart": "npm run build && npm run db:reset",
+    "start": "node ./build/server.js",
+    "predev": "npm run db:reset",
+    "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts",
+    "postinstall": "if [ ! -z 'cat ./packages.npm' ]; then npm i --ignore-scripts $(cat ./packages.npm); fi",
+    "lint": "eslint ./src --ext .ts"
   },
   "author": "FARdev",
   "license": "ISC",
