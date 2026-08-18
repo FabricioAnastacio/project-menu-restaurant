@@ -5,8 +5,20 @@ const year = data.getFullYear();
 const hour = data.getHours();
 const minutes = String(data.getMinutes()).padStart(2, '0');
 
+const getAditionals = (item) => {
+  let addSelected;
+  if (item.additional.length > 0) {
+    addSelected = item.additional.filter((add) => add.amount > 0);
+    return addSelected.length > 0
+      ? `
+      Add:${addSelected.map((add) => `
+          ${add.amount}__${add.name}`).join(',')}`
+      : '';
+  }
+};
+
 const getObs = (item) => {
-  return item.obs !== '' ? `\nObs: ${item.obs}\n` : '';
+  return item.obs !== '' ? `\n    Obs: ${item.obs}` : '';
 };
 
 const createTextItem = (item) => {
@@ -14,7 +26,9 @@ const createTextItem = (item) => {
 };
 
 const getTextFoods = (foods) => {
-  return `*Lanches:*${foods.map((item) => createTextItem(item) + getObs(item)).join('')}`;
+  return `*Lanches:*${foods.map(
+    (item) => createTextItem(item) + getAditionals(item) + getObs(item),
+  ).join('')}`;
 };
 
 const getTextDrinks = (drink) => {

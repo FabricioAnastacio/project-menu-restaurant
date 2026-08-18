@@ -3,13 +3,16 @@
   opacity: .5;
 }
 
-.Header-Title {
-  align-items: end;
+.Header-Title-PEDIDO {
   background-color: black;
   background-image: url('../pictures/logo.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 160px;
+}
+
+.Header-Title-CARDAPIO, .Header-Title-PEDIDO {
+  align-items: end;
   display: flex;
   height: 38vmin;
   justify-content: space-between;
@@ -21,6 +24,15 @@
     margin: 0 10px;
     text-shadow: .5px .5px 1.5px rgb(255, 0, 0);
   };
+}
+
+.Header-logoVideo {
+  position: absolute;
+  padding-top: 5px;
+  background-color: black;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .Title-profile {

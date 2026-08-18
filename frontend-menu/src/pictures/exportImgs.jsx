@@ -31,6 +31,7 @@ import kame from './foods/kame.jpg';
 import titanAttack from './foods/titanAttack.jpg';
 import poke from './foods/poke.jpg';
 import katana from './foods/katana.jpg';
+import katanaBlindada from './foods/katanaBlindada.jpg';
 import gula from './foods/gula.jpg';
 import luaSuperior from './foods/luaSuperior.jpg';
 import respiracaoChamas from './foods/respiracaoChamas.jpg';
@@ -89,6 +90,7 @@ export const foods = {
   luaSuperior,
   poke,
   katana,
+  katanaBlindada,
   sorteio,
   comboHawk,
   comboSayajin,

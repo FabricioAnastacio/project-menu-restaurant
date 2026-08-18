@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import wrapperRoute from '../hooks/wrapperRoute';
 import AppContext from '../context/AppContext';
-import Footer from '../components/Footer';
 import '../style/itemDetails.css';
 import DetailsItem from '../components/DetailsItem';
-import FooterRotes from '../components/FooterRotes';
+import Footer from '../components/Footer';
 
 class ItemDetails extends React.Component {
   constructor() {
@@ -18,6 +17,8 @@ class ItemDetails extends React.Component {
         img: '',
         ingredients: [],
         description: '',
+        additional: [],
+        amount: 0,
         value: 0,
       },
       counterItens: 0,
@@ -36,7 +37,8 @@ class ItemDetails extends React.Component {
   }
 
   counterRequestAmount = (value) => {
-    this.context.counterRequest = value;
+    const { updateCounterRequest } = this.context;
+    updateCounterRequest(value);
     this.setState({
       counterItens: value,
     });
@@ -44,17 +46,19 @@ class ItemDetails extends React.Component {
 
   render() {
     const { item, counterItens } = this.state;
-    const { counterRequest } = this.context;
 
+    if (item.name === '') return <h1>Carregando...</h1>;
     return (
-      <main className="Page-ItemDetails">
+      <main
+        className="Page-ItemDetails"
+        style={ { viewTransitionName: 'page' } }
+      >
         <DetailsItem
           item={ item }
           counterRequestAmount={ this.counterRequestAmount }
           counterItens={ counterItens }
         />
         <Footer />
-        <FooterRotes counterItens={ counterRequest } />
       </main>
     );
   }

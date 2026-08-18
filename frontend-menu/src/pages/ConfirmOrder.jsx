@@ -32,7 +32,9 @@ class ConfirmOrder extends React.Component {
   };
 
   removeAllItems = () => {
-    const { listMenu: { menu, menu: { food, drinks, candy } } } = this.context;
+    const { listMenu: {
+      menu, menu: { food, drinks, candy, foodChenged } },
+    } = this.context;
 
     this.context.counterRequest = 0;
 
@@ -42,6 +44,8 @@ class ConfirmOrder extends React.Component {
     food.handmade = food.handmade.map((item) => ({ ...item, amount: 0, obs: '' }));
     food.additional = food.additional.map((item) => ({ ...item, amount: 0, obs: '' }));
     menu.candy = candy.map((item) => ({ ...item, amount: 0, obs: '' }));
+    foodChenged.classic = [];
+    foodChenged.handmade = [];
   };
 
   sendOrCheff = () => {
@@ -51,8 +55,10 @@ class ConfirmOrder extends React.Component {
           food: { combo, classic, handmade, additional },
           drinks,
           candy,
+          foodChenged,
         },
       },
+      updateCounterRequest,
     } = this.context;
     const { valueTotal } = this.context;
 
@@ -61,6 +67,8 @@ class ConfirmOrder extends React.Component {
         ...handmade.filter((item) => item.amount > 0),
         ...classic.filter((item) => item.amount > 0),
         ...combo.filter((item) => item.amount > 0),
+        ...foodChenged.classic,
+        ...foodChenged.handmade,
       ],
       drinks: drinks.filter((item) => item.amount > 0),
       additional: [
@@ -79,6 +87,7 @@ class ConfirmOrder extends React.Component {
 
     sendMensage(this.state, order);
 
+    updateCounterRequest(0);
     this.removeAllItems();
   };
 
@@ -94,7 +103,10 @@ class ConfirmOrder extends React.Component {
       clientChange,
     } = this.state;
     return (
-      <main className="Order-Page">
+      <main
+        className="Order-Page"
+        style={ { viewTransitionName: 'page' } }
+      >
         <Header title="PEDIDO" imgOpen={ false } />
         <ListOrder />
         <FormDataClient
@@ -109,7 +121,7 @@ class ConfirmOrder extends React.Component {
           clientChange={ clientChange }
           sendOrCheff={ this.sendOrCheff }
         />
-        <Footer imgOpem={ false } />
+        <Footer imgOpem={ false } page="order" />
       </main>
     );
   }

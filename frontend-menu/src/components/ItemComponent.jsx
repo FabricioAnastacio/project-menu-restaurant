@@ -1,8 +1,7 @@
 import React from 'react';
-import { HashLink } from 'react-router-hash-link';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
-import { addItem, rmItem } from '../services/addOrRmItem';
+import TransitionLink from '../helper/TransitionLink';
 
 class ItemComponent extends React.Component {
   constructor() {
@@ -14,53 +13,34 @@ class ItemComponent extends React.Component {
     };
   }
 
-  addNewItem = (item, isFood) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    let newAmount = 0;
+  componentDidMount() {
+    const { item } = this.props;
 
-    if (isFood) {
-      const { newList, amount } = addItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = addItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
+    this.setState({
+      counterItem: item.amount,
+    });
+  }
 
-    this.setState({ counterItem: newAmount });
+  addNewItem = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
+
+    counterRequestAmount(counterItens + 1);
+    item.amount += 1;
+
+    this.setState({ counterItem: item.amount });
   };
 
-  removeItem = (item, isFood) => {
-    const { listMenu: { menu, menu: { food } } } = this.context;
-    let newAmount = 0;
-
-    if (isFood) {
-      const { newList, amount } = rmItem(item, food[item.group], this.props);
-      menu.food[item.group] = newList;
-      newAmount = amount;
-    } else {
-      const { newList, amount } = rmItem(item, menu[item.group], this.props);
-      menu[item.group] = newList;
-      newAmount = amount;
-    }
-
-    this.setState({ counterItem: newAmount });
-  };
-
-  getCounter = (isFood, isCandy, { id, group }) => {
+  removeItem = (item) => {
+    const { counterRequestAmount, counterItens } = this.props;
     const { counterItem } = this.state;
-    const { listMenu: { menu: { food, candy, drinks } } } = this.context;
 
+    if (item.amount === 0) return;
     if (counterItem > 0) {
-      return counterItem;
+      item.amount -= 1;
+      counterRequestAmount(counterItens - 1);
     }
 
-    if (isFood) return food[group][id - 1].amount;
-
-    if (isCandy) return candy[id - 1].amount;
-
-    return drinks[id - 1].amount;
+    this.setState({ counterItem: item.amount });
   };
 
   render() {
@@ -97,7 +77,7 @@ class ItemComponent extends React.Component {
               </button>
               <p className={ item.amount > 0 ? 'item-buy' : 'item' }>
                 {
-                  this.getCounter(isFood, isCandy, item)
+                  item.amount
                 }
               </p>
               <button
@@ -109,20 +89,30 @@ class ItemComponent extends React.Component {
             </div>
           </div>
         </section>
-        <div className="AriaButton">
-          <HashLink
-            to={
-              groupFood.includes(item.group) && `/item/${item.group}/${item.id}/#Header`
-            }
-          >
+        <section className="Img_Item_btm">
+          <div className="AriaButton">
             <div
               className="imgs-menu"
-              style={ { backgroundImage: `url(${item.img})` } }
+              style={ {
+                backgroundImage: `url(${item.img})`,
+              } }
               aria-hidden="true"
             />
-            <p>{ groupFood.includes(item.group) && 'Ver detalhes' }</p>
-          </HashLink>
-        </div>
+          </div>
+          {
+            groupFood.includes(item.group) && (
+              <TransitionLink
+                to={ `/item/${item.group}/${item.id}/#Header` }
+                className="Btm_Adit"
+              >
+                {
+                  item.group === 'combo'
+                  || item.group === 'additional' ? 'Detalhes' : 'Adicionais'
+                }
+              </TransitionLink>
+            )
+          }
+        </section>
       </li>
     );
   }
@@ -133,6 +123,7 @@ ItemComponent.contextType = AppContext;
 ItemComponent.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    idList: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf([]).isRequired,
@@ -143,6 +134,8 @@ ItemComponent.propTypes = {
   }).isRequired,
   isFood: PropTypes.bool.isRequired,
   isCandy: PropTypes.bool.isRequired,
+  counterRequestAmount: PropTypes.func.isRequired,
+  counterItens: PropTypes.number.isRequired,
 };
 
 export default ItemComponent;

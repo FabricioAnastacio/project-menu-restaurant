@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import bin from '../pictures/icons8-lixeira-48.png';
 
 class RenderItem extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ class RenderItem extends React.Component {
   componentDidMount() {
     const { item } = this.props;
 
-    if (item.obs !== '') this.setState({ obs: true, itemObs: item.obs });
+    if (item.obs !== '') this.setState({ itemObs: item.obs });
   }
 
   componentWillUnmount() {
@@ -31,17 +32,15 @@ class RenderItem extends React.Component {
   };
 
   onClickAddObs = () => {
-    const { obs } = this.state;
-
     this.setState({
-      obs: !obs,
       itemObs: '',
     });
   };
 
   render() {
     const { obs, itemObs } = this.state;
-    const { item, key, grup, addNewItem, removeItem } = this.props;
+    const { item, key, grup, addNewItem, removeItem,
+    } = this.props;
 
     return (
       <li
@@ -63,29 +62,86 @@ class RenderItem extends React.Component {
                 grup !== 'souce' && (
                   <button
                     className={ `Btm-Observation-${obs}` }
-                    onClick={ this.onClickAddObs }
+                    onClick={ () => this.setState({ obs: !obs }) }
                   >
-                    { !obs ? 'observação' : 'Apagar' }
+                    { !obs ? 'Informações' : 'Fechar' }
                   </button>
                 )
               }
             </div>
           </div>
-          <button className="btn" onClick={ () => removeItem(item, grup) }>-</button>
-          <p>{ item.amount }</p>
-          <button className="btn" onClick={ () => addNewItem(item, grup) }>+</button>
+          <div className="Div_item_btns_tags">
+            {
+              item.additional && (
+                <div className="Tags_item">
+                  {
+                    item.additional.find((ing) => ing.amount > 0)
+                    && <hr id="tag_color_Add" />
+                  }
+                  { itemObs !== '' && <hr id="tag_color_obs" /> }
+                </div>
+              )
+            }
+            <hr style={ { border: '0' } } />
+            <div className="item_btms">
+              <button
+                className="btn"
+                onClick={ () => removeItem(item, grup) }
+              >
+                { item.amount === 1 ? (
+                  <img className="icon-bin" src={ bin } alt="Apagar" />
+                ) : '-' }
+              </button>
+              <p>{ item.amount }</p>
+              <button
+                className="btn"
+                onClick={ () => addNewItem(item, grup) }
+              >
+                +
+              </button>
+            </div>
+            <hr style={ { border: '0' } } />
+          </div>
         </div>
         {
           grup !== 'souce' && (
-            <textarea
-              className="item-obs"
-              name="itemObs"
-              id="obs"
-              value={ itemObs }
-              onChange={ (e) => this.handleChengeObs(e, item) }
-              placeholder="Ex. Sem batata palha"
-              style={ { display: obs ? 'flex' : 'none' } }
-            />
+            <div style={ { display: obs ? 'flex' : 'none' } } className="item-container">
+              <div className="item-obs-header">
+                <label className="Label_Item_obs" htmlFor="obs">
+                  Observações:
+                </label>
+                <button
+                  onClick={ this.onClickAddObs }
+                  className="Btm_clear_obs"
+                >
+                  Limpar
+                </button>
+              </div>
+              <textarea
+                className="item-obs"
+                name="itemObs"
+                id="obs"
+                value={ itemObs }
+                onChange={ (e) => this.handleChengeObs(e, item) }
+                placeholder="Ex. Sem batata palha"
+              />
+              {
+                item.idChenge && (
+                  <ul className="List_aditional_order">
+                    <p>Adicionais:</p>
+                    { item.additional.map((add, keyAdd) => (
+                      <li key={ keyAdd } className="Item_aditional_order">
+                        <div className="Amount_name">
+                          <p>{ add.amount }</p>
+                          <p>{ add.name }</p>
+                        </div>
+                        <p>{ `R$${add.value.toFixed(2)}` }</p>
+                      </li>
+                    )) }
+                  </ul>
+                )
+              }
+            </div>
           )
         }
       </li>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '../style/header.css';
 import iconsWhatsapp from '../pictures/icons8-whatsapp-48.png';
 import iconsInstagram from '../pictures/icons8-instagram-48.png';
+import logo from '../pictures/logoChamas.mp4';
 
 class Header extends React.Component {
   render() {
@@ -12,7 +13,14 @@ class Header extends React.Component {
 
     return (
       <header className={ `Header-geral-${false}` }>
-        <div className="Header-Title">
+        {
+          title === 'CARDAPIO' && (
+            <video autoPlay muted loop playsInline className="Header-logoVideo">
+              <source src={ logo } type="video/mp4" />
+            </video>
+          )
+        }
+        <div className={ `Header-Title-${title}` }>
           <aside className="Title-profile">
             <h1>
               { title }

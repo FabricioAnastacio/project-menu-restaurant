@@ -10,10 +10,12 @@ import ConfirmOrder from './pages/ConfirmOrder';
 import ItemDetails from './pages/ItemDetails';
 import candy from './data/listCandy';
 import listHighlights from './data/listHighlights';
+import './App.css';
 
 const SUNDAY = 0;
-const FRIDAY = 5;
-const SATURDAY = 6;
+const MONDAY = 1;
+const TUESDAY = 2;
+const WEDNESDAY = 3;
 
 class App extends React.Component {
   constructor() {
@@ -22,22 +24,73 @@ class App extends React.Component {
     this.state = {
       value: {
         listMenu: {
-          menu: { food, drinks, candy },
+          menu: {
+            food,
+            drinks,
+            candy,
+            foodChenged: {
+              classic: [],
+              handmade: [],
+            },
+          },
           highlights: listHighlights,
         },
         counterRequest: 0,
         valueTotal: 0,
-        deliveryDayOff: [SUNDAY, FRIDAY, SATURDAY],
-        btnCart: false,
-        btnMenu: true,
+        deliveryDayOff: [
+          SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+        ],
+      },
+      locationScroll: {
+        location: '',
+        scroll: 0,
+      },
+      prevLocationScroll: {
+        location: '',
+        scroll: 0,
       },
     };
   }
 
+  getLocationScroll = (location) => {
+    const { locationScroll } = this.state;
+
+    if (location.pathname !== '/') return 0;
+
+    return locationScroll.scroll;
+  };
+
+  saveLocationScroll = (location, scroll) => {
+    const { prevLocationScroll } = this.state;
+
+    this.setState({
+      prevLocationScroll: {
+        location, scroll,
+      },
+      locationScroll: { ...prevLocationScroll },
+    });
+  };
+
+  updateCounterRequest = (counter) => {
+    this.setState((prevState) => ({
+      value: {
+        ...prevState.value,
+        counterRequest: counter,
+      },
+    }));
+  };
+
   render() {
     const { value } = this.state;
     return (
-      <AppContext.Provider value={ value }>
+      <AppContext.Provider
+        value={ {
+          ...value,
+          getLocationScroll: this.getLocationScroll,
+          saveLocationScroll: this.saveLocationScroll,
+          updateCounterRequest: this.updateCounterRequest,
+        } }
+      >
         <Routes>
           <Route exact path="/" Component={ MenuPage } />
           <Route exact path="/item/:group/:id" Component={ ItemDetails } />
