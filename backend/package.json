@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend do sistema de delivery do Big Lanches do Tanjiro",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
     "test:coverage": "nyc npm run test",
@@ -26,7 +27,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.9.5",
     "@typescript-eslint/eslint-plugin": "^8.59.1",
     "@typescript-eslint/parser": "^8.59.1",
     "eslint": "^8.57.1",
