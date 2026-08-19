@@ -2,9 +2,9 @@ import type { Options } from 'sequelize';
 
 const config: Options = {
   username: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '679301',
+  password: process.env.DB_PASS || '123456',
   database: 'DB_MENU_DELIVERY', 
-  host: process.env.DB_HOST || 'dbdlibre',
+  host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 3306,
   dialect: 'mysql',
   dialectOptions: {
