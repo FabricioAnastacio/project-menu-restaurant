@@ -1,4 +1,5 @@
 import express from 'express'
+import router from './routes/index.js';
 
 class App {
   public app: express.Express;
@@ -8,14 +9,14 @@ class App {
 
     this.config();
 
-    // this.route();
+    this.route();
 
     this.app.get('/', (req, res) => res.json({ ok: true }));
   }
 
-  // private route(): void {
-  //   this.app.use();
-  // }
+  private route(): void {
+    this.app.use(router);
+  }
 
   private config(): void {
     const accessControl: express.RequestHandler = (_req, res, next) => {
