@@ -1,6 +1,6 @@
 import type { Options } from 'sequelize';
 
-export const config: Options = {
+const config: Options = {
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || '679301',
   database: 'DB_MENU_DELIVERY', 
@@ -12,3 +12,5 @@ export const config: Options = {
   },
   logging: false,
 };
+
+export default config;
