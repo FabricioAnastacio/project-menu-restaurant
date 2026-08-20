@@ -6,8 +6,6 @@ import {
   DataTypes,
 } from 'sequelize';
 import db from './index.js';
-import FoodModel from './FoodModel.js';
-import IngredientsModel from './IngredientsModel.js';
 
 class FoodIngModel extends Model<InferAttributes<FoodIngModel>,
 InferCreationAttributes<FoodIngModel>> {
@@ -48,12 +46,9 @@ FoodIngModel.init({
 }, {
   sequelize: db,
   modelName: 'foodIngredients',
+  tableName: 'food_ingredients',
   timestamps: false,
   underscored: true,
 });
-
-FoodIngModel.belongsTo(FoodModel, { foreignKey: 'foodId', as: 'food' });
-
-FoodIngModel.belongsTo(IngredientsModel, { foreignKey: 'ingId', as: 'ing' });
 
 export default FoodIngModel;

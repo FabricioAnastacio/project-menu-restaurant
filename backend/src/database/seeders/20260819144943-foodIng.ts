@@ -3,7 +3,7 @@ import { QueryInterface } from 'sequelize';
 export default {
   up: async (queryInterface: QueryInterface) => {
     await queryInterface.bulkInsert(
-      'foodIngredients',
+      'food_ingredients',
       [
         {
           food_id: 1,
@@ -41,6 +41,6 @@ export default {
   },
 
   down: async (queryInterface: QueryInterface) => {
-    await queryInterface.bulkDelete('foodIngredients', {});
+    await queryInterface.bulkDelete('food_ingredients', {});
   },
 }

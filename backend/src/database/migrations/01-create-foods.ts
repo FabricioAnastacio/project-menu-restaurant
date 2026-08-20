@@ -3,7 +3,7 @@ import IFood from '../../interfaces/Food.js';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<IFood>>('foods', {
+    return queryInterface.createTable<Model<IFood<null>>>('foods', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,

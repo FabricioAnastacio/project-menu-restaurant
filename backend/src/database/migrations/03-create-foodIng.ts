@@ -3,7 +3,7 @@ import IFoodIng from '../../interfaces/FoodIng.js';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<IFoodIng>>('foodIngredients', {
+    return queryInterface.createTable<Model<IFoodIng>>('food_ingredients', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -31,6 +31,6 @@ export default {
     });
   },
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('foodIngredients');
+    return queryInterface.dropTable('food_ingredients');
   }
 }
