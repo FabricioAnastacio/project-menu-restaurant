@@ -6,11 +6,13 @@ export interface IFoodRes {
 }
 
 export interface IFoodSQL {
-  id: number,
-  name: string,
+  plusPrice: number | null,
+  isAdditional: boolean,
+  quantity: number,
+  unity: string,
   foodIngredients: {
-    quantity: number,
-    unity: string,
+    id: number,
+    name: string,
   },
 }
 
@@ -22,4 +24,5 @@ export default interface IFood<T> {
   group: string,
   price: number,
   ingredients: T[] | undefined,
+  additionals: T[] | undefined,
 }

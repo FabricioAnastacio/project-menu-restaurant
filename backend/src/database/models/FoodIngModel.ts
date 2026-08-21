@@ -21,8 +21,6 @@ InferCreationAttributes<FoodIngModel>> {
 
   declare isAdditional: boolean;
 
-  declare plusMaxAmount: number;
-
   declare plusPrice: number;
 }
 
@@ -52,10 +50,6 @@ FoodIngModel.init({
   isAdditional: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-  },
-  plusMaxAmount: {
-    type: DataTypes.NUMBER,
-    allowNull: true,
   },
   plusPrice: {
     type: DataTypes.NUMBER,

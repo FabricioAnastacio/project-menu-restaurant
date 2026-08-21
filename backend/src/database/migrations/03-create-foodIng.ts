@@ -33,11 +33,6 @@ export default {
         field: 'is_additional',
         allowNull: false,
       },
-      plusMaxAmount: {
-        type: DataTypes.INTEGER,
-        field: 'plus_max_amount',
-        allowNull: true,
-      },
       plusPrice: {
         type: DataTypes.INTEGER,
         field: 'plus_price',
