@@ -28,6 +28,21 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      isAdditional: {
+        type: DataTypes.BOOLEAN,
+        field: 'is_additional',
+        allowNull: false,
+      },
+      plusMaxAmount: {
+        type: DataTypes.INTEGER,
+        field: 'plus_max_amount',
+        allowNull: true,
+      },
+      plusPrice: {
+        type: DataTypes.INTEGER,
+        field: 'plus_price',
+        allowNull: true,
+      },
     });
   },
   down(queryInterface: QueryInterface) {

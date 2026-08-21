@@ -4,4 +4,7 @@ export default interface IFoodIng {
   ingId: number,
   quantity: number,
   unity: string,
+  isAdditional: boolean,
+  plusMaxAmount: number | null,
+  plusPrice: number | null,
 }

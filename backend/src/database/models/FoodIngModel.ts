@@ -18,6 +18,12 @@ InferCreationAttributes<FoodIngModel>> {
   declare unity: string;
 
   declare quantity: number;
+
+  declare isAdditional: boolean;
+
+  declare plusMaxAmount: number;
+
+  declare plusPrice: number;
 }
 
 FoodIngModel.init({
@@ -43,6 +49,18 @@ FoodIngModel.init({
     type: DataTypes.STRING(20),
     allowNull: false,
   },
+  isAdditional: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
+  plusMaxAmount: {
+    type: DataTypes.NUMBER,
+    allowNull: true,
+  },
+  plusPrice: {
+    type: DataTypes.NUMBER,
+    allowNull: true,
+  }
 }, {
   sequelize: db,
   modelName: 'foodIngredients',
