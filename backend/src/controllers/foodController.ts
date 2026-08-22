@@ -12,4 +12,11 @@ export default class FoodController {
 
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getById(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const { status, data } = await this.serviceFood.findById(Number(id));
+
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

@@ -65,8 +65,13 @@ class FoodsModel implements IReturnAllandOne<IFood<IFoodRes>> {
   }
 
   async findById(id: string | number): Promise<IFood<IFoodRes> | null> {
-    const oneFood = await this.model.findByPk(id, { include }) as any as IFood<IFoodSQL>;
-    return this.returnFindProdutc(oneFood);
+    try {
+      const oneFood = await this.model.findByPk(id, { include }) as any as IFood<IFoodSQL>;
+      return this.returnFindProdutc(oneFood);
+    } catch {
+      return null;
+    }
+
   }
 }
 

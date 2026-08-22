@@ -13,6 +13,15 @@ class FoodService {
 
     return { status: 'SUCCESSFUL', data: allFood };
   }
+
+  public async findById(id: number): Promise<ServiceResponse<IFood<IFoodRes>>> {
+    const food = await this.foodModel.findById(id);
+
+    if (food === null)
+      return { status: 'NOT_FOUND', data: { message: 'Item não encontrado!' } };
+
+    return { status: 'SUCCESSFUL', data: food };
+  }
 }
 
 export default FoodService;
