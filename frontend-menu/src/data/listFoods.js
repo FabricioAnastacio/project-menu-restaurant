@@ -149,6 +149,8 @@ const listFoods = {
       description: 'Pão, Bife, Salada, Milho e batata',
       ingredients: ['Pão', ' Bife', ' Salada', ' Milho', ' batata'],
       group: 'classic',
+      value: 12.50,
+      amount: 0,
       additional: [
         {
           name: 'Bife 90g',
@@ -205,8 +207,6 @@ const listFoods = {
           maxAmount: 1,
         },
       ],
-      value: 12.50,
-      amount: 0,
     },
     {
       id: 2,
@@ -905,9 +905,9 @@ const listFoods = {
     {
       id: 2,
       img: foods.katanaBlindada,
-      name: '2-Katana Blinda 500G',
+      name: '2-Katana Blindada 500G',
       description: 'Batata, bacon, cheddar Premium e mussarela derretida',
-      ingredients: ['Batata', ' Bacon', ' Cheddar PREMIUM', ' Mussarala Derretida'],
+      ingredients: ['Batata', ' Baccon', ' Cheddar PREMIUM', ' Mussarala Derretida'],
       group: 'additional',
       additional: [],
       value: 35.00,
