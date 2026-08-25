@@ -19,4 +19,11 @@ export default class FoodController {
 
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getByGroup(req: Request, res: Response): Promise<Response> {
+    const { group } = req.params as any;
+    const { status, data } = await this.serviceFood.findByGroup(group);
+
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

@@ -7,5 +7,6 @@ const foods = new FoodController();
 
 foodRouter.get('/', (req, res) => foods.getAllFoods(req, res));
 foodRouter.get('/:id', (req, res) => foods.getById(req, res));
+foodRouter.get('/group/:group', (req, res) => foods.getByGroup(req, res));
 
 export default foodRouter;

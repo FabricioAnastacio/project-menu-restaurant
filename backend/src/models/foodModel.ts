@@ -1,6 +1,6 @@
 import FoodModel from '../database/models/FoodModel.js';
 import IFood, { IFoodRes, IFoodSQL } from '../interfaces/Food.js';
-import { IReturnAllandOne } from '../interfaces/ICRUDModel.js';
+import { IReturnFoodModel } from '../interfaces/ICRUDModel.js';
 import IngredientsModel from '../database/models/IngredientsModel.js';
 import FoodIngModel from '../database/models/FoodIngModel.js';
 import '../database/models/associations.js';
@@ -20,7 +20,7 @@ const include = [
   },
 ];
 
-class FoodsModel implements IReturnAllandOne<IFood<IFoodRes>> {
+class FoodsModel implements IReturnFoodModel<IFood<IFoodRes>> {
   private model = FoodModel;
 
   private returnFindProdutc(itemJson: IFood<IFoodSQL>): IFood<IFoodRes> {
@@ -71,7 +71,16 @@ class FoodsModel implements IReturnAllandOne<IFood<IFoodRes>> {
     } catch {
       return null;
     }
+  }
 
+  async findByGroup(group: string): Promise<IFood<IFoodRes>[]> {
+    const foods = await this.model.findAll({ include, where: { group }});
+
+    return foods.map((item) => {
+      const itemJson = item.toJSON() as any as IFood<IFoodSQL>;
+
+      return this.returnFindProdutc(itemJson);
+    })
   }
 }
 
