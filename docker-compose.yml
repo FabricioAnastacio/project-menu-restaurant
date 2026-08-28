@@ -1,10 +1,10 @@
 services:
   frontend:
-    container_name: app_frontend_menu
+    container_name: frontend_menu
     build: ./frontend-menu
     ports:
       - 3000:3000
-    working_dir: /app-frontend-menu
+    working_dir: /frontend-menu
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
@@ -13,7 +13,7 @@ services:
     container_name: backend
     build: ./backend
     ports:
-      -3001:3001
+      - 3001:3001
     working_dir: /backend
     command: dev
     volumes:
@@ -25,8 +25,8 @@ services:
       - APP_PORT=3001
       - JWT_SECRET=jwt_iogurt
       - DB_USER=root
-      - DB_PASS=679301
-      - DB_HOST=dbdlibre
+      - DB_PASS=123456
+      - DB_HOST=db
       - DB_PORT=3306
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
@@ -34,11 +34,11 @@ services:
       retries: 5
   db:
     image: mysql:8.0.32
-    container_name: dbdlibre
+    container_name: db
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=679301
+      - MYSQL_ROOT_PASSWORD=123456
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]

@@ -1,5 +1,5 @@
 # Usar a imagem node:16.14-alpine como base
-FROM node:alpine
+FROM node:20.20-alpine
 ENV VERSION=1.0.0
 # Mudar para o diretório de trabalho /backend
 WORKDIR /backend

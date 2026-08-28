@@ -11,6 +11,9 @@ import FooterRotes from '../components/FooterRotes';
 import AppContext from '../context/AppContext';
 import qrcode from '../pictures/qrcodeTanjiro.jpg';
 import InfoOperation from '../components/InfoOperation';
+import { requestAllFoods } from '../services/requests';
+
+console.log(requestAllFoods('/food'));
 
 class MenuPage extends React.Component {
   constructor() {
