@@ -21,9 +21,13 @@ export default class FoodController {
   }
 
   public async getByGroup(req: Request, res: Response): Promise<Response> {
-    const { group } = req.params as any;
-    const { status, data } = await this.serviceFood.findByGroup(group);
+    const { group } = req.params;
 
+    if (!group || typeof group !== 'string') {
+      return res.status(mapStatusHTTP('INVALID_VALUE')).json({ message: 'Grupo não informado' });
+    }
+
+    const { status, data } = await this.serviceFood.findByGroup(group);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }
